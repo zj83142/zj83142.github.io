@@ -2,6 +2,10 @@
 title: hexo 主题设置
 date: 2017-08-25 10:26:24
 tags:
+  - hexo
+  - github pages
+categories: 
+  - 笔记
 ---
 
 ### next主题
