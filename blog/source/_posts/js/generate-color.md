@@ -6,7 +6,7 @@ tags:
   - color
   - translate
 categories: 
-  - 笔记
+  - js
 ---
 
 ### 生成随机颜色
