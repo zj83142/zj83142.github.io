@@ -14,3 +14,4 @@ categories:
 2. hexo g 生成文件时报错 提示zh-tw.yml 错误，删掉languages文件夹下对应的字体文件。
 
 3. 左侧导航点击报错：hexo Cannot GET /tags/，找不到tags页面，解决方法：1）$ hexo new page 'tags'。2）设置页面 type: tags。 3）在主题配置文件，菜单中添加连接：tags: /tags
+

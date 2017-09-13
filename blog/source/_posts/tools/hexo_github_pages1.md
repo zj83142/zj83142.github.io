@@ -73,6 +73,9 @@ Hexo 确实是一个神奇的好东西，通过Hexo和github搭配就能生成�
   直接方式创建文件
   在 **source/_posts/**下新建一个.md文件也可
 
+2. 添加文件分类
+  直接在source/_posts 文件夹下新建文件夹即可，很方便
+
 ### 全局配置 _config.yml
 
 ```
