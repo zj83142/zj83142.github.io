@@ -1,0 +1,76 @@
+---
+title: js 问题积累
+date: 2017-09-20 15:35:48
+tags:
+  笔记
+categories:
+  js
+---
+
+工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。
+
+### 上传文件插件dropzone
+
+1. 设置 Dropzone.autoDiscover = false
+
+  (禁止对所有元素的自动查找) 否则前端会报错: Dropzone already attached.
+
+2. 基本用法
+  ```
+  <div id="myDropzone" class="dropzone"></div>
+
+  var myDropzone = new Dropzone("#upload_logo", { 
+    url: "xxxx",  // 上传文件地址
+    maxFiles: '1', // 最多上传一个文件
+    dictDefaultMessage: '上传 Logo 图片', // 修改 提示文字
+    addRemoveLinks: 'dictRemoveFile', // 显示删除文件链接
+    acceptedFiles: 'image/*'  // 接收的文件类型
+  });
+  // 文件上传成功
+  myDropzone.on('success', function(file, response) {
+    var res = JSON.parse(response);
+    ...
+  });
+
+  ```
+
+3. 显示服务器上已存在的图片或文件
+
+  ```
+  var mockFile = { name: filename, size: 123, accepted: true };
+  myDropzone.emit( "addedfile", mockFile);
+  myDropzone.emit( "thumbnail", mockFile, fileUrl); // 生成缩略图
+  myDropzone.files.push( mockFile ); 
+  // $('div.dz-preview').addClass(' dz-processing dz-image-preview dz-success dz-complete'); // 这个会有上传成功的动画，不太需要
+  $('div.dz-preview').addClass(' dz-complete'); // 设置样式，如果不设置，缩略图上会显示上传进度条
+  ```
+
+4. 删除文件
+
+  ```
+  myDropzone.removeAllFiles();
+  ```
+
+5. 还有很多方法，具体可以查看源码，或者说明文档，参考地址：[DropzoneJS](http://wxb.github.io/dropzonejs.com.zh-CN/dropzonezh-CN/#)
+
+### bootstrap datetimepicker 
+
+  1. 月份选择  
+    ```
+    $('#xxx').datetimepicker({
+      minView : "year", //  选择时间时，最小可以选择到那层；默认是‘hour’也可用0表示
+      startView: 'year',
+      language : 'zh-CN', // 语言
+      autoclose : true, //  true:选择时间后窗口自动关闭
+      format : 'yyyy-mm', // 文本框时间格式，设置为0,最后时间格式为2017-03-23 17:00:00
+    });
+    ```
+
+
+### 其他注意事项
+
+  - form表单调用reset： $('#form_test')[0].reset();
+  - redio设置选中：$('input[name="xxx"][value="' + val + '"]').attr("checked", true);
+
+
+
