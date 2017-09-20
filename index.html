@@ -319,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
                   </a>
                 </span>
 
@@ -540,7 +540,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/12/js/js-check-type/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/12/js-check-type/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="情深·缘浅">
@@ -559,7 +559,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/12/js/js-check-type/" itemprop="url">js类型检测</a></h1>
+                <a class="post-title-link" href="/2017/09/12/js-check-type/" itemprop="url">js类型检测</a></h1>
         
 
         <div class="post-meta">
@@ -631,11 +631,177 @@
 <li>所有通过函数new出来的对象，这个对象都有一个<strong>proto</strong>指向这个函数的prototype</li>
 <li>当你想要使用一个对象（或者一个数组）的某个功能时：如果该对象本身具有这个功能，则直接使用，如果该对象本身没有这个功能，则去<strong>proto</strong>中找</li>
 </ol>
-<p>prototype 显示原型</p>
-<blockquote>
+<h4 id="prototype-显示原型"><a href="#prototype-显示原型" class="headerlink" title="prototype 显示原型"></a>prototype 显示原型</h4><blockquote>
 <p>每一个函数在创建之后都会拥有一个名为prototype的属性，这个属性指向函数的原型对象，通过Function.prototype.bind方法构造出来的函数都是个例外，它没有prototype属性</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var fu = function() &#123;&#125;;</div><div class="line">console.log(fn.prototype);</div></pre></td></tr></table></figure>
+<h4 id="proto-隐式原型"><a href="#proto-隐式原型" class="headerlink" title="proto 隐式原型"></a><strong>proto</strong> 隐式原型</h4><p><a href="https://juejin.im/post/59b5540c5188257e8769e95d" target="_blank" rel="external">https://juejin.im/post/59b5540c5188257e8769e95d</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/12/js/js-check-type/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="情深·缘浅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zj83142">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/12/js/js-check-type/" itemprop="url">js类型检测</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-12T14:59:00+08:00">
+                2017-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>js</li>
+</ul>
+<h3 id="判断数据类型的方法"><a href="#判断数据类型的方法" class="headerlink" title="判断数据类型的方法"></a>判断数据类型的方法</h3><ol>
+<li><p>根据数据类型判断</p>
+<ul>
+<li>typeof</li>
+<li>instaneof</li>
+</ul>
+</li>
+<li><p>根据构造函数判断</p>
+<ul>
+<li>Object.prototype.toString</li>
+<li>construcor</li>
+</ul>
+</li>
+</ol>
+<p><a href="http://www.imooc.com/course/comment/id/745?page=4" target="_blank" rel="external">慕课网一个老师的视频-讲Zepto</a></p>
+<h3 id="判断方法"><a href="#判断方法" class="headerlink" title="判断方法"></a>判断方法</h3><ul>
+<li><p>isFunction 判断是否是函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function isFunction(value) &#123; return type(value) == &quot;function&quot; &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>isWindow</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 判断是否是 window对象（注意，w为小写）指当前的浏览器窗口，window对象的window属性指向自身。</div><div class="line">// 即 window.window === window</div><div class="line">function isWindow(obj)     &#123; return obj != null &amp;&amp; obj == obj.window &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>isDocument 判断是否是 document 对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// window.document.nodeType == 9 数字表示为9，常量表示为 DOCUMENT_NODE</div><div class="line">function isDocument(obj)   &#123; return obj != null &amp;&amp; obj.nodeType == obj.DOCUMENT_NODE &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>isObject 判断是否是 object</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function isObject(obj)     &#123; return type(obj) == &quot;object&quot; &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>isPlainObject</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function isPlainObject(obj) &#123;</div><div class="line">  return isObject(obj) &amp;&amp; !isWindow(obj) &amp;&amp; Object.getPrototypeOf(obj) == Object.prototype</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>isArray 判断是否是arr</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isArray = Array.isArray || function(object)&#123; return object instanceof Array &#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>likeArray</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 判断是否是数组或者对象数组</div><div class="line">// !!的作用是把一个其他类型的变量转成的bool类型。</div><div class="line">// !!obj 直接过滤掉了false，null，undefined，&apos;&apos;等值</div><div class="line">function likeArray(obj) &#123;</div><div class="line">var length = !!obj &amp;&amp; &apos;length&apos; in obj &amp;&amp; obj.length,</div><div class="line"></div><div class="line">// 获取obj的数据类型</div><div class="line">type = $.type(obj);</div><div class="line"></div><div class="line">// 不能是function类型，不能是window</div><div class="line">// 如果是array则直接返回true</div><div class="line">// 或者当length的数据类型是number，并且其取值范围是0到(length - 1)这里是通过判断length - 1 是否为obj的属性</div><div class="line"></div><div class="line">return &apos;function&apos; != type &amp;&amp; !isWindow(obj) &amp;&amp; (</div><div class="line">    &apos;array&apos; == type || length === 0 ||</div><div class="line">    (typeof length == &apos;number&apos; &amp;&amp; length &gt; 0 &amp;&amp; (length - 1) in obj)</div><div class="line">  )</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>isEmptyObject 空对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$.isEmptyObject = function(obj) &#123;</div><div class="line">  var name</div><div class="line">  for (name in obj) return false</div><div class="line">  return true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>isNumeric 数字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$.isNumeric = function(val) &#123;</div><div class="line">  var num = Number(val), type = typeof val;</div><div class="line">  return val != null &amp;&amp; type != &apos;boolean&apos; &amp;&amp;</div><div class="line">    (type != &apos;string&apos; || val.length) &amp;&amp;</div><div class="line">    !isNaN(num) &amp;&amp; isFinite(num) || false</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ul>
+
           
         
       
@@ -1601,201 +1767,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/24/tools/hexo_github_pages1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="情深·缘浅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zj83142">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/24/tools/hexo_github_pages1/" itemprop="url">Hexo + github pages搭建个人博客 —— 基础篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-24T15:27:22+08:00">
-                2017-08-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Hexo 确实是一个神奇的好东西，通过Hexo和github搭配就能生成完美的个人博客，还有丰富的主题样式可以选择。不用自己管理服务器，是不是很酷？以下记录了我搭建博客的步骤和搭建过程中遇到的一些问题。</p>
-<blockquote>
-<p>学习不能含糊，不能似是而非，要有打破砂锅问到底的精神！</p>
-</blockquote>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
-<li>需要申请一个github帐号，用来搭载你的博客</li>
-<li>需要安装node，用来安装依赖文件</li>
-<li>安装git，因为Hexo有很多操作都涉及到命令行，可以使用Git Bash来操作</li>
-<li>需要有一个美好的心情 —— 你马上就可以有自己的博客了，激动不？</li>
-</ol>
-<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><ol>
-<li>npm install hexo-cli -g</li>
-<li>hexo init blog</li>
-<li>cd blog</li>
-<li>npm install </li>
-<li>hexo generate 或 hexo g</li>
-<li>hexo server 或 hexo s</li>
-</ol>
-<blockquote>
-<p>注意<br>  执行hexo server提示找不到该指令, 解决办法：在Hexo 3.0 后server被单独出来了，需要安装server，安装的命令如下：$ npm install hexo -server –save</p>
-</blockquote>
-<p>到这里访问 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 地址 就可以看到你的博客了</p>
-<h3 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h3><ol>
-<li>申请github帐号，网站地址：<a href="https://github.com" target="_blank" rel="external">https://github.com</a></li>
-<li>新建项目，项目名为 “你的github帐号” + “.github.io”, 然后在master上提交你的项目代码，这样就可以通过网址：<a href="https://&quot;你的github帐号" target="_blank" rel="external">https://&quot;你的github帐号</a>“ + “.github.io” 来访问你的博客</li>
-<li>安装 hexo-deployer-git, 用来将博客一键部署到github上， 命令： $ npm install hexo-deployer-git –save</li>
-<li><p>修改文件夹下的  _config.yml 文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: &lt;repository url&gt;</div><div class="line">  branch: [branch]</div></pre></td></tr></table></figure>
-<blockquote>
-<p>branch为分支，默认为master,可以不配置<br> repo为仓库地址，在github上新建仓库后，可复制此地址</p>
-</blockquote>
-</li>
-<li><p>部署 $ hexo d     </p>
-<blockquote>
-<p>d: deploy 的缩写, 部署博客到github上</p>
-</blockquote>
-</li>
-</ol>
-<p>到这里访问 https:// + “你的github帐号”.github.io 地址 就可以看到你线上的博客了，像我这么喜欢炫耀的人，最喜欢发给周围的人去炫耀了……</p>
-<p>注意：部署到github的时候hexo文件和生成的静态文件可以放在一个git仓库下的不同分支，也可以放在不同的git仓库。如果放在同一个git仓库，需要注意的是创建分支： git checkout -b dev 创建并切换分支， git checkou master 切换到master分支</p>
-<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ol>
-<li><p>发一篇文章</p>
-<p>使用命令行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ hexo new test  # 新建文章</div><div class="line">$ hexo clean  # 清除缓存，强烈建议每次执行命令前先清理缓存，每次部署前先删除 .deploy 文件夹,</div><div class="line">$ hexo g   # 生成网页，可以在 public 目录查看整个网站的文件</div><div class="line">$ hexo s   # 本地预览，&apos;Ctrl+C&apos;关闭</div></pre></td></tr></table></figure>
-<p>注意： 有时候clean会报错，需要安装 npm install hexo-util –save</p>
-<p>直接方式创建文件<br>在 <strong>source/_posts/</strong>下新建一个.md文件也可</p>
-</li>
-<li><p>添加文件分类<br>直接在source/_posts 文件夹下新建文件夹即可，很方便</p>
-</li>
-</ol>
-<h3 id="全局配置-config-yml"><a href="#全局配置-config-yml" class="headerlink" title="全局配置 _config.yml"></a>全局配置 _config.yml</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"># Hexo Configuration</div><div class="line">## Docs: http://hexo.io/docs/configuration.html</div><div class="line">## Source: https://github.com/hexojs/hexo/</div><div class="line"># Site #站点信息</div><div class="line">title:  #标题</div><div class="line">subtitle:  #副标题</div><div class="line">description:  #站点描述，给搜索引擎看的</div><div class="line">author:  #作者</div><div class="line">email:  #电子邮箱</div><div class="line">language: zh-CN #语言</div><div class="line"># URL #链接格式</div><div class="line">url:  #网址</div><div class="line">root: / #根目录</div><div class="line">permalink: :year/:month/:day/:title/ #文章的链接格式</div><div class="line">tag_dir: tags #标签目录</div><div class="line">archive_dir: archives #存档目录</div><div class="line">category_dir: categories #分类目录</div><div class="line">code_dir: downloads/code</div><div class="line">permalink_defaults:</div><div class="line"># Directory #目录</div><div class="line">source_dir: source #源文件目录</div><div class="line">public_dir: public #生成的网页文件目录</div><div class="line"># Writing #写作</div><div class="line">new_post_name: :title.md #新文章标题</div><div class="line">default_layout: post #默认的模板，包括 post、page、photo、draft（文章、页面、照片、草稿）</div><div class="line">titlecase: false #标题转换成大写</div><div class="line">external_link: true #在新选项卡中打开连接</div><div class="line">filename_case: 0</div><div class="line">render_drafts: false</div><div class="line">post_asset_folder: false</div><div class="line">relative_link: false</div><div class="line">highlight: #语法高亮</div><div class="line">  enable: true #是否启用</div><div class="line">  line_number: true #显示行号</div><div class="line">  tab_replace:</div><div class="line">  # Category &amp; Tag #分类和标签</div><div class="line">default_category: uncategorized #默认分类</div><div class="line">category_map:</div><div class="line">tag_map:</div><div class="line"># Archives</div><div class="line">2: 开启分页</div><div class="line">1: 禁用分页</div><div class="line">0: 全部禁用</div><div class="line">archive: 2</div><div class="line">category: 2</div><div class="line">tag: 2</div><div class="line"># Server #本地服务器</div><div class="line">port: 4000 #端口号</div><div class="line">server_ip: localhost #IP 地址</div><div class="line">logger: false</div><div class="line">logger_format: dev</div><div class="line"># Date / Time format #日期时间格式</div><div class="line">date_format: YYYY-MM-DD #参考http://momentjs.com/docs/#/displaying/format/</div><div class="line">time_format: H:mm:ss</div><div class="line"># Pagination #分页</div><div class="line">per_page: 10 #每页文章数，设置成 0 禁用分页</div><div class="line">pagination_dir: page</div><div class="line"># Disqus #Disqus评论，替换为多说</div><div class="line">disqus_shortname:</div><div class="line"># Extensions #拓展插件</div><div class="line">theme: landscape-plus #主题</div><div class="line">exclude_generator:</div><div class="line">plugins: #插件，例如生成 RSS 和站点地图的</div><div class="line">- hexo-generator-feed</div><div class="line">- hexo-generator-sitemap</div><div class="line"># Deployment #部署，将 lmintlcx 改成用户名</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: github创库地址.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1841,7 +1819,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1852,7 +1830,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1863,7 +1841,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
