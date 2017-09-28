@@ -2,9 +2,11 @@
 title: js 问题积累
 date: 2017-09-20 15:35:48
 tags:
-  笔记
+  javascript
 categories:
   js
+  dropzone
+  datetimepicker
 ---
 
 工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。
