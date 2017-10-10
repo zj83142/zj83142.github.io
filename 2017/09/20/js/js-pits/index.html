@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="zj83142">
 <meta property="og:description" content="工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。 上传文件插件dropzone 设置 Dropzone.autoDiscover = false (禁止对所有元素的自动查找) 否则前端会报错: Dropzone already attached.  基本用法 1234567891011121314&amp;lt;div id=&amp;quot;myDrop">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-21T02:25:40.133Z">
+<meta property="og:updated_time" content="2017-10-10T07:59:23.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js 问题积累">
 <meta name="twitter:description" content="工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。 上传文件插件dropzone 设置 Dropzone.autoDiscover = false (禁止对所有元素的自动查找) 否则前端会报错: Dropzone already attached.  基本用法 1234567891011121314&amp;lt;div id=&amp;quot;myDrop">
@@ -321,8 +321,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/js-dropzone-datetimepicker/" itemprop="url" rel="index">
-                    <span itemprop="name">js dropzone datetimepicker</span>
+                  <a href="/categories/js-dropzone-datetimepicker-js下载文本/" itemprop="url" rel="index">
+                    <span itemprop="name">js dropzone datetimepicker js下载文本</span>
                   </a>
                 </span>
 
@@ -379,6 +379,14 @@
 <li>月份选择  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(&apos;#xxx&apos;).datetimepicker(&#123;</div><div class="line">  minView : &quot;year&quot;, //  选择时间时，最小可以选择到那层；默认是‘hour’也可用0表示</div><div class="line">  startView: &apos;year&apos;,</div><div class="line">  language : &apos;zh-CN&apos;, // 语言</div><div class="line">  autoclose : true, //  true:选择时间后窗口自动关闭</div><div class="line">  format : &apos;yyyy-mm&apos;, // 文本框时间格式，设置为0,最后时间格式为2017-03-23 17:00:00</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 </ol>
+<h3 id="js点击下载文本到本地文件中"><a href="#js点击下载文本到本地文件中" class="headerlink" title="js点击下载文本到本地文件中"></a>js点击下载文本到本地文件中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function downloadText(content) &#123;</div><div class="line">  let fileName = &apos;xxxx.txt&apos;;  // 文件名</div><div class="line">  let aLink = document.createElement(&apos;a&apos;); </div><div class="line">  let evt = document.createEvent(&quot;MouseEvents&quot;);</div><div class="line">  evt.initEvent(&apos;click&apos;, true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null); // 点击</div><div class="line">  aLink.download = fileName;</div><div class="line">  aLink.dispatchEvent(evt);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>知识点：事件触发器</strong></p>
+<blockquote>
+<p>事件触发器就是用来触发某个元素下的某个事件，IE下有fireEvent()，高级浏览器（chrome，firefox等）有dispatchEvent()</p>
+</blockquote>
+<h4 id="IE浏览器"><a href="#IE浏览器" class="headerlink" title="IE浏览器"></a>IE浏览器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var fireEvent = function(element, event) &#123;</div><div class="line">  // IE浏览器支持fireEvent方法</div><div class="line">  if (document.createEventObject) &#123;</div><div class="line">    var evt = document.createEventObject();</div><div class="line">    return element.fireEvent(&apos;on&apos; + event, evt)</div><div class="line">  &#125; else &#123;</div><div class="line">    // 其他标准浏览器使用dispatchEvent方法</div><div class="line">    var evt = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">    // initEvent接受3个参数：</div><div class="line">    // 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">    evt.initEvent(event, true, true);</div><div class="line">    return !element.dispatchEvent(evt);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>或 document上绑定自定义事件ondataavailable<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">document.attachEvent(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line">var obj=document.getElementById(&quot;obj&quot;);</div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.attachEvent(&apos;onclick&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//调用document对象的createEventObject方法得到一个event的对象实例。</div><div class="line">var event = document.createEventObject();</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.fireEvent(&apos;ondataavailable&apos;, event);</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.fireEvent(&apos;onclick&apos;, event);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>chrome、firefox等浏览器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">//document上绑定自定义事件ondataavailable</div><div class="line">document.addEventListener(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line">var obj = document.getElementById(&quot;obj&quot;);</div><div class="line"></div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.addEventListener(&apos;click&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line"></div><div class="line">//调用document对象的 createEvent 方法得到一个event的对象实例。</div><div class="line">var event = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line"></div><div class="line">// initEvent接受3个参数：</div><div class="line">// 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">event.initEvent(&quot;ondataavailable&quot;, true, true);</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.dispatchEvent(event);</div><div class="line">var event1 = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">event1.initEvent(&quot;click&quot;, true, true);</div><div class="line">event1.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.dispatchEvent(event1);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <h3 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h3><ul>
 <li>form表单调用reset： $(‘#form_test’)[0].reset();</li>
 <li>redio设置选中：$(‘input[name=”xxx”][value=”‘ + val + ‘“]’).attr(“checked”, true);</li>
@@ -504,7 +512,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -515,7 +523,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -561,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#上传文件插件dropzone"><span class="nav-number">1.</span> <span class="nav-text">上传文件插件dropzone</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bootstrap-datetimepicker"><span class="nav-number">2.</span> <span class="nav-text">bootstrap datetimepicker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他注意事项"><span class="nav-number">3.</span> <span class="nav-text">其他注意事项</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#上传文件插件dropzone"><span class="nav-number">1.</span> <span class="nav-text">上传文件插件dropzone</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bootstrap-datetimepicker"><span class="nav-number">2.</span> <span class="nav-text">bootstrap datetimepicker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js点击下载文本到本地文件中"><span class="nav-number">3.</span> <span class="nav-text">js点击下载文本到本地文件中</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IE浏览器"><span class="nav-number">3.1.</span> <span class="nav-text">IE浏览器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他注意事项"><span class="nav-number">4.</span> <span class="nav-text">其他注意事项</span></a></li></ol></div>
             
 
           </div>

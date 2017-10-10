@@ -265,6 +265,517 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/11/note/web-interview1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="情深·缘浅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zj83142">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/11/note/web-interview1/" itemprop="url">积累一些常见的面试题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T16:36:48+08:00">
+                2017-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端技能/" itemprop="url" rel="index">
+                    <span itemprop="name">前端技能</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="前端安全与防范"><a href="#前端安全与防范" class="headerlink" title="前端安全与防范"></a>前端安全与防范</h3><ol>
+<li>XSS: 跨站脚本攻击</li>
+</ol>
+<p>说明：它允许用户讲恶意代码植入到提供给其他用户使用的页面中，可以简单的理解为一种Javascript代码注入。</p>
+<p>预防措施：</p>
+<ul>
+<li>过滤转义输入输出</li>
+<li>避免使用eval、new Function 等执行字符串的方法，除非确定字符串和用户输入五官</li>
+<li>使用cookie的httpOnly属性，加上了这个属性的cookie字段，js是无法进行读写的</li>
+<li>使用innerHtml、document.write的时候，如果数据是用户输入的，那么需要对关键字符进行过滤与转义</li>
+</ul>
+<ol>
+<li>CSRF：跨站请求伪造</li>
+</ol>
+<p>说明：其实就是网站中的一些提交行为，被黑客利用，在你访问黑客的网站的时候进行操作，会被操作到其他网站上</p>
+<p>预防措施：</p>
+<ul>
+<li>检测http referer 是否是同域名</li>
+<li>避免登录的session长时间存储在客户端中</li>
+<li><p>关键请求使用验证码或者token机制</p>
+<p>其他的一些攻击方法还有 http劫持，界面操作劫持</p>
+</li>
+</ul>
+<h3 id="闭包问题"><a href="#闭包问题" class="headerlink" title="闭包问题"></a>闭包问题</h3><p>什么是闭包？</p>
+<p>专业的说法：<strong>当一个内部函数被其他外部函数之外的变量引用时，就形成了一个闭包。</strong></p>
+<p>简单理解：闭包就是一个具有封闭功能与包裹功能的结构，是为了实现具有私有访问控件的函数，函数可以构成闭包，因为函数内部定义的数据函数外部无法访问，即函数具有封闭性，函数可以封闭代码即具有包裹性，所以函数可以构成闭包。</p>
+<p>创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。</p>
+<p>闭包的特性：</p>
+<ul>
+<li>函数嵌套函数</li>
+<li>函数内部可以引用外部的参数和变量</li>
+<li>参数和变量不会被垃圾回收机制回收</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>常驻内存，会增大内存使用量，使用不当很容易造成内存泄漏</li>
+</ul>
+<h3 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h3><blockquote>
+<p>浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，修改新对象不会改到原对象</p>
+</blockquote>
+<p><strong>实现浅拷贝</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = obj1;</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125; &lt;-- b 被改到了</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></p>
+<p><strong>实现深拷贝</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = &#123; a: obj1.a, b: obj1.b, c: obj1.c &#125;;</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 20, c: 30 &#125; &lt;-- b 沒被改到</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></p>
+<p><strong>深拷贝实现方式</strong></p>
+<ul>
+<li>手动复制方式</li>
+<li><p>Object.assign, ES6的新函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = Object.assign(&#123;&#125;, obj1);</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 20, c: 30 &#125; &lt;-- 沒被改到</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>转成JSON，再转回来<br>用JSON.stringify 把对象转成字符串，再用JSON.parse把字符串转成新的对象</p>
+<p>缺点：只有可以转化成JSON格式的对象才可以这样用，像function没办法转成JSON</p>
+</li>
+<li>jquery，有提供一个$.extend可以用来做Deep Copy<ol>
+<li>lodash，也有提供_.cloneDeep用来做 Deep Copy。</li>
+<li>递归实现深拷贝<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function clone( o ) &#123;</div><div class="line">  var temp = &#123;&#125;;</div><div class="line">  for( var k in o ) &#123;</div><div class="line">    if( typeof o[ k ] == &apos;object&apos; )&#123;</div><div class="line">      temp[ k ] = clone( o[ k ] );</div><div class="line">    &#125; else &#123;</div><div class="line">      temp[ k ] = o[ k ];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return temp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="https-的握手过程"><a href="#https-的握手过程" class="headerlink" title="https 的握手过程"></a>https 的握手过程</h3><ol>
+<li>浏览器将自己支持的一套加密规则发送给服务器</li>
+<li>服务器从中选出一组加密算法与hash算法，并讲自己的身份信息以整数的形式发回给浏览器。证书里面包含了网站地址，加密公钥，以及整数的颁发机构等信息。</li>
+<li>浏览器获取网站证书之后浏览器要做一下工作：<ul>
+<li>验证证书的合法</li>
+<li>如果证书受信任，或者是用户接收了不受信任的证书，浏览器会生成一串随机数的密码，并用于证书中提供的公钥加密</li>
+<li>使用约定好的hash算法计算握手消息，并使用生成的随机数对消息进行加密，最后将之前生成的所有消息发送给服务器</li>
+</ul>
+</li>
+<li>网站接收浏览器发来的数据之后要做以下操作：<ul>
+<li>使用自己的私钥将信息解密取出密码，使用密码解密浏览器发来的握手消息，并验证hash是否与浏览器发送来的一致</li>
+<li>使用密码加密一段握手消息，发送给浏览器</li>
+</ul>
+</li>
+<li>浏览器解密并计算握手消息的hash，如果与服务端发过来的hash一致，此时握手过程结束，之后所有的通信数据将由之前浏览器生成的随机密码并利用对称加密算法进行加密</li>
+</ol>
+<p><a href="http://blog.jobbole.com/105633/" target="_blank" rel="external">参考文档</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/06/named-rule/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="情深·缘浅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zj83142">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/06/named-rule/" itemprop="url">编程命名规范</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-06T10:27:21+08:00">
+                2017-09-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>编程中，能很好的命名变量、方法名、类名，起到见名之意尤其困难。积累一些常用的命名规范。</p>
+</blockquote>
+<ul>
+<li>List 定义的变量应该List作为后缀结尾</li>
+<li>Map 定义的变量应该Map作为后缀结尾</li>
+<li>数组定义的变量应该s作为后最结尾</li>
+<li>类成员变量用m开头</li>
+<li>大小写尽量统一， - _ 尽量统一</li>
+<li>常量使用大写</li>
+<li>不要使用过长的变量名，也不要用单词首字母缩写（根本猜不到是什么意思）</li>
+</ul>
+<p>网上还有一个变量命名神奇<strong><a href="http://unbug.github.io/codelf/" target="_blank" rel="external">Codelf</a></strong>, 哇哈哈哈哈哈，果然，程序的世界可以无限放大，也可以无限缩小……</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/05/css/css-selector/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="情深·缘浅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zj83142">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/05/css/css-selector/" itemprop="url">css_selector</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T21:48:56+08:00">
+                2017-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/05/tools/hexo-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -938,7 +1449,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -949,7 +1460,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="牛人博客阮一峰的博客 框架vuera-据说很吊，可以在react中引用vue 前端相关前端每周清单揭秘HTTPS的”秘密”前端编码规范 移动端相关移动 Web 开发问题和优化小结 浏览器相关火焰图浏览器渲染过程与性能优化浏览器性能优化-渲染性能 服务器相关如何安装与搭建一个Nginx服务器如何搭建与维护一个Redis集群 其他五百丁 —— 一个简历模版、简历优化、找工作的网站  蜂窝煤效果">
+<meta name="description" content="记录echarts使用过程中遇到的那些坑 x轴数据是字符串日期格式且不连续时，间隔问题 刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！  1234567891">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="链接积累">
-<meta property="og:url" content="http://yoursite.com/2017/09/13/links/index.html">
+<meta property="og:title" content="echart踩坑">
+<meta property="og:url" content="http://yoursite.com/2017/10/10/note/echart-pits/index.html">
 <meta property="og:site_name" content="zj83142">
-<meta property="og:description" content="牛人博客阮一峰的博客 框架vuera-据说很吊，可以在react中引用vue 前端相关前端每周清单揭秘HTTPS的”秘密”前端编码规范 移动端相关移动 Web 开发问题和优化小结 浏览器相关火焰图浏览器渲染过程与性能优化浏览器性能优化-渲染性能 服务器相关如何安装与搭建一个Nginx服务器如何搭建与维护一个Redis集群 其他五百丁 —— 一个简历模版、简历优化、找工作的网站  蜂窝煤效果">
+<meta property="og:description" content="记录echarts使用过程中遇到的那些坑 x轴数据是字符串日期格式且不连续时，间隔问题 刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！  1234567891">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-10T07:25:17.950Z">
+<meta property="og:updated_time" content="2017-10-10T08:02:00.473Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="链接积累">
-<meta name="twitter:description" content="牛人博客阮一峰的博客 框架vuera-据说很吊，可以在react中引用vue 前端相关前端每周清单揭秘HTTPS的”秘密”前端编码规范 移动端相关移动 Web 开发问题和优化小结 浏览器相关火焰图浏览器渲染过程与性能优化浏览器性能优化-渲染性能 服务器相关如何安装与搭建一个Nginx服务器如何搭建与维护一个Redis集群 其他五百丁 —— 一个简历模版、简历优化、找工作的网站  蜂窝煤效果">
+<meta name="twitter:title" content="echart踩坑">
+<meta name="twitter:description" content="记录echarts使用过程中遇到的那些坑 x轴数据是字符串日期格式且不连续时，间隔问题 刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！  1234567891">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/13/links/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/10/note/echart-pits/"/>
 
 
 
 
 
-  <title>链接积累 | zj83142</title>
+  <title>echart踩坑 | zj83142</title>
   
 
 
@@ -269,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/13/links/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/10/note/echart-pits/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="情深·缘浅">
@@ -286,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">链接积累</h1>
+          <h1 class="post-title" itemprop="name headline">echart踩坑</h1>
         
 
         <div class="post-meta">
@@ -298,8 +298,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-13T13:52:13+08:00">
-                2017-09-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T16:00:30+08:00">
+                2017-10-10
               </time>
             
 
@@ -321,8 +321,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/素材/" itemprop="url" rel="index">
-                    <span itemprop="name">素材</span>
+                  <a href="/categories/echart/" itemprop="url" rel="index">
+                    <span itemprop="name">echart</span>
                   </a>
                 </span>
 
@@ -358,18 +358,12 @@
       
 
       
-        <h3 id="牛人博客"><a href="#牛人博客" class="headerlink" title="牛人博客"></a>牛人博客</h3><p><a href="http://www.ruanyifeng.com" target="_blank" rel="external">阮一峰的博客</a></p>
-<h3 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h3><p><a href="https://github.com/akxcv/vuera?utm_campaign=Revue%20newsletter&amp;utm_medium=Newsletter&amp;utm_source=Vue.js%20Feed" target="_blank" rel="external">vuera-据说很吊，可以在react中引用vue</a></p>
-<h3 id="前端相关"><a href="#前端相关" class="headerlink" title="前端相关"></a>前端相关</h3><p><a href="http://www.infoq.com/cn/FE-Weekly" target="_blank" rel="external">前端每周清单</a><br><a href="https://sylvanassun.github.io/2017/08/06/2017-08-06-DigestHttps/" target="_blank" rel="external">揭秘HTTPS的”秘密”</a><br><a href="https://johnsenzhou.github.io/code-guide/" target="_blank" rel="external">前端编码规范</a></p>
-<h3 id="移动端相关"><a href="#移动端相关" class="headerlink" title="移动端相关"></a>移动端相关</h3><p><a href="https://juejin.im/post/59c4c9d85188254f58412d17" target="_blank" rel="external">移动 Web 开发问题和优化小结</a></p>
-<h3 id="浏览器相关"><a href="#浏览器相关" class="headerlink" title="浏览器相关"></a>浏览器相关</h3><p><a href="http://www.ruanyifeng.com/blog/2017/09/flame-graph.html" target="_blank" rel="external">火焰图</a><br><a href="https://sylvanassun.github.io/2017/10/03/2017-10-03-BrowserCriticalRenderingPath/" target="_blank" rel="external">浏览器渲染过程与性能优化</a><br><a href="https://sylvanassun.github.io/2017/10/08/2017-10-08-BrowserRenderOptimization/" target="_blank" rel="external">浏览器性能优化-渲染性能</a></p>
-<h3 id="服务器相关"><a href="#服务器相关" class="headerlink" title="服务器相关"></a>服务器相关</h3><p><a href="https://sylvanassun.github.io/2016/06/24/2016-06-24-nginx-initiation/" target="_blank" rel="external">如何安装与搭建一个Nginx服务器</a><br><a href="https://sylvanassun.github.io/2016/06/27/2016-06-27-redis-cluster01/" target="_blank" rel="external">如何搭建与维护一个Redis集群</a></p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p><a href="http://www.500d.me/editresume/" target="_blank" rel="external">五百丁</a> —— 一个简历模版、简历优化、找工作的网站</p>
-<ul>
-<li>蜂窝煤效果<iframe height="300" width="100%" src="https://codepen.io/Kseso/pen/xqNdmO" frameborder="0" allowfullscreen></iframe>
-
-</li>
-</ul>
+        <p>记录echarts使用过程中遇到的那些坑</p>
+<h3 id="x轴数据是字符串日期格式且不连续时，间隔问题"><a href="#x轴数据是字符串日期格式且不连续时，间隔问题" class="headerlink" title="x轴数据是字符串日期格式且不连续时，间隔问题"></a>x轴数据是字符串日期格式且不连续时，间隔问题</h3><blockquote>
+<p>刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">function getOption(x, y) &#123;</div><div class="line">  let option = &#123;</div><div class="line">    title : &#123;</div><div class="line">        text: &apos;&apos;,</div><div class="line">    &#125;,</div><div class="line">    tooltip : &#123;</div><div class="line">        trigger: &apos;item&apos;,</div><div class="line">        formatter : function (params) &#123; // 格式化显示问题</div><div class="line">            var date = new Date(params.value[0]);</div><div class="line">            date = date.getFullYear() + &apos;-&apos;</div><div class="line">                   + (date.getMonth() + 1) + &apos;-&apos;</div><div class="line">                   + date.getDate() + &apos; &apos;</div><div class="line">            return &quot;日期：&quot; + date + &quot;&lt;br/&gt;测试次数：&quot; +  params.value[1];</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    toolbox: &#123;</div><div class="line">        show : true,</div><div class="line">        feature : &#123;</div><div class="line">            mark : &#123;show: true&#125;,</div><div class="line">            dataView : &#123;show: true, readOnly: false&#125;,</div><div class="line">            restore : &#123;show: true&#125;,</div><div class="line">            saveAsImage : &#123;show: true&#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    dataZoom: &#123; // 显示缩放轴，且从70% 开始</div><div class="line">        show: true,</div><div class="line">        start : 70</div><div class="line">    &#125;,</div><div class="line">    legend : &#123;</div><div class="line">        data : [&apos;series1&apos;]</div><div class="line">    &#125;,</div><div class="line">    xAxis : [</div><div class="line">        &#123;</div><div class="line">            type : &apos;time&apos;, // 非常重要，设置x轴类型是time. (类型有：value, category, time, log)</div><div class="line">            splitNumber:10,</div><div class="line">            axisLabel: &#123;</div><div class="line">                rotate: 30, // 标签旋转角度</div><div class="line">                interval:0, // 默认auto（自动隐藏显示不下的） 0： 全部显示</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    ],</div><div class="line">    yAxis : [</div><div class="line">        &#123;</div><div class="line">            type : &apos;value&apos;,</div><div class="line">            minInterval: 1,  </div><div class="line">        &#125;</div><div class="line">    ],</div><div class="line">    series : [</div><div class="line">        &#123;</div><div class="line">          name: &apos;series1&apos;,</div><div class="line">          type: &apos;line&apos;,</div><div class="line">          showAllSymbol: true,</div><div class="line">          smooth:true,</div><div class="line">          areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">          symbol: &apos;circle&apos;,</div><div class="line">          symbolSize: 6,</div><div class="line">          data: (function() &#123;</div><div class="line">            let data = []; // 这个是在react项目中，防止数据从有到无变化时会报错的问题,每次获取新数据的时候要提前清空数据</div><div class="line">            if(x.length !== 0) &#123;</div><div class="line">              data = [];</div><div class="line">              for(let i = 0; i &lt; x.length; i ++) &#123;</div><div class="line">                var date = new Date(Date.parse(x[i].replace(/-/g,   &quot;/&quot;)));  </div><div class="line">                data.push([date, y[i]]); // 此处需要注意，data里面存放的是数组(时间，y轴数据-可以是多个)</div><div class="line">              &#125;</div><div class="line">            &#125;</div><div class="line">            return data;</div><div class="line">          &#125;)()</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line"></div><div class="line">  &#125;;</div><div class="line">  return option;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="echart-柱状图显示数据"><a href="#echart-柱状图显示数据" class="headerlink" title="echart 柱状图显示数据"></a>echart 柱状图显示数据</h3><p>series 下添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">label: &#123;</div><div class="line">  normal: &#123;</div><div class="line">      show: true,</div><div class="line">      position: &apos;left&apos; // 默认在柱状图上显示数据</div><div class="line">  &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -400,8 +394,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/12/js/js-check-type/" rel="next" title="js类型检测">
-                <i class="fa fa-chevron-left"></i> js类型检测
+              <a href="/2017/10/10/python/install-libs/" rel="next" title="install-libs">
+                <i class="fa fa-chevron-left"></i> install-libs
               </a>
             
           </div>
@@ -409,10 +403,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/13/js/generate-color/" rel="prev" title="js 随机颜色的三种方式和颜色格式的转化">
-                js 随机颜色的三种方式和颜色格式的转化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -548,7 +538,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#牛人博客"><span class="nav-number">1.</span> <span class="nav-text">牛人博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#框架"><span class="nav-number">2.</span> <span class="nav-text">框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前端相关"><span class="nav-number">3.</span> <span class="nav-text">前端相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动端相关"><span class="nav-number">4.</span> <span class="nav-text">移动端相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器相关"><span class="nav-number">5.</span> <span class="nav-text">浏览器相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器相关"><span class="nav-number">6.</span> <span class="nav-text">服务器相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">7.</span> <span class="nav-text">其他</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#x轴数据是字符串日期格式且不连续时，间隔问题"><span class="nav-number">1.</span> <span class="nav-text">x轴数据是字符串日期格式且不连续时，间隔问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#echart-柱状图显示数据"><span class="nav-number">2.</span> <span class="nav-text">echart 柱状图显示数据</span></a></li></ol></div>
             
 
           </div>

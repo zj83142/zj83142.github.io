@@ -265,6 +265,481 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/10/note/echart-pits/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="情深·缘浅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zj83142">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/10/note/echart-pits/" itemprop="url">echart踩坑</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T16:00:30+08:00">
+                2017-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/echart/" itemprop="url" rel="index">
+                    <span itemprop="name">echart</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>记录echarts使用过程中遇到的那些坑</p>
+<h3 id="x轴数据是字符串日期格式且不连续时，间隔问题"><a href="#x轴数据是字符串日期格式且不连续时，间隔问题" class="headerlink" title="x轴数据是字符串日期格式且不连续时，间隔问题"></a>x轴数据是字符串日期格式且不连续时，间隔问题</h3><blockquote>
+<p>刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">function getOption(x, y) &#123;</div><div class="line">  let option = &#123;</div><div class="line">    title : &#123;</div><div class="line">        text: &apos;&apos;,</div><div class="line">    &#125;,</div><div class="line">    tooltip : &#123;</div><div class="line">        trigger: &apos;item&apos;,</div><div class="line">        formatter : function (params) &#123; // 格式化显示问题</div><div class="line">            var date = new Date(params.value[0]);</div><div class="line">            date = date.getFullYear() + &apos;-&apos;</div><div class="line">                   + (date.getMonth() + 1) + &apos;-&apos;</div><div class="line">                   + date.getDate() + &apos; &apos;</div><div class="line">            return &quot;日期：&quot; + date + &quot;&lt;br/&gt;测试次数：&quot; +  params.value[1];</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    toolbox: &#123;</div><div class="line">        show : true,</div><div class="line">        feature : &#123;</div><div class="line">            mark : &#123;show: true&#125;,</div><div class="line">            dataView : &#123;show: true, readOnly: false&#125;,</div><div class="line">            restore : &#123;show: true&#125;,</div><div class="line">            saveAsImage : &#123;show: true&#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    dataZoom: &#123; // 显示缩放轴，且从70% 开始</div><div class="line">        show: true,</div><div class="line">        start : 70</div><div class="line">    &#125;,</div><div class="line">    legend : &#123;</div><div class="line">        data : [&apos;series1&apos;]</div><div class="line">    &#125;,</div><div class="line">    xAxis : [</div><div class="line">        &#123;</div><div class="line">            type : &apos;time&apos;, // 非常重要，设置x轴类型是time. (类型有：value, category, time, log)</div><div class="line">            splitNumber:10,</div><div class="line">            axisLabel: &#123;</div><div class="line">                rotate: 30, // 标签旋转角度</div><div class="line">                interval:0, // 默认auto（自动隐藏显示不下的） 0： 全部显示</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    ],</div><div class="line">    yAxis : [</div><div class="line">        &#123;</div><div class="line">            type : &apos;value&apos;,</div><div class="line">            minInterval: 1,  </div><div class="line">        &#125;</div><div class="line">    ],</div><div class="line">    series : [</div><div class="line">        &#123;</div><div class="line">          name: &apos;series1&apos;,</div><div class="line">          type: &apos;line&apos;,</div><div class="line">          showAllSymbol: true,</div><div class="line">          smooth:true,</div><div class="line">          areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">          symbol: &apos;circle&apos;,</div><div class="line">          symbolSize: 6,</div><div class="line">          data: (function() &#123;</div><div class="line">            let data = []; // 这个是在react项目中，防止数据从有到无变化时会报错的问题,每次获取新数据的时候要提前清空数据</div><div class="line">            if(x.length !== 0) &#123;</div><div class="line">              data = [];</div><div class="line">              for(let i = 0; i &lt; x.length; i ++) &#123;</div><div class="line">                var date = new Date(Date.parse(x[i].replace(/-/g,   &quot;/&quot;)));  </div><div class="line">                data.push([date, y[i]]); // 此处需要注意，data里面存放的是数组(时间，y轴数据-可以是多个)</div><div class="line">              &#125;</div><div class="line">            &#125;</div><div class="line">            return data;</div><div class="line">          &#125;)()</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line"></div><div class="line">  &#125;;</div><div class="line">  return option;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="echart-柱状图显示数据"><a href="#echart-柱状图显示数据" class="headerlink" title="echart 柱状图显示数据"></a>echart 柱状图显示数据</h3><p>series 下添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">label: &#123;</div><div class="line">  normal: &#123;</div><div class="line">      show: true,</div><div class="line">      position: &apos;left&apos; // 默认在柱状图上显示数据</div><div class="line">  &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/10/python/install-libs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="情深·缘浅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zj83142">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/10/python/install-libs/" itemprop="url">install-libs</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T15:54:23+08:00">
+                2017-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python安装类库/" itemprop="url" rel="index">
+                    <span itemprop="name">python安装类库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="在win7平台上安装gevent和gevent-socketio"><a href="#在win7平台上安装gevent和gevent-socketio" class="headerlink" title="在win7平台上安装gevent和gevent-socketio"></a>在win7平台上安装gevent和gevent-socketio</h3><p>在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了</p>
+<p>gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:</p>
+<ul>
+<li>libevent的dll文件</li>
+<li>greenlet的免编译安装包</li>
+<li>gevent的免编译安装包</li>
+</ul>
+<p><strong> libevent.dll </strong></p>
+<p>下载地址：</p>
+<ul>
+<li><a href="http://www.dll-found.com/libevent-2-0-5.dll_download.html" target="_blank" rel="external">http://www.dll-found.com/libevent-2-0-5.dll_download.html</a> (需要翻墙)</li>
+<li><a href="http://pan.baidu.com/s/1ge5DxT5" target="_blank" rel="external">http://pan.baidu.com/s/1ge5DxT5</a> (百度云盘)<br>安装方法： 测试环境是windows 7 64bit, 安装了32bit的Python 2.7版本. 因此将下载到的libevent-2-0-5.dll复制到C:\Windows\SysWOW64目录下即可.</li>
+</ul>
+<p><strong> greenlet 和 gevent </strong></p>
+<p>下载地址：<strong> <a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">http://www.lfd.uci.edu/~gohlke/pythonlibs/</a> </strong></p>
+<p>安装方法：</p>
+<ul>
+<li>pip install greenlet-0.4.5-cp27-none-win32.whl</li>
+<li>pip install gevent-1.0.1-cp27-none-win32.whl</li>
+</ul>
+<p><strong> gevent-socketio </strong></p>
+<p>安装方法：pip install gevent-socketio</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/10/note/daily-pit1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="情深·缘浅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zj83142">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/10/note/daily-pit1/" itemprop="url">日常踩坑集合(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T15:51:04+08:00">
+                2017-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/踩坑/" itemprop="url" rel="index">
+                    <span itemprop="name">踩坑</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="解决目录层次太深删除报错的问题"><a href="#解决目录层次太深删除报错的问题" class="headerlink" title="解决目录层次太深删除报错的问题"></a>解决目录层次太深删除报错的问题</h3><p>问题：在使用npm当中，自动生成的node_modules文件夹，因为文件目录层级太深，无法系统删除</p>
+<p>解决方案： 1、 安装：npm install -g rimraf（全局安装） 2、 使用：先定位目标文件夹的父级目录，然后命令行输入rimraf <strong><em>（</em></strong>为需要删除的文件夹名称）</p>
+<h3 id="在win7平台上安装gevent和gevent-socketio"><a href="#在win7平台上安装gevent和gevent-socketio" class="headerlink" title="在win7平台上安装gevent和gevent-socketio"></a>在win7平台上安装gevent和gevent-socketio</h3><p>在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了</p>
+<p>gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:</p>
+<ul>
+<li>libevent的dll文件</li>
+<li>greenlet的免编译安装包</li>
+<li>gevent的免编译安装包</li>
+</ul>
+<p><strong>libevent.dll</strong></p>
+<p>下载地址：</p>
+<ul>
+<li><a href="http://www.dll-found.com/libevent-2-0-5.dll_download.html" target="_blank" rel="external">http://www.dll-found.com/libevent-2-0-5.dll_download.html</a> (需要翻墙)</li>
+<li><a href="http://pan.baidu.com/s/1ge5DxT5" target="_blank" rel="external">http://pan.baidu.com/s/1ge5DxT5</a> (百度云盘)<br>安装方法： 测试环境是windows 7 64bit, 安装了32bit的Python 2.7版本. 因此将下载到的libevent-2-0-5.dll复制到C:\Windows\SysWOW64目录下即可.</li>
+</ul>
+<p><strong>greenlet 和 gevent</strong></p>
+<p>下载地址：<strong> <a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">http://www.lfd.uci.edu/~gohlke/pythonlibs/</a> </strong></p>
+<p>安装方法：</p>
+<ul>
+<li>pip install greenlet-0.4.5-cp27-none-win32.whl</li>
+<li>pip install gevent-1.0.1-cp27-none-win32.whl</li>
+</ul>
+<p><strong>gevent-socketio</strong></p>
+<p>安装方法：pip install gevent-socketio</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/10/css/loadding/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -358,7 +833,10 @@
       
         
           
-            <h3 id="第一种效果-查看"><a href="#第一种效果-查看" class="headerlink" title="第一种效果 查看"></a>第一种效果 <a href="https://codepen.io/augbog/pen/ZXQVVZ/" target="_blank" rel="external">查看</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">html, body &#123;</div><div class="line">  height: 100%;</div><div class="line">  background: grey;</div><div class="line">  display: flex;</div><div class="line">  flex-direction: column;</div><div class="line">  justify-content: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.loader &#123;</div><div class="line">  position: relative;</div><div class="line">  margin: 0 auto;</div><div class="line">  width: 300px;</div><div class="line">  height: 300px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.bounce &#123;</div><div class="line">  width: 100%;</div><div class="line">  height: 100%;</div><div class="line">  border-radius: 50%;</div><div class="line">  opacity: 0.8;</div><div class="line">  position: absolute;</div><div class="line">  top: 0;</div><div class="line">  left: 0;</div><div class="line">  -webkit-animation: bounce 5s infinite ease-in;</div><div class="line">  animation: bounce 5s infinite ease-in;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color1 &#123;</div><div class="line">  background-color: #06ceb4;</div><div class="line">  animation-delay: -1s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color2 &#123;</div><div class="line">  background-color: #ffeead;</div><div class="line">  animation-delay: -2s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color3 &#123;</div><div class="line">  background-color: #ff6f69;</div><div class="line">  animation-delay: -3s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color4 &#123;</div><div class="line">  background-color: #ffcc5c;</div><div class="line">  animation-delay: -4s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color5 &#123;</div><div class="line">  background-color: #88d8b0;</div><div class="line">  animation-delay: -5s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@keyframes bounce &#123;</div><div class="line">  0%, 100% &#123;</div><div class="line">    transform: scale(0);</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    transform: scale(1);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;div class=&quot;loader&quot;&gt;</div><div class="line">  &lt;div class=&quot;bounce color1&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color2&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color3&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color4&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color5&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+            <blockquote>
+<p>在日常中遇到的感觉不错的loading效果，先积累起来，有时间好好看看具体是如何实现的。</p>
+</blockquote>
+<h3 id="第一种效果-查看"><a href="#第一种效果-查看" class="headerlink" title="第一种效果 查看"></a>第一种效果 <a href="https://codepen.io/augbog/pen/ZXQVVZ/" target="_blank" rel="external">查看</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">html, body &#123;</div><div class="line">  height: 100%;</div><div class="line">  background: grey;</div><div class="line">  display: flex;</div><div class="line">  flex-direction: column;</div><div class="line">  justify-content: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.loader &#123;</div><div class="line">  position: relative;</div><div class="line">  margin: 0 auto;</div><div class="line">  width: 300px;</div><div class="line">  height: 300px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.bounce &#123;</div><div class="line">  width: 100%;</div><div class="line">  height: 100%;</div><div class="line">  border-radius: 50%;</div><div class="line">  opacity: 0.8;</div><div class="line">  position: absolute;</div><div class="line">  top: 0;</div><div class="line">  left: 0;</div><div class="line">  -webkit-animation: bounce 5s infinite ease-in;</div><div class="line">  animation: bounce 5s infinite ease-in;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color1 &#123;</div><div class="line">  background-color: #06ceb4;</div><div class="line">  animation-delay: -1s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color2 &#123;</div><div class="line">  background-color: #ffeead;</div><div class="line">  animation-delay: -2s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color3 &#123;</div><div class="line">  background-color: #ff6f69;</div><div class="line">  animation-delay: -3s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color4 &#123;</div><div class="line">  background-color: #ffcc5c;</div><div class="line">  animation-delay: -4s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color5 &#123;</div><div class="line">  background-color: #88d8b0;</div><div class="line">  animation-delay: -5s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@keyframes bounce &#123;</div><div class="line">  0%, 100% &#123;</div><div class="line">    transform: scale(0);</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    transform: scale(1);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;div class=&quot;loader&quot;&gt;</div><div class="line">  &lt;div class=&quot;bounce color1&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color2&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color3&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color4&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color5&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 <h3 id="第二种效果-查看"><a href="#第二种效果-查看" class="headerlink" title="第二种效果 查看"></a>第二种效果 <a href="https://codepen.io/drenther/pen/Yrwvee" target="_blank" rel="external">查看</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">html, body &#123;</div><div class="line">  height: 100%;</div><div class="line">  width: 100%;</div><div class="line">  display: -webkit-box;</div><div class="line">  display: -ms-flexbox;</div><div class="line">  display: flex;</div><div class="line">  -webkit-box-pack: center;</div><div class="line">      -ms-flex-pack: center;</div><div class="line">          justify-content: center;</div><div class="line">  -webkit-box-align: center;</div><div class="line">      -ms-flex-align: center;</div><div class="line">          align-items: center;</div><div class="line">  background: #f5f5f5;</div><div class="line">&#125;</div><div class="line">html .loader,</div><div class="line">body .loader &#123;</div><div class="line">  height: 50px;</div><div class="line">  width: 50px;</div><div class="line">  position: relative;</div><div class="line">&#125;</div><div class="line">html .loader::after, html .loader::before,</div><div class="line">body .loader::after,</div><div class="line">body .loader::before &#123;</div><div class="line">  content: &quot;&quot;;</div><div class="line">  width: 50px;</div><div class="line">  height: 50px;</div><div class="line">  position: absolute;</div><div class="line">  border: solid 8px transparent;</div><div class="line">  border-radius: 50%;</div><div class="line">  -webkit-animation: wiggle 1.4s ease infinite;</div><div class="line">          animation: wiggle 1.4s ease infinite;</div><div class="line">&#125;</div><div class="line">html .loader::before,</div><div class="line">body .loader::before &#123;</div><div class="line">  border-top-color: #4285f4;</div><div class="line">  border-bottom-color: #34a853;</div><div class="line">&#125;</div><div class="line">html .loader::after,</div><div class="line">body .loader::after &#123;</div><div class="line">  border-left-color: #fbbc05;</div><div class="line">  border-right-color: #ea4335;</div><div class="line">  -webkit-animation-delay: 0.7s;</div><div class="line">          animation-delay: 0.7s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@-webkit-keyframes wiggle &#123;</div><div class="line">  0% &#123;</div><div class="line">    -webkit-transform: rotate(0deg) scale(1);</div><div class="line">            transform: rotate(0deg) scale(1);</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    -webkit-transform: rotate(180deg) scale(0.5);</div><div class="line">            transform: rotate(180deg) scale(0.5);</div><div class="line">  &#125;</div><div class="line">  100% &#123;</div><div class="line">    -webkit-transform: rotate(360deg) scale(1);</div><div class="line">            transform: rotate(360deg) scale(1);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@keyframes wiggle &#123;</div><div class="line">  0% &#123;</div><div class="line">    -webkit-transform: rotate(0deg) scale(1);</div><div class="line">            transform: rotate(0deg) scale(1);</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    -webkit-transform: rotate(180deg) scale(0.5);</div><div class="line">            transform: rotate(180deg) scale(0.5);</div><div class="line">  &#125;</div><div class="line">  100% &#123;</div><div class="line">    -webkit-transform: rotate(360deg) scale(1);</div><div class="line">            transform: rotate(360deg) scale(1);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;div class=&quot;loader&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
           
         
@@ -803,8 +1281,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/js-dropzone-datetimepicker/" itemprop="url" rel="index">
-                    <span itemprop="name">js dropzone datetimepicker</span>
+                  <a href="/categories/js-dropzone-datetimepicker-js下载文本/" itemprop="url" rel="index">
+                    <span itemprop="name">js dropzone datetimepicker js下载文本</span>
                   </a>
                 </span>
 
@@ -863,6 +1341,14 @@
 <li>月份选择  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(&apos;#xxx&apos;).datetimepicker(&#123;</div><div class="line">  minView : &quot;year&quot;, //  选择时间时，最小可以选择到那层；默认是‘hour’也可用0表示</div><div class="line">  startView: &apos;year&apos;,</div><div class="line">  language : &apos;zh-CN&apos;, // 语言</div><div class="line">  autoclose : true, //  true:选择时间后窗口自动关闭</div><div class="line">  format : &apos;yyyy-mm&apos;, // 文本框时间格式，设置为0,最后时间格式为2017-03-23 17:00:00</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 </ol>
+<h3 id="js点击下载文本到本地文件中"><a href="#js点击下载文本到本地文件中" class="headerlink" title="js点击下载文本到本地文件中"></a>js点击下载文本到本地文件中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function downloadText(content) &#123;</div><div class="line">  let fileName = &apos;xxxx.txt&apos;;  // 文件名</div><div class="line">  let aLink = document.createElement(&apos;a&apos;); </div><div class="line">  let evt = document.createEvent(&quot;MouseEvents&quot;);</div><div class="line">  evt.initEvent(&apos;click&apos;, true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null); // 点击</div><div class="line">  aLink.download = fileName;</div><div class="line">  aLink.dispatchEvent(evt);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>知识点：事件触发器</strong></p>
+<blockquote>
+<p>事件触发器就是用来触发某个元素下的某个事件，IE下有fireEvent()，高级浏览器（chrome，firefox等）有dispatchEvent()</p>
+</blockquote>
+<h4 id="IE浏览器"><a href="#IE浏览器" class="headerlink" title="IE浏览器"></a>IE浏览器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var fireEvent = function(element, event) &#123;</div><div class="line">  // IE浏览器支持fireEvent方法</div><div class="line">  if (document.createEventObject) &#123;</div><div class="line">    var evt = document.createEventObject();</div><div class="line">    return element.fireEvent(&apos;on&apos; + event, evt)</div><div class="line">  &#125; else &#123;</div><div class="line">    // 其他标准浏览器使用dispatchEvent方法</div><div class="line">    var evt = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">    // initEvent接受3个参数：</div><div class="line">    // 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">    evt.initEvent(event, true, true);</div><div class="line">    return !element.dispatchEvent(evt);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>或 document上绑定自定义事件ondataavailable<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">document.attachEvent(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line">var obj=document.getElementById(&quot;obj&quot;);</div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.attachEvent(&apos;onclick&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//调用document对象的createEventObject方法得到一个event的对象实例。</div><div class="line">var event = document.createEventObject();</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.fireEvent(&apos;ondataavailable&apos;, event);</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.fireEvent(&apos;onclick&apos;, event);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>chrome、firefox等浏览器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">//document上绑定自定义事件ondataavailable</div><div class="line">document.addEventListener(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line">var obj = document.getElementById(&quot;obj&quot;);</div><div class="line"></div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.addEventListener(&apos;click&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line"></div><div class="line">//调用document对象的 createEvent 方法得到一个event的对象实例。</div><div class="line">var event = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line"></div><div class="line">// initEvent接受3个参数：</div><div class="line">// 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">event.initEvent(&quot;ondataavailable&quot;, true, true);</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.dispatchEvent(event);</div><div class="line">var event1 = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">event1.initEvent(&quot;click&quot;, true, true);</div><div class="line">event1.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.dispatchEvent(event1);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <h3 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h3><ul>
 <li>form表单调用reset： $(‘#form_test’)[0].reset();</li>
 <li>redio设置选中：$(‘input[name=”xxx”][value=”‘ + val + ‘“]’).attr(“checked”, true);</li>
@@ -1375,495 +1861,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/11/note/web-interview1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="情深·缘浅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zj83142">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/11/note/web-interview1/" itemprop="url">积累一些常见的面试题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T16:36:48+08:00">
-                2017-09-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="前端安全与防范"><a href="#前端安全与防范" class="headerlink" title="前端安全与防范"></a>前端安全与防范</h3><ol>
-<li>XSS: 跨站脚本攻击</li>
-</ol>
-<p>说明：它允许用户讲恶意代码植入到提供给其他用户使用的页面中，可以简单的理解为一种Javascript代码注入。</p>
-<p>预防措施：</p>
-<ul>
-<li>过滤转义输入输出</li>
-<li>避免使用eval、new Function 等执行字符串的方法，除非确定字符串和用户输入五官</li>
-<li>使用cookie的httpOnly属性，加上了这个属性的cookie字段，js是无法进行读写的</li>
-<li>使用innerHtml、document.write的时候，如果数据是用户输入的，那么需要对关键字符进行过滤与转义</li>
-</ul>
-<ol>
-<li>CSRF：跨站请求伪造</li>
-</ol>
-<p>说明：其实就是网站中的一些提交行为，被黑客利用，在你访问黑客的网站的时候进行操作，会被操作到其他网站上</p>
-<p>预防措施：</p>
-<ul>
-<li>检测http referer 是否是同域名</li>
-<li>避免登录的session长时间存储在客户端中</li>
-<li><p>关键请求使用验证码或者token机制</p>
-<p>其他的一些攻击方法还有 http劫持，界面操作劫持</p>
-</li>
-</ul>
-<h3 id="闭包问题"><a href="#闭包问题" class="headerlink" title="闭包问题"></a>闭包问题</h3><p>什么是闭包？</p>
-<p>专业的说法：<strong>当一个内部函数被其他外部函数之外的变量引用时，就形成了一个闭包。</strong></p>
-<p>简单理解：闭包就是一个具有封闭功能与包裹功能的结构，是为了实现具有私有访问控件的函数，函数可以构成闭包，因为函数内部定义的数据函数外部无法访问，即函数具有封闭性，函数可以封闭代码即具有包裹性，所以函数可以构成闭包。</p>
-<p>创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。</p>
-<p>闭包的特性：</p>
-<ul>
-<li>函数嵌套函数</li>
-<li>函数内部可以引用外部的参数和变量</li>
-<li>参数和变量不会被垃圾回收机制回收</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>常驻内存，会增大内存使用量，使用不当很容易造成内存泄漏</li>
-</ul>
-<h3 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h3><blockquote>
-<p>浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，修改新对象不会改到原对象</p>
-</blockquote>
-<p><strong>实现浅拷贝</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = obj1;</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125; &lt;-- b 被改到了</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></p>
-<p><strong>实现深拷贝</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = &#123; a: obj1.a, b: obj1.b, c: obj1.c &#125;;</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 20, c: 30 &#125; &lt;-- b 沒被改到</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></p>
-<p><strong>深拷贝实现方式</strong></p>
-<ul>
-<li>手动复制方式</li>
-<li><p>Object.assign, ES6的新函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = Object.assign(&#123;&#125;, obj1);</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 20, c: 30 &#125; &lt;-- 沒被改到</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>转成JSON，再转回来<br>用JSON.stringify 把对象转成字符串，再用JSON.parse把字符串转成新的对象</p>
-<p>缺点：只有可以转化成JSON格式的对象才可以这样用，像function没办法转成JSON</p>
-</li>
-<li>jquery，有提供一个$.extend可以用来做Deep Copy<ol>
-<li>lodash，也有提供_.cloneDeep用来做 Deep Copy。</li>
-<li>递归实现深拷贝<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function clone( o ) &#123;</div><div class="line">  var temp = &#123;&#125;;</div><div class="line">  for( var k in o ) &#123;</div><div class="line">    if( typeof o[ k ] == &apos;object&apos; )&#123;</div><div class="line">      temp[ k ] = clone( o[ k ] );</div><div class="line">    &#125; else &#123;</div><div class="line">      temp[ k ] = o[ k ];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return temp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="https-的握手过程"><a href="#https-的握手过程" class="headerlink" title="https 的握手过程"></a>https 的握手过程</h3><ol>
-<li>浏览器将自己支持的一套加密规则发送给服务器</li>
-<li>服务器从中选出一组加密算法与hash算法，并讲自己的身份信息以整数的形式发回给浏览器。证书里面包含了网站地址，加密公钥，以及整数的颁发机构等信息。</li>
-<li>浏览器获取网站证书之后浏览器要做一下工作：<ul>
-<li>验证证书的合法</li>
-<li>如果证书受信任，或者是用户接收了不受信任的证书，浏览器会生成一串随机数的密码，并用于证书中提供的公钥加密</li>
-<li>使用约定好的hash算法计算握手消息，并使用生成的随机数对消息进行加密，最后将之前生成的所有消息发送给服务器</li>
-</ul>
-</li>
-<li>网站接收浏览器发来的数据之后要做以下操作：<ul>
-<li>使用自己的私钥将信息解密取出密码，使用密码解密浏览器发来的握手消息，并验证hash是否与浏览器发送来的一致</li>
-<li>使用密码加密一段握手消息，发送给浏览器</li>
-</ul>
-</li>
-<li>浏览器解密并计算握手消息的hash，如果与服务端发过来的hash一致，此时握手过程结束，之后所有的通信数据将由之前浏览器生成的随机密码并利用对称加密算法进行加密</li>
-</ol>
-<p><a href="http://blog.jobbole.com/105633/" target="_blank" rel="external">参考文档</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/06/named-rule/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="情深·缘浅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zj83142">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/06/named-rule/" itemprop="url">编程命名规范</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-06T10:27:21+08:00">
-                2017-09-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>编程中，能很好的命名变量、方法名、类名，起到见名之意尤其困难。积累一些常用的命名规范。</p>
-</blockquote>
-<ul>
-<li>List 定义的变量应该List作为后缀结尾</li>
-<li>Map 定义的变量应该Map作为后缀结尾</li>
-<li>数组定义的变量应该s作为后最结尾</li>
-<li>类成员变量用m开头</li>
-<li>大小写尽量统一， - _ 尽量统一</li>
-<li>常量使用大写</li>
-<li>不要使用过长的变量名，也不要用单词首字母缩写（根本猜不到是什么意思）</li>
-</ul>
-<p>网上还有一个变量命名神奇<strong><a href="http://unbug.github.io/codelf/" target="_blank" rel="external">Codelf</a></strong>, 哇哈哈哈哈哈，果然，程序的世界可以无限放大，也可以无限缩小……</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/05/css/css-selector/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="情深·缘浅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zj83142">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/05/css/css-selector/" itemprop="url">css_selector</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T21:48:56+08:00">
-                2017-09-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1916,7 +1913,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1927,7 +1924,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
