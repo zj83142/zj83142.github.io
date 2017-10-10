@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="1. css 渲染规则css选择符是有权重的，css样式规则渲染是先就近渲染，然后才一句选择符权重进行选渲染 从右到左渲染：h3 a&amp;#123;font-size: 14px;&amp;#125;```12345678渲染过程大概是：首先找到所有的a，沿着a的父元素查找h3，然后再沿着h3，查找.nav。中途找到了符合匹配规则的节点就加入结果集。如果找到根元素html都没有匹配，则不再遍历这条路径，从下一">
+<meta name="description" content="1. css 渲染规则css选择符是有权重的，css样式规则渲染是先就近渲染，然后才一句选择符权重进行选渲染 从右到左渲染：1.nav h3 a&amp;#123;font-size: 14px;&amp;#125; 渲染过程大概是：首先找到所有的a，沿着a的父元素查找h3，然后再沿着h3，查找.nav。中途找到了符合匹配规则的节点就加入结果集。如果找到根元素html都没有匹配，则不再遍历这条路径，从下一个a开始">
 <meta name="keywords" content="css性能优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="css 性能优化">
 <meta property="og:url" content="http://yoursite.com/2017/09/28/css/css-optimization/index.html">
 <meta property="og:site_name" content="zj83142">
-<meta property="og:description" content="1. css 渲染规则css选择符是有权重的，css样式规则渲染是先就近渲染，然后才一句选择符权重进行选渲染 从右到左渲染：h3 a&amp;#123;font-size: 14px;&amp;#125;```12345678渲染过程大概是：首先找到所有的a，沿着a的父元素查找h3，然后再沿着h3，查找.nav。中途找到了符合匹配规则的节点就加入结果集。如果找到根元素html都没有匹配，则不再遍历这条路径，从下一">
+<meta property="og:description" content="1. css 渲染规则css选择符是有权重的，css样式规则渲染是先就近渲染，然后才一句选择符权重进行选渲染 从右到左渲染：1.nav h3 a&amp;#123;font-size: 14px;&amp;#125; 渲染过程大概是：首先找到所有的a，沿着a的父元素查找h3，然后再沿着h3，查找.nav。中途找到了符合匹配规则的节点就加入结果集。如果找到根元素html都没有匹配，则不再遍历这条路径，从下一个a开始">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-28T07:12:03.717Z">
+<meta property="og:updated_time" content="2017-10-10T06:05:47.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css 性能优化">
-<meta name="twitter:description" content="1. css 渲染规则css选择符是有权重的，css样式规则渲染是先就近渲染，然后才一句选择符权重进行选渲染 从右到左渲染：h3 a&amp;#123;font-size: 14px;&amp;#125;```12345678渲染过程大概是：首先找到所有的a，沿着a的父元素查找h3，然后再沿着h3，查找.nav。中途找到了符合匹配规则的节点就加入结果集。如果找到根元素html都没有匹配，则不再遍历这条路径，从下一">
+<meta name="twitter:description" content="1. css 渲染规则css选择符是有权重的，css样式规则渲染是先就近渲染，然后才一句选择符权重进行选渲染 从右到左渲染：1.nav h3 a&amp;#123;font-size: 14px;&amp;#125; 渲染过程大概是：首先找到所有的a，沿着a的父元素查找h3，然后再沿着h3，查找.nav。中途找到了符合匹配规则的节点就加入结果集。如果找到根元素html都没有匹配，则不再遍历这条路径，从下一个a开始">
 
 
 
@@ -359,10 +359,28 @@
 
       
         <h3 id="1-css-渲染规则"><a href="#1-css-渲染规则" class="headerlink" title="1. css 渲染规则"></a>1. css 渲染规则</h3><p>css选择符是有权重的，<strong>css样式规则渲染是先就近渲染，然后才一句选择符权重进行选渲染</strong></p>
-<p>从右到左渲染：<br><figure class="highlight plain"><figcaption><span>h3 a&#123;font-size: 14px;&#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">渲染过程大概是：首先找到所有的a，沿着a的父元素查找h3，然后再沿着h3，查找.nav。中途找到了符合匹配规则的节点就加入结果集。如果找到根元素html都没有匹配，则不再遍历这条路径，从下一个a开始重复这个查找匹配（只要页面上有多个最右节点为a）。</div><div class="line"></div><div class="line">### 2. 嵌套层级不要超过3级</div><div class="line"></div><div class="line">一般情况下，元素的嵌套层级不能超过3级，过度的嵌套会导致代码变得臃肿，沉余，复杂。导致css文件体积变大，造成性能浪费，影响渲染的速度！而且过于依赖HTML文档结构。这样的css样式，维护起来，极度麻烦，如果以后要修改样式，可能要使用!important覆盖。</div><div class="line"></div><div class="line">### 3. 样式重置</div></pre></td></tr></table></figure></p>
-<p>  body,dl,dd,h1,h2,h3,h4,h5,h6,p,form,ol,ul {<br>    margin: 0;<br>    padding: 0;<br>  }<br>  h1, h2, h3, h4, h5, h6 {<br>    font-weight: normal;<br>  }<br>  ol, ul {<br>    list-style: none;<br>  }<br>  h1{<br>    font-size: 24px;<br>  }<br>  h2{<br>    font-size: 20px;<br>  }<br>  h3{<br>    font-size: 18px;<br>  }<br>  h4 {<br>    font-size: 16px;<br>  }<br>  h5{<br>    font-size: 14px;<br>  }<br>  h6{<br>    font-size: 12px;<br>  }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 4. 样式级别</div><div class="line"></div><div class="line">**css选择符权重渲染规则：important &gt; 内联 &gt; ID &gt; 类 &gt; 标签 | 伪类 | 属性选择 &gt; 伪对象 &gt;通配符 &gt; 继承**</div><div class="line"></div><div class="line">### 5. 图片要设置width和height</div><div class="line"></div><div class="line">如果页面有使用img标签，那么img很建议设置width和height。目的是为了在网速差或者其它原因加载不出图片的时候，保证布局不会乱。</div><div class="line"></div><div class="line">设置width和height，注意几点：</div><div class="line">  - 1.PC站，建议在img标签的属性设置width和height。这样避免加载不出css而错位</div><div class="line">  - 手机站，建议用css设置img的width和height，因为手机站要做适配，在属性设置width和height不灵活，比如使用rem布局，在属性那里设置不了width和height。</div><div class="line">  - 如果图片不固定，但是有一个max-width和max-height，那么建议在img的父元素设置width和height。img根据父元素的width和height设置max-width和max-height。</div><div class="line"></div><div class="line">### 6. 图片预加载</div><div class="line"></div><div class="line">- 懒加载：页面加载的时候，先加载一部分内容（一般是先加载首屏内容），其它内容等到需要加载的时候再进行加载！</div><div class="line"></div><div class="line">- 预加载：页面加载的时候，先加载一部分内容（一般是先加载首屏内容），其它内容等到先加载的一部分内容（一般是首屏内容）加载完了，再进行加载。</div><div class="line"></div><div class="line">两种方式，都是为了减少用户进入网站的时候，更快的看到首屏的内容！</div><div class="line"></div><div class="line">下面栗子，将这#preloader这个元素加入到到html中，就可以实现通过CSS的background属性将图片预加载到屏幕外的背景上。只要这些图片的路径保持不变，当它们在web页面的其他地方被调用时，浏览器就会在渲染过程中使用预加载（缓存）的图片。简单、高效，不需要任何JavaScript。</div></pre></td></tr></table></figure></p>
-<p>#preloader {<br>    /<em>需要预加载的图片</em>/<br>    background: url(image1.jpg) no-repeat,url(image2.jpg) no-repeat,url(image3.jpg) no-repeat;<br>    width: 0px;<br>    height: 0px;<br>    display: inline;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">但是这样会有一个问题，因为#preloader预加载的图片，会和页面上的其他内容一起加载，增加了页面的整体加载时间。所以需要用js控制</div></pre></td></tr></table></figure></p>
-<p>function preloader(urlArr,obj) {<br>    var bgText=’’;<br>    for(var i=0,len=urlArr.length;i&lt;len;i++){<br>        bgText+=’url(‘+urlArr[i]+’) no-repeat,’;<br>    }<br>    obj.style.background=bgText.substr(0,bgText.length-1);<br>}<br>window.onload = function() {<br>   preloader([‘image1.jpg’,’image2.jpg’,’image3.jpg’],document.getElementById(‘preloader’));<br>}<br>```<br>原理也很简单，就是先让首屏的图片加载完，然后再加载其它的图片。通过给#preloader设置背景图片，加载所需要的图片，然后页面上需要加载这些图片的时候，就直接从缓存里面拿图片，不需要通过http请求获取图片，这样加载就很快。</p>
+<p>从右到左渲染：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.nav h3 a&#123;font-size: 14px;&#125;</div></pre></td></tr></table></figure></p>
+<p>渲染过程大概是：首先找到所有的a，沿着a的父元素查找h3，然后再沿着h3，查找.nav。中途找到了符合匹配规则的节点就加入结果集。如果找到根元素html都没有匹配，则不再遍历这条路径，从下一个a开始重复这个查找匹配（只要页面上有多个最右节点为a）。</p>
+<h3 id="2-嵌套层级不要超过3级"><a href="#2-嵌套层级不要超过3级" class="headerlink" title="2. 嵌套层级不要超过3级"></a>2. 嵌套层级不要超过3级</h3><p>一般情况下，元素的嵌套层级不能超过3级，过度的嵌套会导致代码变得臃肿，沉余，复杂。导致css文件体积变大，造成性能浪费，影响渲染的速度！而且过于依赖HTML文档结构。这样的css样式，维护起来，极度麻烦，如果以后要修改样式，可能要使用!important覆盖。</p>
+<h3 id="3-样式重置"><a href="#3-样式重置" class="headerlink" title="3. 样式重置"></a>3. 样式重置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">body,dl,dd,h1,h2,h3,h4,h5,h6,p,form,ol,ul &#123;</div><div class="line">  margin: 0;</div><div class="line">  padding: 0;</div><div class="line">&#125;</div><div class="line">h1, h2, h3, h4, h5, h6 &#123;</div><div class="line">  font-weight: normal;</div><div class="line">&#125;</div><div class="line">ol, ul &#123;</div><div class="line">  list-style: none;</div><div class="line">&#125;</div><div class="line">h1&#123;</div><div class="line">  font-size: 24px;</div><div class="line">&#125;</div><div class="line">h2&#123;</div><div class="line">  font-size: 20px;</div><div class="line">&#125;</div><div class="line">h3&#123;</div><div class="line">  font-size: 18px;</div><div class="line">&#125;</div><div class="line">h4 &#123;</div><div class="line">  font-size: 16px;</div><div class="line">&#125;</div><div class="line">h5&#123;</div><div class="line">  font-size: 14px;</div><div class="line">&#125;</div><div class="line">h6&#123;</div><div class="line">  font-size: 12px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="4-样式级别"><a href="#4-样式级别" class="headerlink" title="4. 样式级别"></a>4. 样式级别</h3><p><strong>css选择符权重渲染规则：important &gt; 内联 &gt; ID &gt; 类 &gt; 标签 | 伪类 | 属性选择 &gt; 伪对象 &gt;通配符 &gt; 继承</strong></p>
+<h3 id="5-图片要设置width和height"><a href="#5-图片要设置width和height" class="headerlink" title="5. 图片要设置width和height"></a>5. 图片要设置width和height</h3><p>如果页面有使用img标签，那么img很建议设置width和height。目的是为了在网速差或者其它原因加载不出图片的时候，保证布局不会乱。</p>
+<p>设置width和height，注意几点：</p>
+<ul>
+<li>1.PC站，建议在img标签的属性设置width和height。这样避免加载不出css而错位</li>
+<li>手机站，建议用css设置img的width和height，因为手机站要做适配，在属性设置width和height不灵活，比如使用rem布局，在属性那里设置不了width和height。</li>
+<li>如果图片不固定，但是有一个max-width和max-height，那么建议在img的父元素设置width和height。img根据父元素的width和height设置max-width和max-height。</li>
+</ul>
+<h3 id="6-图片预加载"><a href="#6-图片预加载" class="headerlink" title="6. 图片预加载"></a>6. 图片预加载</h3><ul>
+<li><p>懒加载：页面加载的时候，先加载一部分内容（一般是先加载首屏内容），其它内容等到需要加载的时候再进行加载！</p>
+</li>
+<li><p>预加载：页面加载的时候，先加载一部分内容（一般是先加载首屏内容），其它内容等到先加载的一部分内容（一般是首屏内容）加载完了，再进行加载。</p>
+</li>
+</ul>
+<p>两种方式，都是为了减少用户进入网站的时候，更快的看到首屏的内容！</p>
+<p>下面栗子，将这#preloader这个元素加入到到html中，就可以实现通过CSS的background属性将图片预加载到屏幕外的背景上。只要这些图片的路径保持不变，当它们在web页面的其他地方被调用时，浏览器就会在渲染过程中使用预加载（缓存）的图片。简单、高效，不需要任何JavaScript。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#preloader &#123;</div><div class="line">    /*需要预加载的图片*/</div><div class="line">    background: url(image1.jpg) no-repeat,url(image2.jpg) no-repeat,url(image3.jpg) no-repeat;</div><div class="line">    width: 0px;</div><div class="line">    height: 0px;</div><div class="line">    display: inline;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>但是这样会有一个问题，因为#preloader预加载的图片，会和页面上的其他内容一起加载，增加了页面的整体加载时间。所以需要用js控制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function preloader(urlArr,obj) &#123;</div><div class="line">    var bgText=&apos;&apos;;</div><div class="line">    for(var i=0,len=urlArr.length;i&lt;len;i++)&#123;</div><div class="line">        bgText+=&apos;url(&apos;+urlArr[i]+&apos;) no-repeat,&apos;;</div><div class="line">    &#125;</div><div class="line">    obj.style.background=bgText.substr(0,bgText.length-1);</div><div class="line">&#125;</div><div class="line">window.onload = function() &#123;</div><div class="line">   preloader([&apos;image1.jpg&apos;,&apos;image2.jpg&apos;,&apos;image3.jpg&apos;],document.getElementById(&apos;preloader&apos;));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>原理也很简单，就是先让首屏的图片加载完，然后再加载其它的图片。通过给#preloader设置背景图片，加载所需要的图片，然后页面上需要加载这些图片的时候，就直接从缓存里面拿图片，不需要通过http请求获取图片，这样加载就很快。</p>
 <h3 id="7-慎用-通配符"><a href="#7-慎用-通配符" class="headerlink" title="7. 慎用*通配符"></a>7. 慎用*通配符</h3><p>在做网页的时候经常会使用下面两种方式重置样式，以此来消除标签的默认布局和不同浏览器对于同一个标签的渲染。</p>
 <p>*{margin：0；padding：0;}<br>上面这种方式，代码少，但是性能差，因为渲染的时候，要匹配页面上所有的元素！很多基础样式没有margin和padding的元素，比如div，li等。都被匹配，完全没必要！<br>下面看另一种方式。</p>
 <p>body,dl,dd,h1,h2,h3,h4,h5,h6,p,form,ol,ul{margin：0；padding：0;}<br>这种方式，代码稍微多，但是性能比上面的方式好，在渲染的时候，只匹配body,dl,dd,h1,h2,h3,h4,h5,h6,p,form,ol,ul这里面的元素，这些元素带有margin和padding，需要重置！<br>再看例子：</p>
@@ -408,6 +426,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/10/css/test/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -486,7 +508,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -497,7 +519,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -508,7 +530,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -543,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-css-渲染规则"><span class="nav-number">1.</span> <span class="nav-text">1. css 渲染规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-慎用-通配符"><span class="nav-number">2.</span> <span class="nav-text">7. 慎用*通配符</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-css-渲染规则"><span class="nav-number">1.</span> <span class="nav-text">1. css 渲染规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-嵌套层级不要超过3级"><span class="nav-number">2.</span> <span class="nav-text">2. 嵌套层级不要超过3级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-样式重置"><span class="nav-number">3.</span> <span class="nav-text">3. 样式重置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-样式级别"><span class="nav-number">4.</span> <span class="nav-text">4. 样式级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-图片要设置width和height"><span class="nav-number">5.</span> <span class="nav-text">5. 图片要设置width和height</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-图片预加载"><span class="nav-number">6.</span> <span class="nav-text">6. 图片预加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-慎用-通配符"><span class="nav-number">7.</span> <span class="nav-text">7. 慎用*通配符</span></a></li></ol></div>
             
 
           </div>
