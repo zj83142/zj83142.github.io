@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: javascript | zj83142</title>
+  <title>webpack 学习笔记 | zj83142</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zj83142">
-<meta property="og:url" content="http://yoursite.com/tags/javascript/index.html">
+  <meta name="description" content="webpack 是什么？  模块化 自定义文件或npm install 静态文件模块化 借助于插件和加载器  webpack的优势  代码分离 装载器（css, sass, jsx 等等） 智能解析（require(&amp;quot;./template/&amp;quot;+names+&apos;.ejs&apos;)）  webpack安装流程  npm install -g webpack npm install webp">
+<meta name="keywords" content="webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/10/24/tools/webpack/index.html">
 <meta property="og:site_name" content="zj83142">
+<meta property="og:description" content="webpack 是什么？  模块化 自定义文件或npm install 静态文件模块化 借助于插件和加载器  webpack的优势  代码分离 装载器（css, sass, jsx 等等） 智能解析（require(&amp;quot;./template/&amp;quot;+names+&apos;.ejs&apos;)）  webpack安装流程  npm install -g webpack npm install webp">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-24T08:28:33.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zj83142">
+<meta name="twitter:title" content="webpack 学习笔记">
+<meta name="twitter:description" content="webpack 是什么？  模块化 自定义文件或npm install 静态文件模块化 借助于插件和加载器  webpack的优势  代码分离 装载器（css, sass, jsx 等等） 智能解析（require(&amp;quot;./template/&amp;quot;+names+&apos;.ejs&apos;)）  webpack安装流程  npm install -g webpack npm install webp">
   
     <link rel="alternative" href="/atom.xml" title="zj83142" type="application/atom+xml">
   
@@ -150,128 +155,234 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-tools/webpack" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/20/js/js-pits/" class="archive-article-date">
-  	<time datetime="2017-09-20T07:35:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/js/js-pits/">js 问题积累</a>
+    <h1 class="article-title" itemprop="name">
+      webpack 学习笔记
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/24/tools/webpack/" class="archive-article-date">
+  	<time datetime="2017-10-24T01:32:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>webpack 是什么？</p>
+<ol>
+<li>模块化</li>
+<li>自定义文件或npm install</li>
+<li>静态文件模块化</li>
+<li>借助于插件和加载器</li>
+</ol>
+<p>webpack的优势</p>
+<ol>
+<li>代码分离</li>
+<li>装载器（css, sass, jsx 等等）</li>
+<li>智能解析（require(&quot;./template/&quot;+names+'.ejs')）</li>
+</ol>
+<p>webpack安装流程</p>
+<ol>
+<li>npm install -g webpack</li>
+<li>npm install webpack-dev-server</li>
+</ol>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var cats = [&apos;aa&apos;, &apos;bb&apos;, &apos;cc&apos;];</div><div class="line">module.exports = cats;</div><div class="line"></div><div class="line">var cats = require(&apos;./cats.js&apos;);</div><div class="line">console.log(cats);</div></pre></td></tr></table></figure></p>
+<p>编译命令：</p>
+<ul>
+<li>webpack app.js bundle.js
+注：app.js 需要编译的文件
+bundle.js 编译后输出的文件</li>
+<li>webpack app.js bundle.js --watch</li>
+</ul>
+<p>webpack 第三方库</p>
+<ol>
+<li>使用第三方（jquery）</li>
+<li>模块化静态文件（css）</li>
+<li>使用配置文件webpack.config.js</li>
+<li>使用webpack-dev-server</li>
+</ol>
+<p><strong>安装第三方库 jquery</strong>
+npm install jquery --save</p>
+<p><strong>css模块化</strong>
+安装插件 npm install css-loader style-loader --save-dev</p>
+<p>使用：require('!style-loader!css-loader!./style.css');</p>
+<p><strong>webpack-dev-server</strong></p>
+<p>npm install -g webpack-dev-server</p>
+<p>在package.js 的scripts 中配置 &quot;webpack-dev-server --entry ./src/js/app.js --output-filename ./dist/bundle.js&quot;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;test-webpack&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;&quot;,</div><div class="line">  &quot;main&quot;: &quot;index.js&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;start&quot;: &quot;webpack-dev-server --port 9001 --entry ./src/js/app.js --output-filename ./dist/bundle.js&quot;,</div><div class="line">    &quot;build&quot;: &quot;webpack&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;author&quot;: &quot;&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;dependencies&quot;: &#123;</div><div class="line">    &quot;jquery&quot;: &quot;^3.2.1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;css-loader&quot;: &quot;^0.28.7&quot;,</div><div class="line">    &quot;style-loader&quot;: &quot;^0.19.0&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>执行命令: npm start</li>
+<li>打开 localhost:8080</li>
+</ol>
+<p>注意：Webpack与webpack-dev-server版本不兼容导致npm start 报错，解决方法：</p>
+<ul>
+<li>将webpack-dev-server卸载掉：npm uninstall webpack-dev-server -g</li>
+<li>然后安装1.15.0版本的webpack-dev-server：npm install webpack-dev-server@1.15.0 -g</li>
+</ul>
+<p><strong>html-webpack-plugin</strong></p>
+<p>安装：npm install html-webpack-plugin --save</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">var htmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    main: &apos;./src/js/main.js&apos;,</div><div class="line">    a: &apos;./src/js/a.js&apos;</div><div class="line">  &#125;</div><div class="line">  output: &#123;           // 出口文件</div><div class="line">    path: __dirname + &apos;/dist&apos;,</div><div class="line">    filename: &apos;js/[name]-[chunkhash].js&apos;,</div><div class="line">    publicPath: &apos;http://cdn.com/&apos; // 上线地址</div><div class="line">  &#125;,</div><div class="line">  // 需要依赖的插件或者是装载器</div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;test: /\.css$/, loader:&apos;style-loader!css-loader&apos;&#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/, loader:&apos;babel-loader&apos;,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        query: &#123;</div><div class="line">          presets: [&apos;es2015&apos;]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    new htmlWebpackPlugin(&#123;</div><div class="line">      template: &apos;index.html&apos;,</div><div class="line">      filename：&apos;index.html&apos;,</div><div class="line">      inject: false, // 是否默认注入javascript</div><div class="line">      title: &apos;webpack xxx&apos;,  // 使用方法，在html中引用 &lt;%= htmlWebpackPlugin.options.title %&gt;</div><div class="line">      minify: &#123;     // 压缩</div><div class="line">        removeComments: true, // 注释</div><div class="line">        collapseWhitespace: true, // 删除空格</div><div class="line">      &#125;,</div><div class="line">      chunks: [&apos;main&apos;, &apos;a&apos;]   // 只引入需要的chuncks, 用于多页面配置, 注意设置inject: true</div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>通过配置多个htmlWebpackPlugin 可以配置多个页面</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/js-dropzone-datetimepicker-js下载文本//" class="article-tag-list-link color4">js dropzone datetimepicker js下载文本</a>
+        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/24/tools/webpack/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/13/js/generate-color/" class="archive-article-date">
-  	<time datetime="2017-09-13T06:04:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-13</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/10/23/work/2017-10/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2017年10月工作笔记和感受</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/13/js/generate-color/">js 随机颜色的三种方式和颜色格式的转化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">color</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">translate</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/js//" class="article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -294,9 +405,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

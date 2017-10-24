@@ -152,6 +152,147 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-tools/webpack" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/24/tools/webpack/">webpack 学习笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/24/tools/webpack/" class="archive-article-date">
+  	<time datetime="2017-10-24T01:32:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>webpack 是什么？</p>
+<ol>
+<li>模块化</li>
+<li>自定义文件或npm install</li>
+<li>静态文件模块化</li>
+<li>借助于插件和加载器</li>
+</ol>
+<p>webpack的优势</p>
+<ol>
+<li>代码分离</li>
+<li>装载器（css, sass, jsx 等等）</li>
+<li>智能解析（require(&quot;./template/&quot;+names+'.ejs')）</li>
+</ol>
+<p>webpack安装流程</p>
+<ol>
+<li>npm install -g webpack</li>
+<li>npm install webpack-dev-server</li>
+</ol>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var cats = [&apos;aa&apos;, &apos;bb&apos;, &apos;cc&apos;];</div><div class="line">module.exports = cats;</div><div class="line"></div><div class="line">var cats = require(&apos;./cats.js&apos;);</div><div class="line">console.log(cats);</div></pre></td></tr></table></figure></p>
+<p>编译命令：</p>
+<ul>
+<li>webpack app.js bundle.js
+注：app.js 需要编译的文件
+bundle.js 编译后输出的文件</li>
+<li>webpack app.js bundle.js --watch</li>
+</ul>
+<p>webpack 第三方库</p>
+<ol>
+<li>使用第三方（jquery）</li>
+<li>模块化静态文件（css）</li>
+<li>使用配置文件webpack.config.js</li>
+<li>使用webpack-dev-server</li>
+</ol>
+<p><strong>安装第三方库 jquery</strong>
+npm install jquery --save</p>
+<p><strong>css模块化</strong>
+安装插件 npm install css-loader style-loader --save-dev</p>
+<p>使用：require('!style-loader!css-loader!./style.css');</p>
+<p><strong>webpack-dev-server</strong></p>
+<p>npm install -g webpack-dev-server</p>
+<p>在package.js 的scripts 中配置 &quot;webpack-dev-server --entry ./src/js/app.js --output-filename ./dist/bundle.js&quot;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;test-webpack&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;&quot;,</div><div class="line">  &quot;main&quot;: &quot;index.js&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;start&quot;: &quot;webpack-dev-server --port 9001 --entry ./src/js/app.js --output-filename ./dist/bundle.js&quot;,</div><div class="line">    &quot;build&quot;: &quot;webpack&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;author&quot;: &quot;&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;dependencies&quot;: &#123;</div><div class="line">    &quot;jquery&quot;: &quot;^3.2.1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;css-loader&quot;: &quot;^0.28.7&quot;,</div><div class="line">    &quot;style-loader&quot;: &quot;^0.19.0&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>执行命令: npm start</li>
+<li>打开 localhost:8080</li>
+</ol>
+<p>注意：Webpack与webpack-dev-server版本不兼容导致npm start 报错，解决方法：</p>
+<ul>
+<li>将webpack-dev-server卸载掉：npm uninstall webpack-dev-server -g</li>
+<li>然后安装1.15.0版本的webpack-dev-server：npm install webpack-dev-server@1.15.0 -g</li>
+</ul>
+<p><strong>html-webpack-plugin</strong></p>
+<p>安装：npm install html-webpack-plugin --save</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">var htmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    main: &apos;./src/js/main.js&apos;,</div><div class="line">    a: &apos;./src/js/a.js&apos;</div><div class="line">  &#125;</div><div class="line">  output: &#123;           // 出口文件</div><div class="line">    path: __dirname + &apos;/dist&apos;,</div><div class="line">    filename: &apos;js/[name]-[chunkhash].js&apos;,</div><div class="line">    publicPath: &apos;http://cdn.com/&apos; // 上线地址</div><div class="line">  &#125;,</div><div class="line">  // 需要依赖的插件或者是装载器</div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;test: /\.css$/, loader:&apos;style-loader!css-loader&apos;&#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/, loader:&apos;babel-loader&apos;,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        query: &#123;</div><div class="line">          presets: [&apos;es2015&apos;]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    new htmlWebpackPlugin(&#123;</div><div class="line">      template: &apos;index.html&apos;,</div><div class="line">      filename：&apos;index.html&apos;,</div><div class="line">      inject: false, // 是否默认注入javascript</div><div class="line">      title: &apos;webpack xxx&apos;,  // 使用方法，在html中引用 &lt;%= htmlWebpackPlugin.options.title %&gt;</div><div class="line">      minify: &#123;     // 压缩</div><div class="line">        removeComments: true, // 注释</div><div class="line">        collapseWhitespace: true, // 删除空格</div><div class="line">      &#125;,</div><div class="line">      chunks: [&apos;main&apos;, &apos;a&apos;]   // 只引入需要的chuncks, 用于多页面配置, 注意设置inject: true</div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>通过配置多个htmlWebpackPlugin 可以配置多个页面</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/笔记//" class="article-tag-list-link color3">笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/24/tools/webpack/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-work/2017-10" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -513,6 +654,114 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/10/10/python/install-libs/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-install-libs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/10/install-libs/">python安装类库</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/10/install-libs/" class="archive-article-date">
+  	<time datetime="2017-10-10T07:54:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>在win7平台上安装gevent和gevent-socketio</h3>
+<p>在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了</p>
+<p>gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:</p>
+<ul>
+<li>libevent的dll文件</li>
+<li>greenlet的免编译安装包</li>
+<li>gevent的免编译安装包</li>
+</ul>
+<p><strong>libevent.dll</strong></p>
+<p>下载地址：</p>
+<ul>
+<li>http://www.dll-found.com/libevent-2-0-5.dll_download.html (需要翻墙)</li>
+<li>http://pan.baidu.com/s/1ge5DxT5 (百度云盘)
+安装方法： 测试环境是windows 7 64bit, 安装了32bit的Python 2.7版本. 因此将下载到的libevent-2-0-5.dll复制到C:\Windows\SysWOW64目录下即可.</li>
+</ul>
+<p><strong>greenlet 和 gevent</strong></p>
+<p>下载地址：<strong>http://www.lfd.uci.edu/~gohlke/pythonlibs/</strong></p>
+<p>安装方法：</p>
+<ul>
+<li>pip install greenlet-0.4.5-cp27-none-win32.whl</li>
+<li>pip install gevent-1.0.1-cp27-none-win32.whl</li>
+</ul>
+<p><strong>gevent-socketio</strong></p>
+<p>安装方法：pip install gevent-socketio</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/python安装类库//" class="article-tag-list-link color1">python安装类库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/install-libs/">展开全文 >></a>
         </p>
       
 
@@ -975,252 +1224,9 @@ $ npm run dev
 
 
   
-    <article id="post-js/js-pits" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/20/js/js-pits/">js 问题积累</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/20/js/js-pits/" class="archive-article-date">
-  	<time datetime="2017-09-20T07:35:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。</p>
-<h3>上传文件插件dropzone</h3>
-<ol>
-<li>设置 Dropzone.autoDiscover = false</li>
-</ol>
-<p>(禁止对所有元素的自动查找) 否则前端会报错: Dropzone already attached.</p>
-<ol start="2">
-<li>
-<p>基本用法
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;myDropzone&quot; class=&quot;dropzone&quot;&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">var myDropzone = new Dropzone(&quot;#upload_logo&quot;, &#123; </div><div class="line">  url: &quot;xxxx&quot;,  // 上传文件地址</div><div class="line">  maxFiles: &apos;1&apos;, // 最多上传一个文件</div><div class="line">  dictDefaultMessage: &apos;上传 Logo 图片&apos;, // 修改 提示文字</div><div class="line">  addRemoveLinks: &apos;dictRemoveFile&apos;, // 显示删除文件链接</div><div class="line">  acceptedFiles: &apos;image/*&apos;  // 接收的文件类型</div><div class="line">&#125;);</div><div class="line">// 文件上传成功</div><div class="line">myDropzone.on(&apos;success&apos;, function(file, response) &#123;</div><div class="line">  var res = JSON.parse(response);</div><div class="line">  ...</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>显示服务器上已存在的图片或文件</p>
-</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var mockFile = &#123; name: filename, size: 123, accepted: true &#125;;</div><div class="line">myDropzone.emit( &quot;addedfile&quot;, mockFile);</div><div class="line">myDropzone.emit( &quot;thumbnail&quot;, mockFile, fileUrl); // 生成缩略图</div><div class="line">myDropzone.files.push( mockFile ); </div><div class="line">// $(&apos;div.dz-preview&apos;).addClass(&apos; dz-processing dz-image-preview dz-success dz-complete&apos;); // 这个会有上传成功的动画，不太需要</div><div class="line">$(&apos;div.dz-preview&apos;).addClass(&apos; dz-complete&apos;); // 设置样式，如果不设置，缩略图上会显示上传进度条</div></pre></td></tr></table></figure></p>
-<ol start="4">
-<li>删除文件</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myDropzone.removeAllFiles();</div></pre></td></tr></table></figure></p>
-<ol start="5">
-<li>还有很多方法，具体可以查看源码，或者说明文档，参考地址：<a href="http://wxb.github.io/dropzonejs.com.zh-CN/dropzonezh-CN/#" target="_blank" rel="external">DropzoneJS</a></li>
-</ol>
-<h3>bootstrap datetimepicker</h3>
-<ol>
-<li>月份选择<br>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(&apos;#xxx&apos;).datetimepicker(&#123;</div><div class="line">  minView : &quot;year&quot;, //  选择时间时，最小可以选择到那层；默认是‘hour’也可用0表示</div><div class="line">  startView: &apos;year&apos;,</div><div class="line">  language : &apos;zh-CN&apos;, // 语言</div><div class="line">  autoclose : true, //  true:选择时间后窗口自动关闭</div><div class="line">  format : &apos;yyyy-mm&apos;, // 文本框时间格式，设置为0,最后时间格式为2017-03-23 17:00:00</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li>
-</ol>
-<h3>js点击下载文本到本地文件中</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function downloadText(content) &#123;</div><div class="line">  let fileName = &apos;xxxx.txt&apos;;  // 文件名</div><div class="line">  let aLink = document.createElement(&apos;a&apos;); </div><div class="line">  let evt = document.createEvent(&quot;MouseEvents&quot;);</div><div class="line">  evt.initEvent(&apos;click&apos;, true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null); // 点击</div><div class="line">  aLink.download = fileName;</div><div class="line">  aLink.dispatchEvent(evt);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>知识点：事件触发器</strong></p>
-<blockquote>
-<p>事件触发器就是用来触发某个元素下的某个事件，IE下有fireEvent()，高级浏览器（chrome，firefox等）有dispatchEvent()</p>
-</blockquote>
-<h4>IE浏览器</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var fireEvent = function(element, event) &#123;</div><div class="line">  // IE浏览器支持fireEvent方法</div><div class="line">  if (document.createEventObject) &#123;</div><div class="line">    var evt = document.createEventObject();</div><div class="line">    return element.fireEvent(&apos;on&apos; + event, evt)</div><div class="line">  &#125; else &#123;</div><div class="line">    // 其他标准浏览器使用dispatchEvent方法</div><div class="line">    var evt = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">    // initEvent接受3个参数：</div><div class="line">    // 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">    evt.initEvent(event, true, true);</div><div class="line">    return !element.dispatchEvent(evt);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>或 document上绑定自定义事件ondataavailable
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">document.attachEvent(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line">var obj=document.getElementById(&quot;obj&quot;);</div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.attachEvent(&apos;onclick&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//调用document对象的createEventObject方法得到一个event的对象实例。</div><div class="line">var event = document.createEventObject();</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.fireEvent(&apos;ondataavailable&apos;, event);</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.fireEvent(&apos;onclick&apos;, event);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>chrome、firefox等浏览器
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">//document上绑定自定义事件ondataavailable</div><div class="line">document.addEventListener(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line">var obj = document.getElementById(&quot;obj&quot;);</div><div class="line"></div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.addEventListener(&apos;click&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line"></div><div class="line">//调用document对象的 createEvent 方法得到一个event的对象实例。</div><div class="line">var event = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line"></div><div class="line">// initEvent接受3个参数：</div><div class="line">// 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">event.initEvent(&quot;ondataavailable&quot;, true, true);</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.dispatchEvent(event);</div><div class="line">var event1 = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">event1.initEvent(&quot;click&quot;, true, true);</div><div class="line">event1.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.dispatchEvent(event1);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<h3>其他注意事项</h3>
-<ul>
-<li>form表单调用reset： $('#form_test')[0].reset();</li>
-<li>redio设置选中：$('input[name=&quot;xxx&quot;][value=&quot;' + val + '&quot;]').attr(&quot;checked&quot;, true);</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/js-dropzone-datetimepicker-js下载文本//" class="article-tag-list-link color4">js dropzone datetimepicker js下载文本</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/20/js/js-pits/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-js/generate-color" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/13/js/generate-color/">js 随机颜色的三种方式和颜色格式的转化</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/13/js/generate-color/" class="archive-article-date">
-  	<time datetime="2017-09-13T06:04:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3>生成随机颜色</h3>
-<h4>十六进制格式（#000000-#FFFFFF）</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function randomHexColor() &#123;</div><div class="line">  let hex = Math.floor(Math.random() * 16777216).toString(16); // 生成ffffff以内16进制数</div><div class="line">  while (hex.length &lt; 6) &#123; //while循环判断hex位数，少于6位前面加0凑够6位</div><div class="line">    hex = &apos;0&apos; + hex;</div><div class="line">  &#125;</div><div class="line">  return &apos;#&apos; + hex; //返回‘#’开头16进制颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function randomHexColor() &#123; </div><div class="line">  return &apos;#&apos; + (&apos;00000&apos; + (Math.random() * 0x1000000 &lt;&lt; 0).toString(16)).substr(-6);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>执行数序：</p>
-<ol>
-<li>先执行Math.random() * 0x1000000，其中0x1000000=0xffffff+1，因为Math.random()取到1，所以+1，这样就会生成一个1-16777216(不包含)以内的浮点数。</li>
-<li>然后执行&lt;&lt;0，这是取整运算，去掉后面的小数点。这时为一个16777216(不包含)以内的十进制数。</li>
-<li>之后执行.toString(16)，把十进制数转化为六位以下16进制数。</li>
-<li>再后执行'00000'+，这时因为之前生成的16进制数最少可能仅一位，在前面加上5个0。</li>
-<li>最后执行.substr(-6)，是去从-6开始的后面所有字符串，也就是最后6位数。</li>
-<li>前面加上#并retuen</li>
-</ol>
-<h4>RGB格式</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function randomRgbColor() &#123; //随机生成RGB颜色</div><div class="line">  const r = Math.floor(Math.random() * 256); //随机生成256以内r值</div><div class="line">  const g = Math.floor(Math.random() * 256); //随机生成256以内g值</div><div class="line">  const b = Math.floor(Math.random() * 256); //随机生成256以内b值</div><div class="line">  return `rgb($&#123;r&#125;,$&#123;g&#125;,$&#123;b&#125;)`; //返回rgb(r,g,b)格式颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4>RGBA格式</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function randomRgbaColor() &#123; //随机生成RGBA颜色</div><div class="line">  const r = Math.floor(Math.random() * 256); //随机生成256以内r值</div><div class="line">  const g = Math.floor(Math.random() * 256); //随机生成256以内g值</div><div class="line">  const b = Math.floor(Math.random() * 256); //随机生成256以内b值</div><div class="line">  const alpha = Math.random(); //随机生成1以内a值</div><div class="line">  return `rgb($&#123;r&#125;,$&#123;g&#125;,$&#123;b&#125;,$&#123;alpha&#125;)`; //返回rgba(r,g,b,a)格式颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3>颜色格式转化</h3>
-<h4>十六进制转为RGB</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function hex2Rgb(hex) &#123; //十六进制转为RGB</div><div class="line">  let rgb = []; // 定义rgb数组</div><div class="line">  if (/^\#[0-9A-F]&#123;3&#125;$/i.test(hex)) &#123; //判断传入是否为#三位十六进制数</div><div class="line">    let sixHex = &apos;#&apos;;</div><div class="line">    hex.replace(/[0-9A-F]/ig, function(kw) &#123;</div><div class="line">        sixHex += kw + kw; //把三位16进制数转化为六位</div><div class="line">    &#125;);</div><div class="line">    hex = sixHex; //保存回hex</div><div class="line">  &#125;</div><div class="line">  if (/^#[0-9A-F]&#123;6&#125;$/i.test(hex)) &#123; //判断传入是否为#六位十六进制数</div><div class="line">    hex.replace(/[0-9A-F]&#123;2&#125;/ig, function(kw) &#123;</div><div class="line">        rgb.push(parseInt(kw,16)); //十六进制转化为十进制并存入数组</div><div class="line">    &#125;);</div><div class="line">    return `rgb($&#123;rgb.join(&apos;,&apos;)&#125;)`; //输出RGB格式颜色</div><div class="line">  &#125; else &#123;</div><div class="line">    console.log(`Input $&#123;hex&#125; is wrong!`);</div><div class="line">    return &apos;rgb(0,0,0)&apos;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4>RGB转为十六进制</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function rgb2Hex(rgb) &#123;</div><div class="line">  if (/^rgb\((\d&#123;1,3&#125;\,)&#123;2&#125;\d&#123;1,3&#125;\)$/i.test(rgb)) &#123; //test RGB</div><div class="line">    let hex = &apos;#&apos;; //定义十六进制颜色变量</div><div class="line">    rgb.replace(/\d&#123;1,3&#125;/g, function(kw) &#123; //提取rgb数字</div><div class="line">      kw = parseInt(kw).toString(16); //转为十六进制</div><div class="line">      kw = kw.length &lt; 2 ? 0 + kw : kw; //判断位数，保证两位</div><div class="line">      hex += kw; //拼接</div><div class="line">    &#125;);</div><div class="line">    return hex; //返回十六进制</div><div class="line">  &#125; else &#123;</div><div class="line">    console.log(`Input $&#123;rgb&#125; is wrong!`);</div><div class="line">    return &apos;#000&apos;; //输入格式错误,返回#000</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">color</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">translate</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/js//" class="article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/13/js/generate-color/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1323,15 +1329,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1351,7 +1353,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo 问题积累</a>
+                <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1368,6 +1374,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">work</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo 问题积累</a>
               </li>
             
             <div class="clearfix"></div>
