@@ -4,14 +4,14 @@ date: 2017-09-20 15:35:48
 tags:
   javascript
 categories:
-  js
-  dropzone
-  datetimepicker
-  js下载文本
+  - js
+  - dropzone
+  - datetimepicker
+  - js下载文本
 ---
 
 工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。
-
+<!-- more -->
 ### 上传文件插件dropzone
 
 1. 设置 Dropzone.autoDiscover = false

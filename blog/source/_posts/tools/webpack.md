@@ -7,8 +7,12 @@ categories:
   笔记
 ---
 
+[git上的一个webpack配置案例](https://github.com/hugzh/webpack-simple-demo)
+
 webpack 是什么？
 
+Webpack就是个模块打包工具，将模块及其依赖打包生成静态资源。在Webpack的机制里，所有的资源都是模块(js,css,图片等)，而且可以通过代码分隔(Code Splitting)的方法异步加载，实现性能上的优化。
+<!-- more -->
 1. 模块化
 2. 自定义文件或npm install
 3. 静态文件模块化
@@ -46,7 +50,6 @@ webpack 第三方库
 2. 模块化静态文件（css）
 3. 使用配置文件webpack.config.js
 4. 使用webpack-dev-server
-
 
 **安装第三方库 jquery**
 npm install jquery --save
@@ -100,7 +103,7 @@ module.exports = {
   entry: {
     main: './src/js/main.js',
     a: './src/js/a.js'
-  }
+  },
   output: {           // 出口文件
     path: __dirname + '/dist',
     filename: 'js/[name]-[chunkhash].js',
@@ -112,7 +115,8 @@ module.exports = {
       {test: /\.css$/, loader:'style-loader!css-loader'},
       {
         test: /\.js$/, loader:'babel-loader',
-        exclude: /node_modules/,
+        exclude: '/node_modules/',   // 优化打包速度
+        include: './src',            // 优化打包速度
         query: {
           presets: ['es2015']
         }
@@ -123,13 +127,16 @@ module.exports = {
     new htmlWebpackPlugin({
       template: 'index.html',
       filename：'index.html',
-      inject: false, // 是否默认注入javascript
-      title: 'webpack xxx',  // 使用方法，在html中引用 <%= htmlWebpackPlugin.options.title %>
-      minify: {     // 压缩
-        removeComments: true, // 注释
-        collapseWhitespace: true, // 删除空格
+      inject: false,                          // 是否默认注入javascript
+      title: 'webpack demo',                  // 使用方法，在html中引用 <%= htmlWebpackPlugin.options.title %>
+      minify: {                               // 压缩
+        removeComments: true,                 // 注释
+        collapseWhitespace: true,             // 删除空格
       },
-      chunks: ['main', 'a']   // 只引入需要的chuncks, 用于多页面配置, 注意设置inject: true
+      chunks: ['main', 'a']                   // 只引入需要的chuncks, 用于多页面配置, 注意设置inject: true
+    }),
+    new htmlWebpackPlugin({
+      ...
     })
   ]
 }

@@ -7,13 +7,12 @@ categories:
   python安装类库
 ---
 
-
 ### 在win7平台上安装gevent和gevent-socketio
 
 在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了
 
 gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:
-
+<!-- more -->
 - libevent的dll文件
 - greenlet的免编译安装包
 - gevent的免编译安装包

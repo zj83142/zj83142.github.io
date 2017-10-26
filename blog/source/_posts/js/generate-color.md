@@ -22,6 +22,7 @@ function randomHexColor() {
   return '#' + hex; //返回‘#’开头16进制颜色
 }
 ```
+<!-- more -->
 
 ```
 function randomHexColor() { 

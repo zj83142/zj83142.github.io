@@ -10,14 +10,14 @@ categories:
 
 ### next主题
 
-1. 安装 hexo-theme-next 到 themes/next文件夹下
+1.安装 hexo-theme-next 到 themes/next文件夹下
   ```
     $ git clone https://github.com/iissnan/hexo-theme-next themes/next
   ```
-2. 启用主题
+2.启用主题
   _config.yml 文件下修改 theme: next (默认 theme: landscape)
-
-3. 主题设定 themes/next/_config.yml
+<!-- more -->
+3.主题设定 themes/next/_config.yml
   
   Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。目前 NexT 支持三种 Scheme：
 
@@ -26,10 +26,10 @@ categories:
     - Pisces - 双栏 Scheme，小家碧玉似的清新
     - Gemini
 
-4. 设置头像
+4.设置头像
   在theme/next/source/images 文件加下添加avater.png 图片，然后配置theme/next/_config.yml 文件中的 avatar: /images/avatar.png
 
-5. 修改布局宽度
+5.修改布局宽度
   Pisces Scheme 编辑 themes/next/source/css/_schemes/Picses/_layout.styl 文件，更改以下 css 选项定义值：
 
   ```

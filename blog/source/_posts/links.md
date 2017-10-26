@@ -7,9 +7,11 @@ categories:
   素材
 ---
 
+平时遇到的各种素材，将链接收录一下……
+<!-- more -->
+
 ### 牛人博客
 [阮一峰的博客](http://www.ruanyifeng.com)
-
 
 ### 框架
 [vuera-据说很吊，可以在react中引用vue](https://github.com/akxcv/vuera?utm_campaign=Revue%20newsletter&utm_medium=Newsletter&utm_source=Vue.js%20Feed)

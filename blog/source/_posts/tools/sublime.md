@@ -17,7 +17,7 @@ categories:
 2. 打开Install Package 窗口，直接输入 install package 按回车
 3. 弹出安装插件框，输入 vue 找到 xxx 按回车
 4. 重新打开文件或重启sublime
-
+<!-- more -->
 常用插件
 
 - 添加支持vue代码高亮控件 —— Vue Syntax Hightlight

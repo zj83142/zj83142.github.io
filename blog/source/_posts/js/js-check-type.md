@@ -16,7 +16,7 @@ tags:
 2. 根据构造函数判断
   - Object.prototype.toString
   - construcor
-
+<!-- more -->
 [慕课网一个老师的视频-讲Zepto](http://www.imooc.com/course/comment/id/745?page=4)
 
 ### 判断方法

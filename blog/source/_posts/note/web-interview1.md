@@ -18,7 +18,7 @@ categories:
   - 避免使用eval、new Function 等执行字符串的方法，除非确定字符串和用户输入五官
   - 使用cookie的httpOnly属性，加上了这个属性的cookie字段，js是无法进行读写的
   - 使用innerHtml、document.write的时候，如果数据是用户输入的，那么需要对关键字符进行过滤与转义
-
+<!-- more -->
 2. CSRF：跨站请求伪造
 
 说明：其实就是网站中的一些提交行为，被黑客利用，在你访问黑客的网站的时候进行操作，会被操作到其他网站上

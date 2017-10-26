@@ -7,8 +7,8 @@ categories:
   CSS
 ---
 
-> 在日常中遇到的感觉不错的loading效果，先积累起来，有时间好好看看具体是如何实现的。
-
+在日常中遇到的感觉不错的loading效果，先积累起来，有时间好好看看具体是如何实现的。
+<!-- more -->
 ### 第一种效果 [查看](https://codepen.io/augbog/pen/ZXQVVZ/)
 ```
 html, body {
