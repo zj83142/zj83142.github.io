@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>echart踩坑 | zj83142</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录echarts使用过程中遇到的那些坑 x轴数据是字符串日期格式且不连续时，间隔问题  刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！  123456789">
+  <meta name="description" content="记录echarts使用过程中遇到的那些坑 x轴数据是字符串日期格式且不连续时，间隔问题 刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="echart踩坑">
 <meta property="og:url" content="http://yoursite.com/2017/10/10/note/echart-pits/index.html">
 <meta property="og:site_name" content="zj83142">
-<meta property="og:description" content="记录echarts使用过程中遇到的那些坑 x轴数据是字符串日期格式且不连续时，间隔问题  刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！  123456789">
+<meta property="og:description" content="记录echarts使用过程中遇到的那些坑 x轴数据是字符串日期格式且不连续时，间隔问题 刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-10T08:02:00.473Z">
+<meta property="og:updated_time" content="2017-10-26T05:54:02.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="echart踩坑">
-<meta name="twitter:description" content="记录echarts使用过程中遇到的那些坑 x轴数据是字符串日期格式且不连续时，间隔问题  刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！  123456789">
+<meta name="twitter:description" content="记录echarts使用过程中遇到的那些坑 x轴数据是字符串日期格式且不连续时，间隔问题 刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！">
   
     <link rel="alternative" href="/atom.xml" title="zj83142" type="application/atom+xml">
   
@@ -60,7 +60,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives">归档</a></li>
+	        
+				<li><a href="/tags/笔记/">笔记</a></li>
 	        
 			</ul>
 		</nav>
@@ -118,6 +120,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -135,12 +139,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/笔记/">笔记</a></li>
 		        
 				</ul>
 			</nav>
@@ -176,14 +182,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>记录echarts使用过程中遇到的那些坑</p>
-<h3>x轴数据是字符串日期格式且不连续时，间隔问题</h3>
-<blockquote>
-<p>刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！</p>
+<h3 id="x轴数据是字符串日期格式且不连续时，间隔问题"><a href="#x轴数据是字符串日期格式且不连续时，间隔问题" class="headerlink" title="x轴数据是字符串日期格式且不连续时，间隔问题"></a>x轴数据是字符串日期格式且不连续时，间隔问题</h3><blockquote>
+<p>刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">function getOption(x, y) &#123;</div><div class="line">  let option = &#123;</div><div class="line">    title : &#123;</div><div class="line">        text: &apos;&apos;,</div><div class="line">    &#125;,</div><div class="line">    tooltip : &#123;</div><div class="line">        trigger: &apos;item&apos;,</div><div class="line">        formatter : function (params) &#123; // 格式化显示问题</div><div class="line">            var date = new Date(params.value[0]);</div><div class="line">            date = date.getFullYear() + &apos;-&apos;</div><div class="line">                   + (date.getMonth() + 1) + &apos;-&apos;</div><div class="line">                   + date.getDate() + &apos; &apos;</div><div class="line">            return &quot;日期：&quot; + date + &quot;&lt;br/&gt;测试次数：&quot; +  params.value[1];</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    toolbox: &#123;</div><div class="line">        show : true,</div><div class="line">        feature : &#123;</div><div class="line">            mark : &#123;show: true&#125;,</div><div class="line">            dataView : &#123;show: true, readOnly: false&#125;,</div><div class="line">            restore : &#123;show: true&#125;,</div><div class="line">            saveAsImage : &#123;show: true&#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    dataZoom: &#123; // 显示缩放轴，且从70% 开始</div><div class="line">        show: true,</div><div class="line">        start : 70</div><div class="line">    &#125;,</div><div class="line">    legend : &#123;</div><div class="line">        data : [&apos;series1&apos;]</div><div class="line">    &#125;,</div><div class="line">    xAxis : [</div><div class="line">        &#123;</div><div class="line">            type : &apos;time&apos;, // 非常重要，设置x轴类型是time. (类型有：value, category, time, log)</div><div class="line">            splitNumber:10,</div><div class="line">            axisLabel: &#123;</div><div class="line">                rotate: 30, // 标签旋转角度</div><div class="line">                interval:0, // 默认auto（自动隐藏显示不下的） 0： 全部显示</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    ],</div><div class="line">    yAxis : [</div><div class="line">        &#123;</div><div class="line">            type : &apos;value&apos;,</div><div class="line">            minInterval: 1,  </div><div class="line">        &#125;</div><div class="line">    ],</div><div class="line">    series : [</div><div class="line">        &#123;</div><div class="line">          name: &apos;series1&apos;,</div><div class="line">          type: &apos;line&apos;,</div><div class="line">          showAllSymbol: true,</div><div class="line">          smooth:true,</div><div class="line">          areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">          symbol: &apos;circle&apos;,</div><div class="line">          symbolSize: 6,</div><div class="line">          data: (function() &#123;</div><div class="line">            let data = []; // 这个是在react项目中，防止数据从有到无变化时会报错的问题,每次获取新数据的时候要提前清空数据</div><div class="line">            if(x.length !== 0) &#123;</div><div class="line">              data = [];</div><div class="line">              for(let i = 0; i &lt; x.length; i ++) &#123;</div><div class="line">                var date = new Date(Date.parse(x[i].replace(/-/g,   &quot;/&quot;)));  </div><div class="line">                data.push([date, y[i]]); // 此处需要注意，data里面存放的是数组(时间，y轴数据-可以是多个)</div><div class="line">              &#125;</div><div class="line">            &#125;</div><div class="line">            return data;</div><div class="line">          &#125;)()</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line"></div><div class="line">  &#125;;</div><div class="line">  return option;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">function getOption(x, y) &#123;</div><div class="line">  let option = &#123;</div><div class="line">    title : &#123;</div><div class="line">        text: &apos;&apos;,</div><div class="line">    &#125;,</div><div class="line">    tooltip : &#123;</div><div class="line">        trigger: &apos;item&apos;,</div><div class="line">        formatter : function (params) &#123; // 格式化显示问题</div><div class="line">            var date = new Date(params.value[0]);</div><div class="line">            date = date.getFullYear() + &apos;-&apos;</div><div class="line">                   + (date.getMonth() + 1) + &apos;-&apos;</div><div class="line">                   + date.getDate() + &apos; &apos;</div><div class="line">            return &quot;日期：&quot; + date + &quot;&lt;br/&gt;测试次数：&quot; +  params.value[1];</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    toolbox: &#123;</div><div class="line">        show : true,</div><div class="line">        feature : &#123;</div><div class="line">            mark : &#123;show: true&#125;,</div><div class="line">            dataView : &#123;show: true, readOnly: false&#125;,</div><div class="line">            restore : &#123;show: true&#125;,</div><div class="line">            saveAsImage : &#123;show: true&#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    dataZoom: &#123; // 显示缩放轴，且从70% 开始</div><div class="line">        show: true,</div><div class="line">        start : 70</div><div class="line">    &#125;,</div><div class="line">    legend : &#123;</div><div class="line">        data : [&apos;series1&apos;]</div><div class="line">    &#125;,</div><div class="line">    xAxis : [</div><div class="line">        &#123;</div><div class="line">            type : &apos;time&apos;, // 非常重要，设置x轴类型是time. (类型有：value, category, time, log)</div><div class="line">            splitNumber:10,</div><div class="line">            axisLabel: &#123;</div><div class="line">                rotate: 30, // 标签旋转角度</div><div class="line">                interval:0, // 默认auto（自动隐藏显示不下的） 0： 全部显示</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    ],</div><div class="line">    yAxis : [</div><div class="line">        &#123;</div><div class="line">            type : &apos;value&apos;,</div><div class="line">            minInterval: 1,  </div><div class="line">        &#125;</div><div class="line">    ],</div><div class="line">    series : [</div><div class="line">        &#123;</div><div class="line">          name: &apos;series1&apos;,</div><div class="line">          type: &apos;line&apos;,</div><div class="line">          showAllSymbol: true,</div><div class="line">          smooth:true,</div><div class="line">          areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">          symbol: &apos;circle&apos;,</div><div class="line">          symbolSize: 6,</div><div class="line">          data: (function() &#123;</div><div class="line">            let data = []; // 这个是在react项目中，防止数据从有到无变化时会报错的问题,每次获取新数据的时候要提前清空数据</div><div class="line">            if(x.length !== 0) &#123;</div><div class="line">              data = [];</div><div class="line">              for(let i = 0; i &lt; x.length; i ++) &#123;</div><div class="line">                var date = new Date(Date.parse(x[i].replace(/-/g,   &quot;/&quot;)));  </div><div class="line">                data.push([date, y[i]]); // 此处需要注意，data里面存放的是数组(时间，y轴数据-可以是多个)</div><div class="line">              &#125;</div><div class="line">            &#125;</div><div class="line">            return data;</div><div class="line">          &#125;)()</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line"></div><div class="line">  &#125;;</div><div class="line">  return option;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3>echart 柱状图显示数据</h3>
-<p>series 下添加
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">label: &#123;</div><div class="line">  normal: &#123;</div><div class="line">      show: true,</div><div class="line">      position: &apos;left&apos; // 默认在柱状图上显示数据</div><div class="line">  &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<h3 id="echart-柱状图显示数据"><a href="#echart-柱状图显示数据" class="headerlink" title="echart 柱状图显示数据"></a>echart 柱状图显示数据</h3><p>series 下添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">label: &#123;</div><div class="line">  normal: &#123;</div><div class="line">      show: true,</div><div class="line">      position: &apos;left&apos; // 默认在柱状图上显示数据</div><div class="line">  &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
 
       
 
@@ -285,7 +287,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/10/note/echart-pits/" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aQY7DIAwF0N7/0pntSJ2k33Y6UuCxqqo08Fi4Nub1isfxa/Sef//8/rbqLOWBgYHxWMZxOfJlVWe5nj1fGwYGxj6Ms4nzcJnzzkLt5A0YGBgYycTX77kO2fONwMDAwLguOKsJZQLGwMDA6C0oeT5P+6pp6G21OAYGxgMZ+an7/3/+Sn8DAwPjUYyjOKoBd/5NNBcGBsbSjF4DsneIdm/AxcDA2IcxL1MnIbt6qNfMWzEwMB7OyNuN1RDcO27LwR9CMwYGxqKMaiGatx6TtmVvK1/V/cDAwHgg4xutx7ypWd2scpDFwMBYgtELtdVS8xvpJgYGxj6MXkBMkrk8lN9QxGJgYGzAmKRrvbQvD7XRLBgYGBsw7l3uJFnMl/7HbREMDIxFGXl610vpqhcsqqkkBgbGDoxeqdlL6fLCuPw3gIGBsQGjt8TrMF2O9/Fp/2nAxcDAWJoxSc7y6xHVorR5ZwQDA2M5RvJQ7xAtTwerDYMIg4GBsRwjT+yShPKuJuUoQcTAwNiAkSeLk+tivQtnp6vCwMDYhpGEy2Rx+XvywP1hRgwMjEUZR3H0Lm/ddQx3Oi8GBsbSjHxMAm6vcM23DAMDYwdGNchOkrnelhV6GhgYGEsz5oEyb3nmbdHCZQsMDAyM4mHc/PZH+VoYBgYGRjFEJodl1XbCh99iYGBswKheiagesd1b9GJgYOzGqJaO96aS1Rxv1MjEwMB4HuMHlbNBz/2LP6UAAAAASUVORK5CYII=" alt="微信分享二维码">
     </div>
 </div>
 
@@ -309,7 +311,7 @@
     </a>
   
   
-    <a href="/2017/10/10/python/install-libs/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/10/10/install-libs/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">python安装类库</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -444,7 +446,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -460,15 +470,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">

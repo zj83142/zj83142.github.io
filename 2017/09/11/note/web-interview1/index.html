@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>积累一些常见的面试题 | zj83142</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端安全与防范  XSS: 跨站脚本攻击  说明：它允许用户讲恶意代码植入到提供给其他用户使用的页面中，可以简单的理解为一种Javascript代码注入。 预防措施：  过滤转义输入输出 避免使用eval、new Function 等执行字符串的方法，除非确定字符串和用户输入五官 使用cookie的httpOnly属性，加上了这个属性的cookie字段，js是无法进行读写的 使用innerHtml">
+  <meta name="description" content="前端安全与防范 XSS: 跨站脚本攻击  说明：它允许用户讲恶意代码植入到提供给其他用户使用的页面中，可以简单的理解为一种Javascript代码注入。 预防措施：  过滤转义输入输出 避免使用eval、new Function 等执行字符串的方法，除非确定字符串和用户输入五官 使用cookie的httpOnly属性，加上了这个属性的cookie字段，js是无法进行读写的 使用innerHtml、">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="积累一些常见的面试题">
 <meta property="og:url" content="http://yoursite.com/2017/09/11/note/web-interview1/index.html">
 <meta property="og:site_name" content="zj83142">
-<meta property="og:description" content="前端安全与防范  XSS: 跨站脚本攻击  说明：它允许用户讲恶意代码植入到提供给其他用户使用的页面中，可以简单的理解为一种Javascript代码注入。 预防措施：  过滤转义输入输出 避免使用eval、new Function 等执行字符串的方法，除非确定字符串和用户输入五官 使用cookie的httpOnly属性，加上了这个属性的cookie字段，js是无法进行读写的 使用innerHtml">
+<meta property="og:description" content="前端安全与防范 XSS: 跨站脚本攻击  说明：它允许用户讲恶意代码植入到提供给其他用户使用的页面中，可以简单的理解为一种Javascript代码注入。 预防措施：  过滤转义输入输出 避免使用eval、new Function 等执行字符串的方法，除非确定字符串和用户输入五官 使用cookie的httpOnly属性，加上了这个属性的cookie字段，js是无法进行读写的 使用innerHtml、">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-10T07:49:01.361Z">
+<meta property="og:updated_time" content="2017-10-26T05:54:09.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="积累一些常见的面试题">
-<meta name="twitter:description" content="前端安全与防范  XSS: 跨站脚本攻击  说明：它允许用户讲恶意代码植入到提供给其他用户使用的页面中，可以简单的理解为一种Javascript代码注入。 预防措施：  过滤转义输入输出 避免使用eval、new Function 等执行字符串的方法，除非确定字符串和用户输入五官 使用cookie的httpOnly属性，加上了这个属性的cookie字段，js是无法进行读写的 使用innerHtml">
+<meta name="twitter:description" content="前端安全与防范 XSS: 跨站脚本攻击  说明：它允许用户讲恶意代码植入到提供给其他用户使用的页面中，可以简单的理解为一种Javascript代码注入。 预防措施：  过滤转义输入输出 避免使用eval、new Function 等执行字符串的方法，除非确定字符串和用户输入五官 使用cookie的httpOnly属性，加上了这个属性的cookie字段，js是无法进行读写的 使用innerHtml、">
   
     <link rel="alternative" href="/atom.xml" title="zj83142" type="application/atom+xml">
   
@@ -60,7 +60,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives">归档</a></li>
+	        
+				<li><a href="/tags/笔记/">笔记</a></li>
 	        
 			</ul>
 		</nav>
@@ -118,6 +120,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -135,12 +139,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/笔记/">笔记</a></li>
 		        
 				</ul>
 			</nav>
@@ -175,8 +181,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>前端安全与防范</h3>
-<ol>
+        <h3 id="前端安全与防范"><a href="#前端安全与防范" class="headerlink" title="前端安全与防范"></a>前端安全与防范</h3><ol>
 <li>XSS: 跨站脚本攻击</li>
 </ol>
 <p>说明：它允许用户讲恶意代码植入到提供给其他用户使用的页面中，可以简单的理解为一种Javascript代码注入。</p>
@@ -185,21 +190,22 @@
 <li>过滤转义输入输出</li>
 <li>避免使用eval、new Function 等执行字符串的方法，除非确定字符串和用户输入五官</li>
 <li>使用cookie的httpOnly属性，加上了这个属性的cookie字段，js是无法进行读写的</li>
-<li>使用innerHtml、document.write的时候，如果数据是用户输入的，那么需要对关键字符进行过滤与转义</li>
-</ul>
-<ol start="2">
+<li>使用innerHtml、document.write的时候，如果数据是用户输入的，那么需要对关键字符进行过滤与转义<a id="more"></a>
+<ol>
 <li>CSRF：跨站请求伪造</li>
 </ol>
+</li>
+</ul>
 <p>说明：其实就是网站中的一些提交行为，被黑客利用，在你访问黑客的网站的时候进行操作，会被操作到其他网站上</p>
 <p>预防措施：</p>
 <ul>
 <li>检测http referer 是否是同域名</li>
 <li>避免登录的session长时间存储在客户端中</li>
-<li>关键请求使用验证码或者token机制</li>
-</ul>
+<li><p>关键请求使用验证码或者token机制</p>
 <p>其他的一些攻击方法还有 http劫持，界面操作劫持</p>
-<h3>闭包问题</h3>
-<p>什么是闭包？</p>
+</li>
+</ul>
+<h3 id="闭包问题"><a href="#闭包问题" class="headerlink" title="闭包问题"></a>闭包问题</h3><p>什么是闭包？</p>
 <p>专业的说法：<strong>当一个内部函数被其他外部函数之外的变量引用时，就形成了一个闭包。</strong></p>
 <p>简单理解：闭包就是一个具有封闭功能与包裹功能的结构，是为了实现具有私有访问控件的函数，函数可以构成闭包，因为函数内部定义的数据函数外部无法访问，即函数具有封闭性，函数可以封闭代码即具有包裹性，所以函数可以构成闭包。</p>
 <p>创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。</p>
@@ -213,56 +219,41 @@
 <ul>
 <li>常驻内存，会增大内存使用量，使用不当很容易造成内存泄漏</li>
 </ul>
-<h3>深拷贝和浅拷贝</h3>
-<blockquote>
+<h3 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h3><blockquote>
 <p>浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，修改新对象不会改到原对象</p>
 </blockquote>
-<p><strong>实现浅拷贝</strong>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = obj1;</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125; &lt;-- b 被改到了</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></p>
-<p><strong>实现深拷贝</strong>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = &#123; a: obj1.a, b: obj1.b, c: obj1.c &#125;;</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 20, c: 30 &#125; &lt;-- b 沒被改到</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></p>
+<p><strong>实现浅拷贝</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = obj1;</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125; &lt;-- b 被改到了</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></p>
+<p><strong>实现深拷贝</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = &#123; a: obj1.a, b: obj1.b, c: obj1.c &#125;;</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 20, c: 30 &#125; &lt;-- b 沒被改到</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></p>
 <p><strong>深拷贝实现方式</strong></p>
 <ul>
-<li>
-<p>手动复制方式</p>
+<li>手动复制方式</li>
+<li><p>Object.assign, ES6的新函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = Object.assign(&#123;&#125;, obj1);</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 20, c: 30 &#125; &lt;-- 沒被改到</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure>
 </li>
-<li>
-<p>Object.assign, ES6的新函数
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = Object.assign(&#123;&#125;, obj1);</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 20, c: 30 &#125; &lt;-- 沒被改到</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>转成JSON，再转回来
-用JSON.stringify 把对象转成字符串，再用JSON.parse把字符串转成新的对象</p>
+<li><p>转成JSON，再转回来<br>用JSON.stringify 把对象转成字符串，再用JSON.parse把字符串转成新的对象</p>
 <p>缺点：只有可以转化成JSON格式的对象才可以这样用，像function没办法转成JSON</p>
 </li>
-<li>
-<p>jquery，有提供一个$.extend可以用来做Deep Copy</p>
-<ol>
+<li>jquery，有提供一个$.extend可以用来做Deep Copy<ol>
 <li>lodash，也有提供_.cloneDeep用来做 Deep Copy。</li>
-<li>递归实现深拷贝
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function clone( o ) &#123;</div><div class="line">  var temp = &#123;&#125;;</div><div class="line">  for( var k in o ) &#123;</div><div class="line">    if( typeof o[ k ] == &apos;object&apos; )&#123;</div><div class="line">      temp[ k ] = clone( o[ k ] );</div><div class="line">    &#125; else &#123;</div><div class="line">      temp[ k ] = o[ k ];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return temp;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<li>递归实现深拷贝<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function clone( o ) &#123;</div><div class="line">  var temp = &#123;&#125;;</div><div class="line">  for( var k in o ) &#123;</div><div class="line">    if( typeof o[ k ] == &apos;object&apos; )&#123;</div><div class="line">      temp[ k ] = clone( o[ k ] );</div><div class="line">    &#125; else &#123;</div><div class="line">      temp[ k ] = o[ k ];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return temp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ol>
 </li>
 </ul>
-<h3>https 的握手过程</h3>
-<ol>
+<h3 id="https-的握手过程"><a href="#https-的握手过程" class="headerlink" title="https 的握手过程"></a>https 的握手过程</h3><ol>
 <li>浏览器将自己支持的一套加密规则发送给服务器</li>
 <li>服务器从中选出一组加密算法与hash算法，并讲自己的身份信息以整数的形式发回给浏览器。证书里面包含了网站地址，加密公钥，以及整数的颁发机构等信息。</li>
-<li>浏览器获取网站证书之后浏览器要做一下工作：</li>
-</ol>
-<ul>
+<li>浏览器获取网站证书之后浏览器要做一下工作：<ul>
 <li>验证证书的合法</li>
 <li>如果证书受信任，或者是用户接收了不受信任的证书，浏览器会生成一串随机数的密码，并用于证书中提供的公钥加密</li>
 <li>使用约定好的hash算法计算握手消息，并使用生成的随机数对消息进行加密，最后将之前生成的所有消息发送给服务器</li>
 </ul>
-<ol start="4">
-<li>网站接收浏览器发来的数据之后要做以下操作：</li>
-</ol>
-<ul>
+</li>
+<li>网站接收浏览器发来的数据之后要做以下操作：<ul>
 <li>使用自己的私钥将信息解密取出密码，使用密码解密浏览器发来的握手消息，并验证hash是否与浏览器发送来的一致</li>
 <li>使用密码加密一段握手消息，发送给浏览器</li>
 </ul>
-<ol start="5">
+</li>
 <li>浏览器解密并计算握手消息的hash，如果与服务端发过来的hash一致，此时握手过程结束，之后所有的通信数据将由之前浏览器生成的随机密码并利用对称加密算法进行加密</li>
 </ol>
 <p><a href="http://blog.jobbole.com/105633/" target="_blank" rel="external">参考文档</a></p>
@@ -367,7 +358,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/11/note/web-interview1/" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3ay27CQAwF0P7/T6dSV0iIcG0H1MycWaEKmjlZWH79/MTn+DuPnx//knzz+VfP/+H8P19wMDAwbss4Ts+r77y6+itM9en53TAwMPZhVINsEkCT8H0ecJO7YWBgYOSpYZIy5sEdAwMDY8K4KjQnLwIDAwOjWsROCtQ8iH+8FsfAwLghozcY+M7nj883MDAw/j3jKJ5vNuMKt8LAwFiakaRl1bZ+fsXqb9809TAwMBZlnDe8qqH2qqBcXiDDwMDYgNFLB6tjy94oNGrYYWBgbMCYNNfyS+QjhGQwcMG2CAYGxq0Y84CbB+V5YdzsGmJgYNycMV+5qBa3vVWMqBbHwMBYmtFr9FdTzF5L7k3aioGBsQFjUo4mF528gqigxcDAWJoxKTXzBlm1KM1fEwYGxg6MQqEYF5/z1Y3ya8XAwNie0Uvjeolj9ZVhYGDsxqguW1TTyuqAszBexcDA2ICRr3DlIXieRF62M4KBgXFzRi8g9krTXhFbXRrDwMBYj9EbA0wu0VuteBOOMTAwtmFMGvd56paPNgvJKAYGxtKMvMX/iV9VT+EpGBgYCzGO4slHCL1Ur9d6w8DAWJtRDXbnxeeEmjfakjYcBgbGeowkyFZbY3nimKxZFGYaGBgYSzPyQFlN2qpNvbyUvWDHDQMDYzlGtJLVGnn2UkkMDAyMnNELzXkZHH0fAwNjA0a1iL1qhDkZJ2BgYOzDmD/sggcMBgkYGBhLM34BYN6OdD4GCMkAAAAASUVORK5CYII=" alt="微信分享二维码">
     </div>
 </div>
 
@@ -526,7 +517,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,15 +541,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">

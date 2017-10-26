@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>zj83142</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-10-26T02:47:39.163Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>情深·缘浅</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack 学习笔记</title>
+    <link href="http://yoursite.com/2017/10/24/tools/webpack/"/>
+    <id>http://yoursite.com/2017/10/24/tools/webpack/</id>
+    <published>2017-10-24T01:32:03.000Z</published>
+    <updated>2017-10-26T02:47:39.163Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/hugzh/webpack-simple-demo" target="_blank" rel="external">git上的一个webpack配置案例</a></p><p>webpack 是什么？</p><p>Webpack就是个模块打包工具，将模块及其依赖打包生成静态资源。在Webpack的机制里，所有的资源都是模块(js,css,图片等)，而且可以通过代码分隔(Code Splitting)的方法异步加载，实现性能上的优化。<br><a id="more"></a></p><ol><li>模块化</li><li>自定义文件或npm install</li><li>静态文件模块化</li><li>借助于插件和加载器</li></ol><p>webpack的优势</p><ol><li>代码分离</li><li>装载器（css, sass, jsx 等等）</li><li>智能解析（require(“./template/“+names+’.ejs’)）</li></ol><p>webpack安装流程</p><ol><li>npm install -g webpack</li><li>npm install webpack-dev-server</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var cats = [&apos;aa&apos;, &apos;bb&apos;, &apos;cc&apos;];</div><div class="line">module.exports = cats;</div><div class="line"></div><div class="line">var cats = require(&apos;./cats.js&apos;);</div><div class="line">console.log(cats);</div></pre></td></tr></table></figure><p>编译命令：</p><ul><li>webpack app.js bundle.js<br>注：app.js 需要编译的文件<br>  bundle.js 编译后输出的文件</li><li>webpack app.js bundle.js –watch</li></ul><p>webpack 第三方库</p><ol><li>使用第三方（jquery）</li><li>模块化静态文件（css）</li><li>使用配置文件webpack.config.js</li><li>使用webpack-dev-server</li></ol><p><strong>安装第三方库 jquery</strong><br>npm install jquery –save</p><p><strong>css模块化</strong><br>安装插件 npm install css-loader style-loader –save-dev</p><p>使用：require(‘!style-loader!css-loader!./style.css’);</p><p><strong>webpack-dev-server</strong></p><p>npm install -g webpack-dev-server</p><p>在package.js 的scripts 中配置 “webpack-dev-server –entry ./src/js/app.js –output-filename ./dist/bundle.js”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;test-webpack&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;&quot;,</div><div class="line">  &quot;main&quot;: &quot;index.js&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;start&quot;: &quot;webpack-dev-server --port 9001 --entry ./src/js/app.js --output-filename ./dist/bundle.js&quot;,</div><div class="line">    &quot;build&quot;: &quot;webpack&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;author&quot;: &quot;&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;dependencies&quot;: &#123;</div><div class="line">    &quot;jquery&quot;: &quot;^3.2.1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;css-loader&quot;: &quot;^0.28.7&quot;,</div><div class="line">    &quot;style-loader&quot;: &quot;^0.19.0&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><ol><li>执行命令: npm start</li><li>打开 localhost:8080</li></ol><p>注意：Webpack与webpack-dev-server版本不兼容导致npm start 报错，解决方法：</p><ul><li>将webpack-dev-server卸载掉：npm uninstall webpack-dev-server -g</li><li>然后安装1.15.0版本的webpack-dev-server：npm install webpack-dev-server@1.15.0 -g</li></ul><p><strong>html-webpack-plugin</strong></p><p>安装：npm install html-webpack-plugin –save</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">var htmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    main: &apos;./src/js/main.js&apos;,</div><div class="line">    a: &apos;./src/js/a.js&apos;</div><div class="line">  &#125;,</div><div class="line">  output: &#123;           // 出口文件</div><div class="line">    path: __dirname + &apos;/dist&apos;,</div><div class="line">    filename: &apos;js/[name]-[chunkhash].js&apos;,</div><div class="line">    publicPath: &apos;http://cdn.com/&apos; // 上线地址</div><div class="line">  &#125;,</div><div class="line">  // 需要依赖的插件或者是装载器</div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;test: /\.css$/, loader:&apos;style-loader!css-loader&apos;&#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/, loader:&apos;babel-loader&apos;,</div><div class="line">        exclude: &apos;/node_modules/&apos;,   // 优化打包速度</div><div class="line">        include: &apos;./src&apos;,            // 优化打包速度</div><div class="line">        query: &#123;</div><div class="line">          presets: [&apos;es2015&apos;]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    new htmlWebpackPlugin(&#123;</div><div class="line">      template: &apos;index.html&apos;,</div><div class="line">      filename：&apos;index.html&apos;,</div><div class="line">      inject: false,                          // 是否默认注入javascript</div><div class="line">      title: &apos;webpack demo&apos;,                  // 使用方法，在html中引用 &lt;%= htmlWebpackPlugin.options.title %&gt;</div><div class="line">      minify: &#123;                               // 压缩</div><div class="line">        removeComments: true,                 // 注释</div><div class="line">        collapseWhitespace: true,             // 删除空格</div><div class="line">      &#125;,</div><div class="line">      chunks: [&apos;main&apos;, &apos;a&apos;]                   // 只引入需要的chuncks, 用于多页面配置, 注意设置inject: true</div><div class="line">    &#125;),</div><div class="line">    new htmlWebpackPlugin(&#123;</div><div class="line">      ...</div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure><blockquote><p>通过配置多个htmlWebpackPlugin 可以配置多个页面</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://github.com/hugzh/webpack-simple-demo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;git上的一个webpack配置案例&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;webpack 是什么？&lt;/p&gt;
+&lt;p&gt;Webpack就是个模块打包工具，将模块及其依赖打包生成静态资源。在Webpack的机制里，所有的资源都是模块(js,css,图片等)，而且可以通过代码分隔(Code Splitting)的方法异步加载，实现性能上的优化。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="webpack" scheme="http://yoursite.com/tags/webpack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2017年10月工作笔记和感受</title>
+    <link href="http://yoursite.com/2017/10/23/work/2017-10/"/>
+    <id>http://yoursite.com/2017/10/23/work/2017-10/</id>
+    <published>2017-10-23T01:39:47.000Z</published>
+    <updated>2017-10-23T07:01:12.827Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="精益求精，不是浅尝辄止"><a href="#精益求精，不是浅尝辄止" class="headerlink" title="精益求精，不是浅尝辄止"></a>精益求精，不是浅尝辄止</h3><p><strong>对自己要求越高，进步越快</strong>。反思了一下这几年工作下来好像能力并没有什么提高，</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;精益求精，不是浅尝辄止&quot;&gt;&lt;a href=&quot;#精益求精，不是浅尝辄止&quot; class=&quot;headerlink&quot; title=&quot;精益求精，不是浅尝辄止&quot;&gt;&lt;/a&gt;精益求精，不是浅尝辄止&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;对自己要求越高，进步越快&lt;/strong&gt;。反思了一
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="work" scheme="http://yoursite.com/tags/work/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sublime 使用</title>
+    <link href="http://yoursite.com/2017/10/17/tools/sublime/"/>
+    <id>http://yoursite.com/2017/10/17/tools/sublime/</id>
+    <published>2017-10-17T02:35:40.000Z</published>
+    <updated>2017-10-26T05:54:41.908Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="sublime-安装插件"><a href="#sublime-安装插件" class="headerlink" title="sublime 安装插件"></a>sublime 安装插件</h3><blockquote><p>查看sublime的插件列表 Ctrl+Shift+P 输入：list packages</p></blockquote><p>大部分插件安装步骤：</p><ol><li>在sublime中打开PackageControl, 快捷键：Ctrl+Shift+P</li><li>打开Install Package 窗口，直接输入 install package 按回车</li><li>弹出安装插件框，输入 vue 找到 xxx 按回车</li><li>重新打开文件或重启sublime<a id="more"></a>常用插件</li></ol><ul><li>添加支持vue代码高亮控件 —— Vue Syntax Hightlight</li><li>超高速前端开发工具 —— Emmet Style Reflector</li></ul><h3 id="sunlime-配置"><a href="#sunlime-配置" class="headerlink" title="sunlime 配置"></a>sunlime 配置</h3><p>选择Preference ——&gt; settings ——&gt; User, 贴入一下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;font_size&quot;: 16, // 默认字体大小为16</div><div class="line">  &quot;highlight_line&quot;: true,</div><div class="line">  &quot;ignored_packages&quot;:</div><div class="line">  [</div><div class="line">    &quot;Vintage&quot;</div><div class="line">  ],</div><div class="line">  &quot;tab_size&quot;: 2,  // 默认tab 为2个空格</div><div class="line">  &quot;translate_tabs_to_spaces&quot;: true</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;sublime-安装插件&quot;&gt;&lt;a href=&quot;#sublime-安装插件&quot; class=&quot;headerlink&quot; title=&quot;sublime 安装插件&quot;&gt;&lt;/a&gt;sublime 安装插件&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;查看sublime的插件列表 Ctrl+Shift+P 输入：list packages&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;大部分插件安装步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在sublime中打开PackageControl, 快捷键：Ctrl+Shift+P&lt;/li&gt;
+&lt;li&gt;打开Install Package 窗口，直接输入 install package 按回车&lt;/li&gt;
+&lt;li&gt;弹出安装插件框，输入 vue 找到 xxx 按回车&lt;/li&gt;
+&lt;li&gt;重新打开文件或重启sublime
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="sublime" scheme="http://yoursite.com/tags/sublime/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>echart踩坑</title>
+    <link href="http://yoursite.com/2017/10/10/note/echart-pits/"/>
+    <id>http://yoursite.com/2017/10/10/note/echart-pits/</id>
+    <published>2017-10-10T08:00:30.000Z</published>
+    <updated>2017-10-26T05:54:02.446Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录echarts使用过程中遇到的那些坑</p><h3 id="x轴数据是字符串日期格式且不连续时，间隔问题"><a href="#x轴数据是字符串日期格式且不连续时，间隔问题" class="headerlink" title="x轴数据是字符串日期格式且不连续时，间隔问题"></a>x轴数据是字符串日期格式且不连续时，间隔问题</h3><blockquote><p>刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">function getOption(x, y) &#123;</div><div class="line">  let option = &#123;</div><div class="line">    title : &#123;</div><div class="line">        text: &apos;&apos;,</div><div class="line">    &#125;,</div><div class="line">    tooltip : &#123;</div><div class="line">        trigger: &apos;item&apos;,</div><div class="line">        formatter : function (params) &#123; // 格式化显示问题</div><div class="line">            var date = new Date(params.value[0]);</div><div class="line">            date = date.getFullYear() + &apos;-&apos;</div><div class="line">                   + (date.getMonth() + 1) + &apos;-&apos;</div><div class="line">                   + date.getDate() + &apos; &apos;</div><div class="line">            return &quot;日期：&quot; + date + &quot;&lt;br/&gt;测试次数：&quot; +  params.value[1];</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    toolbox: &#123;</div><div class="line">        show : true,</div><div class="line">        feature : &#123;</div><div class="line">            mark : &#123;show: true&#125;,</div><div class="line">            dataView : &#123;show: true, readOnly: false&#125;,</div><div class="line">            restore : &#123;show: true&#125;,</div><div class="line">            saveAsImage : &#123;show: true&#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    dataZoom: &#123; // 显示缩放轴，且从70% 开始</div><div class="line">        show: true,</div><div class="line">        start : 70</div><div class="line">    &#125;,</div><div class="line">    legend : &#123;</div><div class="line">        data : [&apos;series1&apos;]</div><div class="line">    &#125;,</div><div class="line">    xAxis : [</div><div class="line">        &#123;</div><div class="line">            type : &apos;time&apos;, // 非常重要，设置x轴类型是time. (类型有：value, category, time, log)</div><div class="line">            splitNumber:10,</div><div class="line">            axisLabel: &#123;</div><div class="line">                rotate: 30, // 标签旋转角度</div><div class="line">                interval:0, // 默认auto（自动隐藏显示不下的） 0： 全部显示</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    ],</div><div class="line">    yAxis : [</div><div class="line">        &#123;</div><div class="line">            type : &apos;value&apos;,</div><div class="line">            minInterval: 1,  </div><div class="line">        &#125;</div><div class="line">    ],</div><div class="line">    series : [</div><div class="line">        &#123;</div><div class="line">          name: &apos;series1&apos;,</div><div class="line">          type: &apos;line&apos;,</div><div class="line">          showAllSymbol: true,</div><div class="line">          smooth:true,</div><div class="line">          areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">          symbol: &apos;circle&apos;,</div><div class="line">          symbolSize: 6,</div><div class="line">          data: (function() &#123;</div><div class="line">            let data = []; // 这个是在react项目中，防止数据从有到无变化时会报错的问题,每次获取新数据的时候要提前清空数据</div><div class="line">            if(x.length !== 0) &#123;</div><div class="line">              data = [];</div><div class="line">              for(let i = 0; i &lt; x.length; i ++) &#123;</div><div class="line">                var date = new Date(Date.parse(x[i].replace(/-/g,   &quot;/&quot;)));  </div><div class="line">                data.push([date, y[i]]); // 此处需要注意，data里面存放的是数组(时间，y轴数据-可以是多个)</div><div class="line">              &#125;</div><div class="line">            &#125;</div><div class="line">            return data;</div><div class="line">          &#125;)()</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line"></div><div class="line">  &#125;;</div><div class="line">  return option;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p></blockquote><h3 id="echart-柱状图显示数据"><a href="#echart-柱状图显示数据" class="headerlink" title="echart 柱状图显示数据"></a>echart 柱状图显示数据</h3><p>series 下添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">label: &#123;</div><div class="line">  normal: &#123;</div><div class="line">      show: true,</div><div class="line">      position: &apos;left&apos; // 默认在柱状图上显示数据</div><div class="line">  &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录echarts使用过程中遇到的那些坑&lt;/p&gt;
+&lt;h3 id=&quot;x轴数据是字符串日期格式且不连续时，间隔问题&quot;&gt;&lt;a href=&quot;#x轴数据是字符串日期格式且不连续时，间隔问题&quot; class=&quot;headerlink&quot; title=&quot;x轴数据是字符串日期格式且不连续时，间隔问题&quot;&gt;&lt;/a&gt;x轴数据是字符串日期格式且不连续时，间隔问题&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！&lt;br&gt;
+    
+    </summary>
+    
+      <category term="echart" scheme="http://yoursite.com/categories/echart/"/>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python安装类库</title>
+    <link href="http://yoursite.com/2017/10/10/install-libs/"/>
+    <id>http://yoursite.com/2017/10/10/install-libs/</id>
+    <published>2017-10-10T07:54:23.000Z</published>
+    <updated>2017-10-26T05:55:07.620Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="在win7平台上安装gevent和gevent-socketio"><a href="#在win7平台上安装gevent和gevent-socketio" class="headerlink" title="在win7平台上安装gevent和gevent-socketio"></a>在win7平台上安装gevent和gevent-socketio</h3><p>在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了</p><p>gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:<br><a id="more"></a></p><ul><li>libevent的dll文件</li><li>greenlet的免编译安装包</li><li>gevent的免编译安装包</li></ul><p><strong>libevent.dll</strong></p><p>下载地址：</p><ul><li><a href="http://www.dll-found.com/libevent-2-0-5.dll_download.html" target="_blank" rel="external">http://www.dll-found.com/libevent-2-0-5.dll_download.html</a> (需要翻墙)</li><li><a href="http://pan.baidu.com/s/1ge5DxT5" target="_blank" rel="external">http://pan.baidu.com/s/1ge5DxT5</a> (百度云盘)<br>安装方法： 测试环境是windows 7 64bit, 安装了32bit的Python 2.7版本. 因此将下载到的libevent-2-0-5.dll复制到C:\Windows\SysWOW64目录下即可.</li></ul><p><strong>greenlet 和 gevent</strong></p><p>下载地址：<strong><a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">http://www.lfd.uci.edu/~gohlke/pythonlibs/</a></strong></p><p>安装方法：</p><ul><li>pip install greenlet-0.4.5-cp27-none-win32.whl</li><li>pip install gevent-1.0.1-cp27-none-win32.whl</li></ul><p><strong>gevent-socketio</strong></p><p>安装方法：pip install gevent-socketio</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;在win7平台上安装gevent和gevent-socketio&quot;&gt;&lt;a href=&quot;#在win7平台上安装gevent和gevent-socketio&quot; class=&quot;headerlink&quot; title=&quot;在win7平台上安装gevent和gevent-socketio&quot;&gt;&lt;/a&gt;在win7平台上安装gevent和gevent-socketio&lt;/h3&gt;&lt;p&gt;在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了&lt;/p&gt;
+&lt;p&gt;gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:&lt;br&gt;
+    
+    </summary>
+    
+      <category term="python安装类库" scheme="http://yoursite.com/categories/python%E5%AE%89%E8%A3%85%E7%B1%BB%E5%BA%93/"/>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python安装类库</title>
+    <link href="http://yoursite.com/2017/10/10/python/install-libs/"/>
+    <id>http://yoursite.com/2017/10/10/python/install-libs/</id>
+    <published>2017-10-10T07:54:23.000Z</published>
+    <updated>2017-10-26T05:54:17.004Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="在win7平台上安装gevent和gevent-socketio"><a href="#在win7平台上安装gevent和gevent-socketio" class="headerlink" title="在win7平台上安装gevent和gevent-socketio"></a>在win7平台上安装gevent和gevent-socketio</h3><p>在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了</p><p>gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:</p><ul><li>libevent的dll文件</li><li>greenlet的免编译安装包</li><li>gevent的免编译安装包<a id="more"></a><strong>libevent.dll</strong></li></ul><p>下载地址：</p><ul><li><a href="http://www.dll-found.com/libevent-2-0-5.dll_download.html" target="_blank" rel="external">http://www.dll-found.com/libevent-2-0-5.dll_download.html</a> (需要翻墙)</li><li><a href="http://pan.baidu.com/s/1ge5DxT5" target="_blank" rel="external">http://pan.baidu.com/s/1ge5DxT5</a> (百度云盘)<br>安装方法： 测试环境是windows 7 64bit, 安装了32bit的Python 2.7版本. 因此将下载到的libevent-2-0-5.dll复制到C:\Windows\SysWOW64目录下即可.</li></ul><p><strong>greenlet 和 gevent</strong></p><p>下载地址：<strong><a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">http://www.lfd.uci.edu/~gohlke/pythonlibs/</a></strong></p><p>安装方法：</p><ul><li>pip install greenlet-0.4.5-cp27-none-win32.whl</li><li>pip install gevent-1.0.1-cp27-none-win32.whl</li></ul><p><strong>gevent-socketio</strong></p><p>安装方法：pip install gevent-socketio</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;在win7平台上安装gevent和gevent-socketio&quot;&gt;&lt;a href=&quot;#在win7平台上安装gevent和gevent-socketio&quot; class=&quot;headerlink&quot; title=&quot;在win7平台上安装gevent和gevent-socketio&quot;&gt;&lt;/a&gt;在win7平台上安装gevent和gevent-socketio&lt;/h3&gt;&lt;p&gt;在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了&lt;/p&gt;
+&lt;p&gt;gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;libevent的dll文件&lt;/li&gt;
+&lt;li&gt;greenlet的免编译安装包&lt;/li&gt;
+&lt;li&gt;gevent的免编译安装包
+    
+    </summary>
+    
+      <category term="python安装类库" scheme="http://yoursite.com/categories/python%E5%AE%89%E8%A3%85%E7%B1%BB%E5%BA%93/"/>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日常踩坑集合(一)</title>
+    <link href="http://yoursite.com/2017/10/10/note/daily-pit1/"/>
+    <id>http://yoursite.com/2017/10/10/note/daily-pit1/</id>
+    <published>2017-10-10T07:51:04.000Z</published>
+    <updated>2017-10-12T02:52:48.932Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="解决目录层次太深删除报错的问题"><a href="#解决目录层次太深删除报错的问题" class="headerlink" title="解决目录层次太深删除报错的问题"></a>解决目录层次太深删除报错的问题</h3><p>问题：在使用npm当中，自动生成的node_modules文件夹，因为文件目录层级太深，无法系统删除</p><p>解决方案： 1、 安装：npm install -g rimraf（全局安装） 2、 使用：先定位目标文件夹的父级目录，然后命令行输入rimraf <strong><em>（</em></strong>为需要删除的文件夹名称）</p><h3 id="命令积累"><a href="#命令积累" class="headerlink" title="命令积累"></a>命令积累</h3><ul><li>查看域名对应的服务器ip地址，如：nslookup www.baidu.com</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;解决目录层次太深删除报错的问题&quot;&gt;&lt;a href=&quot;#解决目录层次太深删除报错的问题&quot; class=&quot;headerlink&quot; title=&quot;解决目录层次太深删除报错的问题&quot;&gt;&lt;/a&gt;解决目录层次太深删除报错的问题&lt;/h3&gt;&lt;p&gt;问题：在使用npm当中，自动生成的n
+      
+    
+    </summary>
+    
+      <category term="踩坑" scheme="http://yoursite.com/categories/%E8%B8%A9%E5%9D%91/"/>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css-loadding 效果积累</title>
+    <link href="http://yoursite.com/2017/10/10/css/loadding/"/>
+    <id>http://yoursite.com/2017/10/10/css/loadding/</id>
+    <published>2017-10-10T07:29:08.000Z</published>
+    <updated>2017-10-26T05:53:06.413Z</updated>
+    
+    <content type="html"><![CDATA[<p>在日常中遇到的感觉不错的loading效果，先积累起来，有时间好好看看具体是如何实现的。<br><a id="more"></a></p><h3 id="第一种效果-查看"><a href="#第一种效果-查看" class="headerlink" title="第一种效果 查看"></a>第一种效果 <a href="https://codepen.io/augbog/pen/ZXQVVZ/" target="_blank" rel="external">查看</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">html, body &#123;</div><div class="line">  height: 100%;</div><div class="line">  background: grey;</div><div class="line">  display: flex;</div><div class="line">  flex-direction: column;</div><div class="line">  justify-content: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.loader &#123;</div><div class="line">  position: relative;</div><div class="line">  margin: 0 auto;</div><div class="line">  width: 300px;</div><div class="line">  height: 300px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.bounce &#123;</div><div class="line">  width: 100%;</div><div class="line">  height: 100%;</div><div class="line">  border-radius: 50%;</div><div class="line">  opacity: 0.8;</div><div class="line">  position: absolute;</div><div class="line">  top: 0;</div><div class="line">  left: 0;</div><div class="line">  -webkit-animation: bounce 5s infinite ease-in;</div><div class="line">  animation: bounce 5s infinite ease-in;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color1 &#123;</div><div class="line">  background-color: #06ceb4;</div><div class="line">  animation-delay: -1s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color2 &#123;</div><div class="line">  background-color: #ffeead;</div><div class="line">  animation-delay: -2s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color3 &#123;</div><div class="line">  background-color: #ff6f69;</div><div class="line">  animation-delay: -3s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color4 &#123;</div><div class="line">  background-color: #ffcc5c;</div><div class="line">  animation-delay: -4s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color5 &#123;</div><div class="line">  background-color: #88d8b0;</div><div class="line">  animation-delay: -5s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@keyframes bounce &#123;</div><div class="line">  0%, 100% &#123;</div><div class="line">    transform: scale(0);</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    transform: scale(1);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;div class=&quot;loader&quot;&gt;</div><div class="line">  &lt;div class=&quot;bounce color1&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color2&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color3&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color4&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color5&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure><h3 id="第二种效果-查看"><a href="#第二种效果-查看" class="headerlink" title="第二种效果 查看"></a>第二种效果 <a href="https://codepen.io/drenther/pen/Yrwvee" target="_blank" rel="external">查看</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">html, body &#123;</div><div class="line">  height: 100%;</div><div class="line">  width: 100%;</div><div class="line">  display: -webkit-box;</div><div class="line">  display: -ms-flexbox;</div><div class="line">  display: flex;</div><div class="line">  -webkit-box-pack: center;</div><div class="line">      -ms-flex-pack: center;</div><div class="line">          justify-content: center;</div><div class="line">  -webkit-box-align: center;</div><div class="line">      -ms-flex-align: center;</div><div class="line">          align-items: center;</div><div class="line">  background: #f5f5f5;</div><div class="line">&#125;</div><div class="line">html .loader,</div><div class="line">body .loader &#123;</div><div class="line">  height: 50px;</div><div class="line">  width: 50px;</div><div class="line">  position: relative;</div><div class="line">&#125;</div><div class="line">html .loader::after, html .loader::before,</div><div class="line">body .loader::after,</div><div class="line">body .loader::before &#123;</div><div class="line">  content: &quot;&quot;;</div><div class="line">  width: 50px;</div><div class="line">  height: 50px;</div><div class="line">  position: absolute;</div><div class="line">  border: solid 8px transparent;</div><div class="line">  border-radius: 50%;</div><div class="line">  -webkit-animation: wiggle 1.4s ease infinite;</div><div class="line">          animation: wiggle 1.4s ease infinite;</div><div class="line">&#125;</div><div class="line">html .loader::before,</div><div class="line">body .loader::before &#123;</div><div class="line">  border-top-color: #4285f4;</div><div class="line">  border-bottom-color: #34a853;</div><div class="line">&#125;</div><div class="line">html .loader::after,</div><div class="line">body .loader::after &#123;</div><div class="line">  border-left-color: #fbbc05;</div><div class="line">  border-right-color: #ea4335;</div><div class="line">  -webkit-animation-delay: 0.7s;</div><div class="line">          animation-delay: 0.7s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@-webkit-keyframes wiggle &#123;</div><div class="line">  0% &#123;</div><div class="line">    -webkit-transform: rotate(0deg) scale(1);</div><div class="line">            transform: rotate(0deg) scale(1);</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    -webkit-transform: rotate(180deg) scale(0.5);</div><div class="line">            transform: rotate(180deg) scale(0.5);</div><div class="line">  &#125;</div><div class="line">  100% &#123;</div><div class="line">    -webkit-transform: rotate(360deg) scale(1);</div><div class="line">            transform: rotate(360deg) scale(1);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@keyframes wiggle &#123;</div><div class="line">  0% &#123;</div><div class="line">    -webkit-transform: rotate(0deg) scale(1);</div><div class="line">            transform: rotate(0deg) scale(1);</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    -webkit-transform: rotate(180deg) scale(0.5);</div><div class="line">            transform: rotate(180deg) scale(0.5);</div><div class="line">  &#125;</div><div class="line">  100% &#123;</div><div class="line">    -webkit-transform: rotate(360deg) scale(1);</div><div class="line">            transform: rotate(360deg) scale(1);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;div class=&quot;loader&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在日常中遇到的感觉不错的loading效果，先积累起来，有时间好好看看具体是如何实现的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://yoursite.com/categories/CSS/"/>
+    
+    
+      <category term="css加载效果" scheme="http://yoursite.com/tags/css%E5%8A%A0%E8%BD%BD%E6%95%88%E6%9E%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css 性能优化</title>
+    <link href="http://yoursite.com/2017/09/28/css/css-optimization/"/>
+    <id>http://yoursite.com/2017/09/28/css/css-optimization/</id>
+    <published>2017-09-28T06:51:46.000Z</published>
+    <updated>2017-10-26T03:31:03.949Z</updated>
+    
+    <content type="html"><![CDATA[<p>css优化空间很大，对性能的影响也很大。事实上大部分复杂的页面完全不修改javascript代码，可以通过css的优化大幅提升render performance。这就需要我们对css的渲染有更深入的了解。css优化可以从加载性能、选择器性能、渲染性能、可维护性，健壮性方面入手…<br><a id="more"></a></p><h3 id="1-css-渲染规则"><a href="#1-css-渲染规则" class="headerlink" title="1. css 渲染规则"></a>1. css 渲染规则</h3><p>css选择符是有权重的，<strong>css样式规则渲染是先就近渲染，然后才一句选择符权重进行选渲染</strong></p><p>从右到左渲染：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.nav h3 a&#123;font-size: 14px;&#125;</div></pre></td></tr></table></figure></p><p>渲染过程大概是：首先找到所有的a，沿着a的父元素查找h3，然后再沿着h3，查找.nav。中途找到了符合匹配规则的节点就加入结果集。如果找到根元素html都没有匹配，则不再遍历这条路径，从下一个a开始重复这个查找匹配（只要页面上有多个最右节点为a）。</p><h3 id="2-嵌套层级不要超过3级"><a href="#2-嵌套层级不要超过3级" class="headerlink" title="2. 嵌套层级不要超过3级"></a>2. 嵌套层级不要超过3级</h3><p>一般情况下，元素的嵌套层级不能超过3级，过度的嵌套会导致代码变得臃肿，沉余，复杂。导致css文件体积变大，造成性能浪费，影响渲染的速度！而且过于依赖HTML文档结构。这样的css样式，维护起来，极度麻烦，如果以后要修改样式，可能要使用!important覆盖。</p><h3 id="3-样式重置"><a href="#3-样式重置" class="headerlink" title="3. 样式重置"></a>3. 样式重置</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span>,<span class="selector-tag">dl</span>,<span class="selector-tag">dd</span>,<span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span>,<span class="selector-tag">p</span>,<span class="selector-tag">form</span>,<span class="selector-tag">ol</span>,<span class="selector-tag">ul</span> &#123;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">h5</span>, <span class="selector-tag">h6</span> &#123;</div><div class="line">  <span class="attribute">font-weight</span>: normal;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">ol</span>, <span class="selector-tag">ul</span> &#123;</div><div class="line">  <span class="attribute">list-style</span>: none;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">h1</span>&#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">24px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">h2</span>&#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">20px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">h3</span>&#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">18px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">h4</span> &#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">h5</span>&#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">14px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">h6</span>&#123;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">12px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure><h3 id="4-样式级别"><a href="#4-样式级别" class="headerlink" title="4. 样式级别"></a>4. 样式级别</h3><p><strong>css选择符权重渲染规则：important &gt; 内联 &gt; ID &gt; 类 &gt; 标签 | 伪类 | 属性选择 &gt; 伪对象 &gt;通配符 &gt; 继承</strong></p><h3 id="5-图片要设置width和height"><a href="#5-图片要设置width和height" class="headerlink" title="5. 图片要设置width和height"></a>5. 图片要设置width和height</h3><p>如果页面有使用img标签，那么img很建议设置width和height。目的是为了在网速差或者其它原因加载不出图片的时候，保证布局不会乱。</p><p>设置width和height，注意几点：</p><ul><li>1.PC站，建议在img标签的属性设置width和height。这样避免加载不出css而错位</li><li>手机站，建议用css设置img的width和height，因为手机站要做适配，在属性设置width和height不灵活，比如使用rem布局，在属性那里设置不了width和height。</li><li>如果图片不固定，但是有一个max-width和max-height，那么建议在img的父元素设置width和height。img根据父元素的width和height设置max-width和max-height。</li></ul><h3 id="6-图片预加载"><a href="#6-图片预加载" class="headerlink" title="6. 图片预加载"></a>6. 图片预加载</h3><ul><li><p>懒加载：页面加载的时候，先加载一部分内容（一般是先加载首屏内容），其它内容等到需要加载的时候再进行加载！</p></li><li><p>预加载：页面加载的时候，先加载一部分内容（一般是先加载首屏内容），其它内容等到先加载的一部分内容（一般是首屏内容）加载完了，再进行加载。</p></li></ul><p>两种方式，都是为了减少用户进入网站的时候，更快的看到首屏的内容！</p><p>下面栗子，将这#preloader这个元素加入到到html中，就可以实现通过CSS的background属性将图片预加载到屏幕外的背景上。只要这些图片的路径保持不变，当它们在web页面的其他地方被调用时，浏览器就会在渲染过程中使用预加载（缓存）的图片。简单、高效，不需要任何JavaScript。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#preloader &#123;</div><div class="line">    /*需要预加载的图片*/</div><div class="line">    background: url(image1.jpg) no-repeat,url(image2.jpg) no-repeat,url(image3.jpg) no-repeat;</div><div class="line">    width: 0px;</div><div class="line">    height: 0px;</div><div class="line">    display: inline;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><p>但是这样会有一个问题，因为#preloader预加载的图片，会和页面上的其他内容一起加载，增加了页面的整体加载时间。所以需要用js控制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function preloader(urlArr,obj) &#123;</div><div class="line">    var bgText=&apos;&apos;;</div><div class="line">    for(var i=0,len=urlArr.length;i&lt;len;i++)&#123;</div><div class="line">        bgText+=&apos;url(&apos;+urlArr[i]+&apos;) no-repeat,&apos;;</div><div class="line">    &#125;</div><div class="line">    obj.style.background=bgText.substr(0,bgText.length-1);</div><div class="line">&#125;</div><div class="line">window.onload = function() &#123;</div><div class="line">   preloader([&apos;image1.jpg&apos;,&apos;image2.jpg&apos;,&apos;image3.jpg&apos;],document.getElementById(&apos;preloader&apos;));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><p>原理也很简单，就是先让首屏的图片加载完，然后再加载其它的图片。通过给#preloader设置背景图片，加载所需要的图片，然后页面上需要加载这些图片的时候，就直接从缓存里面拿图片，不需要通过http请求获取图片，这样加载就很快。</p><h3 id="7-慎用-通配符"><a href="#7-慎用-通配符" class="headerlink" title="7. 慎用*通配符"></a>7. 慎用*通配符</h3><p>在做网页的时候经常会使用下面两种方式重置样式，以此来消除标签的默认布局和不同浏览器对于同一个标签的渲染。</p><p>*{margin：0；padding：0;}<br>上面这种方式，代码少，但是性能差，因为渲染的时候，要匹配页面上所有的元素！很多基础样式没有margin和padding的元素，比如div，li等。都被匹配，完全没必要！<br>下面看另一种方式。</p><p>body,dl,dd,h1,h2,h3,h4,h5,h6,p,form,ol,ul{margin：0；padding：0;}<br>这种方式，代码稍微多，但是性能比上面的方式好，在渲染的时候，只匹配body,dl,dd,h1,h2,h3,h4,h5,h6,p,form,ol,ul这里面的元素，这些元素带有margin和padding，需要重置！<br>再看例子：</p><p>.test * {color: red;}<br>匹配文档中所有的元素，然后分别向上逐级匹配class为test的元素，直到文档的根节点</p><p>.test a {color: red;}<br>匹配文档中所有a的元素，然后分别向上逐级匹配class为test的元素，直到文档的根节点</p><p>两种方式，哪种更好不言而喻，所以在开发的时候，建议避免使用通配选择器。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;css优化空间很大，对性能的影响也很大。事实上大部分复杂的页面完全不修改javascript代码，可以通过css的优化大幅提升render performance。这就需要我们对css的渲染有更深入的了解。css优化可以从加载性能、选择器性能、渲染性能、可维护性，健壮性方面入手…&lt;br&gt;
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://yoursite.com/categories/CSS/"/>
+    
+    
+      <category term="css性能优化" scheme="http://yoursite.com/tags/css%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue 学习笔记 —— 安装</title>
+    <link href="http://yoursite.com/2017/09/21/vue/vue-learn1/"/>
+    <id>http://yoursite.com/2017/09/21/vue/vue-learn1/</id>
+    <published>2017-09-21T02:03:05.000Z</published>
+    <updated>2017-10-26T05:54:55.997Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近由于Facebook的专利问题，百度已经宣布停用一切React软件产品，React开发人员甚是惊慌。Facebook到目前为止拒绝修改React的开源许可条款。虽然还不确定最终的结果，但是学习一下新的知识也是有备无患的，就是不知道vue过阵子是不是也会爆出来侵权or专利问题。悲催的前端工程师……<br><a id="more"></a></p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><strong>兼容性 </strong></p><p>  Vue.js 不支持 IE8 及其以下版本，因为 Vue.js 使用了 IE8 不能模拟的 ECMAScript 5 特性。</p><p>  Vue.js 支持所有<a href="http://caniuse.com/#feat=es5" target="_blank" rel="external">兼容ECMAScript 5的浏览器</a>。</p><p>  <img src="/images/compatible-es5-browser.png" alt=""></p><p><strong>安装</strong></p><ol><li><p>直接script标签引入</p><p>下载地址：</p><ul><li><a href="https://vuejs.org/js/vue.js" target="_blank" rel="external">开发版本</a>, 包含完整的警告和调试模式</li><li><a href="https://vuejs.org/js/vue.min.js" target="_blank" rel="external">生产版本</a>，删除了警告，28.96kb min+gzip</li></ul></li><li><p>NPM </p><p>$ npm install vue</p></li><li><p>命令行工具</p><p>Vue 提供一个官方<a href="https://github.com/vuejs/vue-cli" target="_blank" rel="external">命令行工具</a>,可用于快速搭建大型单页面应用。</p><p>$ npm install –global vue-cli<br>$ vue init webpack my-project<br>$ cd my-project<br>$ npm install<br>$ npm run dev</p><blockquote><p>注意：</p><ul><li>nodejs 版本升级，网上命令行没有效果，<a href="https://nodejs.org/zh-cn/" target="_blank" rel="external">node官网</a>下载安装包，直接重新安装的。</li><li>建议将npm的注册表源设置为<a href="http://riny.net/2014/cnpm/" target="_blank" rel="external">国内的镜像</a>,可以大幅提升安装速度。</li></ul></blockquote></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近由于Facebook的专利问题，百度已经宣布停用一切React软件产品，React开发人员甚是惊慌。Facebook到目前为止拒绝修改React的开源许可条款。虽然还不确定最终的结果，但是学习一下新的知识也是有备无患的，就是不知道vue过阵子是不是也会爆出来侵权or专利问题。悲催的前端工程师……&lt;br&gt;
+    
+    </summary>
+    
+      <category term="vue" scheme="http://yoursite.com/categories/vue/"/>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js 问题积累</title>
+    <link href="http://yoursite.com/2017/09/20/js/js-pits/"/>
+    <id>http://yoursite.com/2017/09/20/js/js-pits/</id>
+    <published>2017-09-20T07:35:48.000Z</published>
+    <updated>2017-10-26T06:04:13.981Z</updated>
+    
+    <content type="html"><![CDATA[<p>工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。<br><a id="more"></a></p><h3 id="上传文件插件dropzone"><a href="#上传文件插件dropzone" class="headerlink" title="上传文件插件dropzone"></a>上传文件插件dropzone</h3><ol><li><p>设置 Dropzone.autoDiscover = false</p><p>(禁止对所有元素的自动查找) 否则前端会报错: Dropzone already attached.</p></li><li><p>基本用法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;myDropzone&quot; class=&quot;dropzone&quot;&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">var myDropzone = new Dropzone(&quot;#upload_logo&quot;, &#123; </div><div class="line">  url: &quot;xxxx&quot;,  // 上传文件地址</div><div class="line">  maxFiles: &apos;1&apos;, // 最多上传一个文件</div><div class="line">  dictDefaultMessage: &apos;上传 Logo 图片&apos;, // 修改 提示文字</div><div class="line">  addRemoveLinks: &apos;dictRemoveFile&apos;, // 显示删除文件链接</div><div class="line">  acceptedFiles: &apos;image/*&apos;  // 接收的文件类型</div><div class="line">&#125;);</div><div class="line">// 文件上传成功</div><div class="line">myDropzone.on(&apos;success&apos;, function(file, response) &#123;</div><div class="line">  var res = JSON.parse(response);</div><div class="line">  ...</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li><li><p>显示服务器上已存在的图片或文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var mockFile = &#123; name: filename, size: 123, accepted: true &#125;;</div><div class="line">myDropzone.emit( &quot;addedfile&quot;, mockFile);</div><div class="line">myDropzone.emit( &quot;thumbnail&quot;, mockFile, fileUrl); // 生成缩略图</div><div class="line">myDropzone.files.push( mockFile ); </div><div class="line">// $(&apos;div.dz-preview&apos;).addClass(&apos; dz-processing dz-image-preview dz-success dz-complete&apos;); // 这个会有上传成功的动画，不太需要</div><div class="line">$(&apos;div.dz-preview&apos;).addClass(&apos; dz-complete&apos;); // 设置样式，如果不设置，缩略图上会显示上传进度条</div></pre></td></tr></table></figure></li><li><p>删除文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myDropzone.removeAllFiles();</div></pre></td></tr></table></figure></li><li><p>还有很多方法，具体可以查看源码，或者说明文档，参考地址：<a href="http://wxb.github.io/dropzonejs.com.zh-CN/dropzonezh-CN/#" target="_blank" rel="external">DropzoneJS</a></p></li></ol><h3 id="bootstrap-datetimepicker"><a href="#bootstrap-datetimepicker" class="headerlink" title="bootstrap datetimepicker"></a>bootstrap datetimepicker</h3><ol><li>月份选择  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(&apos;#xxx&apos;).datetimepicker(&#123;</div><div class="line">  minView : &quot;year&quot;, //  选择时间时，最小可以选择到那层；默认是‘hour’也可用0表示</div><div class="line">  startView: &apos;year&apos;,</div><div class="line">  language : &apos;zh-CN&apos;, // 语言</div><div class="line">  autoclose : true, //  true:选择时间后窗口自动关闭</div><div class="line">  format : &apos;yyyy-mm&apos;, // 文本框时间格式，设置为0,最后时间格式为2017-03-23 17:00:00</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li></ol><h3 id="js点击下载文本到本地文件中"><a href="#js点击下载文本到本地文件中" class="headerlink" title="js点击下载文本到本地文件中"></a>js点击下载文本到本地文件中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function downloadText(content) &#123;</div><div class="line">  let fileName = &apos;xxxx.txt&apos;;  // 文件名</div><div class="line">  let aLink = document.createElement(&apos;a&apos;); </div><div class="line">  let evt = document.createEvent(&quot;MouseEvents&quot;);</div><div class="line">  evt.initEvent(&apos;click&apos;, true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null); // 点击</div><div class="line">  aLink.download = fileName;</div><div class="line">  aLink.dispatchEvent(evt);</div><div class="line">&#125;</div></pre></td></tr></table></figure><p><strong>知识点：事件触发器</strong></p><blockquote><p>事件触发器就是用来触发某个元素下的某个事件，IE下有fireEvent()，高级浏览器（chrome，firefox等）有dispatchEvent()</p></blockquote><h4 id="IE浏览器"><a href="#IE浏览器" class="headerlink" title="IE浏览器"></a>IE浏览器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var fireEvent = function(element, event) &#123;</div><div class="line">  // IE浏览器支持fireEvent方法</div><div class="line">  if (document.createEventObject) &#123;</div><div class="line">    var evt = document.createEventObject();</div><div class="line">    return element.fireEvent(&apos;on&apos; + event, evt)</div><div class="line">  &#125; else &#123;</div><div class="line">    // 其他标准浏览器使用dispatchEvent方法</div><div class="line">    var evt = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">    // initEvent接受3个参数：</div><div class="line">    // 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">    evt.initEvent(event, true, true);</div><div class="line">    return !element.dispatchEvent(evt);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure><p>或 document上绑定自定义事件ondataavailable<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">document.attachEvent(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line">var obj=document.getElementById(&quot;obj&quot;);</div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.attachEvent(&apos;onclick&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//调用document对象的createEventObject方法得到一个event的对象实例。</div><div class="line">var event = document.createEventObject();</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.fireEvent(&apos;ondataavailable&apos;, event);</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.fireEvent(&apos;onclick&apos;, event);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p><p>chrome、firefox等浏览器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">//document上绑定自定义事件ondataavailable</div><div class="line">document.addEventListener(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line">var obj = document.getElementById(&quot;obj&quot;);</div><div class="line"></div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.addEventListener(&apos;click&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line"></div><div class="line">//调用document对象的 createEvent 方法得到一个event的对象实例。</div><div class="line">var event = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line"></div><div class="line">// initEvent接受3个参数：</div><div class="line">// 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">event.initEvent(&quot;ondataavailable&quot;, true, true);</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.dispatchEvent(event);</div><div class="line">var event1 = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">event1.initEvent(&quot;click&quot;, true, true);</div><div class="line">event1.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.dispatchEvent(event1);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p><h3 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h3><ul><li>form表单调用reset： $(‘#form_test’)[0].reset();</li><li>redio设置选中：$(‘input[name=”xxx”][value=”‘ + val + ‘“]’).attr(“checked”, true);</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="js" scheme="http://yoursite.com/categories/js/"/>
+    
+      <category term="dropzone" scheme="http://yoursite.com/categories/js/dropzone/"/>
+    
+      <category term="datetimepicker" scheme="http://yoursite.com/categories/js/dropzone/datetimepicker/"/>
+    
+      <category term="js下载文本" scheme="http://yoursite.com/categories/js/dropzone/datetimepicker/js%E4%B8%8B%E8%BD%BD%E6%96%87%E6%9C%AC/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js 随机颜色的三种方式和颜色格式的转化</title>
+    <link href="http://yoursite.com/2017/09/13/js/generate-color/"/>
+    <id>http://yoursite.com/2017/09/13/js/generate-color/</id>
+    <published>2017-09-13T06:04:28.000Z</published>
+    <updated>2017-10-26T05:53:29.541Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="生成随机颜色"><a href="#生成随机颜色" class="headerlink" title="生成随机颜色"></a>生成随机颜色</h3><h4 id="十六进制格式（-000000-FFFFFF）"><a href="#十六进制格式（-000000-FFFFFF）" class="headerlink" title="十六进制格式（#000000-#FFFFFF）"></a>十六进制格式（#000000-#FFFFFF）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function randomHexColor() &#123;</div><div class="line">  let hex = Math.floor(Math.random() * 16777216).toString(16); // 生成ffffff以内16进制数</div><div class="line">  while (hex.length &lt; 6) &#123; //while循环判断hex位数，少于6位前面加0凑够6位</div><div class="line">    hex = &apos;0&apos; + hex;</div><div class="line">  &#125;</div><div class="line">  return &apos;#&apos; + hex; //返回‘#’开头16进制颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function randomHexColor() &#123; </div><div class="line">  return &apos;#&apos; + (&apos;00000&apos; + (Math.random() * 0x1000000 &lt;&lt; 0).toString(16)).substr(-6);</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>执行数序：</p><ol><li>先执行Math.random() * 0x1000000，其中0x1000000=0xffffff+1，因为Math.random()取到1，所以+1，这样就会生成一个1-16777216(不包含)以内的浮点数。</li><li>然后执行&lt;&lt;0，这是取整运算，去掉后面的小数点。这时为一个16777216(不包含)以内的十进制数。</li><li>之后执行.toString(16)，把十进制数转化为六位以下16进制数。</li><li>再后执行’00000’+，这时因为之前生成的16进制数最少可能仅一位，在前面加上5个0。</li><li>最后执行.substr(-6)，是去从-6开始的后面所有字符串，也就是最后6位数。</li><li>前面加上#并retuen</li></ol><h4 id="RGB格式"><a href="#RGB格式" class="headerlink" title="RGB格式"></a>RGB格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function randomRgbColor() &#123; //随机生成RGB颜色</div><div class="line">  const r = Math.floor(Math.random() * 256); //随机生成256以内r值</div><div class="line">  const g = Math.floor(Math.random() * 256); //随机生成256以内g值</div><div class="line">  const b = Math.floor(Math.random() * 256); //随机生成256以内b值</div><div class="line">  return `rgb($&#123;r&#125;,$&#123;g&#125;,$&#123;b&#125;)`; //返回rgb(r,g,b)格式颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure><h4 id="RGBA格式"><a href="#RGBA格式" class="headerlink" title="RGBA格式"></a>RGBA格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function randomRgbaColor() &#123; //随机生成RGBA颜色</div><div class="line">  const r = Math.floor(Math.random() * 256); //随机生成256以内r值</div><div class="line">  const g = Math.floor(Math.random() * 256); //随机生成256以内g值</div><div class="line">  const b = Math.floor(Math.random() * 256); //随机生成256以内b值</div><div class="line">  const alpha = Math.random(); //随机生成1以内a值</div><div class="line">  return `rgb($&#123;r&#125;,$&#123;g&#125;,$&#123;b&#125;,$&#123;alpha&#125;)`; //返回rgba(r,g,b,a)格式颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure><h3 id="颜色格式转化"><a href="#颜色格式转化" class="headerlink" title="颜色格式转化"></a>颜色格式转化</h3><h4 id="十六进制转为RGB"><a href="#十六进制转为RGB" class="headerlink" title="十六进制转为RGB"></a>十六进制转为RGB</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function hex2Rgb(hex) &#123; //十六进制转为RGB</div><div class="line">  let rgb = []; // 定义rgb数组</div><div class="line">  if (/^\#[0-9A-F]&#123;3&#125;$/i.test(hex)) &#123; //判断传入是否为#三位十六进制数</div><div class="line">    let sixHex = &apos;#&apos;;</div><div class="line">    hex.replace(/[0-9A-F]/ig, function(kw) &#123;</div><div class="line">        sixHex += kw + kw; //把三位16进制数转化为六位</div><div class="line">    &#125;);</div><div class="line">    hex = sixHex; //保存回hex</div><div class="line">  &#125;</div><div class="line">  if (/^#[0-9A-F]&#123;6&#125;$/i.test(hex)) &#123; //判断传入是否为#六位十六进制数</div><div class="line">    hex.replace(/[0-9A-F]&#123;2&#125;/ig, function(kw) &#123;</div><div class="line">        rgb.push(parseInt(kw,16)); //十六进制转化为十进制并存入数组</div><div class="line">    &#125;);</div><div class="line">    return `rgb($&#123;rgb.join(&apos;,&apos;)&#125;)`; //输出RGB格式颜色</div><div class="line">  &#125; else &#123;</div><div class="line">    console.log(`Input $&#123;hex&#125; is wrong!`);</div><div class="line">    return &apos;rgb(0,0,0)&apos;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><h4 id="RGB转为十六进制"><a href="#RGB转为十六进制" class="headerlink" title="RGB转为十六进制"></a>RGB转为十六进制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function rgb2Hex(rgb) &#123;</div><div class="line">  if (/^rgb\((\d&#123;1,3&#125;\,)&#123;2&#125;\d&#123;1,3&#125;\)$/i.test(rgb)) &#123; //test RGB</div><div class="line">    let hex = &apos;#&apos;; //定义十六进制颜色变量</div><div class="line">    rgb.replace(/\d&#123;1,3&#125;/g, function(kw) &#123; //提取rgb数字</div><div class="line">      kw = parseInt(kw).toString(16); //转为十六进制</div><div class="line">      kw = kw.length &lt; 2 ? 0 + kw : kw; //判断位数，保证两位</div><div class="line">      hex += kw; //拼接</div><div class="line">    &#125;);</div><div class="line">    return hex; //返回十六进制</div><div class="line">  &#125; else &#123;</div><div class="line">    console.log(`Input $&#123;rgb&#125; is wrong!`);</div><div class="line">    return &apos;#000&apos;; //输入格式错误,返回#000</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;生成随机颜色&quot;&gt;&lt;a href=&quot;#生成随机颜色&quot; class=&quot;headerlink&quot; title=&quot;生成随机颜色&quot;&gt;&lt;/a&gt;生成随机颜色&lt;/h3&gt;&lt;h4 id=&quot;十六进制格式（-000000-FFFFFF）&quot;&gt;&lt;a href=&quot;#十六进制格式（-000000-FFFFFF）&quot; class=&quot;headerlink&quot; title=&quot;十六进制格式（#000000-#FFFFFF）&quot;&gt;&lt;/a&gt;十六进制格式（#000000-#FFFFFF）&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;function randomHexColor() &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  let hex = Math.floor(Math.random() * 16777216).toString(16); // 生成ffffff以内16进制数&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  while (hex.length &amp;lt; 6) &amp;#123; //while循环判断hex位数，少于6位前面加0凑够6位&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    hex = &amp;apos;0&amp;apos; + hex;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  return &amp;apos;#&amp;apos; + hex; //返回‘#’开头16进制颜色&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="js" scheme="http://yoursite.com/categories/js/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="color" scheme="http://yoursite.com/tags/color/"/>
+    
+      <category term="translate" scheme="http://yoursite.com/tags/translate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>链接积累</title>
+    <link href="http://yoursite.com/2017/09/13/links/"/>
+    <id>http://yoursite.com/2017/09/13/links/</id>
+    <published>2017-09-13T05:52:13.000Z</published>
+    <updated>2017-10-26T05:56:00.284Z</updated>
+    
+    <content type="html"><![CDATA[<p>平时遇到的各种素材，将链接收录一下……<br><a id="more"></a></p><h3 id="牛人博客"><a href="#牛人博客" class="headerlink" title="牛人博客"></a>牛人博客</h3><p><a href="http://www.ruanyifeng.com" target="_blank" rel="external">阮一峰的博客</a></p><h3 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h3><p><a href="https://github.com/akxcv/vuera?utm_campaign=Revue%20newsletter&amp;utm_medium=Newsletter&amp;utm_source=Vue.js%20Feed" target="_blank" rel="external">vuera-据说很吊，可以在react中引用vue</a></p><h3 id="前端相关"><a href="#前端相关" class="headerlink" title="前端相关"></a>前端相关</h3><p><a href="http://www.infoq.com/cn/FE-Weekly" target="_blank" rel="external">前端每周清单</a><br><a href="https://sylvanassun.github.io/2017/08/06/2017-08-06-DigestHttps/" target="_blank" rel="external">揭秘HTTPS的”秘密”</a><br><a href="https://johnsenzhou.github.io/code-guide/" target="_blank" rel="external">前端编码规范</a></p><h3 id="移动端相关"><a href="#移动端相关" class="headerlink" title="移动端相关"></a>移动端相关</h3><p><a href="https://juejin.im/post/59c4c9d85188254f58412d17" target="_blank" rel="external">移动 Web 开发问题和优化小结</a></p><h3 id="浏览器相关"><a href="#浏览器相关" class="headerlink" title="浏览器相关"></a>浏览器相关</h3><p><a href="http://www.ruanyifeng.com/blog/2017/09/flame-graph.html" target="_blank" rel="external">火焰图</a><br><a href="https://sylvanassun.github.io/2017/10/03/2017-10-03-BrowserCriticalRenderingPath/" target="_blank" rel="external">浏览器渲染过程与性能优化</a><br><a href="https://sylvanassun.github.io/2017/10/08/2017-10-08-BrowserRenderOptimization/" target="_blank" rel="external">浏览器性能优化-渲染性能</a></p><h3 id="服务器相关"><a href="#服务器相关" class="headerlink" title="服务器相关"></a>服务器相关</h3><p><a href="https://sylvanassun.github.io/2016/06/24/2016-06-24-nginx-initiation/" target="_blank" rel="external">如何安装与搭建一个Nginx服务器</a><br><a href="https://sylvanassun.github.io/2016/06/27/2016-06-27-redis-cluster01/" target="_blank" rel="external">如何搭建与维护一个Redis集群</a></p><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p><a href="http://www.500d.me/editresume/" target="_blank" rel="external">五百丁</a> —— 一个简历模版、简历优化、找工作的网站</p><ul><li>蜂窝煤效果<iframe height="300" width="100%" src="https://codepen.io/Kseso/pen/xqNdmO" frameborder="0" allowfullscreen></iframe></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;平时遇到的各种素材，将链接收录一下……&lt;br&gt;
+    
+    </summary>
+    
+      <category term="素材" scheme="http://yoursite.com/categories/%E7%B4%A0%E6%9D%90/"/>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js类型检测</title>
+    <link href="http://yoursite.com/2017/09/12/js/js-check-type/"/>
+    <id>http://yoursite.com/2017/09/12/js/js-check-type/</id>
+    <published>2017-09-12T06:59:00.000Z</published>
+    <updated>2017-10-26T05:53:43.236Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>js</li></ul><h3 id="判断数据类型的方法"><a href="#判断数据类型的方法" class="headerlink" title="判断数据类型的方法"></a>判断数据类型的方法</h3><ol><li><p>根据数据类型判断</p><ul><li>typeof</li><li>instaneof</li></ul></li><li><p>根据构造函数判断</p><ul><li>Object.prototype.toString</li><li>construcor<a id="more"></a><a href="http://www.imooc.com/course/comment/id/745?page=4" target="_blank" rel="external">慕课网一个老师的视频-讲Zepto</a></li></ul></li></ol><h3 id="判断方法"><a href="#判断方法" class="headerlink" title="判断方法"></a>判断方法</h3><ul><li><p>isFunction 判断是否是函数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function isFunction(value) &#123; return type(value) == &quot;function&quot; &#125;</div></pre></td></tr></table></figure></li><li><p>isWindow</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 判断是否是 window对象（注意，w为小写）指当前的浏览器窗口，window对象的window属性指向自身。</div><div class="line">// 即 window.window === window</div><div class="line">function isWindow(obj)     &#123; return obj != null &amp;&amp; obj == obj.window &#125;</div></pre></td></tr></table></figure></li><li><p>isDocument 判断是否是 document 对象</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// window.document.nodeType == 9 数字表示为9，常量表示为 DOCUMENT_NODE</div><div class="line">function isDocument(obj)   &#123; return obj != null &amp;&amp; obj.nodeType == obj.DOCUMENT_NODE &#125;</div></pre></td></tr></table></figure></li><li><p>isObject 判断是否是 object</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function isObject(obj)     &#123; return type(obj) == &quot;object&quot; &#125;</div></pre></td></tr></table></figure></li><li><p>isPlainObject</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function isPlainObject(obj) &#123;</div><div class="line">  return isObject(obj) &amp;&amp; !isWindow(obj) &amp;&amp; Object.getPrototypeOf(obj) == Object.prototype</div><div class="line">&#125;</div></pre></td></tr></table></figure></li><li><p>isArray 判断是否是arr</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isArray = Array.isArray || function(object)&#123; return object instanceof Array &#125;;</div></pre></td></tr></table></figure></li><li><p>likeArray</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 判断是否是数组或者对象数组</div><div class="line">// !!的作用是把一个其他类型的变量转成的bool类型。</div><div class="line">// !!obj 直接过滤掉了false，null，undefined，&apos;&apos;等值</div><div class="line">function likeArray(obj) &#123;</div><div class="line">var length = !!obj &amp;&amp; &apos;length&apos; in obj &amp;&amp; obj.length,</div><div class="line"></div><div class="line">// 获取obj的数据类型</div><div class="line">type = $.type(obj);</div><div class="line"></div><div class="line">// 不能是function类型，不能是window</div><div class="line">// 如果是array则直接返回true</div><div class="line">// 或者当length的数据类型是number，并且其取值范围是0到(length - 1)这里是通过判断length - 1 是否为obj的属性</div><div class="line"></div><div class="line">return &apos;function&apos; != type &amp;&amp; !isWindow(obj) &amp;&amp; (</div><div class="line">    &apos;array&apos; == type || length === 0 ||</div><div class="line">    (typeof length == &apos;number&apos; &amp;&amp; length &gt; 0 &amp;&amp; (length - 1) in obj)</div><div class="line">  )</div><div class="line">&#125;</div></pre></td></tr></table></figure></li><li><p>isEmptyObject 空对象</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$.isEmptyObject = function(obj) &#123;</div><div class="line">  var name</div><div class="line">  for (name in obj) return false</div><div class="line">  return true</div><div class="line">&#125;</div></pre></td></tr></table></figure></li><li><p>isNumeric 数字</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$.isNumeric = function(val) &#123;</div><div class="line">  var num = Number(val), type = typeof val;</div><div class="line">  return val != null &amp;&amp; type != &apos;boolean&apos; &amp;&amp;</div><div class="line">    (type != &apos;string&apos; || val.length) &amp;&amp;</div><div class="line">    !isNaN(num) &amp;&amp; isFinite(num) || false</div><div class="line">&#125;</div></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;js&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;判断数据类型的方法&quot;&gt;&lt;a href=&quot;#判断数据类型的方法&quot; class=&quot;headerlink&quot; title=&quot;判断数据类型的方法&quot;&gt;&lt;/a&gt;判断数据类型的方法&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;根据数据类型判断&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;typeof&lt;/li&gt;
+&lt;li&gt;instaneof&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;根据构造函数判断&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Object.prototype.toString&lt;/li&gt;
+&lt;li&gt;construcor
+    
+    </summary>
+    
+    
+      <category term="类型检测" scheme="http://yoursite.com/tags/%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>积累一些常见的面试题</title>
+    <link href="http://yoursite.com/2017/09/11/note/web-interview1/"/>
+    <id>http://yoursite.com/2017/09/11/note/web-interview1/</id>
+    <published>2017-09-11T08:36:48.000Z</published>
+    <updated>2017-10-26T05:54:09.355Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前端安全与防范"><a href="#前端安全与防范" class="headerlink" title="前端安全与防范"></a>前端安全与防范</h3><ol><li>XSS: 跨站脚本攻击</li></ol><p>说明：它允许用户讲恶意代码植入到提供给其他用户使用的页面中，可以简单的理解为一种Javascript代码注入。</p><p>预防措施：</p><ul><li>过滤转义输入输出</li><li>避免使用eval、new Function 等执行字符串的方法，除非确定字符串和用户输入五官</li><li>使用cookie的httpOnly属性，加上了这个属性的cookie字段，js是无法进行读写的</li><li>使用innerHtml、document.write的时候，如果数据是用户输入的，那么需要对关键字符进行过滤与转义<a id="more"></a><ol><li>CSRF：跨站请求伪造</li></ol></li></ul><p>说明：其实就是网站中的一些提交行为，被黑客利用，在你访问黑客的网站的时候进行操作，会被操作到其他网站上</p><p>预防措施：</p><ul><li>检测http referer 是否是同域名</li><li>避免登录的session长时间存储在客户端中</li><li><p>关键请求使用验证码或者token机制</p><p>其他的一些攻击方法还有 http劫持，界面操作劫持</p></li></ul><h3 id="闭包问题"><a href="#闭包问题" class="headerlink" title="闭包问题"></a>闭包问题</h3><p>什么是闭包？</p><p>专业的说法：<strong>当一个内部函数被其他外部函数之外的变量引用时，就形成了一个闭包。</strong></p><p>简单理解：闭包就是一个具有封闭功能与包裹功能的结构，是为了实现具有私有访问控件的函数，函数可以构成闭包，因为函数内部定义的数据函数外部无法访问，即函数具有封闭性，函数可以封闭代码即具有包裹性，所以函数可以构成闭包。</p><p>创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。</p><p>闭包的特性：</p><ul><li>函数嵌套函数</li><li>函数内部可以引用外部的参数和变量</li><li>参数和变量不会被垃圾回收机制回收</li></ul><p>缺点：</p><ul><li>常驻内存，会增大内存使用量，使用不当很容易造成内存泄漏</li></ul><h3 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h3><blockquote><p>浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，修改新对象不会改到原对象</p></blockquote><p><strong>实现浅拷贝</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = obj1;</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125; &lt;-- b 被改到了</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></p><p><strong>实现深拷贝</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = &#123; a: obj1.a, b: obj1.b, c: obj1.c &#125;;</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 20, c: 30 &#125; &lt;-- b 沒被改到</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></p><p><strong>深拷贝实现方式</strong></p><ul><li>手动复制方式</li><li><p>Object.assign, ES6的新函数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = Object.assign(&#123;&#125;, obj1);</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 20, c: 30 &#125; &lt;-- 沒被改到</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></li><li><p>转成JSON，再转回来<br>用JSON.stringify 把对象转成字符串，再用JSON.parse把字符串转成新的对象</p><p>缺点：只有可以转化成JSON格式的对象才可以这样用，像function没办法转成JSON</p></li><li>jquery，有提供一个$.extend可以用来做Deep Copy<ol><li>lodash，也有提供_.cloneDeep用来做 Deep Copy。</li><li>递归实现深拷贝<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function clone( o ) &#123;</div><div class="line">  var temp = &#123;&#125;;</div><div class="line">  for( var k in o ) &#123;</div><div class="line">    if( typeof o[ k ] == &apos;object&apos; )&#123;</div><div class="line">      temp[ k ] = clone( o[ k ] );</div><div class="line">    &#125; else &#123;</div><div class="line">      temp[ k ] = o[ k ];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return temp;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li></ol></li></ul><h3 id="https-的握手过程"><a href="#https-的握手过程" class="headerlink" title="https 的握手过程"></a>https 的握手过程</h3><ol><li>浏览器将自己支持的一套加密规则发送给服务器</li><li>服务器从中选出一组加密算法与hash算法，并讲自己的身份信息以整数的形式发回给浏览器。证书里面包含了网站地址，加密公钥，以及整数的颁发机构等信息。</li><li>浏览器获取网站证书之后浏览器要做一下工作：<ul><li>验证证书的合法</li><li>如果证书受信任，或者是用户接收了不受信任的证书，浏览器会生成一串随机数的密码，并用于证书中提供的公钥加密</li><li>使用约定好的hash算法计算握手消息，并使用生成的随机数对消息进行加密，最后将之前生成的所有消息发送给服务器</li></ul></li><li>网站接收浏览器发来的数据之后要做以下操作：<ul><li>使用自己的私钥将信息解密取出密码，使用密码解密浏览器发来的握手消息，并验证hash是否与浏览器发送来的一致</li><li>使用密码加密一段握手消息，发送给浏览器</li></ul></li><li>浏览器解密并计算握手消息的hash，如果与服务端发过来的hash一致，此时握手过程结束，之后所有的通信数据将由之前浏览器生成的随机密码并利用对称加密算法进行加密</li></ol><p><a href="http://blog.jobbole.com/105633/" target="_blank" rel="external">参考文档</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前端安全与防范&quot;&gt;&lt;a href=&quot;#前端安全与防范&quot; class=&quot;headerlink&quot; title=&quot;前端安全与防范&quot;&gt;&lt;/a&gt;前端安全与防范&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;XSS: 跨站脚本攻击&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;说明：它允许用户讲恶意代码植入到提供给其他用户使用的页面中，可以简单的理解为一种Javascript代码注入。&lt;/p&gt;
+&lt;p&gt;预防措施：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;过滤转义输入输出&lt;/li&gt;
+&lt;li&gt;避免使用eval、new Function 等执行字符串的方法，除非确定字符串和用户输入五官&lt;/li&gt;
+&lt;li&gt;使用cookie的httpOnly属性，加上了这个属性的cookie字段，js是无法进行读写的&lt;/li&gt;
+&lt;li&gt;使用innerHtml、document.write的时候，如果数据是用户输入的，那么需要对关键字符进行过滤与转义
+    
+    </summary>
+    
+      <category term="前端技能" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%83%BD/"/>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编程命名规范</title>
+    <link href="http://yoursite.com/2017/09/06/named-rule/"/>
+    <id>http://yoursite.com/2017/09/06/named-rule/</id>
+    <published>2017-09-06T02:27:21.000Z</published>
+    <updated>2017-10-26T05:56:08.277Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>编程中，能很好的命名变量、方法名、类名，起到见名之意尤其困难。积累一些常用的命名规范。</p></blockquote><ul><li>List 定义的变量应该List作为后缀结尾</li><li>Map 定义的变量应该Map作为后缀结尾</li><li>数组定义的变量应该s作为后最结尾</li><li>类成员变量用m开头</li><li>大小写尽量统一， - _ 尽量统一</li><li>常量使用大写</li><li>不要使用过长的变量名，也不要用单词首字母缩写（根本猜不到是什么意思）<a id="more"></a></li></ul><p>网上还有一个变量命名神奇<strong><a href="http://unbug.github.io/codelf/" target="_blank" rel="external">Codelf</a></strong>, 哇哈哈哈哈哈，果然，程序的世界可以无限放大，也可以无限缩小……</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;编程中，能很好的命名变量、方法名、类名，起到见名之意尤其困难。积累一些常用的命名规范。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;List 定义的变量应该List作为后缀结尾&lt;/li&gt;
+&lt;li&gt;Map 定义的变量应该Map作为后缀结尾&lt;/li&gt;
+&lt;li&gt;数组定义的变量应该s作为后最结尾&lt;/li&gt;
+&lt;li&gt;类成员变量用m开头&lt;/li&gt;
+&lt;li&gt;大小写尽量统一， - _ 尽量统一&lt;/li&gt;
+&lt;li&gt;常量使用大写&lt;/li&gt;
+&lt;li&gt;不要使用过长的变量名，也不要用单词首字母缩写（根本猜不到是什么意思）
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="命名规范" scheme="http://yoursite.com/tags/%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css_selector</title>
+    <link href="http://yoursite.com/2017/09/05/css/css-selector/"/>
+    <id>http://yoursite.com/2017/09/05/css/css-selector/</id>
+    <published>2017-09-05T13:48:56.000Z</published>
+    <updated>2017-09-06T02:22:07.296Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://yoursite.com/categories/CSS/"/>
+    
+    
+      <category term="css 选择器" scheme="http://yoursite.com/tags/css-%E9%80%89%E6%8B%A9%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo 笔记 —— 遇到的问题</title>
+    <link href="http://yoursite.com/2017/09/05/tools/hexo-note/"/>
+    <id>http://yoursite.com/2017/09/05/tools/hexo-note/</id>
+    <published>2017-09-05T13:36:36.000Z</published>
+    <updated>2017-09-13T02:59:52.650Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>hexo 博客在家里电脑clone了一份，npm install 了所有的安装包后运行不起来，遇到了一些列的问题，记录一下，方便以后回顾。</p></blockquote><ol><li><p>hexo s 后报错 没有找到 layout index.html。原因是从git上clone下来的项目themes文件夹是空的，重新安装next主题：<strong>git clone <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">https://github.com/iissnan/hexo-theme-next</a> themes/next</strong></p></li><li><p>hexo g 生成文件时报错 提示zh-tw.yml 错误，删掉languages文件夹下对应的字体文件。</p></li><li><p>左侧导航点击报错：hexo Cannot GET /tags/，找不到tags页面，解决方法：1）$ hexo new page ‘tags’。2）设置页面 type: tags。 3）在主题配置文件，菜单中添加连接：tags: /tags</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;hexo 博客在家里电脑clone了一份，npm install 了所有的安装包后运行不起来，遇到了一些列的问题，记录一下，方便以后回顾。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;hexo s 后报错 没有找到 layout i
+      
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="hexo 问题积累" scheme="http://yoursite.com/tags/hexo-%E9%97%AE%E9%A2%98%E7%A7%AF%E7%B4%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo + github pages 搭建个人博客 —— 设置篇</title>
+    <link href="http://yoursite.com/2017/09/05/tools/hexo_github_pages2/"/>
+    <id>http://yoursite.com/2017/09/05/tools/hexo_github_pages2/</id>
+    <published>2017-09-05T02:27:16.000Z</published>
+    <updated>2017-09-05T02:28:32.198Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hexo 主题设置</title>
+    <link href="http://yoursite.com/2017/08/25/tools/hexo-them/"/>
+    <id>http://yoursite.com/2017/08/25/tools/hexo-them/</id>
+    <published>2017-08-25T02:26:24.000Z</published>
+    <updated>2017-10-26T05:58:42.836Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="next主题"><a href="#next主题" class="headerlink" title="next主题"></a>next主题</h3><p>1.安装 hexo-theme-next 到 themes/next文件夹下<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure></p><p>2.启用主题<br>  _config.yml 文件下修改 theme: next (默认 theme: landscape)<br><a id="more"></a><br>3.主题设定 themes/next/_config.yml</p><p>  Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。目前 NexT 支持三种 Scheme：</p><pre><code>- Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白- Mist - Muse 的紧凑版本，整洁有序的单栏外观- Pisces - 双栏 Scheme，小家碧玉似的清新- Gemini</code></pre><p>4.设置头像<br>  在theme/next/source/images 文件加下添加avater.png 图片，然后配置theme/next/_config.yml 文件中的 avatar: /images/avatar.png</p><p>5.修改布局宽度<br>  Pisces Scheme 编辑 themes/next/source/css/_schemes/Picses/_layout.styl 文件，更改以下 css 选项定义值：</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.header&#123; width: 1150px; &#125;</div><div class="line">.container .main-inner &#123; width: 1150px; &#125;</div><div class="line">.content-wrap &#123; width: calc(100% - 260px); &#125;</div></pre></td></tr></table></figure><p>  其他主题布局宽度调整方法：<br>    <strong>第一种方法</strong><br>    现在一般都用宽屏显示器，博客页面两侧留白太多，调整一下宽度。<br>    打开 \themes\next\source\css_common\components\post\post-expand.styl 文件，找到</p><pre><code>  @media (max-width: 767px) 改为 @media (max-width: 1080px)打开 \themes\next\source\css\ _variables\base.styl 文件，找到  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$main-desktop                   = 960px</div><div class="line">$main-desktop-large             = 1200px</div><div class="line">$content-desktop                = 700px</div><div class="line">修改 $main-desktop 和 $content-desktop 的数值：</div><div class="line"></div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">$main-desktop                   = 1080px</div><div class="line">$main-desktop-large             = 1200px</div><div class="line">$content-desktop                = 810px</div></pre></td></tr></table></figure>Next.Mist 主题的文章宽度至此改完了。如果你用的是 Next.Pisces，还需要继续修改。打开 \themes\next\source\css\_schemes\Pisces\_layout.styl 文件，将第 4 行的 width改为1080px ，修改后如下：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.header &#123;</div><div class="line">  position: relative;</div><div class="line">  margin: 0 auto;</div><div class="line">  width: 1080px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>**第二种方法（Next文档中给出的方法）**编辑 themes/next/source/css/_variables/custom.styl 文件，新增变量：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 修改成你期望的宽度</div><div class="line">$content-desktop = 700px</div><div class="line">// 当视窗超过 1600px 后的宽度</div><div class="line">$content-desktop-large = 900px</div></pre></td></tr></table></figure></code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;next主题&quot;&gt;&lt;a href=&quot;#next主题&quot; class=&quot;headerlink&quot; title=&quot;next主题&quot;&gt;&lt;/a&gt;next主题&lt;/h3&gt;&lt;p&gt;1.安装 hexo-theme-next 到 themes/next文件夹下&lt;br&gt;  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ git clone https://github.com/iissnan/hexo-theme-next themes/next&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;2.启用主题&lt;br&gt;  _config.yml 文件下修改 theme: next (默认 theme: landscape)&lt;br&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+      <category term="github pages" scheme="http://yoursite.com/tags/github-pages/"/>
+    
+  </entry>
+  
+</feed>

@@ -55,7 +55,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives">归档</a></li>
+	        
+				<li><a href="/tags/笔记/">笔记</a></li>
 	        
 			</ul>
 		</nav>
@@ -113,6 +115,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -130,12 +134,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/笔记/">笔记</a></li>
 		        
 				</ul>
 			</nav>
@@ -174,65 +180,10 @@
       
         <p>Hexo 确实是一个神奇的好东西，通过Hexo和github搭配就能生成完美的个人博客，还有丰富的主题样式可以选择。不用自己管理服务器，是不是很酷？以下记录了我搭建博客的步骤和搭建过程中遇到的一些问题。</p>
 <blockquote>
-<p>学习不能含糊，不能似是而非，要有打破砂锅问到底的精神！</p>
-</blockquote>
-<h3>准备工作</h3>
-<ol>
-<li>需要申请一个github帐号，用来搭载你的博客</li>
-<li>需要安装node，用来安装依赖文件</li>
-<li>安装git，因为Hexo有很多操作都涉及到命令行，可以使用Git Bash来操作</li>
-<li>需要有一个美好的心情 —— 你马上就可以有自己的博客了，激动不？</li>
-</ol>
-<h3>安装hexo</h3>
-<ol>
-<li>npm install hexo-cli -g</li>
-<li>hexo init blog</li>
-<li>cd blog</li>
-<li>npm install</li>
-<li>hexo generate 或 hexo g</li>
-<li>hexo server 或 hexo s</li>
-</ol>
-<blockquote>
-<p>注意
-执行hexo server提示找不到该指令, 解决办法：在Hexo 3.0 后server被单独出来了，需要安装server，安装的命令如下：$ npm install hexo -server --save</p>
-</blockquote>
-<p>到这里访问 http://localhost:4000/ 地址 就可以看到你的博客了</p>
-<h3>部署到github</h3>
-<ol>
-<li>申请github帐号，网站地址：https://github.com</li>
-<li>新建项目，项目名为 &quot;你的github帐号&quot; + &quot;.github.io&quot;, 然后在master上提交你的项目代码，这样就可以通过网址：https://&quot;你的github帐号&quot; + &quot;.github.io&quot; 来访问你的博客</li>
-<li>安装 hexo-deployer-git, 用来将博客一键部署到github上， 命令： $ npm install hexo-deployer-git --save</li>
-<li>修改文件夹下的  _config.yml 文件
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: &lt;repository url&gt;</div><div class="line">  branch: [branch]</div></pre></td></tr></table></figure></li>
-</ol>
-<blockquote>
-<p>branch为分支，默认为master,可以不配置
-repo为仓库地址，在github上新建仓库后，可复制此地址</p>
-</blockquote>
-<ol start="5">
-<li>部署 $ hexo d</li>
-</ol>
-<blockquote>
-<p>d: deploy 的缩写, 部署博客到github上</p>
-</blockquote>
-<p>到这里访问 https:// + &quot;你的github帐号&quot;.github.io 地址 就可以看到你线上的博客了，像我这么喜欢炫耀的人，最喜欢发给周围的人去炫耀了……</p>
-<p>注意：部署到github的时候hexo文件和生成的静态文件可以放在一个git仓库下的不同分支，也可以放在不同的git仓库。如果放在同一个git仓库，需要注意的是创建分支： git checkout -b dev 创建并切换分支， git checkou master 切换到master分支</p>
-<h3>使用方法</h3>
-<ol>
-<li>发一篇文章</li>
-</ol>
-<p>使用命令行
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ hexo new test  # 新建文章</div><div class="line">$ hexo clean  # 清除缓存，强烈建议每次执行命令前先清理缓存，每次部署前先删除 .deploy 文件夹,</div><div class="line">$ hexo g   # 生成网页，可以在 public 目录查看整个网站的文件</div><div class="line">$ hexo s   # 本地预览，&apos;Ctrl+C&apos;关闭</div></pre></td></tr></table></figure></p>
-<p>注意： 有时候clean会报错，需要安装 npm install hexo-util --save</p>
-<p>直接方式创建文件
-在 **source/_posts/**下新建一个.md文件也可</p>
-<ol start="2">
-<li>添加文件分类
-直接在source/_posts 文件夹下新建文件夹即可，很方便</li>
-</ol>
-<h3>全局配置 _config.yml</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"># Hexo Configuration</div><div class="line">## Docs: http://hexo.io/docs/configuration.html</div><div class="line">## Source: https://github.com/hexojs/hexo/</div><div class="line"># Site #站点信息</div><div class="line">title:  #标题</div><div class="line">subtitle:  #副标题</div><div class="line">description:  #站点描述，给搜索引擎看的</div><div class="line">author:  #作者</div><div class="line">email:  #电子邮箱</div><div class="line">language: zh-CN #语言</div><div class="line"># URL #链接格式</div><div class="line">url:  #网址</div><div class="line">root: / #根目录</div><div class="line">permalink: :year/:month/:day/:title/ #文章的链接格式</div><div class="line">tag_dir: tags #标签目录</div><div class="line">archive_dir: archives #存档目录</div><div class="line">category_dir: categories #分类目录</div><div class="line">code_dir: downloads/code</div><div class="line">permalink_defaults:</div><div class="line"># Directory #目录</div><div class="line">source_dir: source #源文件目录</div><div class="line">public_dir: public #生成的网页文件目录</div><div class="line"># Writing #写作</div><div class="line">new_post_name: :title.md #新文章标题</div><div class="line">default_layout: post #默认的模板，包括 post、page、photo、draft（文章、页面、照片、草稿）</div><div class="line">titlecase: false #标题转换成大写</div><div class="line">external_link: true #在新选项卡中打开连接</div><div class="line">filename_case: 0</div><div class="line">render_drafts: false</div><div class="line">post_asset_folder: false</div><div class="line">relative_link: false</div><div class="line">highlight: #语法高亮</div><div class="line">  enable: true #是否启用</div><div class="line">  line_number: true #显示行号</div><div class="line">  tab_replace:</div><div class="line">  # Category &amp; Tag #分类和标签</div><div class="line">default_category: uncategorized #默认分类</div><div class="line">category_map:</div><div class="line">tag_map:</div><div class="line"># Archives</div><div class="line">2: 开启分页</div><div class="line">1: 禁用分页</div><div class="line">0: 全部禁用</div><div class="line">archive: 2</div><div class="line">category: 2</div><div class="line">tag: 2</div><div class="line"># Server #本地服务器</div><div class="line">port: 4000 #端口号</div><div class="line">server_ip: localhost #IP 地址</div><div class="line">logger: false</div><div class="line">logger_format: dev</div><div class="line"># Date / Time format #日期时间格式</div><div class="line">date_format: YYYY-MM-DD #参考http://momentjs.com/docs/#/displaying/format/</div><div class="line">time_format: H:mm:ss</div><div class="line"># Pagination #分页</div><div class="line">per_page: 10 #每页文章数，设置成 0 禁用分页</div><div class="line">pagination_dir: page</div><div class="line"># Disqus #Disqus评论，替换为多说</div><div class="line">disqus_shortname:</div><div class="line"># Extensions #拓展插件</div><div class="line">theme: landscape-plus #主题</div><div class="line">exclude_generator:</div><div class="line">plugins: #插件，例如生成 RSS 和站点地图的</div><div class="line">- hexo-generator-feed</div><div class="line">- hexo-generator-sitemap</div><div class="line"># Deployment #部署，将 lmintlcx 改成用户名</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: github创库地址.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-
+<p>学习不能含糊，不能似是而非，要有打破砂锅问到底的精神！<br>
+        
+          <a class="article-more-a" href="/2017/08/24/tools/hexo_github_pages1/#more">more >></a>
+        
       
 
       
@@ -405,7 +356,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -421,15 +380,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">

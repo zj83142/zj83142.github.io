@@ -55,7 +55,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives">归档</a></li>
+	        
+				<li><a href="/tags/笔记/">笔记</a></li>
 	        
 			</ul>
 		</nav>
@@ -113,6 +115,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -130,12 +134,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/笔记/">笔记</a></li>
 		        
 				</ul>
 			</nav>
@@ -172,52 +178,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。</p>
-<h3>上传文件插件dropzone</h3>
-<ol>
-<li>设置 Dropzone.autoDiscover = false</li>
-</ol>
-<p>(禁止对所有元素的自动查找) 否则前端会报错: Dropzone already attached.</p>
-<ol start="2">
-<li>
-<p>基本用法
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;myDropzone&quot; class=&quot;dropzone&quot;&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">var myDropzone = new Dropzone(&quot;#upload_logo&quot;, &#123; </div><div class="line">  url: &quot;xxxx&quot;,  // 上传文件地址</div><div class="line">  maxFiles: &apos;1&apos;, // 最多上传一个文件</div><div class="line">  dictDefaultMessage: &apos;上传 Logo 图片&apos;, // 修改 提示文字</div><div class="line">  addRemoveLinks: &apos;dictRemoveFile&apos;, // 显示删除文件链接</div><div class="line">  acceptedFiles: &apos;image/*&apos;  // 接收的文件类型</div><div class="line">&#125;);</div><div class="line">// 文件上传成功</div><div class="line">myDropzone.on(&apos;success&apos;, function(file, response) &#123;</div><div class="line">  var res = JSON.parse(response);</div><div class="line">  ...</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>显示服务器上已存在的图片或文件</p>
-</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var mockFile = &#123; name: filename, size: 123, accepted: true &#125;;</div><div class="line">myDropzone.emit( &quot;addedfile&quot;, mockFile);</div><div class="line">myDropzone.emit( &quot;thumbnail&quot;, mockFile, fileUrl); // 生成缩略图</div><div class="line">myDropzone.files.push( mockFile ); </div><div class="line">// $(&apos;div.dz-preview&apos;).addClass(&apos; dz-processing dz-image-preview dz-success dz-complete&apos;); // 这个会有上传成功的动画，不太需要</div><div class="line">$(&apos;div.dz-preview&apos;).addClass(&apos; dz-complete&apos;); // 设置样式，如果不设置，缩略图上会显示上传进度条</div></pre></td></tr></table></figure></p>
-<ol start="4">
-<li>删除文件</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myDropzone.removeAllFiles();</div></pre></td></tr></table></figure></p>
-<ol start="5">
-<li>还有很多方法，具体可以查看源码，或者说明文档，参考地址：<a href="http://wxb.github.io/dropzonejs.com.zh-CN/dropzonezh-CN/#" target="_blank" rel="external">DropzoneJS</a></li>
-</ol>
-<h3>bootstrap datetimepicker</h3>
-<ol>
-<li>月份选择<br>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(&apos;#xxx&apos;).datetimepicker(&#123;</div><div class="line">  minView : &quot;year&quot;, //  选择时间时，最小可以选择到那层；默认是‘hour’也可用0表示</div><div class="line">  startView: &apos;year&apos;,</div><div class="line">  language : &apos;zh-CN&apos;, // 语言</div><div class="line">  autoclose : true, //  true:选择时间后窗口自动关闭</div><div class="line">  format : &apos;yyyy-mm&apos;, // 文本框时间格式，设置为0,最后时间格式为2017-03-23 17:00:00</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li>
-</ol>
-<h3>js点击下载文本到本地文件中</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function downloadText(content) &#123;</div><div class="line">  let fileName = &apos;xxxx.txt&apos;;  // 文件名</div><div class="line">  let aLink = document.createElement(&apos;a&apos;); </div><div class="line">  let evt = document.createEvent(&quot;MouseEvents&quot;);</div><div class="line">  evt.initEvent(&apos;click&apos;, true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null); // 点击</div><div class="line">  aLink.download = fileName;</div><div class="line">  aLink.dispatchEvent(evt);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>知识点：事件触发器</strong></p>
-<blockquote>
-<p>事件触发器就是用来触发某个元素下的某个事件，IE下有fireEvent()，高级浏览器（chrome，firefox等）有dispatchEvent()</p>
-</blockquote>
-<h4>IE浏览器</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var fireEvent = function(element, event) &#123;</div><div class="line">  // IE浏览器支持fireEvent方法</div><div class="line">  if (document.createEventObject) &#123;</div><div class="line">    var evt = document.createEventObject();</div><div class="line">    return element.fireEvent(&apos;on&apos; + event, evt)</div><div class="line">  &#125; else &#123;</div><div class="line">    // 其他标准浏览器使用dispatchEvent方法</div><div class="line">    var evt = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">    // initEvent接受3个参数：</div><div class="line">    // 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">    evt.initEvent(event, true, true);</div><div class="line">    return !element.dispatchEvent(evt);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>或 document上绑定自定义事件ondataavailable
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">document.attachEvent(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line">var obj=document.getElementById(&quot;obj&quot;);</div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.attachEvent(&apos;onclick&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//调用document对象的createEventObject方法得到一个event的对象实例。</div><div class="line">var event = document.createEventObject();</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.fireEvent(&apos;ondataavailable&apos;, event);</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.fireEvent(&apos;onclick&apos;, event);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>chrome、firefox等浏览器
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">//document上绑定自定义事件ondataavailable</div><div class="line">document.addEventListener(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line">var obj = document.getElementById(&quot;obj&quot;);</div><div class="line"></div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.addEventListener(&apos;click&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line"></div><div class="line">//调用document对象的 createEvent 方法得到一个event的对象实例。</div><div class="line">var event = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line"></div><div class="line">// initEvent接受3个参数：</div><div class="line">// 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">event.initEvent(&quot;ondataavailable&quot;, true, true);</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.dispatchEvent(event);</div><div class="line">var event1 = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">event1.initEvent(&quot;click&quot;, true, true);</div><div class="line">event1.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.dispatchEvent(event1);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<h3>其他注意事项</h3>
-<ul>
-<li>form表单调用reset： $('#form_test')[0].reset();</li>
-<li>redio设置选中：$('input[name=&quot;xxx&quot;][value=&quot;' + val + '&quot;]').attr(&quot;checked&quot;, true);</li>
-</ul>
-
+        <p>工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。<br>
+        
+          <a class="article-more-a" href="/2017/09/20/js/js-pits/#more">more >></a>
+        
       
 
       
@@ -242,7 +206,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/js-dropzone-datetimepicker-js下载文本//" class="article-tag-list-link color4">js dropzone datetimepicker js下载文本</a>
+        			<a href="/categories/js//" class="article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/js/dropzone//" class="article-tag-list-link color4">dropzone</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/js/dropzone/datetimepicker//" class="article-tag-list-link color5">datetimepicker</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/js/dropzone/datetimepicker/js下载文本//" class="article-tag-list-link color2">js下载文本</a>
         		</li>
       		
 		</ul>
@@ -301,29 +277,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>生成随机颜色</h3>
-<h4>十六进制格式（#000000-#FFFFFF）</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function randomHexColor() &#123;</div><div class="line">  let hex = Math.floor(Math.random() * 16777216).toString(16); // 生成ffffff以内16进制数</div><div class="line">  while (hex.length &lt; 6) &#123; //while循环判断hex位数，少于6位前面加0凑够6位</div><div class="line">    hex = &apos;0&apos; + hex;</div><div class="line">  &#125;</div><div class="line">  return &apos;#&apos; + hex; //返回‘#’开头16进制颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function randomHexColor() &#123; </div><div class="line">  return &apos;#&apos; + (&apos;00000&apos; + (Math.random() * 0x1000000 &lt;&lt; 0).toString(16)).substr(-6);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>执行数序：</p>
-<ol>
-<li>先执行Math.random() * 0x1000000，其中0x1000000=0xffffff+1，因为Math.random()取到1，所以+1，这样就会生成一个1-16777216(不包含)以内的浮点数。</li>
-<li>然后执行&lt;&lt;0，这是取整运算，去掉后面的小数点。这时为一个16777216(不包含)以内的十进制数。</li>
-<li>之后执行.toString(16)，把十进制数转化为六位以下16进制数。</li>
-<li>再后执行'00000'+，这时因为之前生成的16进制数最少可能仅一位，在前面加上5个0。</li>
-<li>最后执行.substr(-6)，是去从-6开始的后面所有字符串，也就是最后6位数。</li>
-<li>前面加上#并retuen</li>
-</ol>
-<h4>RGB格式</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function randomRgbColor() &#123; //随机生成RGB颜色</div><div class="line">  const r = Math.floor(Math.random() * 256); //随机生成256以内r值</div><div class="line">  const g = Math.floor(Math.random() * 256); //随机生成256以内g值</div><div class="line">  const b = Math.floor(Math.random() * 256); //随机生成256以内b值</div><div class="line">  return `rgb($&#123;r&#125;,$&#123;g&#125;,$&#123;b&#125;)`; //返回rgb(r,g,b)格式颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4>RGBA格式</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function randomRgbaColor() &#123; //随机生成RGBA颜色</div><div class="line">  const r = Math.floor(Math.random() * 256); //随机生成256以内r值</div><div class="line">  const g = Math.floor(Math.random() * 256); //随机生成256以内g值</div><div class="line">  const b = Math.floor(Math.random() * 256); //随机生成256以内b值</div><div class="line">  const alpha = Math.random(); //随机生成1以内a值</div><div class="line">  return `rgb($&#123;r&#125;,$&#123;g&#125;,$&#123;b&#125;,$&#123;alpha&#125;)`; //返回rgba(r,g,b,a)格式颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3>颜色格式转化</h3>
-<h4>十六进制转为RGB</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function hex2Rgb(hex) &#123; //十六进制转为RGB</div><div class="line">  let rgb = []; // 定义rgb数组</div><div class="line">  if (/^\#[0-9A-F]&#123;3&#125;$/i.test(hex)) &#123; //判断传入是否为#三位十六进制数</div><div class="line">    let sixHex = &apos;#&apos;;</div><div class="line">    hex.replace(/[0-9A-F]/ig, function(kw) &#123;</div><div class="line">        sixHex += kw + kw; //把三位16进制数转化为六位</div><div class="line">    &#125;);</div><div class="line">    hex = sixHex; //保存回hex</div><div class="line">  &#125;</div><div class="line">  if (/^#[0-9A-F]&#123;6&#125;$/i.test(hex)) &#123; //判断传入是否为#六位十六进制数</div><div class="line">    hex.replace(/[0-9A-F]&#123;2&#125;/ig, function(kw) &#123;</div><div class="line">        rgb.push(parseInt(kw,16)); //十六进制转化为十进制并存入数组</div><div class="line">    &#125;);</div><div class="line">    return `rgb($&#123;rgb.join(&apos;,&apos;)&#125;)`; //输出RGB格式颜色</div><div class="line">  &#125; else &#123;</div><div class="line">    console.log(`Input $&#123;hex&#125; is wrong!`);</div><div class="line">    return &apos;rgb(0,0,0)&apos;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4>RGB转为十六进制</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function rgb2Hex(rgb) &#123;</div><div class="line">  if (/^rgb\((\d&#123;1,3&#125;\,)&#123;2&#125;\d&#123;1,3&#125;\)$/i.test(rgb)) &#123; //test RGB</div><div class="line">    let hex = &apos;#&apos;; //定义十六进制颜色变量</div><div class="line">    rgb.replace(/\d&#123;1,3&#125;/g, function(kw) &#123; //提取rgb数字</div><div class="line">      kw = parseInt(kw).toString(16); //转为十六进制</div><div class="line">      kw = kw.length &lt; 2 ? 0 + kw : kw; //判断位数，保证两位</div><div class="line">      hex += kw; //拼接</div><div class="line">    &#125;);</div><div class="line">    return hex; //返回十六进制</div><div class="line">  &#125; else &#123;</div><div class="line">    console.log(`Input $&#123;rgb&#125; is wrong!`);</div><div class="line">    return &apos;#000&apos;; //输入格式错误,返回#000</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
+        <h3 id="生成随机颜色"><a href="#生成随机颜色" class="headerlink" title="生成随机颜色"></a>生成随机颜色</h3><h4 id="十六进制格式（-000000-FFFFFF）"><a href="#十六进制格式（-000000-FFFFFF）" class="headerlink" title="十六进制格式（#000000-#FFFFFF）"></a>十六进制格式（#000000-#FFFFFF）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function randomHexColor() &#123;</div><div class="line">  let hex = Math.floor(Math.random() * 16777216).toString(16); // 生成ffffff以内16进制数</div><div class="line">  while (hex.length &lt; 6) &#123; //while循环判断hex位数，少于6位前面加0凑够6位</div><div class="line">    hex = &apos;0&apos; + hex;</div><div class="line">  &#125;</div><div class="line">  return &apos;#&apos; + hex; //返回‘#’开头16进制颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/09/13/js/generate-color/#more">more >></a>
+        
       
 
       
@@ -415,30 +372,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>牛人博客</h3>
-<p><a href="http://www.ruanyifeng.com" target="_blank" rel="external">阮一峰的博客</a></p>
-<h3>框架</h3>
-<p><a href="https://github.com/akxcv/vuera?utm_campaign=Revue%20newsletter&amp;utm_medium=Newsletter&amp;utm_source=Vue.js%20Feed" target="_blank" rel="external">vuera-据说很吊，可以在react中引用vue</a></p>
-<h3>前端相关</h3>
-<p><a href="http://www.infoq.com/cn/FE-Weekly" target="_blank" rel="external">前端每周清单</a>
-<a href="https://sylvanassun.github.io/2017/08/06/2017-08-06-DigestHttps/" target="_blank" rel="external">揭秘HTTPS的&quot;秘密&quot;</a>
-<a href="https://johnsenzhou.github.io/code-guide/" target="_blank" rel="external">前端编码规范</a></p>
-<h3>移动端相关</h3>
-<p><a href="https://juejin.im/post/59c4c9d85188254f58412d17" target="_blank" rel="external">移动 Web 开发问题和优化小结</a></p>
-<h3>浏览器相关</h3>
-<p><a href="http://www.ruanyifeng.com/blog/2017/09/flame-graph.html" target="_blank" rel="external">火焰图</a>
-<a href="https://sylvanassun.github.io/2017/10/03/2017-10-03-BrowserCriticalRenderingPath/" target="_blank" rel="external">浏览器渲染过程与性能优化</a>
-<a href="https://sylvanassun.github.io/2017/10/08/2017-10-08-BrowserRenderOptimization/" target="_blank" rel="external">浏览器性能优化-渲染性能</a></p>
-<h3>服务器相关</h3>
-<p><a href="https://sylvanassun.github.io/2016/06/24/2016-06-24-nginx-initiation/" target="_blank" rel="external">如何安装与搭建一个Nginx服务器</a>
-<a href="https://sylvanassun.github.io/2016/06/27/2016-06-27-redis-cluster01/" target="_blank" rel="external">如何搭建与维护一个Redis集群</a></p>
-<h3>其他</h3>
-<p><a href="http://www.500d.me/editresume/" target="_blank" rel="external">五百丁</a> —— 一个简历模版、简历优化、找工作的网站</p>
-<ul>
-<li>蜂窝煤效果
-&lt;iframe height= 300 width= 100% src=&quot;https://codepen.io/Kseso/pen/xqNdmO&quot; frameborder=0 allowfullscreen&gt;&lt;/iframe&gt;</li>
-</ul>
-
+        <p>平时遇到的各种素材，将链接收录一下……<br>
+        
+          <a class="article-more-a" href="/2017/09/13/links/#more">more >></a>
+        
       
 
       
@@ -525,62 +462,20 @@
         <ul>
 <li>js</li>
 </ul>
-<h3>判断数据类型的方法</h3>
-<ol>
-<li>根据数据类型判断</li>
-</ol>
+<h3 id="判断数据类型的方法"><a href="#判断数据类型的方法" class="headerlink" title="判断数据类型的方法"></a>判断数据类型的方法</h3><ol>
+<li><p>根据数据类型判断</p>
 <ul>
 <li>typeof</li>
 <li>instaneof</li>
 </ul>
-<ol start="2">
-<li>根据构造函数判断</li>
-</ol>
+</li>
+<li><p>根据构造函数判断</p>
 <ul>
 <li>Object.prototype.toString</li>
-<li>construcor</li>
-</ul>
-<p><a href="http://www.imooc.com/course/comment/id/745?page=4" target="_blank" rel="external">慕课网一个老师的视频-讲Zepto</a></p>
-<h3>判断方法</h3>
-<ul>
-<li>
-<p>isFunction 判断是否是函数
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function isFunction(value) &#123; return type(value) == &quot;function&quot; &#125;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>isWindow
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 判断是否是 window对象（注意，w为小写）指当前的浏览器窗口，window对象的window属性指向自身。</div><div class="line">// 即 window.window === window</div><div class="line">function isWindow(obj)     &#123; return obj != null &amp;&amp; obj == obj.window &#125;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>isDocument 判断是否是 document 对象
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// window.document.nodeType == 9 数字表示为9，常量表示为 DOCUMENT_NODE</div><div class="line">function isDocument(obj)   &#123; return obj != null &amp;&amp; obj.nodeType == obj.DOCUMENT_NODE &#125;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>isObject 判断是否是 object
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function isObject(obj)     &#123; return type(obj) == &quot;object&quot; &#125;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>isPlainObject
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function isPlainObject(obj) &#123;</div><div class="line">  return isObject(obj) &amp;&amp; !isWindow(obj) &amp;&amp; Object.getPrototypeOf(obj) == Object.prototype</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>isArray 判断是否是arr
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isArray = Array.isArray || function(object)&#123; return object instanceof Array &#125;;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>likeArray
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 判断是否是数组或者对象数组</div><div class="line">// !!的作用是把一个其他类型的变量转成的bool类型。</div><div class="line">// !!obj 直接过滤掉了false，null，undefined，&apos;&apos;等值</div><div class="line">function likeArray(obj) &#123;</div><div class="line">var length = !!obj &amp;&amp; &apos;length&apos; in obj &amp;&amp; obj.length,</div><div class="line"></div><div class="line">// 获取obj的数据类型</div><div class="line">type = $.type(obj);</div><div class="line"></div><div class="line">// 不能是function类型，不能是window</div><div class="line">// 如果是array则直接返回true</div><div class="line">// 或者当length的数据类型是number，并且其取值范围是0到(length - 1)这里是通过判断length - 1 是否为obj的属性</div><div class="line"></div><div class="line">return &apos;function&apos; != type &amp;&amp; !isWindow(obj) &amp;&amp; (</div><div class="line">    &apos;array&apos; == type || length === 0 ||</div><div class="line">    (typeof length == &apos;number&apos; &amp;&amp; length &gt; 0 &amp;&amp; (length - 1) in obj)</div><div class="line">  )</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>isEmptyObject 空对象
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$.isEmptyObject = function(obj) &#123;</div><div class="line">  var name</div><div class="line">  for (name in obj) return false</div><div class="line">  return true</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>isNumeric 数字
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$.isNumeric = function(val) &#123;</div><div class="line">  var num = Number(val), type = typeof val;</div><div class="line">  return val != null &amp;&amp; type != &apos;boolean&apos; &amp;&amp;</div><div class="line">    (type != &apos;string&apos; || val.length) &amp;&amp;</div><div class="line">    !isNaN(num) &amp;&amp; isFinite(num) || false</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</li>
-</ul>
-
+<li>construcor
+        
+          <a class="article-more-a" href="/2017/09/12/js/js-check-type/#more">more >></a>
+        
       
 
       
@@ -653,8 +548,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>前端安全与防范</h3>
-<ol>
+        <h3 id="前端安全与防范"><a href="#前端安全与防范" class="headerlink" title="前端安全与防范"></a>前端安全与防范</h3><ol>
 <li>XSS: 跨站脚本攻击</li>
 </ol>
 <p>说明：它允许用户讲恶意代码植入到提供给其他用户使用的页面中，可以简单的理解为一种Javascript代码注入。</p>
@@ -663,88 +557,10 @@
 <li>过滤转义输入输出</li>
 <li>避免使用eval、new Function 等执行字符串的方法，除非确定字符串和用户输入五官</li>
 <li>使用cookie的httpOnly属性，加上了这个属性的cookie字段，js是无法进行读写的</li>
-<li>使用innerHtml、document.write的时候，如果数据是用户输入的，那么需要对关键字符进行过滤与转义</li>
-</ul>
-<ol start="2">
-<li>CSRF：跨站请求伪造</li>
-</ol>
-<p>说明：其实就是网站中的一些提交行为，被黑客利用，在你访问黑客的网站的时候进行操作，会被操作到其他网站上</p>
-<p>预防措施：</p>
-<ul>
-<li>检测http referer 是否是同域名</li>
-<li>避免登录的session长时间存储在客户端中</li>
-<li>关键请求使用验证码或者token机制</li>
-</ul>
-<p>其他的一些攻击方法还有 http劫持，界面操作劫持</p>
-<h3>闭包问题</h3>
-<p>什么是闭包？</p>
-<p>专业的说法：<strong>当一个内部函数被其他外部函数之外的变量引用时，就形成了一个闭包。</strong></p>
-<p>简单理解：闭包就是一个具有封闭功能与包裹功能的结构，是为了实现具有私有访问控件的函数，函数可以构成闭包，因为函数内部定义的数据函数外部无法访问，即函数具有封闭性，函数可以封闭代码即具有包裹性，所以函数可以构成闭包。</p>
-<p>创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量。</p>
-<p>闭包的特性：</p>
-<ul>
-<li>函数嵌套函数</li>
-<li>函数内部可以引用外部的参数和变量</li>
-<li>参数和变量不会被垃圾回收机制回收</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>常驻内存，会增大内存使用量，使用不当很容易造成内存泄漏</li>
-</ul>
-<h3>深拷贝和浅拷贝</h3>
-<blockquote>
-<p>浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，修改新对象不会改到原对象</p>
-</blockquote>
-<p><strong>实现浅拷贝</strong>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = obj1;</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125; &lt;-- b 被改到了</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></p>
-<p><strong>实现深拷贝</strong>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = &#123; a: obj1.a, b: obj1.b, c: obj1.c &#125;;</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 20, c: 30 &#125; &lt;-- b 沒被改到</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></p>
-<p><strong>深拷贝实现方式</strong></p>
-<ul>
-<li>
-<p>手动复制方式</p>
-</li>
-<li>
-<p>Object.assign, ES6的新函数
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123; a: 10, b: 20, c: 30 &#125;;</div><div class="line">var obj2 = Object.assign(&#123;&#125;, obj1);</div><div class="line">obj2.b = 100;</div><div class="line">console.log(obj1);</div><div class="line">// &#123; a: 10, b: 20, c: 30 &#125; &lt;-- 沒被改到</div><div class="line">console.log(obj2);</div><div class="line">// &#123; a: 10, b: 100, c: 30 &#125;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>转成JSON，再转回来
-用JSON.stringify 把对象转成字符串，再用JSON.parse把字符串转成新的对象</p>
-<p>缺点：只有可以转化成JSON格式的对象才可以这样用，像function没办法转成JSON</p>
-</li>
-<li>
-<p>jquery，有提供一个$.extend可以用来做Deep Copy</p>
-<ol>
-<li>lodash，也有提供_.cloneDeep用来做 Deep Copy。</li>
-<li>递归实现深拷贝
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function clone( o ) &#123;</div><div class="line">  var temp = &#123;&#125;;</div><div class="line">  for( var k in o ) &#123;</div><div class="line">    if( typeof o[ k ] == &apos;object&apos; )&#123;</div><div class="line">      temp[ k ] = clone( o[ k ] );</div><div class="line">    &#125; else &#123;</div><div class="line">      temp[ k ] = o[ k ];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  return temp;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ul>
-<h3>https 的握手过程</h3>
-<ol>
-<li>浏览器将自己支持的一套加密规则发送给服务器</li>
-<li>服务器从中选出一组加密算法与hash算法，并讲自己的身份信息以整数的形式发回给浏览器。证书里面包含了网站地址，加密公钥，以及整数的颁发机构等信息。</li>
-<li>浏览器获取网站证书之后浏览器要做一下工作：</li>
-</ol>
-<ul>
-<li>验证证书的合法</li>
-<li>如果证书受信任，或者是用户接收了不受信任的证书，浏览器会生成一串随机数的密码，并用于证书中提供的公钥加密</li>
-<li>使用约定好的hash算法计算握手消息，并使用生成的随机数对消息进行加密，最后将之前生成的所有消息发送给服务器</li>
-</ul>
-<ol start="4">
-<li>网站接收浏览器发来的数据之后要做以下操作：</li>
-</ol>
-<ul>
-<li>使用自己的私钥将信息解密取出密码，使用密码解密浏览器发来的握手消息，并验证hash是否与浏览器发送来的一致</li>
-<li>使用密码加密一段握手消息，发送给浏览器</li>
-</ul>
-<ol start="5">
-<li>浏览器解密并计算握手消息的hash，如果与服务端发过来的hash一致，此时握手过程结束，之后所有的通信数据将由之前浏览器生成的随机密码并利用对称加密算法进行加密</li>
-</ol>
-<p><a href="http://blog.jobbole.com/105633/" target="_blank" rel="external">参考文档</a></p>
-
+<li>使用innerHtml、document.write的时候，如果数据是用户输入的，那么需要对关键字符进行过滤与转义
+        
+          <a class="article-more-a" href="/2017/09/11/note/web-interview1/#more">more >></a>
+        
       
 
       
@@ -838,10 +654,10 @@
 <li>类成员变量用m开头</li>
 <li>大小写尽量统一， - _ 尽量统一</li>
 <li>常量使用大写</li>
-<li>不要使用过长的变量名，也不要用单词首字母缩写（根本猜不到是什么意思）</li>
-</ul>
-<p>网上还有一个变量命名神奇**<a href="http://unbug.github.io/codelf/" target="_blank" rel="external">Codelf</a>**, 哇哈哈哈哈哈，果然，程序的世界可以无限放大，也可以无限缩小……</p>
-
+<li>不要使用过长的变量名，也不要用单词首字母缩写（根本猜不到是什么意思）
+        
+          <a class="article-more-a" href="/2017/09/06/named-rule/#more">more >></a>
+        
       
 
       
@@ -1013,14 +829,11 @@
 <p>hexo 博客在家里电脑clone了一份，npm install 了所有的安装包后运行不起来，遇到了一些列的问题，记录一下，方便以后回顾。</p>
 </blockquote>
 <ol>
-<li>
-<p>hexo s 后报错 没有找到 layout index.html。原因是从git上clone下来的项目themes文件夹是空的，重新安装next主题：<strong>git clone https://github.com/iissnan/hexo-theme-next themes/next</strong></p>
+<li><p>hexo s 后报错 没有找到 layout index.html。原因是从git上clone下来的项目themes文件夹是空的，重新安装next主题：<strong>git clone <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">https://github.com/iissnan/hexo-theme-next</a> themes/next</strong></p>
 </li>
-<li>
-<p>hexo g 生成文件时报错 提示zh-tw.yml 错误，删掉languages文件夹下对应的字体文件。</p>
+<li><p>hexo g 生成文件时报错 提示zh-tw.yml 错误，删掉languages文件夹下对应的字体文件。</p>
 </li>
-<li>
-<p>左侧导航点击报错：hexo Cannot GET /tags/，找不到tags页面，解决方法：1）$ hexo new page 'tags'。2）设置页面 type: tags。 3）在主题配置文件，菜单中添加连接：tags: /tags</p>
+<li><p>左侧导航点击报错：hexo Cannot GET /tags/，找不到tags页面，解决方法：1）$ hexo new page ‘tags’。2）设置页面 type: tags。 3）在主题配置文件，菜单中添加连接：tags: /tags</p>
 </li>
 </ol>
 
@@ -1169,56 +982,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>next主题</h3>
-<ol>
-<li>
-<p>安装 hexo-theme-next 到 themes/next文件夹下
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>启用主题
-_config.yml 文件下修改 theme: next (默认 theme: landscape)</p>
-</li>
-<li>
-<p>主题设定 themes/next/_config.yml</p>
-</li>
-</ol>
-<p>Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。目前 NexT 支持三种 Scheme：</p>
-<pre><code>- Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白
-- Mist - Muse 的紧凑版本，整洁有序的单栏外观
-- Pisces - 双栏 Scheme，小家碧玉似的清新
-- Gemini
-</code></pre>
-<ol start="4">
-<li>
-<p>设置头像
-在theme/next/source/images 文件加下添加avater.png 图片，然后配置theme/next/_config.yml 文件中的 avatar: /images/avatar.png</p>
-</li>
-<li>
-<p>修改布局宽度
-Pisces Scheme 编辑 themes/next/source/css/_schemes/Picses/_layout.styl 文件，更改以下 css 选项定义值：</p>
-</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.header&#123; width: 1150px; &#125;</div><div class="line">.container .main-inner &#123; width: 1150px; &#125;</div><div class="line">.content-wrap &#123; width: calc(100% - 260px); &#125;</div></pre></td></tr></table></figure></p>
-<p>其他主题布局宽度调整方法：
-<strong>第一种方法</strong>
-现在一般都用宽屏显示器，博客页面两侧留白太多，调整一下宽度。
-打开 \themes\next\source\css_common\components\post\post-expand.styl 文件，找到</p>
-<pre><code>  @media (max-width: 767px) 改为 @media (max-width: 1080px)
-
-打开 \themes\next\source\css\ _variables\base.styl 文件，找到
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$main-desktop                   = 960px</div><div class="line">$main-desktop-large             = 1200px</div><div class="line">$content-desktop                = 700px</div><div class="line">修改 $main-desktop 和 $content-desktop 的数值：</div><div class="line"></div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">$main-desktop                   = 1080px</div><div class="line">$main-desktop-large             = 1200px</div><div class="line">$content-desktop                = 810px</div></pre></td></tr></table></figure>
-
-Next.Mist 主题的文章宽度至此改完了。如果你用的是 Next.Pisces，还需要继续修改。
-打开 \themes\next\source\css\_schemes\Pisces\_layout.styl 文件，将第 4 行的 width改为1080px ，修改后如下：
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">.header &#123;</div><div class="line">  position: relative;</div><div class="line">  margin: 0 auto;</div><div class="line">  width: 1080px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-**第二种方法（Next文档中给出的方法）**
-
-编辑 themes/next/source/css/_variables/custom.styl 文件，新增变量：
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 修改成你期望的宽度</div><div class="line">$content-desktop = 700px</div><div class="line">// 当视窗超过 1600px 后的宽度</div><div class="line">$content-desktop-large = 900px</div></pre></td></tr></table></figure>
-</code></pre>
-
+        <h3 id="next主题"><a href="#next主题" class="headerlink" title="next主题"></a>next主题</h3><p>1.安装 hexo-theme-next 到 themes/next文件夹下<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure></p>
+<p>2.启用主题<br>  _config.yml 文件下修改 theme: next (默认 theme: landscape)<br>
+        
+          <a class="article-more-a" href="/2017/08/25/tools/hexo-them/#more">more >></a>
+        
       
 
       
@@ -1391,7 +1159,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1407,15 +1183,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">

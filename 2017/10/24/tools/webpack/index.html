@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>webpack 学习笔记 | zj83142</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="webpack 是什么？  模块化 自定义文件或npm install 静态文件模块化 借助于插件和加载器  webpack的优势  代码分离 装载器（css, sass, jsx 等等） 智能解析（require(&amp;quot;./template/&amp;quot;+names+&apos;.ejs&apos;)）  webpack安装流程  npm install -g webpack npm install webp">
+  <meta name="description" content="git上的一个webpack配置案例 webpack 是什么？ Webpack就是个模块打包工具，将模块及其依赖打包生成静态资源。在Webpack的机制里，所有的资源都是模块(js,css,图片等)，而且可以通过代码分隔(Code Splitting)的方法异步加载，实现性能上的优化。">
 <meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack 学习笔记">
 <meta property="og:url" content="http://yoursite.com/2017/10/24/tools/webpack/index.html">
 <meta property="og:site_name" content="zj83142">
-<meta property="og:description" content="webpack 是什么？  模块化 自定义文件或npm install 静态文件模块化 借助于插件和加载器  webpack的优势  代码分离 装载器（css, sass, jsx 等等） 智能解析（require(&amp;quot;./template/&amp;quot;+names+&apos;.ejs&apos;)）  webpack安装流程  npm install -g webpack npm install webp">
+<meta property="og:description" content="git上的一个webpack配置案例 webpack 是什么？ Webpack就是个模块打包工具，将模块及其依赖打包生成静态资源。在Webpack的机制里，所有的资源都是模块(js,css,图片等)，而且可以通过代码分隔(Code Splitting)的方法异步加载，实现性能上的优化。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-24T08:28:33.167Z">
+<meta property="og:updated_time" content="2017-10-26T02:47:39.163Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack 学习笔记">
-<meta name="twitter:description" content="webpack 是什么？  模块化 自定义文件或npm install 静态文件模块化 借助于插件和加载器  webpack的优势  代码分离 装载器（css, sass, jsx 等等） 智能解析（require(&amp;quot;./template/&amp;quot;+names+&apos;.ejs&apos;)）  webpack安装流程  npm install -g webpack npm install webp">
+<meta name="twitter:description" content="git上的一个webpack配置案例 webpack 是什么？ Webpack就是个模块打包工具，将模块及其依赖打包生成静态资源。在Webpack的机制里，所有的资源都是模块(js,css,图片等)，而且可以通过代码分隔(Code Splitting)的方法异步加载，实现性能上的优化。">
   
     <link rel="alternative" href="/atom.xml" title="zj83142" type="application/atom+xml">
   
@@ -60,7 +60,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives">归档</a></li>
+	        
+				<li><a href="/tags/笔记/">笔记</a></li>
 	        
 			</ul>
 		</nav>
@@ -118,6 +120,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -135,12 +139,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/笔记/">笔记</a></li>
 		        
 				</ul>
 			</nav>
@@ -175,7 +181,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>webpack 是什么？</p>
+        <p><a href="https://github.com/hugzh/webpack-simple-demo" target="_blank" rel="external">git上的一个webpack配置案例</a></p>
+<p>webpack 是什么？</p>
+<p>Webpack就是个模块打包工具，将模块及其依赖打包生成静态资源。在Webpack的机制里，所有的资源都是模块(js,css,图片等)，而且可以通过代码分隔(Code Splitting)的方法异步加载，实现性能上的优化。<br><a id="more"></a></p>
 <ol>
 <li>模块化</li>
 <li>自定义文件或npm install</li>
@@ -186,20 +194,18 @@
 <ol>
 <li>代码分离</li>
 <li>装载器（css, sass, jsx 等等）</li>
-<li>智能解析（require(&quot;./template/&quot;+names+'.ejs')）</li>
+<li>智能解析（require(“./template/“+names+’.ejs’)）</li>
 </ol>
 <p>webpack安装流程</p>
 <ol>
 <li>npm install -g webpack</li>
 <li>npm install webpack-dev-server</li>
 </ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var cats = [&apos;aa&apos;, &apos;bb&apos;, &apos;cc&apos;];</div><div class="line">module.exports = cats;</div><div class="line"></div><div class="line">var cats = require(&apos;./cats.js&apos;);</div><div class="line">console.log(cats);</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var cats = [&apos;aa&apos;, &apos;bb&apos;, &apos;cc&apos;];</div><div class="line">module.exports = cats;</div><div class="line"></div><div class="line">var cats = require(&apos;./cats.js&apos;);</div><div class="line">console.log(cats);</div></pre></td></tr></table></figure>
 <p>编译命令：</p>
 <ul>
-<li>webpack app.js bundle.js
-注：app.js 需要编译的文件
-bundle.js 编译后输出的文件</li>
-<li>webpack app.js bundle.js --watch</li>
+<li>webpack app.js bundle.js<br>注：app.js 需要编译的文件<br>  bundle.js 编译后输出的文件</li>
+<li>webpack app.js bundle.js –watch</li>
 </ul>
 <p>webpack 第三方库</p>
 <ol>
@@ -208,15 +214,12 @@ bundle.js 编译后输出的文件</li>
 <li>使用配置文件webpack.config.js</li>
 <li>使用webpack-dev-server</li>
 </ol>
-<p><strong>安装第三方库 jquery</strong>
-npm install jquery --save</p>
-<p><strong>css模块化</strong>
-安装插件 npm install css-loader style-loader --save-dev</p>
-<p>使用：require('!style-loader!css-loader!./style.css');</p>
+<p><strong>安装第三方库 jquery</strong><br>npm install jquery –save</p>
+<p><strong>css模块化</strong><br>安装插件 npm install css-loader style-loader –save-dev</p>
+<p>使用：require(‘!style-loader!css-loader!./style.css’);</p>
 <p><strong>webpack-dev-server</strong></p>
 <p>npm install -g webpack-dev-server</p>
-<p>在package.js 的scripts 中配置 &quot;webpack-dev-server --entry ./src/js/app.js --output-filename ./dist/bundle.js&quot;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;test-webpack&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;&quot;,</div><div class="line">  &quot;main&quot;: &quot;index.js&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;start&quot;: &quot;webpack-dev-server --port 9001 --entry ./src/js/app.js --output-filename ./dist/bundle.js&quot;,</div><div class="line">    &quot;build&quot;: &quot;webpack&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;author&quot;: &quot;&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;dependencies&quot;: &#123;</div><div class="line">    &quot;jquery&quot;: &quot;^3.2.1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;css-loader&quot;: &quot;^0.28.7&quot;,</div><div class="line">    &quot;style-loader&quot;: &quot;^0.19.0&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在package.js 的scripts 中配置 “webpack-dev-server –entry ./src/js/app.js –output-filename ./dist/bundle.js”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;test-webpack&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;&quot;,</div><div class="line">  &quot;main&quot;: &quot;index.js&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;start&quot;: &quot;webpack-dev-server --port 9001 --entry ./src/js/app.js --output-filename ./dist/bundle.js&quot;,</div><div class="line">    &quot;build&quot;: &quot;webpack&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;author&quot;: &quot;&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;dependencies&quot;: &#123;</div><div class="line">    &quot;jquery&quot;: &quot;^3.2.1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;css-loader&quot;: &quot;^0.28.7&quot;,</div><div class="line">    &quot;style-loader&quot;: &quot;^0.19.0&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <ol>
 <li>执行命令: npm start</li>
 <li>打开 localhost:8080</li>
@@ -227,8 +230,8 @@ npm install jquery --save</p>
 <li>然后安装1.15.0版本的webpack-dev-server：npm install webpack-dev-server@1.15.0 -g</li>
 </ul>
 <p><strong>html-webpack-plugin</strong></p>
-<p>安装：npm install html-webpack-plugin --save</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">var htmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    main: &apos;./src/js/main.js&apos;,</div><div class="line">    a: &apos;./src/js/a.js&apos;</div><div class="line">  &#125;</div><div class="line">  output: &#123;           // 出口文件</div><div class="line">    path: __dirname + &apos;/dist&apos;,</div><div class="line">    filename: &apos;js/[name]-[chunkhash].js&apos;,</div><div class="line">    publicPath: &apos;http://cdn.com/&apos; // 上线地址</div><div class="line">  &#125;,</div><div class="line">  // 需要依赖的插件或者是装载器</div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;test: /\.css$/, loader:&apos;style-loader!css-loader&apos;&#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/, loader:&apos;babel-loader&apos;,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        query: &#123;</div><div class="line">          presets: [&apos;es2015&apos;]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    new htmlWebpackPlugin(&#123;</div><div class="line">      template: &apos;index.html&apos;,</div><div class="line">      filename：&apos;index.html&apos;,</div><div class="line">      inject: false, // 是否默认注入javascript</div><div class="line">      title: &apos;webpack xxx&apos;,  // 使用方法，在html中引用 &lt;%= htmlWebpackPlugin.options.title %&gt;</div><div class="line">      minify: &#123;     // 压缩</div><div class="line">        removeComments: true, // 注释</div><div class="line">        collapseWhitespace: true, // 删除空格</div><div class="line">      &#125;,</div><div class="line">      chunks: [&apos;main&apos;, &apos;a&apos;]   // 只引入需要的chuncks, 用于多页面配置, 注意设置inject: true</div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>安装：npm install html-webpack-plugin –save</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">var htmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    main: &apos;./src/js/main.js&apos;,</div><div class="line">    a: &apos;./src/js/a.js&apos;</div><div class="line">  &#125;,</div><div class="line">  output: &#123;           // 出口文件</div><div class="line">    path: __dirname + &apos;/dist&apos;,</div><div class="line">    filename: &apos;js/[name]-[chunkhash].js&apos;,</div><div class="line">    publicPath: &apos;http://cdn.com/&apos; // 上线地址</div><div class="line">  &#125;,</div><div class="line">  // 需要依赖的插件或者是装载器</div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;test: /\.css$/, loader:&apos;style-loader!css-loader&apos;&#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/, loader:&apos;babel-loader&apos;,</div><div class="line">        exclude: &apos;/node_modules/&apos;,   // 优化打包速度</div><div class="line">        include: &apos;./src&apos;,            // 优化打包速度</div><div class="line">        query: &#123;</div><div class="line">          presets: [&apos;es2015&apos;]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    new htmlWebpackPlugin(&#123;</div><div class="line">      template: &apos;index.html&apos;,</div><div class="line">      filename：&apos;index.html&apos;,</div><div class="line">      inject: false,                          // 是否默认注入javascript</div><div class="line">      title: &apos;webpack demo&apos;,                  // 使用方法，在html中引用 &lt;%= htmlWebpackPlugin.options.title %&gt;</div><div class="line">      minify: &#123;                               // 压缩</div><div class="line">        removeComments: true,                 // 注释</div><div class="line">        collapseWhitespace: true,             // 删除空格</div><div class="line">      &#125;,</div><div class="line">      chunks: [&apos;main&apos;, &apos;a&apos;]                   // 只引入需要的chuncks, 用于多页面配置, 注意设置inject: true</div><div class="line">    &#125;),</div><div class="line">    new htmlWebpackPlugin(&#123;</div><div class="line">      ...</div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>通过配置多个htmlWebpackPlugin 可以配置多个页面</p>
 </blockquote>
@@ -333,7 +336,7 @@ npm install jquery --save</p>
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/24/tools/webpack/" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aQVLDMAwFUO5/6TLDigVxvqTAUPt51SmdxM+Lj23p4yMer6+RfP/9m9fFWL9l/ZvRwMDAeFvGaznWL1jz8mkl7715JgYGxgGMdZjmr1k/8+rJV4uVBz0GBgZG/rkXwdXlwMDAwMinnodmEtPJuzAwME5mJIfYPFiTrV5v6/nAWRwDA+MNGdXCwF9+/sX6BgYGxpswXsVRDc3qBVxvYGBg7M2YXO7PS5WT6I92uBgYGFswqvHau+7P2zWa5QEMDIxjGNWQ7YXjvOT5w2cMDIwDGNViYTU0e3FcrmxgYGBszcgPohP25ArvJogxMDAOYCTTmhcJehvH6MkYGBhbM6pHxyQKJ9dt1UljYGCcw1j/KN8yVn/ZW7io2QIDA2M7xvyafr0E1XaNvJCAgYFxAqM6obx4mU9xfgzGwMA4h5Ff7vfaL3pbzHKzBQYGxnaMaqtE9TWTAmc+HwwMjL0ZeYxWWyiqh9LqQkT3hRgYGFswegfRarkxn2ivpQMDA2NvxqQBIm+qeKo4ioGBgdHb6uXXZHm4lwucGBgYWzMmIZtEbV5CyME3y4SBgbEdY3Jl1jsrTzaOl3PAwMDYmjHftFUbLKqFgd6/AQwMjP0Y1ZBN/poUHau8m+XDwMA4gFFttsgDutqE0TyLY2BgYPxCYaAXxJcZi4GBgVEE9C7m8qLCA4GLgYHxhozeMXUestXiwc3WEAMDY1NG71D6VPPE5DD8wOMwMDD+O+MTHDRb0TunEC0AAAAASUVORK5CYII=" alt="微信分享二维码">
     </div>
 </div>
 
@@ -483,7 +486,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,15 +510,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">

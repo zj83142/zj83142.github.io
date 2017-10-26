@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>hexo 笔记 —— 遇到的问题 | zj83142</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hexo 博客在家里电脑clone了一份，npm install 了所有的安装包后运行不起来，遇到了一些列的问题，记录一下，方便以后回顾。    hexo s 后报错 没有找到 layout index.html。原因是从git上clone下来的项目themes文件夹是空的，重新安装next主题：git clone https://github.com/iissnan/hexo-theme-ne">
+  <meta name="description" content="hexo 博客在家里电脑clone了一份，npm install 了所有的安装包后运行不起来，遇到了一些列的问题，记录一下，方便以后回顾。   hexo s 后报错 没有找到 layout index.html。原因是从git上clone下来的项目themes文件夹是空的，重新安装next主题：git clone https://github.com/iissnan/hexo-theme-nex">
 <meta name="keywords" content="hexo 问题积累">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo 笔记 —— 遇到的问题">
 <meta property="og:url" content="http://yoursite.com/2017/09/05/tools/hexo-note/index.html">
 <meta property="og:site_name" content="zj83142">
-<meta property="og:description" content="hexo 博客在家里电脑clone了一份，npm install 了所有的安装包后运行不起来，遇到了一些列的问题，记录一下，方便以后回顾。    hexo s 后报错 没有找到 layout index.html。原因是从git上clone下来的项目themes文件夹是空的，重新安装next主题：git clone https://github.com/iissnan/hexo-theme-ne">
+<meta property="og:description" content="hexo 博客在家里电脑clone了一份，npm install 了所有的安装包后运行不起来，遇到了一些列的问题，记录一下，方便以后回顾。   hexo s 后报错 没有找到 layout index.html。原因是从git上clone下来的项目themes文件夹是空的，重新安装next主题：git clone https://github.com/iissnan/hexo-theme-nex">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-13T02:59:52.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo 笔记 —— 遇到的问题">
-<meta name="twitter:description" content="hexo 博客在家里电脑clone了一份，npm install 了所有的安装包后运行不起来，遇到了一些列的问题，记录一下，方便以后回顾。    hexo s 后报错 没有找到 layout index.html。原因是从git上clone下来的项目themes文件夹是空的，重新安装next主题：git clone https://github.com/iissnan/hexo-theme-ne">
+<meta name="twitter:description" content="hexo 博客在家里电脑clone了一份，npm install 了所有的安装包后运行不起来，遇到了一些列的问题，记录一下，方便以后回顾。   hexo s 后报错 没有找到 layout index.html。原因是从git上clone下来的项目themes文件夹是空的，重新安装next主题：git clone https://github.com/iissnan/hexo-theme-nex">
   
     <link rel="alternative" href="/atom.xml" title="zj83142" type="application/atom+xml">
   
@@ -60,7 +60,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives">归档</a></li>
+	        
+				<li><a href="/tags/笔记/">笔记</a></li>
 	        
 			</ul>
 		</nav>
@@ -118,6 +120,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -135,12 +139,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/笔记/">笔记</a></li>
 		        
 				</ul>
 			</nav>
@@ -179,14 +185,11 @@
 <p>hexo 博客在家里电脑clone了一份，npm install 了所有的安装包后运行不起来，遇到了一些列的问题，记录一下，方便以后回顾。</p>
 </blockquote>
 <ol>
-<li>
-<p>hexo s 后报错 没有找到 layout index.html。原因是从git上clone下来的项目themes文件夹是空的，重新安装next主题：<strong>git clone https://github.com/iissnan/hexo-theme-next themes/next</strong></p>
+<li><p>hexo s 后报错 没有找到 layout index.html。原因是从git上clone下来的项目themes文件夹是空的，重新安装next主题：<strong>git clone <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">https://github.com/iissnan/hexo-theme-next</a> themes/next</strong></p>
 </li>
-<li>
-<p>hexo g 生成文件时报错 提示zh-tw.yml 错误，删掉languages文件夹下对应的字体文件。</p>
+<li><p>hexo g 生成文件时报错 提示zh-tw.yml 错误，删掉languages文件夹下对应的字体文件。</p>
 </li>
-<li>
-<p>左侧导航点击报错：hexo Cannot GET /tags/，找不到tags页面，解决方法：1）$ hexo new page 'tags'。2）设置页面 type: tags。 3）在主题配置文件，菜单中添加连接：tags: /tags</p>
+<li><p>左侧导航点击报错：hexo Cannot GET /tags/，找不到tags页面，解决方法：1）$ hexo new page ‘tags’。2）设置页面 type: tags。 3）在主题配置文件，菜单中添加连接：tags: /tags</p>
 </li>
 </ol>
 
@@ -290,7 +293,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/05/tools/hexo-note/" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3awW6EMAxFUf7/p6nUVSWU9D4nU5X4ZlVRBjhZWLbj68Lr/l7PKz/X8/ro/vlznvdsWzJkyHgt456uEYNcn3/WCD+/PnymDBkyGjDIa+ahM42E/F1o+2TIkCEDB8T0s+YbJEOGDBl7Ay5JBHnyJ0OGDBm1Irb2yhrpg7W4DBkyXshIDwb+8u8Pnm/IkCHjJYx7YREkKYZ5eB3+VoYMGUcz1hv9aQLHDxji1FOGDBkNGCuvIVswJ6UJ4jDgypAh4zgGD3a1T+HDFvxpaIdkyJDRgJGSPhGyg0E0GTJkNGDw4pNcrw1V1EI26hrKkCHjIAZvzfPDgFpDjbxLhgwZnRm1IYy0GN51LCFDhoxuDBL4eJKXJoskcA/TRxkyZLRn8Bekz+Fl7YaAK0OGjNcyatMZK8cAadHLy2YZMmScylhpk/EtqI2U8dRThgwZfRi8ZCUjXORQYaXNd6VzGTJkyHgtY6V9xreDb1at9JUhQ0YHRlz14lKWDG3sTRllyJBxKiNtzaepJCpEw+bdVdsDGTJkHMHYW47yhJK352TIkNGTUftZbWgsKEdL/TQZMmScx7jDlSaXfJisNnghQ4aMDoyVw06S0pFEkB9CyJAhozODBFlyxLg+LrYy3iFDhowOjPSQkh92pnfW2oIyZMiQkbbe0hYbL2WH3yNDhgwZOPnjH53W2b/U3zJkyGjA4EMV/L88aKaFtAwZMroxagcDu8a8amnitvMNGTJk/HfGF7kaGQYxXdjAAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -449,7 +452,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -465,15 +476,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">

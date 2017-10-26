@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>js 问题积累 | zj83142</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。 上传文件插件dropzone  设置 Dropzone.autoDiscover = false  (禁止对所有元素的自动查找) 否则前端会报错: Dropzone already attached.   基本用法 1234567891011121314&amp;lt;div id=&amp;quot;myD">
+  <meta name="description" content="工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js 问题积累">
 <meta property="og:url" content="http://yoursite.com/2017/09/20/js/js-pits/index.html">
 <meta property="og:site_name" content="zj83142">
-<meta property="og:description" content="工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。 上传文件插件dropzone  设置 Dropzone.autoDiscover = false  (禁止对所有元素的自动查找) 否则前端会报错: Dropzone already attached.   基本用法 1234567891011121314&amp;lt;div id=&amp;quot;myD">
+<meta property="og:description" content="工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-10T07:59:23.104Z">
+<meta property="og:updated_time" content="2017-10-26T06:04:13.981Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js 问题积累">
-<meta name="twitter:description" content="工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。 上传文件插件dropzone  设置 Dropzone.autoDiscover = false  (禁止对所有元素的自动查找) 否则前端会报错: Dropzone already attached.   基本用法 1234567891011121314&amp;lt;div id=&amp;quot;myD">
+<meta name="twitter:description" content="工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。">
   
     <link rel="alternative" href="/atom.xml" title="zj83142" type="application/atom+xml">
   
@@ -60,7 +60,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives">归档</a></li>
+	        
+				<li><a href="/tags/笔记/">笔记</a></li>
 	        
 			</ul>
 		</nav>
@@ -118,6 +120,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -135,12 +139,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/笔记/">笔记</a></li>
 		        
 				</ul>
 			</nav>
@@ -175,50 +181,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。</p>
-<h3>上传文件插件dropzone</h3>
-<ol>
-<li>设置 Dropzone.autoDiscover = false</li>
-</ol>
+        <p>工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。<br><a id="more"></a></p>
+<h3 id="上传文件插件dropzone"><a href="#上传文件插件dropzone" class="headerlink" title="上传文件插件dropzone"></a>上传文件插件dropzone</h3><ol>
+<li><p>设置 Dropzone.autoDiscover = false</p>
 <p>(禁止对所有元素的自动查找) 否则前端会报错: Dropzone already attached.</p>
-<ol start="2">
-<li>
-<p>基本用法
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;myDropzone&quot; class=&quot;dropzone&quot;&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">var myDropzone = new Dropzone(&quot;#upload_logo&quot;, &#123; </div><div class="line">  url: &quot;xxxx&quot;,  // 上传文件地址</div><div class="line">  maxFiles: &apos;1&apos;, // 最多上传一个文件</div><div class="line">  dictDefaultMessage: &apos;上传 Logo 图片&apos;, // 修改 提示文字</div><div class="line">  addRemoveLinks: &apos;dictRemoveFile&apos;, // 显示删除文件链接</div><div class="line">  acceptedFiles: &apos;image/*&apos;  // 接收的文件类型</div><div class="line">&#125;);</div><div class="line">// 文件上传成功</div><div class="line">myDropzone.on(&apos;success&apos;, function(file, response) &#123;</div><div class="line">  var res = JSON.parse(response);</div><div class="line">  ...</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 </li>
-<li>
-<p>显示服务器上已存在的图片或文件</p>
+<li><p>基本用法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;myDropzone&quot; class=&quot;dropzone&quot;&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">var myDropzone = new Dropzone(&quot;#upload_logo&quot;, &#123; </div><div class="line">  url: &quot;xxxx&quot;,  // 上传文件地址</div><div class="line">  maxFiles: &apos;1&apos;, // 最多上传一个文件</div><div class="line">  dictDefaultMessage: &apos;上传 Logo 图片&apos;, // 修改 提示文字</div><div class="line">  addRemoveLinks: &apos;dictRemoveFile&apos;, // 显示删除文件链接</div><div class="line">  acceptedFiles: &apos;image/*&apos;  // 接收的文件类型</div><div class="line">&#125;);</div><div class="line">// 文件上传成功</div><div class="line">myDropzone.on(&apos;success&apos;, function(file, response) &#123;</div><div class="line">  var res = JSON.parse(response);</div><div class="line">  ...</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>显示服务器上已存在的图片或文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var mockFile = &#123; name: filename, size: 123, accepted: true &#125;;</div><div class="line">myDropzone.emit( &quot;addedfile&quot;, mockFile);</div><div class="line">myDropzone.emit( &quot;thumbnail&quot;, mockFile, fileUrl); // 生成缩略图</div><div class="line">myDropzone.files.push( mockFile ); </div><div class="line">// $(&apos;div.dz-preview&apos;).addClass(&apos; dz-processing dz-image-preview dz-success dz-complete&apos;); // 这个会有上传成功的动画，不太需要</div><div class="line">$(&apos;div.dz-preview&apos;).addClass(&apos; dz-complete&apos;); // 设置样式，如果不设置，缩略图上会显示上传进度条</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myDropzone.removeAllFiles();</div></pre></td></tr></table></figure>
+</li>
+<li><p>还有很多方法，具体可以查看源码，或者说明文档，参考地址：<a href="http://wxb.github.io/dropzonejs.com.zh-CN/dropzonezh-CN/#" target="_blank" rel="external">DropzoneJS</a></p>
 </li>
 </ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var mockFile = &#123; name: filename, size: 123, accepted: true &#125;;</div><div class="line">myDropzone.emit( &quot;addedfile&quot;, mockFile);</div><div class="line">myDropzone.emit( &quot;thumbnail&quot;, mockFile, fileUrl); // 生成缩略图</div><div class="line">myDropzone.files.push( mockFile ); </div><div class="line">// $(&apos;div.dz-preview&apos;).addClass(&apos; dz-processing dz-image-preview dz-success dz-complete&apos;); // 这个会有上传成功的动画，不太需要</div><div class="line">$(&apos;div.dz-preview&apos;).addClass(&apos; dz-complete&apos;); // 设置样式，如果不设置，缩略图上会显示上传进度条</div></pre></td></tr></table></figure></p>
-<ol start="4">
-<li>删除文件</li>
+<h3 id="bootstrap-datetimepicker"><a href="#bootstrap-datetimepicker" class="headerlink" title="bootstrap datetimepicker"></a>bootstrap datetimepicker</h3><ol>
+<li>月份选择  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(&apos;#xxx&apos;).datetimepicker(&#123;</div><div class="line">  minView : &quot;year&quot;, //  选择时间时，最小可以选择到那层；默认是‘hour’也可用0表示</div><div class="line">  startView: &apos;year&apos;,</div><div class="line">  language : &apos;zh-CN&apos;, // 语言</div><div class="line">  autoclose : true, //  true:选择时间后窗口自动关闭</div><div class="line">  format : &apos;yyyy-mm&apos;, // 文本框时间格式，设置为0,最后时间格式为2017-03-23 17:00:00</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
 </ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myDropzone.removeAllFiles();</div></pre></td></tr></table></figure></p>
-<ol start="5">
-<li>还有很多方法，具体可以查看源码，或者说明文档，参考地址：<a href="http://wxb.github.io/dropzonejs.com.zh-CN/dropzonezh-CN/#" target="_blank" rel="external">DropzoneJS</a></li>
-</ol>
-<h3>bootstrap datetimepicker</h3>
-<ol>
-<li>月份选择<br>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(&apos;#xxx&apos;).datetimepicker(&#123;</div><div class="line">  minView : &quot;year&quot;, //  选择时间时，最小可以选择到那层；默认是‘hour’也可用0表示</div><div class="line">  startView: &apos;year&apos;,</div><div class="line">  language : &apos;zh-CN&apos;, // 语言</div><div class="line">  autoclose : true, //  true:选择时间后窗口自动关闭</div><div class="line">  format : &apos;yyyy-mm&apos;, // 文本框时间格式，设置为0,最后时间格式为2017-03-23 17:00:00</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li>
-</ol>
-<h3>js点击下载文本到本地文件中</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function downloadText(content) &#123;</div><div class="line">  let fileName = &apos;xxxx.txt&apos;;  // 文件名</div><div class="line">  let aLink = document.createElement(&apos;a&apos;); </div><div class="line">  let evt = document.createEvent(&quot;MouseEvents&quot;);</div><div class="line">  evt.initEvent(&apos;click&apos;, true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null); // 点击</div><div class="line">  aLink.download = fileName;</div><div class="line">  aLink.dispatchEvent(evt);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="js点击下载文本到本地文件中"><a href="#js点击下载文本到本地文件中" class="headerlink" title="js点击下载文本到本地文件中"></a>js点击下载文本到本地文件中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function downloadText(content) &#123;</div><div class="line">  let fileName = &apos;xxxx.txt&apos;;  // 文件名</div><div class="line">  let aLink = document.createElement(&apos;a&apos;); </div><div class="line">  let evt = document.createEvent(&quot;MouseEvents&quot;);</div><div class="line">  evt.initEvent(&apos;click&apos;, true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null); // 点击</div><div class="line">  aLink.download = fileName;</div><div class="line">  aLink.dispatchEvent(evt);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>知识点：事件触发器</strong></p>
 <blockquote>
 <p>事件触发器就是用来触发某个元素下的某个事件，IE下有fireEvent()，高级浏览器（chrome，firefox等）有dispatchEvent()</p>
 </blockquote>
-<h4>IE浏览器</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var fireEvent = function(element, event) &#123;</div><div class="line">  // IE浏览器支持fireEvent方法</div><div class="line">  if (document.createEventObject) &#123;</div><div class="line">    var evt = document.createEventObject();</div><div class="line">    return element.fireEvent(&apos;on&apos; + event, evt)</div><div class="line">  &#125; else &#123;</div><div class="line">    // 其他标准浏览器使用dispatchEvent方法</div><div class="line">    var evt = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">    // initEvent接受3个参数：</div><div class="line">    // 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">    evt.initEvent(event, true, true);</div><div class="line">    return !element.dispatchEvent(evt);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>或 document上绑定自定义事件ondataavailable
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">document.attachEvent(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line">var obj=document.getElementById(&quot;obj&quot;);</div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.attachEvent(&apos;onclick&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//调用document对象的createEventObject方法得到一个event的对象实例。</div><div class="line">var event = document.createEventObject();</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.fireEvent(&apos;ondataavailable&apos;, event);</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.fireEvent(&apos;onclick&apos;, event);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>chrome、firefox等浏览器
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">//document上绑定自定义事件ondataavailable</div><div class="line">document.addEventListener(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line">var obj = document.getElementById(&quot;obj&quot;);</div><div class="line"></div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.addEventListener(&apos;click&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line"></div><div class="line">//调用document对象的 createEvent 方法得到一个event的对象实例。</div><div class="line">var event = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line"></div><div class="line">// initEvent接受3个参数：</div><div class="line">// 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">event.initEvent(&quot;ondataavailable&quot;, true, true);</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.dispatchEvent(event);</div><div class="line">var event1 = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">event1.initEvent(&quot;click&quot;, true, true);</div><div class="line">event1.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.dispatchEvent(event1);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<h3>其他注意事项</h3>
-<ul>
-<li>form表单调用reset： $('#form_test')[0].reset();</li>
-<li>redio设置选中：$('input[name=&quot;xxx&quot;][value=&quot;' + val + '&quot;]').attr(&quot;checked&quot;, true);</li>
+<h4 id="IE浏览器"><a href="#IE浏览器" class="headerlink" title="IE浏览器"></a>IE浏览器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var fireEvent = function(element, event) &#123;</div><div class="line">  // IE浏览器支持fireEvent方法</div><div class="line">  if (document.createEventObject) &#123;</div><div class="line">    var evt = document.createEventObject();</div><div class="line">    return element.fireEvent(&apos;on&apos; + event, evt)</div><div class="line">  &#125; else &#123;</div><div class="line">    // 其他标准浏览器使用dispatchEvent方法</div><div class="line">    var evt = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">    // initEvent接受3个参数：</div><div class="line">    // 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">    evt.initEvent(event, true, true);</div><div class="line">    return !element.dispatchEvent(evt);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>或 document上绑定自定义事件ondataavailable<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">document.attachEvent(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line">var obj=document.getElementById(&quot;obj&quot;);</div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.attachEvent(&apos;onclick&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//调用document对象的createEventObject方法得到一个event的对象实例。</div><div class="line">var event = document.createEventObject();</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.fireEvent(&apos;ondataavailable&apos;, event);</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.fireEvent(&apos;onclick&apos;, event);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>chrome、firefox等浏览器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">//document上绑定自定义事件ondataavailable</div><div class="line">document.addEventListener(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line">var obj = document.getElementById(&quot;obj&quot;);</div><div class="line"></div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.addEventListener(&apos;click&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line"></div><div class="line">//调用document对象的 createEvent 方法得到一个event的对象实例。</div><div class="line">var event = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line"></div><div class="line">// initEvent接受3个参数：</div><div class="line">// 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">event.initEvent(&quot;ondataavailable&quot;, true, true);</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.dispatchEvent(event);</div><div class="line">var event1 = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">event1.initEvent(&quot;click&quot;, true, true);</div><div class="line">event1.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.dispatchEvent(event1);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h3><ul>
+<li>form表单调用reset： $(‘#form_test’)[0].reset();</li>
+<li>redio设置选中：$(‘input[name=”xxx”][value=”‘ + val + ‘“]’).attr(“checked”, true);</li>
 </ul>
 
       
@@ -266,7 +260,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/js-dropzone-datetimepicker-js下载文本//" class="article-tag-list-link color4">js dropzone datetimepicker js下载文本</a>
+        			<a href="/categories/js//" class="article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/js/dropzone//" class="article-tag-list-link color4">dropzone</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/js/dropzone/datetimepicker//" class="article-tag-list-link color5">datetimepicker</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/js/dropzone/datetimepicker/js下载文本//" class="article-tag-list-link color2">js下载文本</a>
         		</li>
       		
 		</ul>
@@ -321,7 +327,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/20/js/js-pits/" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABx0lEQVR42u3aSY7CQBAEQP7/6RlproxNZm+AFD5ZArcDDqXaHo/4+vm7nu+vPr26nr/z2HHh4uJOc/MXXBGvzrn6dOxH4uLinucmwSs67vachP7ChouL+2HcfakSLi7u93Lvv9mWNLi4uJ/PzRsZ8y2P9nxcXNzz3FWpycz9of4uLi7u9FQiDyj3TdJlb8fFxT3CzcckY+OT5Nm2hYqLi3uGe//iscFJS6//Alxc3M3cZOWibZXmaxbJu/5JcXBxcbdxk5SlXbdKGqNtC7XIsHBxcRdx83XMHDE2lH1xDi4u7hHuWOjJmyPtKkY9XsXFxd3AzX/TqjHJWKMEFxf3vdw2oWlHpEkSc/kULi7uEW6yepWjiwYHLi7uB3NXLU6tXbkoRim4uLgbuO3CRB7I2vSoWObAxcXdzE0KlbWlTl4+4eLivpc7tlLZBqZinnMfyHBxcY9wZ4qcsSbI/WSknvzg4uIu5bYBZdXa1tiZuLi4J7kzZczMmldS8Lzo4uDi4m7mzqcjSWK0IJXBxcX9MG4xnwlOzgMZLi7ut3DbNsqC5AYXF/c4tw0uSZmUL23kKx24uLhnuGMVRxLa8gRorOWKi4u7gfsLP/i+Vd0kq1gAAAAASUVORK5CYII=" alt="微信分享二维码">
     </div>
 </div>
 
@@ -480,7 +486,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,15 +510,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">

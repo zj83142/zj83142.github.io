@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>js类型检测 | zj83142</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="js  判断数据类型的方法  根据数据类型判断   typeof instaneof   根据构造函数判断   Object.prototype.toString construcor  慕课网一个老师的视频-讲Zepto 判断方法   isFunction 判断是否是函数 1function isFunction(value) &amp;#123; return type(value) == &amp;quo">
+  <meta name="description" content="js  判断数据类型的方法 根据数据类型判断  typeof instaneof   根据构造函数判断  Object.prototype.toString construcor">
 <meta name="keywords" content="类型检测">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js类型检测">
 <meta property="og:url" content="http://yoursite.com/2017/09/12/js/js-check-type/index.html">
 <meta property="og:site_name" content="zj83142">
-<meta property="og:description" content="js  判断数据类型的方法  根据数据类型判断   typeof instaneof   根据构造函数判断   Object.prototype.toString construcor  慕课网一个老师的视频-讲Zepto 判断方法   isFunction 判断是否是函数 1function isFunction(value) &amp;#123; return type(value) == &amp;quo">
+<meta property="og:description" content="js  判断数据类型的方法 根据数据类型判断  typeof instaneof   根据构造函数判断  Object.prototype.toString construcor">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-13T06:42:37.293Z">
+<meta property="og:updated_time" content="2017-10-26T05:53:43.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js类型检测">
-<meta name="twitter:description" content="js  判断数据类型的方法  根据数据类型判断   typeof instaneof   根据构造函数判断   Object.prototype.toString construcor  慕课网一个老师的视频-讲Zepto 判断方法   isFunction 判断是否是函数 1function isFunction(value) &amp;#123; return type(value) == &amp;quo">
+<meta name="twitter:description" content="js  判断数据类型的方法 根据数据类型判断  typeof instaneof   根据构造函数判断  Object.prototype.toString construcor">
   
     <link rel="alternative" href="/atom.xml" title="zj83142" type="application/atom+xml">
   
@@ -60,7 +60,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives">归档</a></li>
+	        
+				<li><a href="/tags/笔记/">笔记</a></li>
 	        
 			</ul>
 		</nav>
@@ -118,6 +120,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -135,12 +139,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/笔记/">笔记</a></li>
 		        
 				</ul>
 			</nav>
@@ -178,60 +184,48 @@
         <ul>
 <li>js</li>
 </ul>
-<h3>判断数据类型的方法</h3>
-<ol>
-<li>根据数据类型判断</li>
-</ol>
+<h3 id="判断数据类型的方法"><a href="#判断数据类型的方法" class="headerlink" title="判断数据类型的方法"></a>判断数据类型的方法</h3><ol>
+<li><p>根据数据类型判断</p>
 <ul>
 <li>typeof</li>
 <li>instaneof</li>
 </ul>
-<ol start="2">
-<li>根据构造函数判断</li>
-</ol>
+</li>
+<li><p>根据构造函数判断</p>
 <ul>
 <li>Object.prototype.toString</li>
-<li>construcor</li>
+<li>construcor<a id="more"></a>
+<a href="http://www.imooc.com/course/comment/id/745?page=4" target="_blank" rel="external">慕课网一个老师的视频-讲Zepto</a></li>
 </ul>
-<p><a href="http://www.imooc.com/course/comment/id/745?page=4" target="_blank" rel="external">慕课网一个老师的视频-讲Zepto</a></p>
-<h3>判断方法</h3>
-<ul>
-<li>
-<p>isFunction 判断是否是函数
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function isFunction(value) &#123; return type(value) == &quot;function&quot; &#125;</div></pre></td></tr></table></figure></p>
 </li>
-<li>
-<p>isWindow
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 判断是否是 window对象（注意，w为小写）指当前的浏览器窗口，window对象的window属性指向自身。</div><div class="line">// 即 window.window === window</div><div class="line">function isWindow(obj)     &#123; return obj != null &amp;&amp; obj == obj.window &#125;</div></pre></td></tr></table></figure></p>
+</ol>
+<h3 id="判断方法"><a href="#判断方法" class="headerlink" title="判断方法"></a>判断方法</h3><ul>
+<li><p>isFunction 判断是否是函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function isFunction(value) &#123; return type(value) == &quot;function&quot; &#125;</div></pre></td></tr></table></figure>
 </li>
-<li>
-<p>isDocument 判断是否是 document 对象
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// window.document.nodeType == 9 数字表示为9，常量表示为 DOCUMENT_NODE</div><div class="line">function isDocument(obj)   &#123; return obj != null &amp;&amp; obj.nodeType == obj.DOCUMENT_NODE &#125;</div></pre></td></tr></table></figure></p>
+<li><p>isWindow</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 判断是否是 window对象（注意，w为小写）指当前的浏览器窗口，window对象的window属性指向自身。</div><div class="line">// 即 window.window === window</div><div class="line">function isWindow(obj)     &#123; return obj != null &amp;&amp; obj == obj.window &#125;</div></pre></td></tr></table></figure>
 </li>
-<li>
-<p>isObject 判断是否是 object
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function isObject(obj)     &#123; return type(obj) == &quot;object&quot; &#125;</div></pre></td></tr></table></figure></p>
+<li><p>isDocument 判断是否是 document 对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// window.document.nodeType == 9 数字表示为9，常量表示为 DOCUMENT_NODE</div><div class="line">function isDocument(obj)   &#123; return obj != null &amp;&amp; obj.nodeType == obj.DOCUMENT_NODE &#125;</div></pre></td></tr></table></figure>
 </li>
-<li>
-<p>isPlainObject
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function isPlainObject(obj) &#123;</div><div class="line">  return isObject(obj) &amp;&amp; !isWindow(obj) &amp;&amp; Object.getPrototypeOf(obj) == Object.prototype</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<li><p>isObject 判断是否是 object</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function isObject(obj)     &#123; return type(obj) == &quot;object&quot; &#125;</div></pre></td></tr></table></figure>
 </li>
-<li>
-<p>isArray 判断是否是arr
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isArray = Array.isArray || function(object)&#123; return object instanceof Array &#125;;</div></pre></td></tr></table></figure></p>
+<li><p>isPlainObject</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function isPlainObject(obj) &#123;</div><div class="line">  return isObject(obj) &amp;&amp; !isWindow(obj) &amp;&amp; Object.getPrototypeOf(obj) == Object.prototype</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li>
-<p>likeArray
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 判断是否是数组或者对象数组</div><div class="line">// !!的作用是把一个其他类型的变量转成的bool类型。</div><div class="line">// !!obj 直接过滤掉了false，null，undefined，&apos;&apos;等值</div><div class="line">function likeArray(obj) &#123;</div><div class="line">var length = !!obj &amp;&amp; &apos;length&apos; in obj &amp;&amp; obj.length,</div><div class="line"></div><div class="line">// 获取obj的数据类型</div><div class="line">type = $.type(obj);</div><div class="line"></div><div class="line">// 不能是function类型，不能是window</div><div class="line">// 如果是array则直接返回true</div><div class="line">// 或者当length的数据类型是number，并且其取值范围是0到(length - 1)这里是通过判断length - 1 是否为obj的属性</div><div class="line"></div><div class="line">return &apos;function&apos; != type &amp;&amp; !isWindow(obj) &amp;&amp; (</div><div class="line">    &apos;array&apos; == type || length === 0 ||</div><div class="line">    (typeof length == &apos;number&apos; &amp;&amp; length &gt; 0 &amp;&amp; (length - 1) in obj)</div><div class="line">  )</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<li><p>isArray 判断是否是arr</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isArray = Array.isArray || function(object)&#123; return object instanceof Array &#125;;</div></pre></td></tr></table></figure>
 </li>
-<li>
-<p>isEmptyObject 空对象
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$.isEmptyObject = function(obj) &#123;</div><div class="line">  var name</div><div class="line">  for (name in obj) return false</div><div class="line">  return true</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<li><p>likeArray</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 判断是否是数组或者对象数组</div><div class="line">// !!的作用是把一个其他类型的变量转成的bool类型。</div><div class="line">// !!obj 直接过滤掉了false，null，undefined，&apos;&apos;等值</div><div class="line">function likeArray(obj) &#123;</div><div class="line">var length = !!obj &amp;&amp; &apos;length&apos; in obj &amp;&amp; obj.length,</div><div class="line"></div><div class="line">// 获取obj的数据类型</div><div class="line">type = $.type(obj);</div><div class="line"></div><div class="line">// 不能是function类型，不能是window</div><div class="line">// 如果是array则直接返回true</div><div class="line">// 或者当length的数据类型是number，并且其取值范围是0到(length - 1)这里是通过判断length - 1 是否为obj的属性</div><div class="line"></div><div class="line">return &apos;function&apos; != type &amp;&amp; !isWindow(obj) &amp;&amp; (</div><div class="line">    &apos;array&apos; == type || length === 0 ||</div><div class="line">    (typeof length == &apos;number&apos; &amp;&amp; length &gt; 0 &amp;&amp; (length - 1) in obj)</div><div class="line">  )</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li>
-<p>isNumeric 数字
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$.isNumeric = function(val) &#123;</div><div class="line">  var num = Number(val), type = typeof val;</div><div class="line">  return val != null &amp;&amp; type != &apos;boolean&apos; &amp;&amp;</div><div class="line">    (type != &apos;string&apos; || val.length) &amp;&amp;</div><div class="line">    !isNaN(num) &amp;&amp; isFinite(num) || false</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<li><p>isEmptyObject 空对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$.isEmptyObject = function(obj) &#123;</div><div class="line">  var name</div><div class="line">  for (name in obj) return false</div><div class="line">  return true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
+<li><p>isNumeric 数字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$.isNumeric = function(val) &#123;</div><div class="line">  var num = Number(val), type = typeof val;</div><div class="line">  return val != null &amp;&amp; type != &apos;boolean&apos; &amp;&amp;</div><div class="line">    (type != &apos;string&apos; || val.length) &amp;&amp;</div><div class="line">    !isNaN(num) &amp;&amp; isFinite(num) || false</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -323,7 +317,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/12/js/js-check-type/" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3awW7rMAwEwP7/T6fXAq9xdkX3AZZGJyNxbI0ODCXy6yserx/j5yf/Xuf3J7+6eWBgYDyW8boc7+5pX5w/Ofn2lzdiYGAcwHj34uSePBBfB+jJEzAwMDCu07jrsHsdTPNFwcDAwMgZ+da0TSUxMDAwrhnJZrJN7NZSvT/fi2NgYDyQkZ+6///rP6lvYGBgPIrxKkdbJGg/WRsYGBh7M/IA15Yq7wrcxXwwMDC2ZuShcB4iW8B1A1nkw8DA2IKRHNy3jLtKoXkRAgMD4wRGvjVtGymSJyTPXDx0w8DA2IKxlqLNQ3ByDJcvHAYGxq6MNtQmU2/Xb62QMPrHwMDAeCCjbe1Ktrv51PMU8+08MTAwtmbMi45rDRZ5WaJYRAwMjMMYk/LAvYd0i7twDAyMjRhrx/p56GwbLOoOEQwMjCMZeckwh80LmR82tBgYGMcw5uGvPSy7jY2BgXEAo00H8/DalhDWFgsDA2NvxuSQa63M2RY481YzDAyM0xijLeWgSNm2bnz498DAwNiaEVU+A0wSLvNWjxvyXAwMjC0YaynjWnkgP3orWi4wMDC2Y7zK0R6u5c1hk3YNDAyMvRlrYS4Po2tTye+vMRgYGI9ltFvNSfCd5LAfnoCBgXEAY20T25Yw85JAO1sMDAyMteP7ltQuEwYGBsb80H9SHK3TTQwMjAMYySSSbW3y23YJooQSAwNja8Zo6zhIJdtJrLV3YGBgPJzxDe8S2xlF3BxxAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -482,7 +476,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,15 +500,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">

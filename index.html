@@ -55,7 +55,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives">归档</a></li>
+	        
+				<li><a href="/tags/笔记/">笔记</a></li>
 	        
 			</ul>
 		</nav>
@@ -113,6 +115,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -130,12 +134,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/笔记/">笔记</a></li>
 		        
 				</ul>
 			</nav>
@@ -172,64 +178,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>webpack 是什么？</p>
-<ol>
-<li>模块化</li>
-<li>自定义文件或npm install</li>
-<li>静态文件模块化</li>
-<li>借助于插件和加载器</li>
-</ol>
-<p>webpack的优势</p>
-<ol>
-<li>代码分离</li>
-<li>装载器（css, sass, jsx 等等）</li>
-<li>智能解析（require(&quot;./template/&quot;+names+'.ejs')）</li>
-</ol>
-<p>webpack安装流程</p>
-<ol>
-<li>npm install -g webpack</li>
-<li>npm install webpack-dev-server</li>
-</ol>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var cats = [&apos;aa&apos;, &apos;bb&apos;, &apos;cc&apos;];</div><div class="line">module.exports = cats;</div><div class="line"></div><div class="line">var cats = require(&apos;./cats.js&apos;);</div><div class="line">console.log(cats);</div></pre></td></tr></table></figure></p>
-<p>编译命令：</p>
-<ul>
-<li>webpack app.js bundle.js
-注：app.js 需要编译的文件
-bundle.js 编译后输出的文件</li>
-<li>webpack app.js bundle.js --watch</li>
-</ul>
-<p>webpack 第三方库</p>
-<ol>
-<li>使用第三方（jquery）</li>
-<li>模块化静态文件（css）</li>
-<li>使用配置文件webpack.config.js</li>
-<li>使用webpack-dev-server</li>
-</ol>
-<p><strong>安装第三方库 jquery</strong>
-npm install jquery --save</p>
-<p><strong>css模块化</strong>
-安装插件 npm install css-loader style-loader --save-dev</p>
-<p>使用：require('!style-loader!css-loader!./style.css');</p>
-<p><strong>webpack-dev-server</strong></p>
-<p>npm install -g webpack-dev-server</p>
-<p>在package.js 的scripts 中配置 &quot;webpack-dev-server --entry ./src/js/app.js --output-filename ./dist/bundle.js&quot;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;test-webpack&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;&quot;,</div><div class="line">  &quot;main&quot;: &quot;index.js&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;start&quot;: &quot;webpack-dev-server --port 9001 --entry ./src/js/app.js --output-filename ./dist/bundle.js&quot;,</div><div class="line">    &quot;build&quot;: &quot;webpack&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;author&quot;: &quot;&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;dependencies&quot;: &#123;</div><div class="line">    &quot;jquery&quot;: &quot;^3.2.1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;css-loader&quot;: &quot;^0.28.7&quot;,</div><div class="line">    &quot;style-loader&quot;: &quot;^0.19.0&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<ol>
-<li>执行命令: npm start</li>
-<li>打开 localhost:8080</li>
-</ol>
-<p>注意：Webpack与webpack-dev-server版本不兼容导致npm start 报错，解决方法：</p>
-<ul>
-<li>将webpack-dev-server卸载掉：npm uninstall webpack-dev-server -g</li>
-<li>然后安装1.15.0版本的webpack-dev-server：npm install webpack-dev-server@1.15.0 -g</li>
-</ul>
-<p><strong>html-webpack-plugin</strong></p>
-<p>安装：npm install html-webpack-plugin --save</p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">var htmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    main: &apos;./src/js/main.js&apos;,</div><div class="line">    a: &apos;./src/js/a.js&apos;</div><div class="line">  &#125;</div><div class="line">  output: &#123;           // 出口文件</div><div class="line">    path: __dirname + &apos;/dist&apos;,</div><div class="line">    filename: &apos;js/[name]-[chunkhash].js&apos;,</div><div class="line">    publicPath: &apos;http://cdn.com/&apos; // 上线地址</div><div class="line">  &#125;,</div><div class="line">  // 需要依赖的插件或者是装载器</div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;test: /\.css$/, loader:&apos;style-loader!css-loader&apos;&#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/, loader:&apos;babel-loader&apos;,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        query: &#123;</div><div class="line">          presets: [&apos;es2015&apos;]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    new htmlWebpackPlugin(&#123;</div><div class="line">      template: &apos;index.html&apos;,</div><div class="line">      filename：&apos;index.html&apos;,</div><div class="line">      inject: false, // 是否默认注入javascript</div><div class="line">      title: &apos;webpack xxx&apos;,  // 使用方法，在html中引用 &lt;%= htmlWebpackPlugin.options.title %&gt;</div><div class="line">      minify: &#123;     // 压缩</div><div class="line">        removeComments: true, // 注释</div><div class="line">        collapseWhitespace: true, // 删除空格</div><div class="line">      &#125;,</div><div class="line">      chunks: [&apos;main&apos;, &apos;a&apos;]   // 只引入需要的chuncks, 用于多页面配置, 注意设置inject: true</div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>通过配置多个htmlWebpackPlugin 可以配置多个页面</p>
-</blockquote>
-
+        <p><a href="https://github.com/hugzh/webpack-simple-demo" target="_blank" rel="external">git上的一个webpack配置案例</a></p>
+<p>webpack 是什么？</p>
+<p>Webpack就是个模块打包工具，将模块及其依赖打包生成静态资源。在Webpack的机制里，所有的资源都是模块(js,css,图片等)，而且可以通过代码分隔(Code Splitting)的方法异步加载，实现性能上的优化。<br>
+        
+          <a class="article-more-a" href="/2017/10/24/tools/webpack/#more">more >></a>
+        
       
 
       
@@ -313,8 +267,7 @@ npm install jquery --save</p>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>精益求精，不是浅尝辄止</h3>
-<p><strong>对自己要求越高，进步越快</strong>。反思了一下这几年工作下来好像能力并没有什么提高，</p>
+        <h3 id="精益求精，不是浅尝辄止"><a href="#精益求精，不是浅尝辄止" class="headerlink" title="精益求精，不是浅尝辄止"></a>精益求精，不是浅尝辄止</h3><p><strong>对自己要求越高，进步越快</strong>。反思了一下这几年工作下来好像能力并没有什么提高，</p>
 
       
 
@@ -399,8 +352,7 @@ npm install jquery --save</p>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>sublime 安装插件</h3>
-<blockquote>
+        <h3 id="sublime-安装插件"><a href="#sublime-安装插件" class="headerlink" title="sublime 安装插件"></a>sublime 安装插件</h3><blockquote>
 <p>查看sublime的插件列表 Ctrl+Shift+P 输入：list packages</p>
 </blockquote>
 <p>大部分插件安装步骤：</p>
@@ -408,17 +360,10 @@ npm install jquery --save</p>
 <li>在sublime中打开PackageControl, 快捷键：Ctrl+Shift+P</li>
 <li>打开Install Package 窗口，直接输入 install package 按回车</li>
 <li>弹出安装插件框，输入 vue 找到 xxx 按回车</li>
-<li>重新打开文件或重启sublime</li>
-</ol>
-<p>常用插件</p>
-<ul>
-<li>添加支持vue代码高亮控件 —— Vue Syntax Hightlight</li>
-<li>超高速前端开发工具 —— Emmet Style Reflector</li>
-</ul>
-<h3>sunlime 配置</h3>
-<p>选择Preference ——&gt; settings ——&gt; User, 贴入一下代码
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;font_size&quot;: 16, // 默认字体大小为16</div><div class="line">  &quot;highlight_line&quot;: true,</div><div class="line">  &quot;ignored_packages&quot;:</div><div class="line">  [</div><div class="line">    &quot;Vintage&quot;</div><div class="line">  ],</div><div class="line">  &quot;tab_size&quot;: 2,  // 默认tab 为2个空格</div><div class="line">  &quot;translate_tabs_to_spaces&quot;: true</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
+<li>重新打开文件或重启sublime
+        
+          <a class="article-more-a" href="/2017/10/17/tools/sublime/#more">more >></a>
+        
       
 
       
@@ -503,15 +448,11 @@ npm install jquery --save</p>
     <div class="article-entry" itemprop="articleBody">
       
         <p>记录echarts使用过程中遇到的那些坑</p>
-<h3>x轴数据是字符串日期格式且不连续时，间隔问题</h3>
-<blockquote>
-<p>刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！</p>
-</blockquote>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">function getOption(x, y) &#123;</div><div class="line">  let option = &#123;</div><div class="line">    title : &#123;</div><div class="line">        text: &apos;&apos;,</div><div class="line">    &#125;,</div><div class="line">    tooltip : &#123;</div><div class="line">        trigger: &apos;item&apos;,</div><div class="line">        formatter : function (params) &#123; // 格式化显示问题</div><div class="line">            var date = new Date(params.value[0]);</div><div class="line">            date = date.getFullYear() + &apos;-&apos;</div><div class="line">                   + (date.getMonth() + 1) + &apos;-&apos;</div><div class="line">                   + date.getDate() + &apos; &apos;</div><div class="line">            return &quot;日期：&quot; + date + &quot;&lt;br/&gt;测试次数：&quot; +  params.value[1];</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    toolbox: &#123;</div><div class="line">        show : true,</div><div class="line">        feature : &#123;</div><div class="line">            mark : &#123;show: true&#125;,</div><div class="line">            dataView : &#123;show: true, readOnly: false&#125;,</div><div class="line">            restore : &#123;show: true&#125;,</div><div class="line">            saveAsImage : &#123;show: true&#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    dataZoom: &#123; // 显示缩放轴，且从70% 开始</div><div class="line">        show: true,</div><div class="line">        start : 70</div><div class="line">    &#125;,</div><div class="line">    legend : &#123;</div><div class="line">        data : [&apos;series1&apos;]</div><div class="line">    &#125;,</div><div class="line">    xAxis : [</div><div class="line">        &#123;</div><div class="line">            type : &apos;time&apos;, // 非常重要，设置x轴类型是time. (类型有：value, category, time, log)</div><div class="line">            splitNumber:10,</div><div class="line">            axisLabel: &#123;</div><div class="line">                rotate: 30, // 标签旋转角度</div><div class="line">                interval:0, // 默认auto（自动隐藏显示不下的） 0： 全部显示</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    ],</div><div class="line">    yAxis : [</div><div class="line">        &#123;</div><div class="line">            type : &apos;value&apos;,</div><div class="line">            minInterval: 1,  </div><div class="line">        &#125;</div><div class="line">    ],</div><div class="line">    series : [</div><div class="line">        &#123;</div><div class="line">          name: &apos;series1&apos;,</div><div class="line">          type: &apos;line&apos;,</div><div class="line">          showAllSymbol: true,</div><div class="line">          smooth:true,</div><div class="line">          areaStyle: &#123;normal: &#123;&#125;&#125;,</div><div class="line">          symbol: &apos;circle&apos;,</div><div class="line">          symbolSize: 6,</div><div class="line">          data: (function() &#123;</div><div class="line">            let data = []; // 这个是在react项目中，防止数据从有到无变化时会报错的问题,每次获取新数据的时候要提前清空数据</div><div class="line">            if(x.length !== 0) &#123;</div><div class="line">              data = [];</div><div class="line">              for(let i = 0; i &lt; x.length; i ++) &#123;</div><div class="line">                var date = new Date(Date.parse(x[i].replace(/-/g,   &quot;/&quot;)));  </div><div class="line">                data.push([date, y[i]]); // 此处需要注意，data里面存放的是数组(时间，y轴数据-可以是多个)</div><div class="line">              &#125;</div><div class="line">            &#125;</div><div class="line">            return data;</div><div class="line">          &#125;)()</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line"></div><div class="line">  &#125;;</div><div class="line">  return option;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3>echart 柱状图显示数据</h3>
-<p>series 下添加
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">label: &#123;</div><div class="line">  normal: &#123;</div><div class="line">      show: true,</div><div class="line">      position: &apos;left&apos; // 默认在柱状图上显示数据</div><div class="line">  &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
-
+<h3 id="x轴数据是字符串日期格式且不连续时，间隔问题"><a href="#x轴数据是字符串日期格式且不连续时，间隔问题" class="headerlink" title="x轴数据是字符串日期格式且不连续时，间隔问题"></a>x轴数据是字符串日期格式且不连续时，间隔问题</h3><blockquote>
+<p>刚开始遇到这个需求的时候感觉要从数据上处理，数据处理成连续的日期，没有的补0，后台人员说太后台补数据，后来才发现，前端果然强大，只有你想不到的，没有做不到的，默默的告诉自己，虽然我不是专业的前端开发，但是英雄不问出处，我可以通过努力和积累变得专业。以后遇到问题切忌不可轻易言弃！！！！！！<br>
+        
+          <a class="article-more-a" href="/2017/10/10/note/echart-pits/#more">more >></a>
+        
       
 
       
@@ -575,114 +516,6 @@ npm install jquery --save</p>
 
 
   
-    <article id="post-python/install-libs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/python/install-libs/">python安装类库</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/python/install-libs/" class="archive-article-date">
-  	<time datetime="2017-10-10T07:54:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3>在win7平台上安装gevent和gevent-socketio</h3>
-<p>在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了</p>
-<p>gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:</p>
-<ul>
-<li>libevent的dll文件</li>
-<li>greenlet的免编译安装包</li>
-<li>gevent的免编译安装包</li>
-</ul>
-<p><strong>libevent.dll</strong></p>
-<p>下载地址：</p>
-<ul>
-<li>http://www.dll-found.com/libevent-2-0-5.dll_download.html (需要翻墙)</li>
-<li>http://pan.baidu.com/s/1ge5DxT5 (百度云盘)
-安装方法： 测试环境是windows 7 64bit, 安装了32bit的Python 2.7版本. 因此将下载到的libevent-2-0-5.dll复制到C:\Windows\SysWOW64目录下即可.</li>
-</ul>
-<p><strong>greenlet 和 gevent</strong></p>
-<p>下载地址：<strong>http://www.lfd.uci.edu/~gohlke/pythonlibs/</strong></p>
-<p>安装方法：</p>
-<ul>
-<li>pip install greenlet-0.4.5-cp27-none-win32.whl</li>
-<li>pip install gevent-1.0.1-cp27-none-win32.whl</li>
-</ul>
-<p><strong>gevent-socketio</strong></p>
-<p>安装方法：pip install gevent-socketio</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python安装类库//" class="article-tag-list-link color1">python安装类库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/python/install-libs/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-install-libs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -703,31 +536,11 @@ npm install jquery --save</p>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>在win7平台上安装gevent和gevent-socketio</h3>
-<p>在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了</p>
-<p>gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:</p>
-<ul>
-<li>libevent的dll文件</li>
-<li>greenlet的免编译安装包</li>
-<li>gevent的免编译安装包</li>
-</ul>
-<p><strong>libevent.dll</strong></p>
-<p>下载地址：</p>
-<ul>
-<li>http://www.dll-found.com/libevent-2-0-5.dll_download.html (需要翻墙)</li>
-<li>http://pan.baidu.com/s/1ge5DxT5 (百度云盘)
-安装方法： 测试环境是windows 7 64bit, 安装了32bit的Python 2.7版本. 因此将下载到的libevent-2-0-5.dll复制到C:\Windows\SysWOW64目录下即可.</li>
-</ul>
-<p><strong>greenlet 和 gevent</strong></p>
-<p>下载地址：<strong>http://www.lfd.uci.edu/~gohlke/pythonlibs/</strong></p>
-<p>安装方法：</p>
-<ul>
-<li>pip install greenlet-0.4.5-cp27-none-win32.whl</li>
-<li>pip install gevent-1.0.1-cp27-none-win32.whl</li>
-</ul>
-<p><strong>gevent-socketio</strong></p>
-<p>安装方法：pip install gevent-socketio</p>
-
+        <h3 id="在win7平台上安装gevent和gevent-socketio"><a href="#在win7平台上安装gevent和gevent-socketio" class="headerlink" title="在win7平台上安装gevent和gevent-socketio"></a>在win7平台上安装gevent和gevent-socketio</h3><p>在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了</p>
+<p>gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:<br>
+        
+          <a class="article-more-a" href="/2017/10/10/install-libs/#more">more >></a>
+        
       
 
       
@@ -791,6 +604,98 @@ npm install jquery --save</p>
 
 
   
+    <article id="post-python/install-libs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/10/python/install-libs/">python安装类库</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/10/python/install-libs/" class="archive-article-date">
+  	<time datetime="2017-10-10T07:54:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="在win7平台上安装gevent和gevent-socketio"><a href="#在win7平台上安装gevent和gevent-socketio" class="headerlink" title="在win7平台上安装gevent和gevent-socketio"></a>在win7平台上安装gevent和gevent-socketio</h3><p>在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了</p>
+<p>gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:</p>
+<ul>
+<li>libevent的dll文件</li>
+<li>greenlet的免编译安装包</li>
+<li>gevent的免编译安装包
+        
+          <a class="article-more-a" href="/2017/10/10/python/install-libs/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/python安装类库//" class="article-tag-list-link color1">python安装类库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/python/install-libs/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-note/daily-pit1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -811,11 +716,9 @@ npm install jquery --save</p>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>解决目录层次太深删除报错的问题</h3>
-<p>问题：在使用npm当中，自动生成的node_modules文件夹，因为文件目录层级太深，无法系统删除</p>
-<p>解决方案： 1、 安装：npm install -g rimraf（全局安装） 2、 使用：先定位目标文件夹的父级目录，然后命令行输入rimraf ***（***为需要删除的文件夹名称）</p>
-<h3>命令积累</h3>
-<ul>
+        <h3 id="解决目录层次太深删除报错的问题"><a href="#解决目录层次太深删除报错的问题" class="headerlink" title="解决目录层次太深删除报错的问题"></a>解决目录层次太深删除报错的问题</h3><p>问题：在使用npm当中，自动生成的node_modules文件夹，因为文件目录层级太深，无法系统删除</p>
+<p>解决方案： 1、 安装：npm install -g rimraf（全局安装） 2、 使用：先定位目标文件夹的父级目录，然后命令行输入rimraf <strong><em>（</em></strong>为需要删除的文件夹名称）</p>
+<h3 id="命令积累"><a href="#命令积累" class="headerlink" title="命令积累"></a>命令积累</h3><ul>
 <li>查看域名对应的服务器ip地址，如：nslookup www.baidu.com</li>
 </ul>
 
@@ -902,14 +805,10 @@ npm install jquery --save</p>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>在日常中遇到的感觉不错的loading效果，先积累起来，有时间好好看看具体是如何实现的。</p>
-</blockquote>
-<h3>第一种效果 <a href="https://codepen.io/augbog/pen/ZXQVVZ/" target="_blank" rel="external">查看</a></h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">html, body &#123;</div><div class="line">  height: 100%;</div><div class="line">  background: grey;</div><div class="line">  display: flex;</div><div class="line">  flex-direction: column;</div><div class="line">  justify-content: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.loader &#123;</div><div class="line">  position: relative;</div><div class="line">  margin: 0 auto;</div><div class="line">  width: 300px;</div><div class="line">  height: 300px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.bounce &#123;</div><div class="line">  width: 100%;</div><div class="line">  height: 100%;</div><div class="line">  border-radius: 50%;</div><div class="line">  opacity: 0.8;</div><div class="line">  position: absolute;</div><div class="line">  top: 0;</div><div class="line">  left: 0;</div><div class="line">  -webkit-animation: bounce 5s infinite ease-in;</div><div class="line">  animation: bounce 5s infinite ease-in;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color1 &#123;</div><div class="line">  background-color: #06ceb4;</div><div class="line">  animation-delay: -1s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color2 &#123;</div><div class="line">  background-color: #ffeead;</div><div class="line">  animation-delay: -2s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color3 &#123;</div><div class="line">  background-color: #ff6f69;</div><div class="line">  animation-delay: -3s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color4 &#123;</div><div class="line">  background-color: #ffcc5c;</div><div class="line">  animation-delay: -4s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.color5 &#123;</div><div class="line">  background-color: #88d8b0;</div><div class="line">  animation-delay: -5s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@keyframes bounce &#123;</div><div class="line">  0%, 100% &#123;</div><div class="line">    transform: scale(0);</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    transform: scale(1);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;div class=&quot;loader&quot;&gt;</div><div class="line">  &lt;div class=&quot;bounce color1&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color2&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color3&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color4&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;bounce color5&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
-<h3>第二种效果 <a href="https://codepen.io/drenther/pen/Yrwvee" target="_blank" rel="external">查看</a></h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">html, body &#123;</div><div class="line">  height: 100%;</div><div class="line">  width: 100%;</div><div class="line">  display: -webkit-box;</div><div class="line">  display: -ms-flexbox;</div><div class="line">  display: flex;</div><div class="line">  -webkit-box-pack: center;</div><div class="line">      -ms-flex-pack: center;</div><div class="line">          justify-content: center;</div><div class="line">  -webkit-box-align: center;</div><div class="line">      -ms-flex-align: center;</div><div class="line">          align-items: center;</div><div class="line">  background: #f5f5f5;</div><div class="line">&#125;</div><div class="line">html .loader,</div><div class="line">body .loader &#123;</div><div class="line">  height: 50px;</div><div class="line">  width: 50px;</div><div class="line">  position: relative;</div><div class="line">&#125;</div><div class="line">html .loader::after, html .loader::before,</div><div class="line">body .loader::after,</div><div class="line">body .loader::before &#123;</div><div class="line">  content: &quot;&quot;;</div><div class="line">  width: 50px;</div><div class="line">  height: 50px;</div><div class="line">  position: absolute;</div><div class="line">  border: solid 8px transparent;</div><div class="line">  border-radius: 50%;</div><div class="line">  -webkit-animation: wiggle 1.4s ease infinite;</div><div class="line">          animation: wiggle 1.4s ease infinite;</div><div class="line">&#125;</div><div class="line">html .loader::before,</div><div class="line">body .loader::before &#123;</div><div class="line">  border-top-color: #4285f4;</div><div class="line">  border-bottom-color: #34a853;</div><div class="line">&#125;</div><div class="line">html .loader::after,</div><div class="line">body .loader::after &#123;</div><div class="line">  border-left-color: #fbbc05;</div><div class="line">  border-right-color: #ea4335;</div><div class="line">  -webkit-animation-delay: 0.7s;</div><div class="line">          animation-delay: 0.7s;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@-webkit-keyframes wiggle &#123;</div><div class="line">  0% &#123;</div><div class="line">    -webkit-transform: rotate(0deg) scale(1);</div><div class="line">            transform: rotate(0deg) scale(1);</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    -webkit-transform: rotate(180deg) scale(0.5);</div><div class="line">            transform: rotate(180deg) scale(0.5);</div><div class="line">  &#125;</div><div class="line">  100% &#123;</div><div class="line">    -webkit-transform: rotate(360deg) scale(1);</div><div class="line">            transform: rotate(360deg) scale(1);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@keyframes wiggle &#123;</div><div class="line">  0% &#123;</div><div class="line">    -webkit-transform: rotate(0deg) scale(1);</div><div class="line">            transform: rotate(0deg) scale(1);</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    -webkit-transform: rotate(180deg) scale(0.5);</div><div class="line">            transform: rotate(180deg) scale(0.5);</div><div class="line">  &#125;</div><div class="line">  100% &#123;</div><div class="line">    -webkit-transform: rotate(360deg) scale(1);</div><div class="line">            transform: rotate(360deg) scale(1);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;div class=&quot;loader&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
-
+        <p>在日常中遇到的感觉不错的loading效果，先积累起来，有时间好好看看具体是如何实现的。<br>
+        
+          <a class="article-more-a" href="/2017/10/10/css/loadding/#more">more >></a>
+        
       
 
       
@@ -993,54 +892,10 @@ npm install jquery --save</p>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>1. css 渲染规则</h3>
-<p>css选择符是有权重的，<strong>css样式规则渲染是先就近渲染，然后才一句选择符权重进行选渲染</strong></p>
-<p>从右到左渲染：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.nav h3 a&#123;font-size: 14px;&#125;</div></pre></td></tr></table></figure></p>
-<p>渲染过程大概是：首先找到所有的a，沿着a的父元素查找h3，然后再沿着h3，查找.nav。中途找到了符合匹配规则的节点就加入结果集。如果找到根元素html都没有匹配，则不再遍历这条路径，从下一个a开始重复这个查找匹配（只要页面上有多个最右节点为a）。</p>
-<h3>2. 嵌套层级不要超过3级</h3>
-<p>一般情况下，元素的嵌套层级不能超过3级，过度的嵌套会导致代码变得臃肿，沉余，复杂。导致css文件体积变大，造成性能浪费，影响渲染的速度！而且过于依赖HTML文档结构。这样的css样式，维护起来，极度麻烦，如果以后要修改样式，可能要使用!important覆盖。</p>
-<h3>3. 样式重置</h3>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">body,dl,dd,h1,h2,h3,h4,h5,h6,p,form,ol,ul &#123;</div><div class="line">  margin: 0;</div><div class="line">  padding: 0;</div><div class="line">&#125;</div><div class="line">h1, h2, h3, h4, h5, h6 &#123;</div><div class="line">  font-weight: normal;</div><div class="line">&#125;</div><div class="line">ol, ul &#123;</div><div class="line">  list-style: none;</div><div class="line">&#125;</div><div class="line">h1&#123;</div><div class="line">  font-size: 24px;</div><div class="line">&#125;</div><div class="line">h2&#123;</div><div class="line">  font-size: 20px;</div><div class="line">&#125;</div><div class="line">h3&#123;</div><div class="line">  font-size: 18px;</div><div class="line">&#125;</div><div class="line">h4 &#123;</div><div class="line">  font-size: 16px;</div><div class="line">&#125;</div><div class="line">h5&#123;</div><div class="line">  font-size: 14px;</div><div class="line">&#125;</div><div class="line">h6&#123;</div><div class="line">  font-size: 12px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3>4. 样式级别</h3>
-<p><strong>css选择符权重渲染规则：important &gt; 内联 &gt; ID &gt; 类 &gt; 标签 | 伪类 | 属性选择 &gt; 伪对象 &gt;通配符 &gt; 继承</strong></p>
-<h3>5. 图片要设置width和height</h3>
-<p>如果页面有使用img标签，那么img很建议设置width和height。目的是为了在网速差或者其它原因加载不出图片的时候，保证布局不会乱。</p>
-<p>设置width和height，注意几点：</p>
-<ul>
-<li>1.PC站，建议在img标签的属性设置width和height。这样避免加载不出css而错位</li>
-<li>手机站，建议用css设置img的width和height，因为手机站要做适配，在属性设置width和height不灵活，比如使用rem布局，在属性那里设置不了width和height。</li>
-<li>如果图片不固定，但是有一个max-width和max-height，那么建议在img的父元素设置width和height。img根据父元素的width和height设置max-width和max-height。</li>
-</ul>
-<h3>6. 图片预加载</h3>
-<ul>
-<li>
-<p>懒加载：页面加载的时候，先加载一部分内容（一般是先加载首屏内容），其它内容等到需要加载的时候再进行加载！</p>
-</li>
-<li>
-<p>预加载：页面加载的时候，先加载一部分内容（一般是先加载首屏内容），其它内容等到先加载的一部分内容（一般是首屏内容）加载完了，再进行加载。</p>
-</li>
-</ul>
-<p>两种方式，都是为了减少用户进入网站的时候，更快的看到首屏的内容！</p>
-<p>下面栗子，将这#preloader这个元素加入到到html中，就可以实现通过CSS的background属性将图片预加载到屏幕外的背景上。只要这些图片的路径保持不变，当它们在web页面的其他地方被调用时，浏览器就会在渲染过程中使用预加载（缓存）的图片。简单、高效，不需要任何JavaScript。
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#preloader &#123;</div><div class="line">    /*需要预加载的图片*/</div><div class="line">    background: url(image1.jpg) no-repeat,url(image2.jpg) no-repeat,url(image3.jpg) no-repeat;</div><div class="line">    width: 0px;</div><div class="line">    height: 0px;</div><div class="line">    display: inline;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>但是这样会有一个问题，因为#preloader预加载的图片，会和页面上的其他内容一起加载，增加了页面的整体加载时间。所以需要用js控制
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function preloader(urlArr,obj) &#123;</div><div class="line">    var bgText=&apos;&apos;;</div><div class="line">    for(var i=0,len=urlArr.length;i&lt;len;i++)&#123;</div><div class="line">        bgText+=&apos;url(&apos;+urlArr[i]+&apos;) no-repeat,&apos;;</div><div class="line">    &#125;</div><div class="line">    obj.style.background=bgText.substr(0,bgText.length-1);</div><div class="line">&#125;</div><div class="line">window.onload = function() &#123;</div><div class="line">   preloader([&apos;image1.jpg&apos;,&apos;image2.jpg&apos;,&apos;image3.jpg&apos;],document.getElementById(&apos;preloader&apos;));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>原理也很简单，就是先让首屏的图片加载完，然后再加载其它的图片。通过给#preloader设置背景图片，加载所需要的图片，然后页面上需要加载这些图片的时候，就直接从缓存里面拿图片，不需要通过http请求获取图片，这样加载就很快。</p>
-<h3>7. 慎用*通配符</h3>
-<p>在做网页的时候经常会使用下面两种方式重置样式，以此来消除标签的默认布局和不同浏览器对于同一个标签的渲染。</p>
-<p>*{margin：0；padding：0;}
-上面这种方式，代码少，但是性能差，因为渲染的时候，要匹配页面上所有的元素！很多基础样式没有margin和padding的元素，比如div，li等。都被匹配，完全没必要！
-下面看另一种方式。</p>
-<p>body,dl,dd,h1,h2,h3,h4,h5,h6,p,form,ol,ul{margin：0；padding：0;}
-这种方式，代码稍微多，但是性能比上面的方式好，在渲染的时候，只匹配body,dl,dd,h1,h2,h3,h4,h5,h6,p,form,ol,ul这里面的元素，这些元素带有margin和padding，需要重置！
-再看例子：</p>
-<p>.test * {color: red;}
-匹配文档中所有的元素，然后分别向上逐级匹配class为test的元素，直到文档的根节点</p>
-<p>.test a {color: red;}
-匹配文档中所有a的元素，然后分别向上逐级匹配class为test的元素，直到文档的根节点</p>
-<p>两种方式，哪种更好不言而喻，所以在开发的时候，建议避免使用通配选择器。</p>
-
+        <p>css优化空间很大，对性能的影响也很大。事实上大部分复杂的页面完全不修改javascript代码，可以通过css的优化大幅提升render performance。这就需要我们对css的渲染有更深入的了解。css优化可以从加载性能、选择器性能、渲染性能、可维护性，健壮性方面入手…<br>
+        
+          <a class="article-more-a" href="/2017/09/28/css/css-optimization/#more">more >></a>
+        
       
 
       
@@ -1124,43 +979,10 @@ npm install jquery --save</p>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>最近由于Facebook的专利问题，百度已经宣布停用一切React软件产品，React开发人员甚是惊慌。Facebook到目前为止拒绝修改React的开源许可条款。虽然还不确定最终的结果，但是学习一下新的知识也是有备无患的，就是不知道vue过阵子是不是也会爆出来侵权or专利问题。悲催的前端工程师……</p>
-</blockquote>
-<h3>安装</h3>
-<p>**兼容性 **</p>
-<p>Vue.js 不支持 IE8 及其以下版本，因为 Vue.js 使用了 IE8 不能模拟的 ECMAScript 5 特性。</p>
-<p>Vue.js 支持所有<a href="http://caniuse.com/#feat=es5" target="_blank" rel="external">兼容ECMAScript 5的浏览器</a>。</p>
-<p><img src="/images/compatible-es5-browser.png" alt=""></p>
-<p><strong>安装</strong></p>
-<ol>
-<li>直接script标签引入</li>
-</ol>
-<pre><code>下载地址：
-  - [开发版本](https://vuejs.org/js/vue.js), 包含完整的警告和调试模式
-  - [生产版本](https://vuejs.org/js/vue.min.js)，删除了警告，28.96kb min+gzip
-</code></pre>
-<ol start="2">
-<li>NPM</li>
-</ol>
-<pre><code>$ npm install vue
-</code></pre>
-<ol start="3">
-<li>命令行工具</li>
-</ol>
-<pre><code>Vue 提供一个官方[命令行工具](https://github.com/vuejs/vue-cli),可用于快速搭建大型单页面应用。
-
-$ npm install --global vue-cli
-$ vue init webpack my-project
-$ cd my-project
-$ npm install
-$ npm run dev
-
-&gt; 注意：
-  - nodejs 版本升级，网上命令行没有效果，[node官网](https://nodejs.org/zh-cn/)下载安装包，直接重新安装的。
-  - 建议将npm的注册表源设置为[国内的镜像](http://riny.net/2014/cnpm/),可以大幅提升安装速度。
-</code></pre>
-
+        <p>最近由于Facebook的专利问题，百度已经宣布停用一切React软件产品，React开发人员甚是惊慌。Facebook到目前为止拒绝修改React的开源许可条款。虽然还不确定最终的结果，但是学习一下新的知识也是有备无患的，就是不知道vue过阵子是不是也会爆出来侵权or专利问题。悲催的前端工程师……<br>
+        
+          <a class="article-more-a" href="/2017/09/21/vue/vue-learn1/#more">more >></a>
+        
       
 
       
@@ -1329,7 +1151,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1345,15 +1175,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>python安装类库 | zj83142</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在win7平台上安装gevent和gevent-socketio 在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了 gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:">
+  <meta name="description" content="在win7平台上安装gevent和gevent-socketio在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了 gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python安装类库">
 <meta property="og:url" content="http://yoursite.com/2017/10/10/install-libs/index.html">
 <meta property="og:site_name" content="zj83142">
-<meta property="og:description" content="在win7平台上安装gevent和gevent-socketio 在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了 gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:">
+<meta property="og:description" content="在win7平台上安装gevent和gevent-socketio在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了 gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-24T01:52:18.189Z">
+<meta property="og:updated_time" content="2017-10-26T05:55:07.620Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python安装类库">
-<meta name="twitter:description" content="在win7平台上安装gevent和gevent-socketio 在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了 gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:">
+<meta name="twitter:description" content="在win7平台上安装gevent和gevent-socketio在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了 gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:">
   
     <link rel="alternative" href="/atom.xml" title="zj83142" type="application/atom+xml">
   
@@ -60,7 +60,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives">归档</a></li>
+	        
+				<li><a href="/tags/笔记/">笔记</a></li>
 	        
 			</ul>
 		</nav>
@@ -118,6 +120,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -135,12 +139,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/笔记/">笔记</a></li>
 		        
 				</ul>
 			</nav>
@@ -175,9 +181,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>在win7平台上安装gevent和gevent-socketio</h3>
-<p>在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了</p>
-<p>gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:</p>
+        <h3 id="在win7平台上安装gevent和gevent-socketio"><a href="#在win7平台上安装gevent和gevent-socketio" class="headerlink" title="在win7平台上安装gevent和gevent-socketio"></a>在win7平台上安装gevent和gevent-socketio</h3><p>在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了</p>
+<p>gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:<br><a id="more"></a></p>
 <ul>
 <li>libevent的dll文件</li>
 <li>greenlet的免编译安装包</li>
@@ -186,12 +191,11 @@
 <p><strong>libevent.dll</strong></p>
 <p>下载地址：</p>
 <ul>
-<li>http://www.dll-found.com/libevent-2-0-5.dll_download.html (需要翻墙)</li>
-<li>http://pan.baidu.com/s/1ge5DxT5 (百度云盘)
-安装方法： 测试环境是windows 7 64bit, 安装了32bit的Python 2.7版本. 因此将下载到的libevent-2-0-5.dll复制到C:\Windows\SysWOW64目录下即可.</li>
+<li><a href="http://www.dll-found.com/libevent-2-0-5.dll_download.html" target="_blank" rel="external">http://www.dll-found.com/libevent-2-0-5.dll_download.html</a> (需要翻墙)</li>
+<li><a href="http://pan.baidu.com/s/1ge5DxT5" target="_blank" rel="external">http://pan.baidu.com/s/1ge5DxT5</a> (百度云盘)<br>安装方法： 测试环境是windows 7 64bit, 安装了32bit的Python 2.7版本. 因此将下载到的libevent-2-0-5.dll复制到C:\Windows\SysWOW64目录下即可.</li>
 </ul>
 <p><strong>greenlet 和 gevent</strong></p>
-<p>下载地址：<strong>http://www.lfd.uci.edu/~gohlke/pythonlibs/</strong></p>
+<p>下载地址：<strong><a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">http://www.lfd.uci.edu/~gohlke/pythonlibs/</a></strong></p>
 <p>安装方法：</p>
 <ul>
 <li>pip install greenlet-0.4.5-cp27-none-win32.whl</li>
@@ -300,7 +304,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/10/install-libs/" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3aQY7DIAwF0Ln/pTvbkaqSb0OqCTxWVdQArwsXY//8xOP1Z/S+//75fbbqKuWBgYHxWMZrOMbbyhfO5x8//7giBgbGAYxPC4/DZRJYe6R8bxgYGBg5I990EpoxMDAwVjGSxLX3BAMDA6OXxOYJZy+AfikXx8DAeCAjv3X//udb6hsYGBiPYryKI39r5iBY3hUGBsbWjDzA5anmeLZmgpo0f2BgYGzNqF6ujS/aeilxMvOCMywGBsYDGWun6123jS/RkncxMDDOYeTHwbxI0Iz9wVuFsy0GBsbDGXmgHD8vXIoVWzcKKS4GBsamjOrF1vyRMV+xsAoGBsbWjIvksHV0qwbcmVT24pyLgYGxBWOmVSJpkrg7icXAwDiH0bu+L7dtxbMlSezHfwwMDIztGL1iwPy2qqG5fHjFwMDYiDETLvMi6PgHyssAF80WGBgYmzJWlSF7T/ILu7wWgIGBsR9j/kS5Ku1ckItjYGBsyliVxObvzpQibs/FMTAw/jGj1xxW/YV6SWwBg4GBcQzjjiS2V6pcUI/FwMDYlJFcjc20fPUw0VoYGBibMmYavKrtF3lIzds1MDAwTmDkIy83JmXLapmzWq7AwMDYjzHffpqkmrcfHzEwMA5gVBspkmXyEFxFYmBgYCRHtHzTq7Z7EXwxMDAwWqlpfrjskZolTAwMjMcy8tbS6nV//v2ZZlkMDIy9GTOp49qG1GqQxcDAOIDxCz9edHIICFnpAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -314,18 +318,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/10/10/python/install-libs/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/10/10/note/echart-pits/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          python安装类库
+          echart踩坑
         
       </div>
     </a>
   
   
-    <a href="/2017/10/10/note/daily-pit1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">日常踩坑集合(一)</div>
+    <a href="/2017/10/10/python/install-libs/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python安装类库</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -459,7 +463,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,15 +487,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">

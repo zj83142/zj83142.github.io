@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>js 随机颜色的三种方式和颜色格式的转化 | zj83142</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="生成随机颜色 十六进制格式（#000000-#FFFFFF） 1234567function randomHexColor() &amp;#123;  let hex = Math.floor(Math.random() * 16777216).toString(16); // 生成ffffff以内16进制数  while (hex.length &amp;lt; 6) &amp;#123; //while循环判断hex">
+  <meta name="description" content="生成随机颜色十六进制格式（#000000-#FFFFFF）1234567function randomHexColor() &amp;#123;  let hex = Math.floor(Math.random() * 16777216).toString(16); // 生成ffffff以内16进制数  while (hex.length &amp;lt; 6) &amp;#123; //while循环判断hex位数">
 <meta name="keywords" content="javascript,color,translate">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js 随机颜色的三种方式和颜色格式的转化">
 <meta property="og:url" content="http://yoursite.com/2017/09/13/js/generate-color/index.html">
 <meta property="og:site_name" content="zj83142">
-<meta property="og:description" content="生成随机颜色 十六进制格式（#000000-#FFFFFF） 1234567function randomHexColor() &amp;#123;  let hex = Math.floor(Math.random() * 16777216).toString(16); // 生成ffffff以内16进制数  while (hex.length &amp;lt; 6) &amp;#123; //while循环判断hex">
+<meta property="og:description" content="生成随机颜色十六进制格式（#000000-#FFFFFF）1234567function randomHexColor() &amp;#123;  let hex = Math.floor(Math.random() * 16777216).toString(16); // 生成ffffff以内16进制数  while (hex.length &amp;lt; 6) &amp;#123; //while循环判断hex位数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-13T06:31:42.380Z">
+<meta property="og:updated_time" content="2017-10-26T05:53:29.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js 随机颜色的三种方式和颜色格式的转化">
-<meta name="twitter:description" content="生成随机颜色 十六进制格式（#000000-#FFFFFF） 1234567function randomHexColor() &amp;#123;  let hex = Math.floor(Math.random() * 16777216).toString(16); // 生成ffffff以内16进制数  while (hex.length &amp;lt; 6) &amp;#123; //while循环判断hex">
+<meta name="twitter:description" content="生成随机颜色十六进制格式（#000000-#FFFFFF）1234567function randomHexColor() &amp;#123;  let hex = Math.floor(Math.random() * 16777216).toString(16); // 生成ffffff以内16进制数  while (hex.length &amp;lt; 6) &amp;#123; //while循环判断hex位数">
   
     <link rel="alternative" href="/atom.xml" title="zj83142" type="application/atom+xml">
   
@@ -60,7 +60,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives">归档</a></li>
+	        
+				<li><a href="/tags/笔记/">笔记</a></li>
 	        
 			</ul>
 		</nav>
@@ -118,6 +120,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -135,12 +139,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/笔记/">笔记</a></li>
 		        
 				</ul>
 			</nav>
@@ -175,29 +181,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>生成随机颜色</h3>
-<h4>十六进制格式（#000000-#FFFFFF）</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function randomHexColor() &#123;</div><div class="line">  let hex = Math.floor(Math.random() * 16777216).toString(16); // 生成ffffff以内16进制数</div><div class="line">  while (hex.length &lt; 6) &#123; //while循环判断hex位数，少于6位前面加0凑够6位</div><div class="line">    hex = &apos;0&apos; + hex;</div><div class="line">  &#125;</div><div class="line">  return &apos;#&apos; + hex; //返回‘#’开头16进制颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function randomHexColor() &#123; </div><div class="line">  return &apos;#&apos; + (&apos;00000&apos; + (Math.random() * 0x1000000 &lt;&lt; 0).toString(16)).substr(-6);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <h3 id="生成随机颜色"><a href="#生成随机颜色" class="headerlink" title="生成随机颜色"></a>生成随机颜色</h3><h4 id="十六进制格式（-000000-FFFFFF）"><a href="#十六进制格式（-000000-FFFFFF）" class="headerlink" title="十六进制格式（#000000-#FFFFFF）"></a>十六进制格式（#000000-#FFFFFF）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function randomHexColor() &#123;</div><div class="line">  let hex = Math.floor(Math.random() * 16777216).toString(16); // 生成ffffff以内16进制数</div><div class="line">  while (hex.length &lt; 6) &#123; //while循环判断hex位数，少于6位前面加0凑够6位</div><div class="line">    hex = &apos;0&apos; + hex;</div><div class="line">  &#125;</div><div class="line">  return &apos;#&apos; + hex; //返回‘#’开头16进制颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function randomHexColor() &#123; </div><div class="line">  return &apos;#&apos; + (&apos;00000&apos; + (Math.random() * 0x1000000 &lt;&lt; 0).toString(16)).substr(-6);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>执行数序：</p>
 <ol>
 <li>先执行Math.random() * 0x1000000，其中0x1000000=0xffffff+1，因为Math.random()取到1，所以+1，这样就会生成一个1-16777216(不包含)以内的浮点数。</li>
 <li>然后执行&lt;&lt;0，这是取整运算，去掉后面的小数点。这时为一个16777216(不包含)以内的十进制数。</li>
 <li>之后执行.toString(16)，把十进制数转化为六位以下16进制数。</li>
-<li>再后执行'00000'+，这时因为之前生成的16进制数最少可能仅一位，在前面加上5个0。</li>
+<li>再后执行’00000’+，这时因为之前生成的16进制数最少可能仅一位，在前面加上5个0。</li>
 <li>最后执行.substr(-6)，是去从-6开始的后面所有字符串，也就是最后6位数。</li>
 <li>前面加上#并retuen</li>
 </ol>
-<h4>RGB格式</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function randomRgbColor() &#123; //随机生成RGB颜色</div><div class="line">  const r = Math.floor(Math.random() * 256); //随机生成256以内r值</div><div class="line">  const g = Math.floor(Math.random() * 256); //随机生成256以内g值</div><div class="line">  const b = Math.floor(Math.random() * 256); //随机生成256以内b值</div><div class="line">  return `rgb($&#123;r&#125;,$&#123;g&#125;,$&#123;b&#125;)`; //返回rgb(r,g,b)格式颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4>RGBA格式</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function randomRgbaColor() &#123; //随机生成RGBA颜色</div><div class="line">  const r = Math.floor(Math.random() * 256); //随机生成256以内r值</div><div class="line">  const g = Math.floor(Math.random() * 256); //随机生成256以内g值</div><div class="line">  const b = Math.floor(Math.random() * 256); //随机生成256以内b值</div><div class="line">  const alpha = Math.random(); //随机生成1以内a值</div><div class="line">  return `rgb($&#123;r&#125;,$&#123;g&#125;,$&#123;b&#125;,$&#123;alpha&#125;)`; //返回rgba(r,g,b,a)格式颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3>颜色格式转化</h3>
-<h4>十六进制转为RGB</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function hex2Rgb(hex) &#123; //十六进制转为RGB</div><div class="line">  let rgb = []; // 定义rgb数组</div><div class="line">  if (/^\#[0-9A-F]&#123;3&#125;$/i.test(hex)) &#123; //判断传入是否为#三位十六进制数</div><div class="line">    let sixHex = &apos;#&apos;;</div><div class="line">    hex.replace(/[0-9A-F]/ig, function(kw) &#123;</div><div class="line">        sixHex += kw + kw; //把三位16进制数转化为六位</div><div class="line">    &#125;);</div><div class="line">    hex = sixHex; //保存回hex</div><div class="line">  &#125;</div><div class="line">  if (/^#[0-9A-F]&#123;6&#125;$/i.test(hex)) &#123; //判断传入是否为#六位十六进制数</div><div class="line">    hex.replace(/[0-9A-F]&#123;2&#125;/ig, function(kw) &#123;</div><div class="line">        rgb.push(parseInt(kw,16)); //十六进制转化为十进制并存入数组</div><div class="line">    &#125;);</div><div class="line">    return `rgb($&#123;rgb.join(&apos;,&apos;)&#125;)`; //输出RGB格式颜色</div><div class="line">  &#125; else &#123;</div><div class="line">    console.log(`Input $&#123;hex&#125; is wrong!`);</div><div class="line">    return &apos;rgb(0,0,0)&apos;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4>RGB转为十六进制</h4>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function rgb2Hex(rgb) &#123;</div><div class="line">  if (/^rgb\((\d&#123;1,3&#125;\,)&#123;2&#125;\d&#123;1,3&#125;\)$/i.test(rgb)) &#123; //test RGB</div><div class="line">    let hex = &apos;#&apos;; //定义十六进制颜色变量</div><div class="line">    rgb.replace(/\d&#123;1,3&#125;/g, function(kw) &#123; //提取rgb数字</div><div class="line">      kw = parseInt(kw).toString(16); //转为十六进制</div><div class="line">      kw = kw.length &lt; 2 ? 0 + kw : kw; //判断位数，保证两位</div><div class="line">      hex += kw; //拼接</div><div class="line">    &#125;);</div><div class="line">    return hex; //返回十六进制</div><div class="line">  &#125; else &#123;</div><div class="line">    console.log(`Input $&#123;rgb&#125; is wrong!`);</div><div class="line">    return &apos;#000&apos;; //输入格式错误,返回#000</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
+<h4 id="RGB格式"><a href="#RGB格式" class="headerlink" title="RGB格式"></a>RGB格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function randomRgbColor() &#123; //随机生成RGB颜色</div><div class="line">  const r = Math.floor(Math.random() * 256); //随机生成256以内r值</div><div class="line">  const g = Math.floor(Math.random() * 256); //随机生成256以内g值</div><div class="line">  const b = Math.floor(Math.random() * 256); //随机生成256以内b值</div><div class="line">  return `rgb($&#123;r&#125;,$&#123;g&#125;,$&#123;b&#125;)`; //返回rgb(r,g,b)格式颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="RGBA格式"><a href="#RGBA格式" class="headerlink" title="RGBA格式"></a>RGBA格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function randomRgbaColor() &#123; //随机生成RGBA颜色</div><div class="line">  const r = Math.floor(Math.random() * 256); //随机生成256以内r值</div><div class="line">  const g = Math.floor(Math.random() * 256); //随机生成256以内g值</div><div class="line">  const b = Math.floor(Math.random() * 256); //随机生成256以内b值</div><div class="line">  const alpha = Math.random(); //随机生成1以内a值</div><div class="line">  return `rgb($&#123;r&#125;,$&#123;g&#125;,$&#123;b&#125;,$&#123;alpha&#125;)`; //返回rgba(r,g,b,a)格式颜色</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="颜色格式转化"><a href="#颜色格式转化" class="headerlink" title="颜色格式转化"></a>颜色格式转化</h3><h4 id="十六进制转为RGB"><a href="#十六进制转为RGB" class="headerlink" title="十六进制转为RGB"></a>十六进制转为RGB</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function hex2Rgb(hex) &#123; //十六进制转为RGB</div><div class="line">  let rgb = []; // 定义rgb数组</div><div class="line">  if (/^\#[0-9A-F]&#123;3&#125;$/i.test(hex)) &#123; //判断传入是否为#三位十六进制数</div><div class="line">    let sixHex = &apos;#&apos;;</div><div class="line">    hex.replace(/[0-9A-F]/ig, function(kw) &#123;</div><div class="line">        sixHex += kw + kw; //把三位16进制数转化为六位</div><div class="line">    &#125;);</div><div class="line">    hex = sixHex; //保存回hex</div><div class="line">  &#125;</div><div class="line">  if (/^#[0-9A-F]&#123;6&#125;$/i.test(hex)) &#123; //判断传入是否为#六位十六进制数</div><div class="line">    hex.replace(/[0-9A-F]&#123;2&#125;/ig, function(kw) &#123;</div><div class="line">        rgb.push(parseInt(kw,16)); //十六进制转化为十进制并存入数组</div><div class="line">    &#125;);</div><div class="line">    return `rgb($&#123;rgb.join(&apos;,&apos;)&#125;)`; //输出RGB格式颜色</div><div class="line">  &#125; else &#123;</div><div class="line">    console.log(`Input $&#123;hex&#125; is wrong!`);</div><div class="line">    return &apos;rgb(0,0,0)&apos;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="RGB转为十六进制"><a href="#RGB转为十六进制" class="headerlink" title="RGB转为十六进制"></a>RGB转为十六进制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function rgb2Hex(rgb) &#123;</div><div class="line">  if (/^rgb\((\d&#123;1,3&#125;\,)&#123;2&#125;\d&#123;1,3&#125;\)$/i.test(rgb)) &#123; //test RGB</div><div class="line">    let hex = &apos;#&apos;; //定义十六进制颜色变量</div><div class="line">    rgb.replace(/\d&#123;1,3&#125;/g, function(kw) &#123; //提取rgb数字</div><div class="line">      kw = parseInt(kw).toString(16); //转为十六进制</div><div class="line">      kw = kw.length &lt; 2 ? 0 + kw : kw; //判断位数，保证两位</div><div class="line">      hex += kw; //拼接</div><div class="line">    &#125;);</div><div class="line">    return hex; //返回十六进制</div><div class="line">  &#125; else &#123;</div><div class="line">    console.log(`Input $&#123;rgb&#125; is wrong!`);</div><div class="line">    return &apos;#000&apos;; //输入格式错误,返回#000</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -306,7 +305,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/13/js/generate-color/" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACM0lEQVR42u3azW6DMBBFYd7/panUVaoI59wZ0xb7eIUIcvhYjDw/x4HX+b1er1/vvD/5/uv7/XO4jjuWDBkyHssg213dGe8z3n/8mWKqDBkyNmCQIDu+JruR58f7X96XIUOGDHBoO8NFqDJkyJBRY/CAm4ZpGTJkyBgzSBLLi3E8rf2DXFyGDBkPZNQaA79zfXt/Q4YMGf+ecZYWod7R1Lx8HxkyZCzN4Ic5PmYxq52ZNlBlyJCxD4OnlLMakOQgiFoUMmTI2IyRBlMeXjsNgyDPliFDxkKM9KDWCaC1I2CreSlDhozlGOlf8pJZ2oxMk14ZMmTswEjDHwm+nWYDuSNDhox9GOkRMCjTl8pt/LNevqEMGTIWZcRHsXDAIi3AcV4wbCFDhozHMjrjFOn4V204AwVoGTJkbMOoJbF9GC+3fWgMyJAhYxtGmqZ2kttZH0KGDBk7M2oDEGRQLE1cP8BkyJCxAYOHv86Bj38gfhj9kcTKkCFjA0ZtYKLWmKy1GVDAlSFDxnIMvh1vGKRty/RJGTJk7MYgvk5Zf1bR7cO/y5AhY2kGT1DTjiEvt3EAb1HIkCFjJcYZLhI00zZAWlwLGgMyZMhYglELc/wQSZLVWnlOhgwZuzH4ka5fdJsVcA8e+2XIkLEQo/9aPMWtxX7UHpAhQ4aM0iDX3GLctIArQ4aMRRm11LSWxAYAGTJkbMPgSWyte9j/TK0uhwwZMh7O6E9q1BJX/kL9EQ0ZMmQ8lvEFYk2tY8K/44cAAAAASUVORK5CYII=" alt="微信分享二维码">
     </div>
 </div>
 
@@ -465,7 +464,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,15 +488,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
               </li>
              
               <li class="article-tag-list-item">
