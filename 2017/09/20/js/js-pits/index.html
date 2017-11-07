@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="zj83142">
 <meta property="og:description" content="工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-26T06:04:13.981Z">
+<meta property="og:updated_time" content="2017-11-01T07:11:31.306Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js 问题积累">
 <meta name="twitter:description" content="工作中遇到一些问题，虽然最后解决了，但是过一段时间可能又忘了，再遇到又要去查资料。觉得很有必要记录下来。">
@@ -210,6 +210,7 @@
 <h4 id="IE浏览器"><a href="#IE浏览器" class="headerlink" title="IE浏览器"></a>IE浏览器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var fireEvent = function(element, event) &#123;</div><div class="line">  // IE浏览器支持fireEvent方法</div><div class="line">  if (document.createEventObject) &#123;</div><div class="line">    var evt = document.createEventObject();</div><div class="line">    return element.fireEvent(&apos;on&apos; + event, evt)</div><div class="line">  &#125; else &#123;</div><div class="line">    // 其他标准浏览器使用dispatchEvent方法</div><div class="line">    var evt = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">    // initEvent接受3个参数：</div><div class="line">    // 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">    evt.initEvent(event, true, true);</div><div class="line">    return !element.dispatchEvent(evt);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>或 document上绑定自定义事件ondataavailable<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">document.attachEvent(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line">var obj=document.getElementById(&quot;obj&quot;);</div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.attachEvent(&apos;onclick&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">//调用document对象的createEventObject方法得到一个event的对象实例。</div><div class="line">var event = document.createEventObject();</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.fireEvent(&apos;ondataavailable&apos;, event);</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.fireEvent(&apos;onclick&apos;, event);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>chrome、firefox等浏览器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">//document上绑定自定义事件ondataavailable</div><div class="line">document.addEventListener(&apos;ondataavailable&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line">var obj = document.getElementById(&quot;obj&quot;);</div><div class="line"></div><div class="line">//obj元素上绑定click事件</div><div class="line">obj.addEventListener(&apos;click&apos;, function (event) &#123;</div><div class="line">  alert(event.eventType);</div><div class="line">&#125;, false);</div><div class="line"></div><div class="line">//调用document对象的 createEvent 方法得到一个event的对象实例。</div><div class="line">var event = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line"></div><div class="line">// initEvent接受3个参数：</div><div class="line">// 事件类型，是否冒泡，是否阻止浏览器的默认行为</div><div class="line">event.initEvent(&quot;ondataavailable&quot;, true, true);</div><div class="line">event.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发document上绑定的自定义事件ondataavailable</div><div class="line">document.dispatchEvent(event);</div><div class="line">var event1 = document.createEvent(&apos;HTMLEvents&apos;);</div><div class="line">event1.initEvent(&quot;click&quot;, true, true);</div><div class="line">event1.eventType = &apos;message&apos;;</div><div class="line"></div><div class="line">//触发obj元素上绑定click事件</div><div class="line">document.getElementById(&quot;test&quot;).onclick = function () &#123;</div><div class="line">  obj.dispatchEvent(event1);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="0"><a href="#0" class="headerlink" title="[0]"></a>[0]</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">0</span>];</div><div class="line"><span class="keyword">if</span> ([<span class="number">0</span>]) &#123;</div><div class="line">  <span class="built_in">console</span>.log(a == <span class="literal">true</span>); <span class="comment">// 打印 true，表示[0]为true， 但是控台上直接输入[0] == true 却打印出false</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"wut"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h3><ul>
 <li>form表单调用reset： $(‘#form_test’)[0].reset();</li>
 <li>redio设置选中：$(‘input[name=”xxx”][value=”‘ + val + ‘“]’).attr(“checked”, true);</li>
@@ -486,11 +487,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
+                <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+                <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,11 +507,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,15 +527,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">sublime</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color5">work</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">work</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>

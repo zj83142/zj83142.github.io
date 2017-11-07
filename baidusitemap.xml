@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/11/06/note/web-optimization/</loc>
+    <lastmod>2017-11-06T03:14:33.654Z</lastmod>
+    <data>
+        <display>
+        <title>web 前端优化策略</title>
+        <pubTime>2017-11-06T08:36:48.000Z</pubTime>
+        
+        <tag>笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端优化" url="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/09/20/js/js-pits/</loc>
-    <lastmod>2017-10-26T06:04:13.981Z</lastmod>
+    <lastmod>2017-11-01T07:11:31.306Z</lastmod>
     <data>
         <display>
         <title>js 问题积累</title>
@@ -25,6 +45,105 @@
               <breadCrumb title="datetimepicker" url="http://yoursite.com/categories/js/dropzone/datetimepicker/"/>
           
              
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/10/30/js/js-concept/</loc>
+    <lastmod>2017-10-30T07:25:31.060Z</lastmod>
+    <data>
+        <display>
+        <title></title>
+        <pubTime>2017-10-30T07:04:56.987Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/10/10/note/daily-pit1/</loc>
+    <lastmod>2017-10-26T06:43:18.801Z</lastmod>
+    <data>
+        <display>
+        <title>日常踩坑集合(一)</title>
+        <pubTime>2017-10-10T07:51:04.000Z</pubTime>
+        
+        <tag>笔记</tag>
+         
+         
+           
+             
+              <breadCrumb title="踩坑" url="http://yoursite.com/categories/%E8%B8%A9%E5%9D%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/09/05/tools/hexo-note/</loc>
+    <lastmod>2017-10-26T06:43:17.626Z</lastmod>
+    <data>
+        <display>
+        <title>hexo 笔记 —— 遇到的问题</title>
+        <pubTime>2017-09-05T13:36:36.000Z</pubTime>
+        
+        <tag>hexo 问题积累</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/10/26/tools/git-command/</loc>
+    <lastmod>2017-10-26T06:42:13.126Z</lastmod>
+    <data>
+        <display>
+        <title>git 常用命令积累</title>
+        <pubTime>2017-10-26T06:36:28.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/09/13/js/generate-color/</loc>
+    <lastmod>2017-10-26T06:36:35.558Z</lastmod>
+    <data>
+        <display>
+        <title>js 随机颜色的三种方式和颜色格式的转化</title>
+        <pubTime>2017-09-13T06:04:28.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+        <tag>color</tag>
+         
+        <tag>translate</tag>
+         
+         
+           
+             
+              <breadCrumb title="js" url="http://yoursite.com/categories/js/"/>
+          
         </display>
     </data>
     </url>
@@ -253,30 +372,6 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/09/13/js/generate-color/</loc>
-    <lastmod>2017-10-26T05:53:29.541Z</lastmod>
-    <data>
-        <display>
-        <title>js 随机颜色的三种方式和颜色格式的转化</title>
-        <pubTime>2017-09-13T06:04:28.000Z</pubTime>
-        
-        <tag>javascript</tag>
-         
-        <tag>color</tag>
-         
-        <tag>translate</tag>
-         
-         
-           
-             
-              <breadCrumb title="js" url="http://yoursite.com/categories/js/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2017/10/10/css/loadding/</loc>
     <lastmod>2017-10-26T05:53:06.413Z</lastmod>
     <data>
@@ -345,46 +440,6 @@
         <pubTime>2017-10-23T01:39:47.000Z</pubTime>
         
         <tag>work</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/10/10/note/daily-pit1/</loc>
-    <lastmod>2017-10-12T02:52:48.932Z</lastmod>
-    <data>
-        <display>
-        <title>日常踩坑集合(一)</title>
-        <pubTime>2017-10-10T07:51:04.000Z</pubTime>
-        
-        <tag>笔记</tag>
-         
-         
-           
-             
-              <breadCrumb title="踩坑" url="http://yoursite.com/categories/%E8%B8%A9%E5%9D%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/09/05/tools/hexo-note/</loc>
-    <lastmod>2017-09-13T02:59:52.650Z</lastmod>
-    <data>
-        <display>
-        <title>hexo 笔记 —— 遇到的问题</title>
-        <pubTime>2017-09-05T13:36:36.000Z</pubTime>
-        
-        <tag>hexo 问题积累</tag>
          
          
            

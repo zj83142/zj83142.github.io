@@ -2,9 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/11/06/note/web-optimization/</loc>
+    
+    <lastmod>2017-11-06T03:14:33.654Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/09/20/js/js-pits/</loc>
     
-    <lastmod>2017-10-26T06:04:13.981Z</lastmod>
+    <lastmod>2017-11-01T07:11:31.306Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/30/js/js-concept/</loc>
+    
+    <lastmod>2017-10-30T07:25:31.060Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/10/note/daily-pit1/</loc>
+    
+    <lastmod>2017-10-26T06:43:18.801Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/09/05/tools/hexo-note/</loc>
+    
+    <lastmod>2017-10-26T06:43:17.626Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/26/tools/git-command/</loc>
+    
+    <lastmod>2017-10-26T06:42:13.126Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/09/13/js/generate-color/</loc>
+    
+    <lastmod>2017-10-26T06:36:35.558Z</lastmod>
     
   </url>
   
@@ -93,13 +135,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/09/13/js/generate-color/</loc>
-    
-    <lastmod>2017-10-26T05:53:29.541Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2017/10/10/css/loadding/</loc>
     
     <lastmod>2017-10-26T05:53:06.413Z</lastmod>
@@ -124,20 +159,6 @@
     <loc>http://yoursite.com/2017/10/23/work/2017-10/</loc>
     
     <lastmod>2017-10-23T07:01:12.827Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/10/note/daily-pit1/</loc>
-    
-    <lastmod>2017-10-12T02:52:48.932Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/09/05/tools/hexo-note/</loc>
-    
-    <lastmod>2017-09-13T02:59:52.650Z</lastmod>
     
   </url>
   
