@@ -2,10 +2,10 @@
 title: javascript中的一些概念
 date: 2017-10-30 15:09:21
 tags:
-  - javascript
-  - 概念
+  - javascript概念
 categories: 
   - 笔记
+---
 
 ### setTimeout 和 seInterval
 
