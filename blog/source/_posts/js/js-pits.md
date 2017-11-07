@@ -157,6 +157,19 @@ document.getElementById("test").onclick = function () {
 };
 ```
 
+### [0]
+```js
+var a = [0];
+if ([0]) {
+  console.log(a == true); // 打印 true，表示[0]为true， 但是控台上直接输入[0] == true 却打印出false
+} else {
+  console.log("wut");
+}
+```
+
+
+
+
 ### 其他注意事项
 
   - form表单调用reset： $('#form_test')[0].reset();
