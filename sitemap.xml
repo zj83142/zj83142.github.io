@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/10/30/js/js-concept/</loc>
+    
+    <lastmod>2017-11-07T07:46:45.646Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/11/06/note/web-optimization/</loc>
     
     <lastmod>2017-11-06T03:14:33.654Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://yoursite.com/2017/09/20/js/js-pits/</loc>
     
     <lastmod>2017-11-01T07:11:31.306Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/30/js/js-concept/</loc>
-    
-    <lastmod>2017-10-30T07:25:31.060Z</lastmod>
     
   </url>
   

@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/10/30/js/js-concept/</loc>
+    <lastmod>2017-11-07T07:46:45.646Z</lastmod>
+    <data>
+        <display>
+        <title>javascript中的一些概念</title>
+        <pubTime>2017-10-30T07:09:21.000Z</pubTime>
+        
+        <tag>javascript概念</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/11/06/note/web-optimization/</loc>
     <lastmod>2017-11-06T03:14:33.654Z</lastmod>
     <data>
@@ -45,21 +65,6 @@
               <breadCrumb title="datetimepicker" url="http://yoursite.com/categories/js/dropzone/datetimepicker/"/>
           
              
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/10/30/js/js-concept/</loc>
-    <lastmod>2017-10-30T07:25:31.060Z</lastmod>
-    <data>
-        <display>
-        <title></title>
-        <pubTime>2017-10-30T07:04:56.987Z</pubTime>
-        
-         
-           
         </display>
     </data>
     </url>
