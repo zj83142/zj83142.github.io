@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/10/23/work/2017-10/</loc>
+    <lastmod>2017-11-08T09:31:29.718Z</lastmod>
+    <data>
+        <display>
+        <title>2017年10月工作笔记和感受</title>
+        <pubTime>2017-10-23T01:39:47.000Z</pubTime>
+        
+        <tag>work</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/10/26/tools/git-command/</loc>
-    <lastmod>2017-11-08T08:45:56.616Z</lastmod>
+    <lastmod>2017-11-08T08:50:02.781Z</lastmod>
     <data>
         <display>
         <title>git 常用命令积累</title>
@@ -425,26 +445,6 @@
         <pubTime>2017-10-24T01:32:03.000Z</pubTime>
         
         <tag>webpack</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/10/23/work/2017-10/</loc>
-    <lastmod>2017-10-23T07:01:12.827Z</lastmod>
-    <data>
-        <display>
-        <title>2017年10月工作笔记和感受</title>
-        <pubTime>2017-10-23T01:39:47.000Z</pubTime>
-        
-        <tag>work</tag>
          
          
            

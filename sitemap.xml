@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/10/23/work/2017-10/</loc>
+    
+    <lastmod>2017-11-08T09:31:29.718Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/26/tools/git-command/</loc>
     
-    <lastmod>2017-11-08T08:45:56.616Z</lastmod>
+    <lastmod>2017-11-08T08:50:02.781Z</lastmod>
     
   </url>
   
@@ -152,13 +159,6 @@
     <loc>http://yoursite.com/2017/10/24/tools/webpack/</loc>
     
     <lastmod>2017-10-26T02:47:39.163Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/23/work/2017-10/</loc>
-    
-    <lastmod>2017-10-23T07:01:12.827Z</lastmod>
     
   </url>
   
