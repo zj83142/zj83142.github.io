@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/10/26/tools/git-command/</loc>
+    <lastmod>2017-11-08T08:45:56.616Z</lastmod>
+    <data>
+        <display>
+        <title>git 常用命令积累</title>
+        <pubTime>2017-10-26T06:36:28.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/10/30/js/js-concept/</loc>
     <lastmod>2017-11-07T07:46:45.646Z</lastmod>
     <data>
@@ -99,26 +119,6 @@
         <pubTime>2017-09-05T13:36:36.000Z</pubTime>
         
         <tag>hexo 问题积累</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/10/26/tools/git-command/</loc>
-    <lastmod>2017-10-26T06:42:13.126Z</lastmod>
-    <data>
-        <display>
-        <title>git 常用命令积累</title>
-        <pubTime>2017-10-26T06:36:28.000Z</pubTime>
-        
-        <tag>git</tag>
          
          
            

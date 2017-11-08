@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>git 常用命令积累 | zj83142</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="日常工作中常用的git命令积累  修改远程仓库地址 1234git remote set-url origin [url] 或git remote rm origingit remote add origin [url] 使用 git remote -v 查看当前远程仓库地址">
+  <meta name="description" content="日常工作中使用git同步代码，虽然对git了解不是很多，但是掌握初始化、克隆、拉代码、推代码、切换分支等等，已经基本上满足一个git小白的需求了。为了方便将平时工作中用到的git命令积累起来，这样方便下次使用的查询，还可以在没事的时候翻翻博客，加强一下记忆 …">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git 常用命令积累">
 <meta property="og:url" content="http://yoursite.com/2017/10/26/tools/git-command/index.html">
 <meta property="og:site_name" content="zj83142">
-<meta property="og:description" content="日常工作中常用的git命令积累  修改远程仓库地址 1234git remote set-url origin [url] 或git remote rm origingit remote add origin [url] 使用 git remote -v 查看当前远程仓库地址">
+<meta property="og:description" content="日常工作中使用git同步代码，虽然对git了解不是很多，但是掌握初始化、克隆、拉代码、推代码、切换分支等等，已经基本上满足一个git小白的需求了。为了方便将平时工作中用到的git命令积累起来，这样方便下次使用的查询，还可以在没事的时候翻翻博客，加强一下记忆 …">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-26T06:42:13.126Z">
+<meta property="og:updated_time" content="2017-11-08T08:45:56.616Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 常用命令积累">
-<meta name="twitter:description" content="日常工作中常用的git命令积累  修改远程仓库地址 1234git remote set-url origin [url] 或git remote rm origingit remote add origin [url] 使用 git remote -v 查看当前远程仓库地址">
+<meta name="twitter:description" content="日常工作中使用git同步代码，虽然对git了解不是很多，但是掌握初始化、克隆、拉代码、推代码、切换分支等等，已经基本上满足一个git小白的需求了。为了方便将平时工作中用到的git命令积累起来，这样方便下次使用的查询，还可以在没事的时候翻翻博客，加强一下记忆 …">
   
     <link rel="alternative" href="/atom.xml" title="zj83142" type="application/atom+xml">
   
@@ -181,14 +181,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>日常工作中常用的git命令积累</p>
+        <p>日常工作中使用git同步代码，虽然对git了解不是很多，但是掌握初始化、克隆、拉代码、推代码、切换分支等等，已经基本上满足一个git小白的需求了。为了方便将平时工作中用到的git命令积累起来，这样方便下次使用的查询，还可以在没事的时候翻翻博客，加强一下记忆 …<br><a id="more"></a></p>
 <ul>
 <li><p>修改远程仓库地址</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git remote set-url origin [url]</div><div class="line"> 或</div><div class="line">git remote rm origin</div><div class="line">git remote add origin [url]</div></pre></td></tr></table></figure>
 <p>使用 git remote -v 查看当前远程仓库地址</p>
 </li>
 </ul>
-<a id="more"></a>
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><ul>
+<li><p>查看远程分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看本地分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch test</div></pre></td></tr></table></figure>
+</li>
+<li><p>把本地分支推到远程分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  git push origin test</div><div class="line">``</div><div class="line"></div><div class="line">- 切换到分支</div></pre></td></tr></table></figure>
+<p>git branch<br>git checkout test</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 删除本地分支</div></pre></td></tr></table></figure>
+<p>git branch -d test</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 删除远程分支</div></pre></td></tr></table></figure>
+<p>git branch -r -d origin/branch -name<br>git push origin :branch-name<br>```</p>
+</li>
+</ul>
 
       
 
@@ -449,11 +467,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
+                <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,15 +515,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">work</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">sublime</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">work</a>
               </li>
             
             <div class="clearfix"></div>

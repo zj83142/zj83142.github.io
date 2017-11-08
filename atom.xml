@@ -73,19 +73,13 @@
     <link href="http://yoursite.com/2017/10/26/tools/git-command/"/>
     <id>http://yoursite.com/2017/10/26/tools/git-command/</id>
     <published>2017-10-26T06:36:28.000Z</published>
-    <updated>2017-10-26T06:42:13.126Z</updated>
+    <updated>2017-11-08T08:45:56.616Z</updated>
     
-    <content type="html"><![CDATA[<p>日常工作中常用的git命令积累</p><ul><li><p>修改远程仓库地址</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git remote set-url origin [url]</div><div class="line"> 或</div><div class="line">git remote rm origin</div><div class="line">git remote add origin [url]</div></pre></td></tr></table></figure><p>使用 git remote -v 查看当前远程仓库地址</p></li></ul><a id="more"></a>]]></content>
+    <content type="html"><![CDATA[<p>日常工作中使用git同步代码，虽然对git了解不是很多，但是掌握初始化、克隆、拉代码、推代码、切换分支等等，已经基本上满足一个git小白的需求了。为了方便将平时工作中用到的git命令积累起来，这样方便下次使用的查询，还可以在没事的时候翻翻博客，加强一下记忆 …<br><a id="more"></a></p><ul><li><p>修改远程仓库地址</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git remote set-url origin [url]</div><div class="line"> 或</div><div class="line">git remote rm origin</div><div class="line">git remote add origin [url]</div></pre></td></tr></table></figure><p>使用 git remote -v 查看当前远程仓库地址</p></li></ul><h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><ul><li><p>查看远程分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a</div></pre></td></tr></table></figure></li><li><p>查看本地分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch</div></pre></td></tr></table></figure></li><li><p>创建分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch test</div></pre></td></tr></table></figure></li><li><p>把本地分支推到远程分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  git push origin test</div><div class="line">``</div><div class="line"></div><div class="line">- 切换到分支</div></pre></td></tr></table></figure><p>git branch<br>git checkout test</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 删除本地分支</div></pre></td></tr></table></figure><p>git branch -d test</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- 删除远程分支</div></pre></td></tr></table></figure><p>git branch -r -d origin/branch -name<br>git push origin :branch-name<br>```</p></li></ul>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;日常工作中常用的git命令积累&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;修改远程仓库地址&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git remote set-url origin [url]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; 或&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git remote rm origin&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git remote add origin [url]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;使用 git remote -v 查看当前远程仓库地址&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+      &lt;p&gt;日常工作中使用git同步代码，虽然对git了解不是很多，但是掌握初始化、克隆、拉代码、推代码、切换分支等等，已经基本上满足一个git小白的需求了。为了方便将平时工作中用到的git命令积累起来，这样方便下次使用的查询，还可以在没事的时候翻翻博客，加强一下记忆 …&lt;br&gt;
     
     </summary>
     
@@ -201,6 +195,29 @@
   
   <entry>
     <title>python安装类库</title>
+    <link href="http://yoursite.com/2017/10/10/install-libs/"/>
+    <id>http://yoursite.com/2017/10/10/install-libs/</id>
+    <published>2017-10-10T07:54:23.000Z</published>
+    <updated>2017-10-26T05:55:07.620Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="在win7平台上安装gevent和gevent-socketio"><a href="#在win7平台上安装gevent和gevent-socketio" class="headerlink" title="在win7平台上安装gevent和gevent-socketio"></a>在win7平台上安装gevent和gevent-socketio</h3><p>在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了</p><p>gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:<br><a id="more"></a></p><ul><li>libevent的dll文件</li><li>greenlet的免编译安装包</li><li>gevent的免编译安装包</li></ul><p><strong>libevent.dll</strong></p><p>下载地址：</p><ul><li><a href="http://www.dll-found.com/libevent-2-0-5.dll_download.html" target="_blank" rel="external">http://www.dll-found.com/libevent-2-0-5.dll_download.html</a> (需要翻墙)</li><li><a href="http://pan.baidu.com/s/1ge5DxT5" target="_blank" rel="external">http://pan.baidu.com/s/1ge5DxT5</a> (百度云盘)<br>安装方法： 测试环境是windows 7 64bit, 安装了32bit的Python 2.7版本. 因此将下载到的libevent-2-0-5.dll复制到C:\Windows\SysWOW64目录下即可.</li></ul><p><strong>greenlet 和 gevent</strong></p><p>下载地址：<strong><a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">http://www.lfd.uci.edu/~gohlke/pythonlibs/</a></strong></p><p>安装方法：</p><ul><li>pip install greenlet-0.4.5-cp27-none-win32.whl</li><li>pip install gevent-1.0.1-cp27-none-win32.whl</li></ul><p><strong>gevent-socketio</strong></p><p>安装方法：pip install gevent-socketio</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;在win7平台上安装gevent和gevent-socketio&quot;&gt;&lt;a href=&quot;#在win7平台上安装gevent和gevent-socketio&quot; class=&quot;headerlink&quot; title=&quot;在win7平台上安装gevent和gevent-socketio&quot;&gt;&lt;/a&gt;在win7平台上安装gevent和gevent-socketio&lt;/h3&gt;&lt;p&gt;在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了&lt;/p&gt;
+&lt;p&gt;gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:&lt;br&gt;
+    
+    </summary>
+    
+      <category term="python安装类库" scheme="http://yoursite.com/categories/python%E5%AE%89%E8%A3%85%E7%B1%BB%E5%BA%93/"/>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python安装类库</title>
     <link href="http://yoursite.com/2017/10/10/python/install-libs/"/>
     <id>http://yoursite.com/2017/10/10/python/install-libs/</id>
     <published>2017-10-10T07:54:23.000Z</published>
@@ -216,29 +233,6 @@
 &lt;li&gt;libevent的dll文件&lt;/li&gt;
 &lt;li&gt;greenlet的免编译安装包&lt;/li&gt;
 &lt;li&gt;gevent的免编译安装包
-    
-    </summary>
-    
-      <category term="python安装类库" scheme="http://yoursite.com/categories/python%E5%AE%89%E8%A3%85%E7%B1%BB%E5%BA%93/"/>
-    
-    
-      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python安装类库</title>
-    <link href="http://yoursite.com/2017/10/10/install-libs/"/>
-    <id>http://yoursite.com/2017/10/10/install-libs/</id>
-    <published>2017-10-10T07:54:23.000Z</published>
-    <updated>2017-10-26T05:55:07.620Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="在win7平台上安装gevent和gevent-socketio"><a href="#在win7平台上安装gevent和gevent-socketio" class="headerlink" title="在win7平台上安装gevent和gevent-socketio"></a>在win7平台上安装gevent和gevent-socketio</h3><p>在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了</p><p>gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:<br><a id="more"></a></p><ul><li>libevent的dll文件</li><li>greenlet的免编译安装包</li><li>gevent的免编译安装包</li></ul><p><strong>libevent.dll</strong></p><p>下载地址：</p><ul><li><a href="http://www.dll-found.com/libevent-2-0-5.dll_download.html" target="_blank" rel="external">http://www.dll-found.com/libevent-2-0-5.dll_download.html</a> (需要翻墙)</li><li><a href="http://pan.baidu.com/s/1ge5DxT5" target="_blank" rel="external">http://pan.baidu.com/s/1ge5DxT5</a> (百度云盘)<br>安装方法： 测试环境是windows 7 64bit, 安装了32bit的Python 2.7版本. 因此将下载到的libevent-2-0-5.dll复制到C:\Windows\SysWOW64目录下即可.</li></ul><p><strong>greenlet 和 gevent</strong></p><p>下载地址：<strong><a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="external">http://www.lfd.uci.edu/~gohlke/pythonlibs/</a></strong></p><p>安装方法：</p><ul><li>pip install greenlet-0.4.5-cp27-none-win32.whl</li><li>pip install gevent-1.0.1-cp27-none-win32.whl</li></ul><p><strong>gevent-socketio</strong></p><p>安装方法：pip install gevent-socketio</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;在win7平台上安装gevent和gevent-socketio&quot;&gt;&lt;a href=&quot;#在win7平台上安装gevent和gevent-socketio&quot; class=&quot;headerlink&quot; title=&quot;在win7平台上安装gevent和gevent-socketio&quot;&gt;&lt;/a&gt;在win7平台上安装gevent和gevent-socketio&lt;/h3&gt;&lt;p&gt;在Linux平台上安装gevent就是几个命令的事情, 有了gcc之类的编译环境很快就可以搞定, 但是windows上要编译什么的就麻烦太多了&lt;/p&gt;
-&lt;p&gt;gevent依赖greenlet, 从源码安装的话, 还需要cython的支持和编译libev. 而greenlet在windows平台上则需要编译libevent. 因此我们至少需要:&lt;br&gt;
     
     </summary>
     
