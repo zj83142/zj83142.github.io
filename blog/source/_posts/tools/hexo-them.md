@@ -52,9 +52,6 @@ categories:
         $content-desktop                = 700px
         修改 $main-desktop 和 $content-desktop 的数值：
 
-        1
-        2
-        3
         $main-desktop                   = 1080px
         $main-desktop-large             = 1200px
         $content-desktop                = 810px
