@@ -10,16 +10,43 @@ categories:
 日常工作中使用git同步代码，虽然对git了解不是很多，但是掌握初始化、克隆、拉代码、推代码、切换分支等等，已经基本上满足一个git小白的需求了。为了方便将平时工作中用到的git命令积累起来，这样方便下次使用的查询，还可以在没事的时候翻翻博客，加强一下记忆 ...
 <!-- more -->
 
-- 修改远程仓库地址
+### git 新建项目
+
+1. 设置全局配置
+```
+git config --global user.name "xxxx"
+git config --global user.email "xxxxxxxx"
+```
+
+2. 新建仓库
+```
+mkdir mtl-school
+cd mtl-school
+git init
+touch README.md
+git add README.md
+git commit -m "first commit"
+git remote add origin ssh://xxxxxxxx.git
+git push -u origin master
+```
+3. 上传代码到已有仓库
+```
+cd xxx
+git remote add origin ssh://xxxx.git
+git push -u origin master
+```
+
+### 修改远程仓库地址
 ```
   git remote set-url origin [url]
    或
   git remote rm origin
   git remote add origin [url]
 ```
-  使用 git remote -v 查看当前远程仓库地址
+> 使用 git remote -v 查看当前远程仓库地址
 
 ### 分支操作
+
 - 查看远程分支
 ```
   git branch -a
@@ -38,7 +65,7 @@ categories:
 - 把本地分支推到远程分支
 ```
   git push origin test
-``
+```
 
 - 切换到分支
 ```
