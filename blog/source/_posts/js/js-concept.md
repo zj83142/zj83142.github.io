@@ -19,7 +19,7 @@ function fn() {
 }
 ```
 上面代码很清楚的说明了这个问题，alert永远不会执行，因为while这段代码没有执行完成。
-
+<!-- more -->
 ### 变量声明
 ```js
 var name = 'World';

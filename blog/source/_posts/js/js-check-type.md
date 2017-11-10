@@ -18,7 +18,7 @@ tags:
   - construcor
 <!-- more -->
 [慕课网一个老师的视频-讲Zepto](http://www.imooc.com/course/comment/id/745?page=4)
-
+<!-- more -->
 ### 判断方法
 
 - isFunction 判断是否是函数
