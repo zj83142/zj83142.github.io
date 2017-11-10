@@ -4,14 +4,73 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/10/23/work/2017-10/</loc>
-    <lastmod>2017-11-08T09:31:29.718Z</lastmod>
+    <loc>http://yoursite.com/2017/11/10/js/promise/</loc>
+    <lastmod>2017-11-10T08:34:03.141Z</lastmod>
     <data>
         <display>
-        <title>2017年10月工作笔记和感受</title>
-        <pubTime>2017-10-23T01:39:47.000Z</pubTime>
+        <title>Promise 对象</title>
+        <pubTime>2017-11-10T10:44:21.000Z</pubTime>
         
-        <tag>work</tag>
+        <tag>Promise</tag>
+         
+         
+           
+             
+              <breadCrumb title="Javascript" url="http://yoursite.com/categories/Javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/10/30/js/js-concept/</loc>
+    <lastmod>2017-11-10T08:33:49.870Z</lastmod>
+    <data>
+        <display>
+        <title>javascript中的一些概念</title>
+        <pubTime>2017-10-30T07:09:21.000Z</pubTime>
+        
+        <tag>javascript概念</tag>
+         
+         
+           
+             
+              <breadCrumb title="笔记" url="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/09/12/js/js-check-type/</loc>
+    <lastmod>2017-11-10T07:52:27.565Z</lastmod>
+    <data>
+        <display>
+        <title>js类型检测</title>
+        <pubTime>2017-09-12T06:59:00.000Z</pubTime>
+        
+        <tag>类型检测</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/08/25/tools/hexo-them/</loc>
+    <lastmod>2017-11-09T11:07:10.125Z</lastmod>
+    <data>
+        <display>
+        <title>hexo 主题设置</title>
+        <pubTime>2017-08-25T02:26:24.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>github pages</tag>
          
          
            
@@ -25,7 +84,7 @@
     
   <url>
     <loc>http://yoursite.com/2017/10/26/tools/git-command/</loc>
-    <lastmod>2017-11-08T08:50:02.781Z</lastmod>
+    <lastmod>2017-11-09T06:16:14.687Z</lastmod>
     <data>
         <display>
         <title>git 常用命令积累</title>
@@ -44,14 +103,14 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/10/30/js/js-concept/</loc>
-    <lastmod>2017-11-07T07:46:45.646Z</lastmod>
+    <loc>http://yoursite.com/2017/10/23/work/2017-10/</loc>
+    <lastmod>2017-11-08T09:31:29.718Z</lastmod>
     <data>
         <display>
-        <title>javascript中的一些概念</title>
-        <pubTime>2017-10-30T07:09:21.000Z</pubTime>
+        <title>2017年10月工作笔记和感受</title>
+        <pubTime>2017-10-23T01:39:47.000Z</pubTime>
         
-        <tag>javascript概念</tag>
+        <tag>work</tag>
          
          
            
@@ -181,28 +240,6 @@
         <display>
         <title>Hexo + github pages搭建个人博客 —— 基础篇</title>
         <pubTime>2017-08-24T07:27:22.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-        <tag>github pages</tag>
-         
-         
-           
-             
-              <breadCrumb title="笔记" url="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/08/25/tools/hexo-them/</loc>
-    <lastmod>2017-10-26T05:58:42.836Z</lastmod>
-    <data>
-        <display>
-        <title>hexo 主题设置</title>
-        <pubTime>2017-08-25T02:26:24.000Z</pubTime>
         
         <tag>hexo</tag>
          
@@ -374,23 +411,6 @@
              
               <breadCrumb title="echart" url="http://yoursite.com/categories/echart/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/09/12/js/js-check-type/</loc>
-    <lastmod>2017-10-26T05:53:43.236Z</lastmod>
-    <data>
-        <display>
-        <title>js类型检测</title>
-        <pubTime>2017-09-12T06:59:00.000Z</pubTime>
-        
-        <tag>类型检测</tag>
-         
-         
-           
         </display>
     </data>
     </url>

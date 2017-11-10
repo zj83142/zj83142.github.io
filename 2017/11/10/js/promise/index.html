@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Category: 踩坑 | zj83142</title>
+  <title>Promise 对象 | zj83142</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zj83142">
-<meta property="og:url" content="http://yoursite.com/categories/踩坑/index.html">
+  <meta name="description" content="Promise对象 - 阮一峰 Promises原本只是社区提出的一个构想，一些外部函数库率先实现了这个功能。ES2015正式发布（也就是ES6），其中promise被列为只是规范。因此目前JavaScript语言原生支持Promise对象。现在，promise已在浏览器中实现，在chrome32、Opera19、Firefox29、Safari8 和Microsoft Edge中，promise">
+<meta name="keywords" content="Promise">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Promise 对象">
+<meta property="og:url" content="http://yoursite.com/2017/11/10/js/promise/index.html">
 <meta property="og:site_name" content="zj83142">
+<meta property="og:description" content="Promise对象 - 阮一峰 Promises原本只是社区提出的一个构想，一些外部函数库率先实现了这个功能。ES2015正式发布（也就是ES6），其中promise被列为只是规范。因此目前JavaScript语言原生支持Promise对象。现在，promise已在浏览器中实现，在chrome32、Opera19、Firefox29、Safari8 和Microsoft Edge中，promise">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-10T08:34:03.141Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zj83142">
+<meta name="twitter:title" content="Promise 对象">
+<meta name="twitter:description" content="Promise对象 - 阮一峰 Promises原本只是社区提出的一个构想，一些外部函数库率先实现了这个功能。ES2015正式发布（也就是ES6），其中promise被列为只是规范。因此目前JavaScript语言原生支持Promise对象。现在，promise已在浏览器中实现，在chrome32、Opera19、Firefox29、Safari8 和Microsoft Edge中，promise">
   
     <link rel="alternative" href="/atom.xml" title="zj83142" type="application/atom+xml">
   
@@ -156,71 +161,229 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-js/promise" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/10/note/daily-pit1/" class="archive-article-date">
-  	<time datetime="2017-10-10T07:51:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/10/note/daily-pit1/">日常踩坑集合(一)</a>
+    <h1 class="article-title" itemprop="name">
+      Promise 对象
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/11/10/js/promise/" class="archive-article-date">
+  	<time datetime="2017-11-10T10:44:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://javascript.ruanyifeng.com/advanced/promise.html#toc9" target="_blank" rel="external">Promise对象 - 阮一峰</a></p>
+<p>Promises原本只是社区提出的一个构想，一些外部函数库率先实现了这个功能。ES2015正式发布（也就是ES6），其中promise被列为只是规范。因此目前JavaScript语言原生支持Promise对象。现在，promise已在浏览器中实现，在chrome32、Opera19、Firefox29、Safari8 和Microsoft Edge中，promise默认启用。promise 是抽象异步处理对象以及对其进行各种操作的组件。</p>
+<h3 id="javascript-的异步执行"><a href="#javascript-的异步执行" class="headerlink" title="javascript 的异步执行"></a>javascript 的异步执行</h3><p>javascript语言的执行环境是单线程(single thread)。每次只能处理一件任务，如果有多个任务，就必须排队。一个执行完成，再执行后面一个任务。这种模式的好处是实现起来比较简单，执行环境相对简单。坏处是只要有一个任务耗时很长，后面的任务都必须排队等待，会拖延整个程序的执行。常见的浏览器无应用（假死），往往就是这样形成的。<br><a id="more"></a><br>javascript语言本身并不慢，慢的是读写外部数据，比如等待Ajax请求返回结果。这个时候，如果服务器迟迟没有相应。或者网络不通畅，就会导致脚本长时间停滞。</p>
+<p>为了解决这个问题，javascript语言将任务的执行模式分为两种，同步(synchronous) 和异步(Asynchronous)。<strong>同步模式</strong>就是传统的做法，按顺序执行，这往往用于一些简单的、快速的、不涉及IO读写的操作。<strong>异步模式</strong>将任务分成两段，第一段代码包含对外部数据的请求，第二段代码被写成一个回调函数，包含了对外部数据的处理，第一段代码执行完，不是立刻执行第二段代码，而是讲程序的执行权交给第二个任务，等到外部数据返回了，再由系统通知执行第二段代码。所以，程序的执行顺序与任务的排列顺勋是不一致的，异步的。</p>
+<h4 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h4><p>回调函数是异步编程最基本的方法。假设有两个函数f1和f2, 后者必须等到前者执行完成，才能执行，这时可以考虑改写f1，把f2 写成发的回调函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function f1(callback) &#123;</div><div class="line">  // f1 的代码</div><div class="line"></div><div class="line">  // f1 执行完成后，调用回调函数</div><div class="line">  callback();</div><div class="line">&#125;</div><div class="line">// 执行代码</div><div class="line">f1(f2);</div></pre></td></tr></table></figure></p>
+<p>回调函数的优点是简单、容易理解和部署，缺点是不利于代码的阅读和维护，各个部分之间高度<strong>耦合(Coupling)</strong>,是的程序结构混乱、流程难以追踪（尤其是回调函数嵌套的情况），而且每个任务只能指定一个回调函数。</p>
+<h4 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h4><p>另一种思路是采用事件驱动模式，任务的执行不取决于代码的顺序。而取决于某个事件是否发生。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">f1.on(&apos;done&apos;, f2);</div><div class="line">function f1() &#123;</div><div class="line">  setTimeout(function() &#123;</div><div class="line">    // f1 的任务代码</div><div class="line">    f1.trigger(&apos;done&apos;);</div><div class="line">  &#125;, 1000);</div><div class="line"> </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面代码中，f1.trigger(‘done’)表示，执行完成后，立即触发done事件，从而开始执行f2。这种方法的优点是比较容易理解，可以绑定多个事件，每个事件可以指定多个回调函数，而且可以<strong>“去耦合(Decoupling)”</strong>，有利于实现模块化。缺点是整个程序都编程事件驱动型，运行流程会变得很不清楚。</p>
+<h4 id="发布-订阅"><a href="#发布-订阅" class="headerlink" title="发布/订阅"></a>发布/订阅</h4><p>“事件”可以理解成“信号”，如果存在一个“信号中心”，某个任务执行完成，就向信号中心“发布(publish)”一个信号，其他任务可以向信号中心“订阅(subscribe)”这个信号,从而知道什么时候自己可以开始。这就叫做“发布/订阅模式(publish-subscribe oattern)”,又称“观察者模式(observer pattern)”。<br>这个模式有多种实现，下面采用Ben Alman 的Tiny Pub/Sub —— jquery的一个插件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">jQuery.subscribe(&apos;done&apos;, f2); // f2向信号中心订阅&quot;done&quot;信号</div><div class="line"></div><div class="line">function f1() &#123;</div><div class="line">  setTimeout(function() &#123;</div><div class="line">    // f1 的代码任务</div><div class="line">    jQuery.publish(&quot;done&quot;); // f1 执行完后，想信号中心jquery 发布done信号，从而已发f2 的执行。</div><div class="line">  &#125;, 1000);</div><div class="line">&#125;</div><div class="line">jQuery.unsubscribe(&apos;done&apos;, f2); // f2 执行完后，可以取消订阅(unsubscirbe)</div></pre></td></tr></table></figure></p>
+<p>这种方法的性质与“事件监听”类似，但是明显优于后者。因为我们可以通过查看“消息中心”，了解存在多少信号，每个信号有多少订阅者，从而监控程序的运行。</p>
+<h3 id="异步操作的流程控制"><a href="#异步操作的流程控制" class="headerlink" title="异步操作的流程控制"></a>异步操作的流程控制</h3><p>如果有多个异步操作，就存在一个流程控制的问题：确定操作执行的顺序，以后如何保证遵守这种顺序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function async(arg, callback) &#123;</div><div class="line">  console.log(&apos;参数为&apos; + arg + &apos;, 1秒后返回结果&apos;);</div><div class="line">  setTimeout(function() &#123;</div><div class="line">    callback(arg * 2);</div><div class="line">  &#125;, 1000);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面代码的async函数是一个异步任务，非常耗时，每次执行需要1秒才能完成，然后在调用回调函数，如果有6个这样的异步任务，需要全部完成后，才能执行下一步的final函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function final(value) &#123;</div><div class="line">  console.log(&apos;完成: &apos;, value);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="串行执行"><a href="#串行执行" class="headerlink" title="串行执行"></a>串行执行</h4><p>我们可以编写一个流程控制函数，让它来控制异步任务，一个任务完成以后，再执行另一个，这就叫串行执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var items = [1, 2, 3, 4, 5, 6];</div><div class="line">var results = [];</div><div class="line">function series(item) &#123;</div><div class="line">  if(item) &#123;</div><div class="line">    async( item, function(result) &#123;</div><div class="line">      results.push(result);</div><div class="line">      return series(items.shift());</div><div class="line">    &#125;);</div><div class="line">  &#125; else &#123;</div><div class="line">    return final(results);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">series(items.shift());</div></pre></td></tr></table></figure></p>
+<p>上面代码中，函数series就是串行函数，它会依次执行异步任务，所有任务都完成后，才会执行final函数。items数组保存每一个异步任务的参数，results数组保存每一个异步任务的运行结果。</p>
+<h4 id="并行执行"><a href="#并行执行" class="headerlink" title="并行执行"></a>并行执行</h4><p>流程控制函数也可以是并行执行，即所有异步任务同时执行，等到全部完成以后，才执行final函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var items = [1, 2, 3, 4, 5, 6];</div><div class="line">var results = [];</div><div class="line">items.forEach(function(item) &#123;</div><div class="line">  async(item, funciton(result) &#123;</div><div class="line">    results.push(result);</div><div class="line">    if(result.length == items.length) &#123;</div><div class="line">      final(results);</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>上面代码中，forEach方法会同事发起6个异步任务，等到他们全部完成以后，才会执行final函数。</p>
+<p>并行执行的好处是效率较高，比起串行执行只能执行一个任务，比较节约事件。但是问题在于如果秉性的任务较多，很容易耗尽系统资源，拖慢运行速度。</p>
+<h4 id="并行与串行的结合"><a href="#并行与串行的结合" class="headerlink" title="并行与串行的结合"></a>并行与串行的结合</h4><p>所谓并行和串行的结合，就是设置一个门槛，每次最多只能并行执行n个异步任务，这样就避免了过分占用系统资源。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var items = [1, 2, 3, 4, 5, 6];</div><div class="line">var results = [];</div><div class="line">var running = 0;</div><div class="line">var limit = 2;</div><div class="line">function launcher() &#123;</div><div class="line">  while(running &lt; limit &amp;&amp; item.length &gt; 0) &#123;</div><div class="line">    var item = items.shift();</div><div class="line">    async(item, funciton(result) &#123;</div><div class="line">      results.push(result);</div><div class="line">      running --;</div><div class="line">      if(items.length &gt; 0) &#123;</div><div class="line">        launcher();</div><div class="line">      &#125; else if(running == 0) &#123;</div><div class="line">        final(results);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">    running ++;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">launcher();</div></pre></td></tr></table></figure></p>
+<p>上面代码中，最多只能同时运行两个异步任务。变量running 记录当前正在运行的任务数，只要低于门槛值，就再启动一个新的任务，如果等于0，就表示任务都执行完了，这时就执行final函数。</p>
+<h3 id="promise对象"><a href="#promise对象" class="headerlink" title="promise对象"></a>promise对象</h3><p>promise 对象是CommonJS工作组提出的一种规范，目的是为异步操作提供统一的接口。<br>首先，他是一个对象，与其他javascript的用法一样，其次，它起到代理作用(proxy)，充当异步操作与回调函数之间的中介。它使得异步操作具备同步操作的接口，使得程序具备正常的同步运行的流程，回调函数不必再一层一层嵌套。</p>
+<p>简单说，每一个异步任务立即返回一个promise对象，由于是立即返回，所以可以采用同步操作的流程，这个promise对象有一个then方法，允许指定回调函数，在异步任务完成后调用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">(new Promise(f1).then(f2)); // 异步操作f1返回一个Promise对象，它的回调函数是f2</div><div class="line"></div><div class="line">// 对于多层嵌套的回调函数尤其方便，采用Promises接口以后，程序流程变得非常清楚，十分易读。</div><div class="line"></div><div class="line">// 传统写法</div><div class="line">step1(function (value1) &#123;</div><div class="line">  step2(value1, function(value2) &#123;</div><div class="line">    step3(value2, function(value3) &#123;</div><div class="line">      step4(value3, function(value4) &#123;</div><div class="line">        // ...</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// Promises的写法</div><div class="line">(new Promise(step1))</div><div class="line">  .then(step2)</div><div class="line">  .then(step3)</div><div class="line">  .then(step4);</div></pre></td></tr></table></figure></p>
+<h4 id="promise接口"><a href="#promise接口" class="headerlink" title="promise接口"></a>promise接口</h4><p>promise接口的基本思想是，异步任务返回一个Promise对象。</p>
+<p>promise对象只有三种状态</p>
+<ul>
+<li>异步操作<strong>未完成(pending)</strong></li>
+<li>异步操作<strong>已完成(resolved, 又称fulfilled)</strong></li>
+<li>异步操作<strong>失败(rejected)</strong></li>
+</ul>
+<p>这三种状态的改变只有两种途径</p>
+<ul>
+<li>异步操作从未完成 ——&gt; 完成</li>
+<li>异步操作从未完成 ——&gt; 失败</li>
+</ul>
+<p>这种改变只能发生一次，一旦当前状态改变为“已完成”或“失败”，就意味着不会再有新的状态变化了，因此Promise对象的最终结果只有两种</p>
+<ul>
+<li>异步操作成功，Promise对象返回一个值，状态改变为resolved</li>
+<li>异步操作失败，Promise对象抛出一个错误，状态改变为rejected</li>
+</ul>
+<p>Promise 对象使用then方法添加回调函数。then方法可以接受两个回调函数，第一个是异步操作成功时(变为resolved状态)时的回调函数，第二个是异步操作失败（变为rejected）时的回调函数（可以省略）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">po.then(    // po 是一个Promise对象</div><div class="line">  console.log,</div><div class="line">  console.error</div><div class="line">);</div><div class="line"></div><div class="line">// then方法可以链式使用</div><div class="line">po.then(step1)</div><div class="line">  .then(step2)</div><div class="line">  .then(step3)</div><div class="line">  .then(</div><div class="line">    console.log,</div><div class="line">    console.error</div><div class="line">  );</div><div class="line"></div><div class="line">// 从同步的角度看，上面代码等同于下面的形式</div><div class="line"></div><div class="line">try &#123;</div><div class="line">  var v1 = step1(po);</div><div class="line">  var v2 = step2(v1);</div><div class="line">  var v3 = step3(v2);</div><div class="line">  console.log(v3);</div><div class="line">&#125; catch (error) &#123;</div><div class="line">  console.error(error);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="promise对象的生成"><a href="#promise对象的生成" class="headerlink" title="promise对象的生成"></a>promise对象的生成</h4><p>ES6提供了原生的Promise构造函数，用来生成promise实例、<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var promise = new Promise(function(resolve, reject) &#123;</div><div class="line">  // 异步操作的代码</div><div class="line"></div><div class="line">  if (/* 异步操作成功 */)&#123;</div><div class="line">    resolve(value);</div><div class="line">  &#125; else &#123;</div><div class="line">    reject(error);</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>promise构造函数接收一个函数作为参数，该函数的两个参数分别是resolve和reject。由javascript殷勤提供，不用自己部署。</p>
+<p>resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从Pending变为Resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从Pending变为Rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。</p>
+<p>Promise实例生成以后，可以用then方法分别指定Resolved状态和Reject状态的回调函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">po.then(function(value) &#123;</div><div class="line">  // success</div><div class="line">&#125;, function(value) &#123;</div><div class="line">  // failure</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h4 id="用法辨析"><a href="#用法辨析" class="headerlink" title="用法辨析"></a>用法辨析</h4><p>Promise的用法，简单说就是一句话：使用then方法添加回调函数。但是，不同的写法有一些细微的差别，请看下面四种写法，它们的差别在哪里？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/ 写法一</div><div class="line">doSomething().then(function () &#123;</div><div class="line">  return doSomethingElse();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 写法二</div><div class="line">doSomething().then(function () &#123;</div><div class="line">  doSomethingElse();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 写法三</div><div class="line">doSomething().then(doSomethingElse());</div><div class="line"></div><div class="line">// 写法四</div><div class="line">doSomething().then(doSomethingElse);</div></pre></td></tr></table></figure></p>
+<p>为了便于讲解，下面这四种写法都再用then方法接一个回调函数finalHandler。写法一的finalHandler回调函数的参数，是doSomethingElse函数的运行结果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">doSomething().then(function () &#123;</div><div class="line">  return doSomethingElse();</div><div class="line">&#125;).then(finalHandler);</div></pre></td></tr></table></figure></p>
+<p>写法二的finalHandler回调函数的参数是undefined。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">doSomething().then(function () &#123;</div><div class="line">  doSomethingElse();</div><div class="line">  return;</div><div class="line">&#125;).then(finalHandler);</div></pre></td></tr></table></figure></p>
+<p>写法三的finalHandler回调函数的参数，是doSomethingElse函数返回的回调函数的运行结果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">doSomething().then(doSomethingElse())</div><div class="line">  .then(finalHandler);</div></pre></td></tr></table></figure></p>
+<p>写法四与写法一只有一个差别，那就是doSomethingElse会接收到doSomething()返回的结果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">doSomething().then(doSomethingElse)</div><div class="line">  .then(finalHandler);</div></pre></td></tr></table></figure></p>
+<h3 id="promise-的应用"><a href="#promise-的应用" class="headerlink" title="promise 的应用"></a>promise 的应用</h3><h4 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h4><p>我们可以把图片的加载写成一个Promise对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var preloadImage = function (path) &#123;</div><div class="line">  return new Promise(function (resolve, reject) &#123;</div><div class="line">    var image = new Image();</div><div class="line">    image.onload  = resolve;</div><div class="line">    image.onerror = reject;</div><div class="line">    image.src = path;</div><div class="line">  &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h4 id="Ajax操作"><a href="#Ajax操作" class="headerlink" title="Ajax操作"></a>Ajax操作</h4><p>Ajax操作是典型的异步操作，传统上往往写成下面这样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function search(term, onload, onerror) &#123;</div><div class="line">  var xhr, results, url;</div><div class="line">  url = &apos;http://example.com/search?q=&apos; + term;</div><div class="line">  xhr = new XMLHttpRequest();</div><div class="line">  xhr.open(&apos;GET&apos;, url, true);</div><div class="line">  xhr.onload = function (e) &#123;</div><div class="line">    if (this.status === 200) &#123;</div><div class="line">      results = JSON.parse(this.responseText);</div><div class="line">      onload(results);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">  xhr.onerror = function (e) &#123;</div><div class="line">    onerror(e);</div><div class="line">  &#125;;</div><div class="line">  xhr.send();</div><div class="line">&#125;</div><div class="line">search(&quot;Hello World&quot;, console.log, console.error);</div></pre></td></tr></table></figure></p>
+<p>如果使用Promise对象，就可以写成下面这样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">function search(term) &#123;</div><div class="line">  var url = &apos;http://example.com/search?q=&apos; + term;</div><div class="line">  var xhr = new XMLHttpRequest();</div><div class="line">  var result;</div><div class="line">  var p = new Promise(function (resolve, reject) &#123;</div><div class="line">    xhr.open(&apos;GET&apos;, url, true);</div><div class="line">    xhr.onload = function (e) &#123;</div><div class="line">      if (this.status === 200) &#123;</div><div class="line">        result = JSON.parse(this.responseText);</div><div class="line">        resolve(result);</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">    xhr.onerror = function (e) &#123;</div><div class="line">      reject(e);</div><div class="line">    &#125;;</div><div class="line">    xhr.send();</div><div class="line">  &#125;);</div><div class="line">  return p;</div><div class="line">&#125;</div><div class="line">search(&quot;Hello World&quot;).then(console.log, console.error);</div></pre></td></tr></table></figure></p>
+<p>加载图片的例子，也可以用Ajax操作完成。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">function imgLoad(url) &#123;</div><div class="line">  return new Promise(function(resolve, reject) &#123;</div><div class="line">    var request = new XMLHttpRequest();</div><div class="line">    request.open(&apos;GET&apos;, url);</div><div class="line">    request.responseType = &apos;blob&apos;;</div><div class="line">    request.onload = function() &#123;</div><div class="line">      if (request.status === 200) &#123;</div><div class="line">        resolve(request.response);</div><div class="line">      &#125; else &#123;</div><div class="line">        reject(new Error(&apos;图片加载失败：&apos; + request.statusText));</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">    request.onerror = function() &#123;</div><div class="line">      reject(new Error(&apos;发生网络错误&apos;));</div><div class="line">    &#125;;</div><div class="line">    request.send();</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Promise</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/踩坑//" class="article-tag-list-link color3">踩坑</a>
+        			<a href="/categories/Javascript//" class="article-tag-list-link color1">Javascript</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB10lEQVR42u3ay4oCQQwFUP//px0YZiGINTepVKtwetWIVp92EfK63eLr/ns93j9+8vyd58+ff/Xq+wMXLi7uNve+vNaPTE5Yv0ZuwMXFvZ5bPe4Vdzao4eLifj53neLk2cj6fFxc3G/kVl8AFxf3e7l50EkQ+QkHazVcXNwNbq9hOnt/vL+Li4s7NJXoBbUTz/07GRcX9xLuzhC0Nz7JQ1ghI8PFxR3lVtsZeTFTTZXKKQ4uLu4xbj4izdcp1o3UfEAbxV1cXNwD3KnGaG8QW/5TcHFxL+FODU130qDeGAYXF/c0d6cZmoezXlO1XD/h4uIe41YbHPk4trqMtRVxcXFxW9x8uWpqtaI6ninMfHBxcYe41bIkL1pybvPlcXFxD3ObC1KtqWhvJFPuyuDi4m5wq6lMeX7baqC8DHy4uLiXc/PEJV+hqC5pbc2EcXFxh7i9nkPeyMjPKedluLi4x7izZU+1NCqnTbi4uJdwq0cXJrfx6sbO6AUXF/ccN1++XJc91TWOPD0qRF9cXNxRbh5o8vbH1OglOhQXF/dN3N6KRl5WRaEQFxf3I7k7pU7eBPlnWwQXF/cSbrX46fVd8r8AFxf3vdydhmm1IZKkRNUSCxcXd5T7A3AQM9KLyPKGAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/11/06/note/web-optimization/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">web 前端优化策略</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -243,10 +406,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",

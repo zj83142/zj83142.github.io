@@ -158,6 +158,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js/promise" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/10/js/promise/">Promise 对象</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/10/js/promise/" class="archive-article-date">
+  	<time datetime="2017-11-10T10:44:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://javascript.ruanyifeng.com/advanced/promise.html#toc9" target="_blank" rel="external">Promise对象 - 阮一峰</a></p>
+<p>Promises原本只是社区提出的一个构想，一些外部函数库率先实现了这个功能。ES2015正式发布（也就是ES6），其中promise被列为只是规范。因此目前JavaScript语言原生支持Promise对象。现在，promise已在浏览器中实现，在chrome32、Opera19、Firefox29、Safari8 和Microsoft Edge中，promise默认启用。promise 是抽象异步处理对象以及对其进行各种操作的组件。</p>
+<h3 id="javascript-的异步执行"><a href="#javascript-的异步执行" class="headerlink" title="javascript 的异步执行"></a>javascript 的异步执行</h3><p>javascript语言的执行环境是单线程(single thread)。每次只能处理一件任务，如果有多个任务，就必须排队。一个执行完成，再执行后面一个任务。这种模式的好处是实现起来比较简单，执行环境相对简单。坏处是只要有一个任务耗时很长，后面的任务都必须排队等待，会拖延整个程序的执行。常见的浏览器无应用（假死），往往就是这样形成的。<br>
+        
+          <a class="article-more-a" href="/2017/11/10/js/promise/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Promise</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Javascript//" class="article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/10/js/promise/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-note/web-optimization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -271,10 +360,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="setTimeout-和-seInterval"><a href="#setTimeout-和-seInterval" class="headerlink" title="setTimeout 和 seInterval"></a>setTimeout 和 seInterval</h3><p>javascript是单线程，所以setTimeout和setInterval两个函数是利用代码插入的方式实现伪异步，和Ajax的原理实际上是一样的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function fn() &#123; </div><div class="line">  setTimeout(function()&#123;alert(&apos;can you see me?&apos;);&#125;,1000); </div><div class="line">  while(true) &#123;</div><div class="line"></div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上面代码很清楚的说明了这个问题，alert永远不会执行，因为while这段代码没有执行完成。</p>
-<h3 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">'World'</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> name === <span class="string">'undefined'</span>) &#123;</div><div class="line">    <span class="keyword">var</span> name = <span class="string">'Jack'</span>;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Goodbey '</span> + name);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Hello '</span> + name);</div><div class="line">  &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
-<p>控台打印的正确结果是：Goodbye jack, 上面代码其实相当于：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">'World'</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> name;</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> name === <span class="string">'undefined'</span>) &#123;</div><div class="line">    name = <span class="string">'Jack'</span>;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Goodbye '</span> + name);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Hello '</span> + name);</div><div class="line">  &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
-
+<p>上面代码很清楚的说明了这个问题，alert永远不会执行，因为while这段代码没有执行完成。<br>
+        
+          <a class="article-more-a" href="/2017/10/30/js/js-concept/#more">more >></a>
+        
       
 
       
@@ -965,94 +1054,6 @@
 
 
   
-    <article id="post-note/daily-pit1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/note/daily-pit1/">日常踩坑集合(一)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/note/daily-pit1/" class="archive-article-date">
-  	<time datetime="2017-10-10T07:51:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="解决目录层次太深删除报错的问题"><a href="#解决目录层次太深删除报错的问题" class="headerlink" title="解决目录层次太深删除报错的问题"></a>解决目录层次太深删除报错的问题</h3><p>问题：在使用npm当中，自动生成的node_modules文件夹，因为文件目录层级太深，无法系统删除</p>
-<p>解决方案： 1、 安装：npm install -g rimraf（全局安装） 2、 使用：先定位目标文件夹的父级目录，然后命令行输入rimraf <strong><em>（</em></strong>为需要删除的文件夹名称）<br>
-        
-          <a class="article-more-a" href="/2017/10/10/note/daily-pit1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/踩坑//" class="article-tag-list-link color3">踩坑</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/note/daily-pit1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1158,11 +1159,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
+                <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1178,7 +1175,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+                <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1186,11 +1183,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
+                <a href="javascript:void(0)" class="js-tag color3">Promise</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo 问题积累</a>
+                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1210,11 +1211,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">work</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">work</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo 问题积累</a>
               </li>
             
             <div class="clearfix"></div>

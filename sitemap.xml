@@ -2,23 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2017/10/23/work/2017-10/</loc>
+    <loc>http://yoursite.com/2017/11/10/js/promise/</loc>
     
-    <lastmod>2017-11-08T09:31:29.718Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/26/tools/git-command/</loc>
-    
-    <lastmod>2017-11-08T08:50:02.781Z</lastmod>
+    <lastmod>2017-11-10T08:34:03.141Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/10/30/js/js-concept/</loc>
     
-    <lastmod>2017-11-07T07:46:45.646Z</lastmod>
+    <lastmod>2017-11-10T08:33:49.870Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/09/12/js/js-check-type/</loc>
+    
+    <lastmod>2017-11-10T07:52:27.565Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/25/tools/hexo-them/</loc>
+    
+    <lastmod>2017-11-09T11:07:10.125Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/26/tools/git-command/</loc>
+    
+    <lastmod>2017-11-09T06:16:14.687Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/23/work/2017-10/</loc>
+    
+    <lastmod>2017-11-08T09:31:29.718Z</lastmod>
     
   </url>
   
@@ -61,13 +82,6 @@
     <loc>http://yoursite.com/2017/08/24/tools/hexo_github_pages1/</loc>
     
     <lastmod>2017-10-26T06:03:51.124Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/25/tools/hexo-them/</loc>
-    
-    <lastmod>2017-10-26T05:58:42.836Z</lastmod>
     
   </url>
   
@@ -131,13 +145,6 @@
     <loc>http://yoursite.com/2017/10/10/note/echart-pits/</loc>
     
     <lastmod>2017-10-26T05:54:02.446Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/09/12/js/js-check-type/</loc>
-    
-    <lastmod>2017-10-26T05:53:43.236Z</lastmod>
     
   </url>
   

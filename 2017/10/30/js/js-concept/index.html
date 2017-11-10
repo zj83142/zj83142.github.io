@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="zj83142">
 <meta property="og:description" content="setTimeout 和 seIntervaljavascript是单线程，所以setTimeout和setInterval两个函数是利用代码插入的方式实现伪异步，和Ajax的原理实际上是一样的。123456function fn() &amp;#123;   setTimeout(function()&amp;#123;alert(&amp;apos;can you see me?&amp;apos;);&amp;#125;,1000">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-07T07:46:45.646Z">
+<meta property="og:updated_time" content="2017-11-10T08:33:49.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript中的一些概念">
 <meta name="twitter:description" content="setTimeout 和 seIntervaljavascript是单线程，所以setTimeout和setInterval两个函数是利用代码插入的方式实现伪异步，和Ajax的原理实际上是一样的。123456function fn() &amp;#123;   setTimeout(function()&amp;#123;alert(&amp;apos;can you see me?&amp;apos;);&amp;#125;,1000">
@@ -182,7 +182,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="setTimeout-和-seInterval"><a href="#setTimeout-和-seInterval" class="headerlink" title="setTimeout 和 seInterval"></a>setTimeout 和 seInterval</h3><p>javascript是单线程，所以setTimeout和setInterval两个函数是利用代码插入的方式实现伪异步，和Ajax的原理实际上是一样的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function fn() &#123; </div><div class="line">  setTimeout(function()&#123;alert(&apos;can you see me?&apos;);&#125;,1000); </div><div class="line">  while(true) &#123;</div><div class="line"></div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上面代码很清楚的说明了这个问题，alert永远不会执行，因为while这段代码没有执行完成。</p>
+<p>上面代码很清楚的说明了这个问题，alert永远不会执行，因为while这段代码没有执行完成。<br><a id="more"></a></p>
 <h3 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">'World'</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> name === <span class="string">'undefined'</span>) &#123;</div><div class="line">    <span class="keyword">var</span> name = <span class="string">'Jack'</span>;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Goodbey '</span> + name);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Hello '</span> + name);</div><div class="line">  &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
 <p>控台打印的正确结果是：Goodbye jack, 上面代码其实相当于：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">'World'</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> name;</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> name === <span class="string">'undefined'</span>) &#123;</div><div class="line">    name = <span class="string">'Jack'</span>;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Goodbye '</span> + name);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Hello '</span> + name);</div><div class="line">  &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
 
@@ -445,11 +445,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
+                <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -465,7 +461,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">css 选择器</a>
+                <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -473,11 +469,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">类型检测</a>
+                <a href="javascript:void(0)" class="js-tag color3">Promise</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo 问题积累</a>
+                <a href="javascript:void(0)" class="js-tag color3">css加载效果</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">css性能优化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,11 +497,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">work</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">work</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo 问题积累</a>
               </li>
             
             <div class="clearfix"></div>
